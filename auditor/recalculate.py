@@ -46,9 +46,17 @@ class Method:
         self.no_negative = s['no_negative_review_score']
 
 
+# Variantes « texte » : chaque identifiant remplace la règle de production par la lecture la plus littérale du texte
+# public de la méthode (docs/interpretations.md). Elles mesurent l'effet des écarts ; elles ne remplacent jamais les
+# notes officielles.
+TEXT_VARIANTS = ('I-4', 'I-6', 'I-7', 'I-11')
+_VARIANT: set = set()
+
+
 def r1(x: float) -> float:
-    """Arrondi au dixième, appliqué par le site à chaque sous-critère et pilier (I-7). Arrondi « au plus proche » de Python."""
-    return round(x, 1)
+    """Arrondi au dixième, appliqué par le site à chaque sous-critère et pilier (I-7). Arrondi « au plus proche » de Python.
+    Variante texte I-7 : pas d'arrondi intermédiaire (« note exacte »)."""
+    return x if 'I-7' in _VARIANT else round(x, 1)
 
 
 def age_months(date_str: str, ref: dt.date) -> float:
@@ -113,12 +121,17 @@ def pillar_reviews(items: list[dict], aggs: list[dict], m: Method, ref: dt.date,
     volume = r1(min(100.0, 100.0 * math.log(1 + n) / math.log(1 + m.vol_cap)))
     # Régularité (I-3, I-4) : tous les avis de vente ou d'achat datés des 12 derniers mois calendaires, doublons compris
     win = last_calendar_months(ref)
-    rec = [x for x in items if x['compte_vente_achat'] == '1' and x['date'][:7] in win]
+    if 'I-4' in _VARIANT:   # variante texte : doublons retirés, comme l'annonce le texte
+        rec = [x for x in items if x['retenu_qualite'] == '1' and x['date'][:7] in win]
+    else:
+        rec = [x for x in items if x['compte_vente_achat'] == '1' and x['date'][:7] in win]
     months = {x['date'][:7] for x in rec}
     if items:
         regularity = r1(min(1.0, len(months) / min(12, max(3, len(rec)))) * 100) if rec else 0.0
     else:
         regularity = 0.0 if not aggs else None
+    if regularity is None and 'I-6' in _VARIANT:   # variante texte : pas de redistribution, valeur neutre (section 10)
+        regularity = m.neutral
     if regularity is None:   # I-6 : régularité non vérifiable, son poids est réparti sur qualité et volume
         score = (m.q_share * quality + m.v_share * volume) / (m.q_share + m.v_share)
     else:
@@ -130,7 +143,9 @@ def pillar_reviews(items: list[dict], aggs: list[dict], m: Method, ref: dt.date,
 def pillar_service(items: list[dict], m: Method) -> tuple[float, dict]:
     tx = [x for x in items if x['compte_vente_achat'] == '1']
     # Réponses : avis Google de vente/achat à 3 étoiles ou moins dont la présence d'une réponse a été relevée (I-8)
-    neg = [x for x in tx if x['plateforme'] == 'google' and float(x['note'] or 5) <= 3 and x['reponse_agence'] in ('0', '1')]
+    # Une note vide n'est jamais remplacée : l'avis est exclu ici et signalé comme donnée invalide (contrôle V-4)
+    neg = [x for x in tx if x['plateforme'] == 'google' and x['note'] != '' and float(x['note']) <= 3
+           and x['reponse_agence'] in ('0', '1')]
     if neg:
         resp = r1(100.0 * (sum(1 for x in neg if x['reponse_agence'] == '1') + 2) / (len(neg) + 4))
     else:
@@ -167,7 +182,25 @@ def pillar_seniority(date_str: str, m: Method, ref: dt.date) -> float | None:
     return r1(max(0.0, min(100.0, years / m.anc_full_years * 100)))
 
 
-def recalculate(data_dir: Path, cfg: dict) -> dict:
+def rank(out: dict, order: dict, text_tie_break: bool = False) -> None:
+    """Rang (I-11) : note (au centième en production), puis nombre total d'avis des plateformes, puis identifiant stable,
+    puis nom. Variante texte : départage par les avis comptés (vente et achat)."""
+    tie = 'reviews_counted' if text_tie_break else 'reviews_total'
+    for i, s in enumerate(sorted(out, key=lambda s: (-out[s]['note'], -out[s][tie], order.get(s, 10**9), s)), 1):
+        out[s]['rank'] = i
+
+
+def recalculate(data_dir: Path, cfg: dict, variants=()) -> dict:
+    """variants : sous-ensemble de TEXT_VARIANTS ; vide = règles de production."""
+    _VARIANT.clear()
+    _VARIANT.update(variants)
+    try:
+        return _recalculate(data_dir, cfg)
+    finally:
+        _VARIANT.clear()
+
+
+def _recalculate(data_dir: Path, cfg: dict) -> dict:
     m = Method(cfg)
     params = json.loads((data_dir / 'parametres.json').read_text(encoding='utf-8'))
     ref = dt.date.fromisoformat(params['date_releve'])
@@ -207,10 +240,10 @@ def recalculate(data_dir: Path, cfg: dict) -> dict:
                 rules.append(f'{p}:valeur_neutre_{m.neutral}')
         exact = sum(sc[p] * m.weights[p] for p in PILLARS) / sum(m.weights.values())
         ntot = sum(float(x['nombre'] or 0) for x in aggs[s])
-        out[s] = {'pillars': sc, 'note_exact': exact, 'note': round(exact, 2), 'rules': rules, 'reviews_total': ntot,
+        counted = d_avis.get('n', 0)
+        out[s] = {'pillars': sc, 'note_exact': exact, 'note': exact if 'I-7' in _VARIANT else round(exact, 2), 'rules': rules,
+                  'reviews_total': ntot, 'reviews_counted': counted,
                   'detail': {'avis': d_avis, 'serv': d_serv}}
     # Rang (I-11) : note arrondie au centième, puis nombre total d'avis des plateformes, puis identifiant stable
-    ranking = sorted(out, key=lambda s: (-out[s]['note'], -out[s]['reviews_total'], order.get(s, 10**9), s))
-    for i, s in enumerate(ranking, 1):
-        out[s]['rank'] = i
+    rank(out, order, 'I-11' in _VARIANT)
     return {'date_releve': str(ref), 'm_ref': m_ref, 'agencies': out}

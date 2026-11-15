@@ -7,39 +7,69 @@ Règle (config/audit-policy.json, section « sampling ») :
 3. Situations comparables pour l'ancienneté : toutes les agences dont la société exploite plusieurs fiches (même SIREN),
    dont l'enseigne a une date de lancement relevée, ou dont l'ancienneté a été saisie à la main.
 4. Échantillon aléatoire : N agences tirées parmi les autres. La graine combine l'empreinte SHA-256 des fichiers
-   archivés et la valeur aléatoire publique drand (League of Entropy) du premier tour produit APRÈS l'archivage.
-   Ni l'éditeur ni l'auditeur ne peuvent la connaître avant que les données soient figées, ni la choisir ensuite.
+   archivés et la valeur aléatoire publique drand (League of Entropy) du tour fixé à l'avance : le premier 06:00 UTC
+   qui suit l'archivage. Ni l'éditeur ni l'auditeur ne connaissent cette valeur quand les données sont figées, et
+   relancer l'archivage ne permet pas d'en choisir une autre. Sans balise valide, aucun tirage n'est fait.
 """
 from __future__ import annotations
 
+import datetime as dt
 import hashlib
 import json
+import math
 import random
-import time
 import urllib.request
 
 DRAND = 'https://api.drand.sh/52db9ba70e0cc0f6eaf7803dd07447a1f5477735fd3f661792ba94600c84e971'   # chaîne « quicknet »
+CHAIN_HASH = '52db9ba70e0cc0f6eaf7803dd07447a1f5477735fd3f661792ba94600c84e971'
+QUICKNET_GENESIS, QUICKNET_PERIOD = 1692803367, 3      # paramètres publics de la chaîne, épinglés ici
+SLOT_HOUR_UTC = 6
 
 
-def drand_after(ts: float, timeout: int = 30) -> dict:
-    """Tour drand qui suit l'instant ts (secondes UTC). Attend sa publication si besoin (période de 3 s)."""
-    info = json.load(urllib.request.urlopen(f'{DRAND}/info', timeout=timeout))
-    rnd = int((ts - info['genesis_time']) // info['period']) + 2
-    for _ in range(20):
-        try:
-            b = json.load(urllib.request.urlopen(f'{DRAND}/public/{rnd}', timeout=timeout))
-            return {'chain': info['hash'], 'round': b['round'], 'randomness': b['randomness'], 'signature': b['signature'],
-                    'url': f'{DRAND}/public/{rnd}'}
-        except Exception:                     # noqa: BLE001 — tour pas encore publié : on attend
-            time.sleep(info['period'])
-    raise RuntimeError('balise drand indisponible')
+def draw_time(archived_ts: float) -> float:
+    """Échéance FIXE du tirage : le premier 06:00 UTC qui suit l'archivage. Elle ne dépend pas du moment où l'auditeur
+    choisit de lancer le tirage : relancer l'archivage ou le tirage ne permet pas de choisir un autre aléa."""
+    day = dt.datetime.fromtimestamp(archived_ts, dt.timezone.utc).replace(hour=SLOT_HOUR_UTC, minute=0, second=0, microsecond=0)
+    if day.timestamp() <= archived_ts:
+        day += dt.timedelta(days=1)
+    return day.timestamp()
 
 
-def seed_of(inputs_sha256: dict, beacon: dict | None) -> str:
+def round_at(t: float) -> int:
+    """Premier tour drand publié à l'instant t ou après."""
+    return max(1, math.ceil((t - QUICKNET_GENESIS) / QUICKNET_PERIOD) + 1)
+
+
+def check_beacon(b: dict, expected_round: int) -> list[str]:
+    """Contrôles réalisables avec la bibliothèque standard. La vérification cryptographique de la signature BLS n'est
+    PAS faite ici (bibliothèque BLS nécessaire, prévue en phase D) : le rapport l'indique."""
+    errors = []
+    if b.get('round') != expected_round:
+        errors.append(f"tour {b.get('round')} au lieu du tour attendu {expected_round}")
+    if b.get('chain') != CHAIN_HASH:
+        errors.append('chaîne drand inattendue')
+    try:
+        if hashlib.sha256(bytes.fromhex(b['signature'])).hexdigest() != b['randomness']:
+            errors.append('valeur aléatoire différente du SHA-256 de la signature')
+    except (KeyError, ValueError):
+        errors.append('signature ou valeur aléatoire absente')
+    return errors
+
+
+def fetch_beacon(rnd: int, timeout: int = 30) -> dict:
+    b = json.load(urllib.request.urlopen(f'{DRAND}/public/{rnd}', timeout=timeout))
+    return {'chain': CHAIN_HASH, 'round': b['round'], 'randomness': b['randomness'], 'signature': b['signature'],
+            'url': f'{DRAND}/public/{rnd}', 'fetched_utc': dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds')}
+
+
+def seed_of(inputs_sha256: dict, beacon: dict) -> str:
+    """Aucun repli : sans balise valide, il n'y a pas de tirage (statut « en_attente » ou « echec »)."""
+    if not beacon or 'randomness' not in beacon:
+        raise ValueError('balise drand absente : tirage impossible')
     h = hashlib.sha256()
     for name in sorted(inputs_sha256):
         h.update(f'{name}:{inputs_sha256[name]}\n'.encode())
-    h.update(f'drand:{beacon["randomness"] if beacon else "INDISPONIBLE"}'.encode())
+    h.update(f'drand:{beacon["round"]}:{beacon["randomness"]}'.encode())
     return h.hexdigest()
 
 

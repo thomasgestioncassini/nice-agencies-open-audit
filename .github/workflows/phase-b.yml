@@ -17,7 +17,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Tests (sans réseau ni clé d'API)
+      - name: Tests sur le dépôt seul (sans réseau ni clé d'API ; aucun test sauté accepté)
+        env:
+          AUDIT_REQUIRE_SNAPSHOT: '1'
         run: python -m unittest -v
       - name: Archivage du relevé publié
         run: python -m auditor fetch
@@ -27,7 +29,9 @@ jobs:
           for s in snapshots/*/; do python -m auditor run "$s"; echo "code de sortie $?"; done
       - name: Vérification des empreintes
         run: for r in reports/*/; do python -m auditor verify "$r"; done
-      - name: Tests sur le relevé archivé
+      - name: Tests après archivage
+        env:
+          AUDIT_REQUIRE_SNAPSHOT: '1'
         run: python -m unittest -v
       - uses: actions/upload-artifact@v4
         with:

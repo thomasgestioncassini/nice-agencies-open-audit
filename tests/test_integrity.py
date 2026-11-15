@@ -7,7 +7,9 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from tests.helpers import ROOT, audit, latest_snapshot, restored, rows, write_rows
+from auditor import fetch as F
+from auditor.validate import validate
+from tests.helpers import CFG, POLICY, REFERENCE, ROOT, audit, latest_snapshot, needs_snapshot, restored, rows, write_rows
 
 PUB_COLS = ('avis', 'service', 'honoraires', 'mentions_legales', 'information', 'anciennete')
 
@@ -16,7 +18,7 @@ def flagged(cmp_, agency):
     return {a['objet'] for a in cmp_['anomalies'] if a['agence'] == agency and a['statut'] == 'divergente'}
 
 
-@unittest.skipIf(latest_snapshot() is None, 'aucun relevé archivé')
+@needs_snapshot
 class Alterations(unittest.TestCase):
     def test_2_altered_published_note_is_detected(self):
         tmp, d = restored()
@@ -83,7 +85,7 @@ class Alterations(unittest.TestCase):
         self.assertIn('pilier info', got)
 
 
-@unittest.skipIf(latest_snapshot() is None, 'aucun relevé archivé')
+@needs_snapshot
 class ReportTampering(unittest.TestCase):
     def test_modified_report_copy_is_detected(self):
         out = Path(tempfile.mkdtemp())
@@ -94,13 +96,88 @@ class ReportTampering(unittest.TestCase):
             ok = subprocess.run([sys.executable, '-m', 'auditor', 'verify', str(out)], cwd=ROOT, capture_output=True, text=True)
             self.assertEqual(ok.returncode, 0, ok.stdout)
             rep = json.loads((out / 'report.json').read_text(encoding='utf-8'))
-            rep['statuses']['calculs'] = 'conforme' if rep['statuses']['calculs'] != 'conforme' else 'divergences'
+            k = 'calculs_reproduction'
+            rep['statuses'][k] = 'conforme' if rep['statuses'][k] != 'conforme' else 'divergences'
             (out / 'report.json').write_text(json.dumps(rep), encoding='utf-8')
             bad = subprocess.run([sys.executable, '-m', 'auditor', 'verify', str(out)], cwd=ROOT, capture_output=True, text=True)
             self.assertEqual(bad.returncode, 3)
             self.assertIn('ALTÉRÉ', bad.stdout)
         finally:
             shutil.rmtree(out, ignore_errors=True)
+
+
+def forge_consistently(d, agency='immovendu', n=40, date='2025-06-01'):
+    """Falsification coordonnée : avis 5/5 inventés ET piliers, notes et rangs publiés recalculés en conséquence."""
+    head, items = rows(d / 'avis-elementaires.csv')
+    base = next(x for x in items if x['agence'] == agency and x['retenu_qualite'] == '1' and x['plateforme'] == 'google')
+    items += [{**base, 'id': f'fictif{i}', 'note': '5.0', 'date': date, 'reponse_agence': '', 'probleme': ''} for i in range(n)]
+    write_rows(d / 'avis-elementaires.csv', head, items)
+    head_a, ag = rows(d / 'agregats-plateformes.csv')
+    for a in ag:
+        if a['agence'] == agency and a['plateforme'] == 'google':
+            a['nombre'] = str(int(float(a['nombre'])) + n)
+    write_rows(d / 'agregats-plateformes.csv', head_a, ag)
+    res, _ = audit(d)
+    head_p, pub = rows(d / 'agences.csv')
+    cols = dict(zip(('avis', 'serv', 'hono', 'conf', 'info', 'anc'),
+                    ('avis', 'service', 'honoraires', 'mentions_legales', 'information', 'anciennete')))
+    for p in pub:
+        r = res['agencies'][p['agence']]
+        p['note_publiee'] = f"{r['note']:.4f}"
+        p['rang_publie'] = str(r['rank'])
+        for k, c in cols.items():
+            p[c] = f"{r['pillars'][k]:.4f}"
+    write_rows(d / 'agences.csv', head_p, pub)
+
+
+@needs_snapshot
+class CoordinatedForgery(unittest.TestCase):
+    """Limite assumée : une falsification cohérente des données ET des notes n'est pas visible au recalcul. L'auditeur
+    doit le dire (statut « données primaires non vérifiées ») et la comparaison entre relevés doit la signaler."""
+
+    def test_recalculation_alone_cannot_see_it(self):
+        tmp, d = restored(REFERENCE)
+        with tmp:
+            forge_consistently(d)
+            _, cmp_ = audit(d)
+        self.assertEqual(cmp_['notes']['divergente'], 0)          # le recalcul reste conforme : c'est la limite
+        self.assertEqual(cmp_['ranks_divergent'], 0)
+
+    def test_report_does_not_claim_primary_data_verified(self):
+        out = Path(tempfile.mkdtemp())
+        try:
+            subprocess.run([sys.executable, '-m', 'auditor', 'run', str(REFERENCE), '--out', str(out)], cwd=ROOT,
+                           capture_output=True, text=True)
+            rep = json.loads((out / 'report.json').read_text(encoding='utf-8'))
+            self.assertEqual(rep['statuses']['donnees_primaires'], 'non_verifiees')
+            self.assertIn('falsifiées de façon cohérente', (out / 'report.md').read_text(encoding='utf-8'))
+        finally:
+            shutil.rmtree(out, ignore_errors=True)
+
+    def test_history_comparison_flags_backdated_reviews(self):
+        prev_tmp, prev = restored(REFERENCE)
+        cur_tmp, cur = restored(REFERENCE)
+        with prev_tmp, cur_tmp:
+            # relevé suivant simulé : une semaine plus tard, avec 40 avis antidatés pour ImmoVendu
+            pj = json.loads((cur / 'parametres.json').read_text(encoding='utf-8'))
+            pj['date_releve'] = '2026-11-22'
+            (cur / 'parametres.json').write_text(json.dumps(pj), encoding='utf-8')
+            forge_consistently(cur)
+            val = validate(cur, CFG, POLICY['sampling']['publisher_agencies'], prev)
+        f = next(x for x in val['findings'] if x['code'] == 'V-13a')
+        self.assertEqual(f['severity'], 'majeur')
+        self.assertEqual(f['per_agency'].get('immovendu'), 40)
+
+    def test_history_comparison_flags_vanished_reviews_for_gestion_cassini(self):
+        prev_tmp, prev = restored(REFERENCE)
+        cur_tmp, cur = restored(REFERENCE)
+        with prev_tmp, cur_tmp:
+            head, items = rows(cur / 'avis-elementaires.csv')
+            gc = [x for x in items if x['agence'] == 'gestion-cassini'][:10]
+            write_rows(cur / 'avis-elementaires.csv', head, [x for x in items if x not in gc])
+            val = validate(cur, CFG, POLICY['sampling']['publisher_agencies'], prev)
+        f = next(x for x in val['findings'] if x['code'] == 'V-13b')
+        self.assertEqual(f['per_agency'].get('gestion-cassini'), 10)
 
 
 if __name__ == '__main__':

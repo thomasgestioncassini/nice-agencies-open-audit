@@ -5,12 +5,15 @@ from __future__ import annotations
 import json
 
 TITLES = {
-    'calculs': 'Exactitude des calculs',
+    'calculs_reproduction': 'Calculs — reproduction des notes publiées',
+    'calculs_conformite_texte': 'Calculs — conformité au texte publié de la méthode',
     'donnees_primaires': 'Vérification des données primaires',
     'biais': 'Analyse des biais',
 }
 LABELS = {
-    'conforme': 'CONFORME — toutes les notes, tous les piliers et tous les rangs recalculés sont identiques aux valeurs publiées',
+    'conforme': 'CONFORME',
+    'ecarts': 'ÉCARTS — le site applique des règles que son texte contredit ou laisse ambiguës (détail et effet ci-dessous)',
+    'incomplet': 'INCOMPLET — le texte ne suffit pas à reproduire le calcul',
     'divergences': 'DIVERGENCES — au moins une valeur recalculée diffère de la valeur publiée',
     'echec': 'ÉCHEC — le contrôle n’a pas pu être mené ; ce n’est pas une validation',
     'non_execute': 'NON EXÉCUTÉ',
@@ -19,14 +22,16 @@ LABELS = {
 }
 
 
-def statuses(cmp: dict | None, val: dict | None, primary: str = 'non_verifiees', bias: str = 'non_evalue') -> dict:
+def statuses(cmp: dict | None, val: dict | None, textc: dict | None = None, primary: str = 'non_verifiees',
+             bias: str = 'non_evalue') -> dict:
     if cmp is None or (val and val.get('blocking')):
         calc = 'echec'
-    elif cmp['notes']['divergente'] or cmp['ranks_divergent'] or any(a['statut'] == 'divergente' for a in cmp['anomalies']):
+    elif cmp['notes']['divergente'] or cmp['ranks_divergent'] or any(a['statut'] != 'conforme' for a in cmp['anomalies']):
         calc = 'divergences'
     else:
         calc = 'conforme'
-    return {'calculs': calc, 'donnees_primaires': primary, 'biais': bias}
+    text = textc['status'] if textc else 'echec'
+    return {'calculs_reproduction': calc, 'calculs_conformite_texte': text, 'donnees_primaires': primary, 'biais': bias}
 
 
 def markdown(rep: dict) -> str:
@@ -39,6 +44,11 @@ def markdown(rep: dict) -> str:
          '## Statuts', '']
     for k, t in TITLES.items():
         L.append(f'- **{t}** : {LABELS.get(st[k], st[k])}')
+    L += ['', 'Une reproduction conforme prouve que les notes publiées découlent des données publiées selon les règles '
+          'appliquées par le site. Elle ne prouve ni que ces règles sont celles du texte publié, ni que les données sont '
+          'exactes à leur source : si des données étaient falsifiées de façon cohérente avant leur export, le recalcul '
+          'resterait conforme. Seuls les contrôles à la source (phase C) et la comparaison entre relevés (V-13) peuvent '
+          'le révéler.']
     c = rep.get('calculations')
     if c:
         L += ['', '## Exactitude des calculs', '',
@@ -54,19 +64,39 @@ def markdown(rep: dict) -> str:
     for f in rep['findings']:
         n = f" ({f['count']})" if f.get('count') is not None else ''
         L.append(f"- [{f['severity']}] {f['code']} · {f['message']}{n}")
+    tc = rep.get('text_conformity')
     if rep.get('interpretations'):
-        L += ['', '## Règles appliquées par le site mais absentes du texte de la méthode', '',
-              'Le texte public ne suffisait pas à reproduire les notes. Ces règles ont été établies en lisant le code publié '
-              'par le site (docs/interpretations.md) :', '']
+        kinds = {'contradiction': 'contradiction avec le texte', 'ambiguite': 'texte ambigu', 'non_documente':
+                 'règle absente du texte', 'precision': 'précision d’implémentation'}
+        L += ['', '## Conformité au texte de la méthode', '',
+              'Le texte public ne suffisait pas à reproduire les notes. Les règles suivantes ont été établies en lisant le '
+              'code publié par le site (docs/interpretations.md) :', '']
         for i in rep['interpretations']:
-            L.append(f"- {i['id']} · {i['title']}" + (' — **écart avec le texte publié**' if i.get('contradicts_text') else ''))
+            L.append(f"- {i['id']} · {i['title']} — {kinds.get(i['kind'], i['kind'])}")
+        if tc:
+            L += ['', 'Effet de chaque contradiction ou ambiguïté, si l’on applique la lecture littérale du texte '
+                  '(diagnostic seulement, les notes officielles ne changent pas) :', '',
+                  '| Règle | Notes changées | Rangs changés | Déplacement max | Top 10 inchangé | ImmoVendu | Gestion Cassini |',
+                  '| --- | --- | --- | --- | --- | --- | --- |']
+            for k, e in tc['effects'].items():
+                a = e['agences_suivies']
+                cell = lambda s: f"{a[s]['rang_production']} → {a[s]['rang_variante']}" if s in a else '—'
+                L.append(f"| {k} | {e['notes_changees']} | {e['rangs_changes']} | {e['deplacement_max']} | "
+                         f"{e['top10_inchanges']}/10 | {cell('immovendu')} | {cell('gestion-cassini')} |")
     s = rep.get('sampling')
     if s:
-        L += ['', '## Agences retenues pour les contrôles à la source (phase C)', '',
-              f"Graine : {s['seed']} · règle {s['rule_version']}", '']
-        from collections import Counter
-        for why, n in sorted(Counter(s['agencies'].values()).items()):
-            L.append(f'- {why} : {n}')
+        L += ['', '## Agences retenues pour les contrôles à la source (phase C)', '']
+        if s['status'] == 'tire':
+            L += [f"Graine : {s['seed']} · règle {s['rule_version']} · tour drand {s['drand']['round']} "
+                  '(cohérence de la balise vérifiée ; signature BLS non vérifiée cryptographiquement)', '']
+            from collections import Counter
+            for why, n in sorted(Counter(s['agencies'].values()).items()):
+                L.append(f'- {why} : {n}')
+        elif s['status'] == 'en_attente':
+            L.append(f"Tirage en attente : échéance fixe {s['planned']['utc']}, tour drand {s['planned']['drand_round']}. "
+                     'Aucun échantillon n’est publié avant.')
+        else:
+            L.append('Tirage en échec : ' + '; '.join(s.get('errors', [])) + '. Aucun échantillon n’est publié.')
     L += ['', '## Limites', '']
     L += [f'- {x}' for x in rep['limits']]
     return '\n'.join(L) + '\n'

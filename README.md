@@ -13,15 +13,17 @@ Auditeur ouvert du classement des agences immobilières de Nice publié sur [mei
 | D | Exécution hebdomadaire, signatures, registre, surveillance externe | non commencée |
 | E | Affichage sur le site | non commencée |
 
-## Trois dimensions, trois statuts
+## Trois dimensions, quatre statuts
 
 Chaque rapport donne un statut séparé pour :
 
-1. **l'exactitude des calculs** : les notes publiées découlent-elles des données publiées, selon les règles publiées ?
+1. **les calculs**, en deux statuts :
+   - *reproduction* : les notes publiées découlent-elles des données publiées, selon les règles que le site applique ?
+   - *conformité au texte* : ces règles sont-elles celles que le texte public de la méthode annonce ? L'effet de chaque écart sur les notes et les rangs est mesuré.
 2. **la vérification des données primaires** : les données d'entrée sont-elles exactes à leur source (plateformes d'avis, sites des agences, registre des entreprises) ?
 3. **l'analyse des biais** : la méthode avantage-t-elle certaines agences, dont celles de l'éditeur ?
 
-Un statut « conforme » sur les calculs ne dit rien des deux autres dimensions.
+Une reproduction conforme ne dit rien des autres statuts. En particulier, des données falsifiées de façon cohérente avant leur export ne se voient pas au recalcul : seuls les contrôles à la source et la comparaison entre relevés successifs peuvent les révéler (tests `CoordinatedForgery`).
 
 ## Reproduire un audit (sans clé d'API, sans réseau)
 
@@ -32,6 +34,7 @@ git clone https://github.com/thomasgestioncassini/nice-agencies-open-audit
 cd nice-agencies-open-audit
 python3 -m auditor run snapshots/<date>        # recalcule un relevé archivé, écrit reports/<id>/
 python3 -m auditor verify reports/<id>         # vérifie les empreintes du rapport et du relevé
+python3 -m auditor draw snapshots/<date>       # balise drand du tour fixé à l'archivage (réseau)
 python3 -m unittest -v                         # tests, dont les altérations volontaires
 ```
 

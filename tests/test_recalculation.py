@@ -4,7 +4,8 @@ import unittest
 
 from auditor.recalculate import (Method, PILLARS, nice_average, pillar_points, pillar_seniority, pillar_service,
                                  star_to_100)
-from tests.helpers import CFG, audit, latest_snapshot, restored
+from auditor.recalculate import rank
+from tests.helpers import CFG, REFERENCE, audit, needs_snapshot, restored
 
 M = Method(CFG)
 REF = dt.date(2026, 11, 15)
@@ -64,16 +65,40 @@ class Formulas(unittest.TestCase):
         self.assertEqual(nice_average(aggs), round((4.5 + 3) / 2, 3))
 
 
-@unittest.skipIf(latest_snapshot() is None, 'aucun relevé archivé')
+class TieBreak(unittest.TestCase):
+    """Départage : à note égale, le plus d'avis sur les plateformes (règle du site, I-11), puis l'identifiant stable ;
+    variante texte : les avis comptés."""
+
+    def test_tie_break(self):
+        out = {'a': {'note': 80.0, 'reviews_total': 10, 'reviews_counted': 9},
+               'b': {'note': 80.0, 'reviews_total': 30, 'reviews_counted': 5},
+               'c': {'note': 80.0, 'reviews_total': 30, 'reviews_counted': 5},
+               'd': {'note': 80.01, 'reviews_total': 1, 'reviews_counted': 1}}
+        rank(out, {'b': 7, 'c': 3})
+        self.assertEqual([out[s]['rank'] for s in 'dcba'], [1, 2, 3, 4])
+        rank(out, {'b': 7, 'c': 3}, text_tie_break=True)
+        self.assertEqual([out[s]['rank'] for s in 'dacb'], [1, 2, 3, 4])
+
+
+@needs_snapshot
 class Test1Reproduction(unittest.TestCase):
     """Test 1 : à partir du dépôt et d'un relevé archivé, sans clé d'API ni réseau, toutes les notes sont recalculées."""
 
-    def test_full_snapshot(self):
-        tmp, d = restored()
+    def test_reference_snapshot_exact(self):
+        tmp, d = restored(REFERENCE)
         with tmp:
             res, cmp_ = audit(d)
-        self.assertGreater(cmp_['examined'], 500)
-        self.assertEqual(cmp_['notes']['divergente'], 0, cmp_['anomalies'][:5])
+        self.assertEqual(cmp_['examined'], 552)
+        self.assertEqual(cmp_['notes'], {'conforme': 552, 'divergente': 0, 'frontiere_arrondi': 0})
+        self.assertEqual(cmp_['ranks_divergent'], 0)
+        self.assertEqual(cmp_['anomalies'], [])                  # aucun pilier divergent ni à une frontière d'arrondi
+        self.assertEqual(res['m_ref'], 4.453)
+
+    def test_latest_snapshot(self):
+        tmp, d = restored()
+        with tmp:
+            _, cmp_ = audit(d)
+        self.assertEqual(cmp_['notes']['divergente'] + cmp_['notes']['frontiere_arrondi'], 0, cmp_['anomalies'][:5])
         self.assertEqual(cmp_['ranks_divergent'], 0)
 
 

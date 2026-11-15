@@ -5,7 +5,7 @@
   "rule": "Quand une plateforme n'a pas été relevée en entier, ses avis comptent par sa note globale, chacun avec le poids fixe 0,5 (celui d'un avis de 3 ans), sans profil ni date.",
   "text_gap": "Le texte ne décrit pas ce cas.",
   "source": "avis.py : score(), AGG_AGE",
-  "contradicts_text": false
+  "kind": "non_documente"
  },
  {
   "id": "I-2",
@@ -13,7 +13,7 @@
   "rule": "Moyenne simple, sur toutes les agences listées dans agregats-plateformes.csv (classées ou non), de la note moyenne de chaque agence ; arrondie au millième (4,453 au 15/11/2026).",
   "text_gap": "Le texte dit seulement « la moyenne de Nice ».",
   "source": "build.py : _avis.M_REF",
-  "contradicts_text": false
+  "kind": "non_documente"
  },
  {
   "id": "I-3",
@@ -21,7 +21,7 @@
   "rule": "Les 12 derniers mois calendaires, mois du relevé compris.",
   "text_gap": "Le texte dit « les 12 derniers mois ».",
   "source": "avis.py : months_back()",
-  "contradicts_text": false
+  "kind": "precision"
  },
  {
   "id": "I-4",
@@ -29,7 +29,9 @@
   "rule": "Nombre de mois actifs divisé par le nombre d'avis de vente ou d'achat des 12 derniers mois, borné entre 3 et 12. Ce nombre compte les doublons entre plateformes et les plateformes incomplètes.",
   "text_gap": "Le texte annonce que les doublons sont retirés ; ils ne le sont pas pour ce sous-critère.",
   "source": "avis.py : score(), variable rec",
-  "contradicts_text": true
+  "kind": "contradiction",
+  "text_quote": "« Doublons retirés : un même avis publié sur plusieurs plateformes ne compte qu'une fois. » (section 3, règles de comptage du pilier Avis)",
+  "text_variant": "régularité calculée sur les avis retenus, doublons retirés"
  },
  {
   "id": "I-5",
@@ -37,7 +39,7 @@
   "rule": "Âge en mois de 30,44 jours ; le poids est divisé par deux tous les 36 mois, de façon continue.",
   "text_gap": "Le texte dit « il perd la moitié de son poids après 3 ans », sans préciser la forme continue.",
   "source": "avis.py : age_weight()",
-  "contradicts_text": false
+  "kind": "precision"
  },
  {
   "id": "I-6",
@@ -45,7 +47,9 @@
   "rule": "Si aucun avis n'a été relevé un par un, la régularité est retirée et son poids (15 %) est réparti sur la qualité et le volume.",
   "text_gap": "Le texte affirme qu'« il n'y a plus de redistribution du poids d'un pilier manquant » ; ici c'est un sous-critère dont le poids est redistribué.",
   "source": "avis.py : score(), variable total",
-  "contradicts_text": true
+  "kind": "ambiguite",
+  "text_quote": "« Il n'y a plus de redistribution du poids d'un pilier manquant. » (section 10) — le texte parle d'un pilier ; ici, c'est un sous-critère.",
+  "text_variant": "régularité non relevée = valeur neutre 50, sans redistribution"
  },
  {
   "id": "I-7",
@@ -53,7 +57,9 @@
   "rule": "Chaque sous-critère et chaque pilier sont arrondis au dixième ; la note est calculée à partir des piliers arrondis, puis arrondie au centième.",
   "text_gap": "Le texte dit que les agences sont « rangées selon leur note exacte » : la note qui sert au rang est en réalité arrondie au centième.",
   "source": "build.py : r['t'] ; avis.py, service.py : round(…, 1)",
-  "contradicts_text": true
+  "kind": "contradiction",
+  "text_quote": "« Les agences sont rangées selon leur note exacte. » (section 9)",
+  "text_variant": "aucun arrondi intermédiaire ; rang selon la note non arrondie"
  },
  {
   "id": "I-8",
@@ -61,7 +67,7 @@
   "rule": "Avis Google de vente ou d'achat à 3 étoiles ou moins, doublons compris, dont la présence ou l'absence de réponse a été relevée.",
   "text_gap": "Le texte ne précise ni le périmètre exact ni le traitement des avis dont la réponse n'est pas relevée.",
   "source": "service.py : reply_part()",
-  "contradicts_text": false
+  "kind": "non_documente"
  },
  {
   "id": "I-9",
@@ -69,7 +75,7 @@
   "rule": "Part des avis uniques (doublons retirés) dont le texte a été lu par l'IA.",
   "text_gap": "Conforme au texte.",
   "source": "service.py : text_part()",
-  "contradicts_text": false
+  "kind": "precision"
  },
  {
   "id": "I-10",
@@ -77,7 +83,7 @@
   "rule": "Années et mois écoulés depuis la date de création (le jour est ignoré ; juin si le mois est inconnu), divisés par 20, × 100, arrondis au dixième.",
   "text_gap": "Le texte dit « de 0 à 20 ans, proportionnel ».",
   "source": "build.py : anc_points()",
-  "contradicts_text": false
+  "kind": "non_documente"
  },
  {
   "id": "I-11",
@@ -85,7 +91,9 @@
   "rule": "À note égale (au centième), passe devant l'agence qui a le plus d'avis au total sur les plateformes, avis de locataires, de bailleurs et de syndic compris ; puis l'ordre interne de la base.",
   "text_gap": "Le texte dit « celle qui a le plus d'avis », sans préciser lesquels. L'auditeur utilise l'identifiant stable en dernier recours.",
   "source": "build.py : order()",
-  "contradicts_text": true
+  "kind": "ambiguite",
+  "text_quote": "« À note égale, celle qui a le plus d'avis passe devant. » (section 9) — sans dire lesquels.",
+  "text_variant": "départage par le nombre d'avis comptés (vente et achat)"
  },
  {
   "id": "I-12",
@@ -93,6 +101,6 @@
   "rule": "Années ÷ 20 × 100 (et non 100 × années ÷ 20) : l'ordre décide du dernier chiffre pour 2 agences dont la valeur tombe exactement sur une demi-unité d'arrondi.",
   "text_gap": "Sans effet de fond (0,1 point d'ancienneté, soit 0,005 point de note).",
   "source": "build.py : anc_points()",
-  "contradicts_text": false
+  "kind": "precision"
  }
 ]

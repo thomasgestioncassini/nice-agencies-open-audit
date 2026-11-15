@@ -3,6 +3,11 @@ name: archivage-manuel
 # Phase B : déclenchement manuel uniquement. L'exécution hebdomadaire programmée relève de la phase D.
 on:
   workflow_dispatch:
+    inputs:
+      recalculer:
+        description: "Recalculer aussi les relevés qui ont déjà un rapport (nouvelle version du code)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -22,17 +27,27 @@ jobs:
           python-version: '3.12'
       - name: Archivage du relevé publié
         run: python -m auditor fetch
-      - name: Recalcul des relevés sans rapport
+      - name: Tirage drand (seulement si l'échéance fixe est passée)
+        run: |
+          for s in snapshots/*/; do
+            [ -f "$s/draw.json" ] && continue
+            python -m auditor draw "$s"; echo "code de sortie $?"
+          done
+      - name: Recalcul des relevés
+        env:
+          RECALCULER: ${{ inputs.recalculer }}
         run: |
           set +e
           for s in snapshots/*/; do
             d=$(basename "$s")
-            ls -d reports/${d}_* >/dev/null 2>&1 && continue
+            [ "$RECALCULER" != "true" ] && ls -d reports/${d}_* >/dev/null 2>&1 && continue
             python -m auditor run "$s"; echo "code de sortie $?"
           done
       - name: Vérification des empreintes
         run: for r in reports/*/; do python -m auditor verify "$r"; done
-      - name: Tests sur les relevés archivés
+      - name: Tests sur les relevés archivés (aucun test sauté accepté)
+        env:
+          AUDIT_REQUIRE_SNAPSHOT: '1'
         run: python -m unittest -v
       - name: Publication dans le dépôt (aucune relecture)
         run: |

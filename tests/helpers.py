@@ -13,20 +13,35 @@ CFG = json.loads((ROOT / 'config' / 'methodology-v5.json').read_text(encoding='u
 POLICY = json.loads((ROOT / 'config' / 'audit-policy.json').read_text(encoding='utf-8'))
 
 
+import os
+import unittest
+
+REFERENCE = ROOT / 'snapshots' / '2026-11-15'       # relevé de référence : 552 agences classées
+REQUIRE = os.environ.get('AUDIT_REQUIRE_SNAPSHOT') == '1'   # en intégration continue : un test sauté est un échec
+
+
+def needs_snapshot(cls):
+    if latest_snapshot() is None:
+        if REQUIRE:
+            raise RuntimeError('aucun relevé archivé alors que AUDIT_REQUIRE_SNAPSHOT=1')
+        return unittest.skip('aucun relevé archivé')(cls)
+    return cls
+
+
 def latest_snapshot():
     snaps = sorted(p for p in (ROOT / 'snapshots').glob('*') if (p / 'manifest.json').exists())
     return snaps[-1] if snaps else None
 
 
-def restored():
-    snap = latest_snapshot()
+def restored(snap=None):
+    snap = snap or latest_snapshot()
     tmp = tempfile.TemporaryDirectory()
     F.restore(snap, Path(tmp.name))
     return tmp, Path(tmp.name)
 
 
-def audit(data_dir):
-    res = recalculate(data_dir, CFG)
+def audit(data_dir, variants=()):
+    res = recalculate(data_dir, CFG, variants)
     return res, compare(data_dir, res, POLICY)
 
 

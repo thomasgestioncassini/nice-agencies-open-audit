@@ -33,7 +33,7 @@ def finding(code: str, severity: str, message: str, agencies=(), count=None, **e
     return f
 
 
-def validate(data_dir: Path, cfg: dict, publisher: list[str]) -> dict:
+def validate(data_dir: Path, cfg: dict, publisher: list[str], prev_dir: Path | None = None) -> dict:
     out: list[dict] = []
     # V-1 colonnes obligatoires
     for name, cols in REQUIRED.items():
@@ -71,14 +71,18 @@ def validate(data_dir: Path, cfg: dict, publisher: list[str]) -> dict:
     if src and len({r['id'] for r in src.values()}) != len(src):
         out.append(finding('V-3', 'majeur', 'identifiant stable en double dans sources-agences.csv'))
 
-    # V-4 valeurs des avis
-    bad_val = [x for x in items if not (0 <= float(x['note'] or 0) <= 5) or x['profil'] not in PROFILES
+    # V-4 valeurs des avis (une note vide est invalide : elle n'est jamais remplacée par une valeur par défaut)
+    empty = [x for x in items if x['note'] == '' or x['date'] == '']
+    if empty:
+        out.append(finding('V-4a', 'majeur', 'avis sans note ou sans date', [x['agence'] for x in empty], len(empty)))
+    items_ok = [x for x in items if x['note'] != '' and x['date'] != '']
+    bad_val = [x for x in items_ok if not (0 <= float(x['note']) <= 5) or x['profil'] not in PROFILES
                or x['plateforme'] not in PLATFORMS or dt.date.fromisoformat(x['date'][:10]) > ref]
     if bad_val:
         out.append(finding('V-4', 'majeur', 'avis avec note hors de 0 à 5, profil ou plateforme inconnus, ou date future',
                            [x['agence'] for x in bad_val], len(bad_val)))
 
-    low = [x for x in items if float(x['note'] or 0) < 1]
+    low = [x for x in items_ok if float(x['note']) < 1]
     if low:
         out.append(finding('V-4b', 'mineur', 'avis notés sous 1/5, minimum habituel d’une échelle à étoiles : ils entrent '
                            'tels quels dans la moyenne ; échelle d’Opinion System à vérifier à la source',
@@ -93,6 +97,23 @@ def validate(data_dir: Path, cfg: dict, publisher: list[str]) -> dict:
     if incoh:
         out.append(finding('V-5', 'majeur', 'drapeaux d’avis incohérents avec le profil ou le relevé',
                            [x['agence'] for x in incoh], len(incoh)))
+
+    # V-12 avis relevés un par un comparés au nombre d'avis déclaré par la plateforme (plateformes relevées en entier)
+    declared = defaultdict(float)
+    for a in read_csv(data_dir / 'agregats-plateformes.csv'):
+        declared[(a['agence'], a['plateforme'])] += float(a['nombre'] or 0)
+    itemized = Counter((x['agence'], x['plateforme']) for x in items if x['releve_complet'] == '1')
+    gaps = {f'{k[0]}|{k[1]}': {'releves': n, 'declares': declared[k]} for k, n in itemized.items()
+            if k in declared and abs(n - declared[k]) > max(2, 0.1 * declared[k])}
+    if gaps:
+        out.append(finding('V-12', 'majeur', 'plateformes déclarées relevées en entier dont le nombre d’avis relevés '
+                           's’écarte de plus de 10 % (et de plus de 2) du nombre affiché par la plateforme : doubles '
+                           'comptages ou fiches de plusieurs établissements possibles', [k.split('|')[0] for k in gaps],
+                           len(gaps), detail=gaps, publisher_concerned=[p for p in publisher if any(k.startswith(p + '|') for k in gaps)]))
+    else:
+        out.append(finding('V-12', 'info', f'nombre d’avis relevés un par un cohérent avec le nombre affiché par la '
+                           f'plateforme pour les {len(itemized)} plateformes relevées en entier (écart toléré : 10 % ou 2 avis)',
+                           count=0))
 
     # V-6 doublons déclarés : avis comptables mais non retenus (le site les dit doublons ; non vérifiable sans texte)
     dup = Counter(x['agence'] for x in items if x['compte_vente_achat'] == '1' and x['releve_complet'] == '1'
@@ -151,4 +172,39 @@ def validate(data_dir: Path, cfg: dict, publisher: list[str]) -> dict:
     else:
         out.append(finding('V-11', 'mineur', 'sources-agences.csv absent : identifiants stables, dates d’observation et '
                            'URL des preuves indisponibles pour ce relevé'))
+    if prev_dir is not None:
+        out += history(prev_dir, data_dir, publisher)
     return {'findings': out, 'blocking': False}
+
+
+def history(prev_dir: Path, data_dir: Path, publisher: list[str]) -> list[dict]:
+    """V-13 : comparaison avec le relevé archivé précédent. Détecte des signes de falsification que le recalcul seul ne
+    voit pas : avis apparus avec une date antérieure au relevé précédent (sur une plateforme déjà relevée en entier),
+    avis disparus, points de critères modifiés sans nouvelle lecture du site."""
+    out = []
+    p_ref = dt.date.fromisoformat(json.loads((prev_dir / 'parametres.json').read_text(encoding='utf-8'))['date_releve'])
+    prev = read_csv(prev_dir / 'avis-elementaires.csv')
+    cur = read_csv(data_dir / 'avis-elementaires.csv')
+    prev_keys = {(x['agence'], x['plateforme'], x['id']) for x in prev}
+    cur_keys = {(x['agence'], x['plateforme'], x['id']) for x in cur}
+    complete_before = {(x['agence'], x['plateforme']) for x in prev if x['releve_complet'] == '1'}
+    back = Counter(x['agence'] for x in cur if (x['agence'], x['plateforme'], x['id']) not in prev_keys
+                   and (x['agence'], x['plateforme']) in complete_before and x['date'] and
+                   dt.date.fromisoformat(x['date'][:10]) < p_ref - dt.timedelta(days=31))
+    big = {a: n for a, n in back.items() if n >= 5}
+    out.append(finding('V-13a', 'majeur' if big else 'info', 'avis apparus depuis le relevé précédent avec une date '
+                       'antérieure de plus d’un mois, sur une plateforme déjà relevée en entier (5 ou plus par agence)',
+                       list(big), sum(back.values()), per_agency=big,
+                       publisher_counts={p: back.get(p, 0) for p in publisher}))
+    gone = Counter(k[0] for k in prev_keys - cur_keys)
+    big_gone = {a: n for a, n in gone.items() if n >= 5}
+    out.append(finding('V-13b', 'majeur' if big_gone else 'info', 'avis disparus depuis le relevé précédent '
+                       '(5 ou plus par agence)', list(big_gone), sum(gone.values()), per_agency=big_gone,
+                       publisher_counts={p: gone.get(p, 0) for p in publisher}))
+    pc = {(r['agence'], r['critere']): r for r in read_csv(prev_dir / 'criteres-sites.csv')}
+    changed = [r['agence'] for r in read_csv(data_dir / 'criteres-sites.csv')
+               if (r['agence'], r['critere']) in pc and pc[(r['agence'], r['critere'])]['points'] != r['points']
+               and r.get('date_observation') and r.get('date_observation') == pc[(r['agence'], r['critere'])].get('date_observation')]
+    if changed:
+        out.append(finding('V-13c', 'majeur', 'points de critère modifiés sans nouvelle date de lecture du site', changed, len(changed)))
+    return out
