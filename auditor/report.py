@@ -6,14 +6,21 @@ import json
 
 TITLES = {
     'calculs_reproduction': 'Calculs — reproduction des notes publiées',
-    'calculs_conformite_texte': 'Calculs — conformité au texte publié de la méthode',
+    'texte_documentation': 'Texte de la méthode — règles de calcul décrites',
+    'texte_coherence': 'Texte de la méthode — contradictions répertoriées encore présentes',
+    'texte_historique': 'Texte de la méthode — écarts dans les versions archivées antérieures',
     'donnees_primaires': 'Vérification des données primaires',
     'biais': 'Analyse des biais',
 }
 LABELS = {
     'conforme': 'CONFORME',
     'ecarts': 'ÉCARTS — le site applique des règles que son texte contredit ou laisse ambiguës (détail et effet ci-dessous)',
-    'incomplet': 'INCOMPLET — le texte ne suffit pas à reproduire le calcul',
+    'complete': 'OUI — chaque règle répertoriée est décrite dans le texte archivé avec ce relevé',
+    'partielle': 'PARTIELLEMENT — des règles appliquées ne sont pas décrites, ou contredites, dans le texte archivé',
+    'contradictions_residuelles': 'OUI — le texte affirme encore une règle contraire au calcul',
+    'aucune_contradiction_repertoriee': 'AUCUNE parmi celles répertoriées (contrôle par phrases, pas une relecture complète du texte)',
+    'ecarts_anterieurs': 'OUI — le calcul appliqué contredisait ou dépassait le texte publié dans au moins une version archivée antérieure ; ces écarts restent publiés ci-dessous',
+    'aucun_ecart_anterieur': 'AUCUN dans les versions archivées antérieures',
     'divergences': 'DIVERGENCES — au moins une valeur recalculée diffère de la valeur publiée',
     'echec': 'ÉCHEC — le contrôle n’a pas pu être mené ; ce n’est pas une validation',
     'non_execute': 'NON EXÉCUTÉ',
@@ -30,8 +37,9 @@ def statuses(cmp: dict | None, val: dict | None, textc: dict | None = None, prim
         calc = 'divergences'
     else:
         calc = 'conforme'
-    text = textc['status'] if textc else 'echec'
-    return {'calculs_reproduction': calc, 'calculs_conformite_texte': text, 'donnees_primaires': primary, 'biais': bias}
+    t = textc or {'documentation': 'echec', 'coherence': 'echec', 'history': 'echec'}
+    return {'calculs_reproduction': calc, 'texte_documentation': t['documentation'], 'texte_coherence': t['coherence'],
+            'texte_historique': t['history'], 'donnees_primaires': primary, 'biais': bias}
 
 
 def markdown(rep: dict) -> str:
@@ -43,7 +51,8 @@ def markdown(rep: dict) -> str:
          'classées. Il n’est pas une certification indépendante. Voir GOVERNANCE.md.', '',
          '## Statuts', '']
     for k, t in TITLES.items():
-        L.append(f'- **{t}** : {LABELS.get(st[k], st[k])}')
+        if k in st:
+            L.append(f'- **{t}** : {LABELS.get(st[k], st[k])}')
     L += ['', 'Une reproduction conforme prouve que les notes publiées découlent des données publiées selon les règles '
           'appliquées par le site. Elle ne prouve ni que ces règles sont celles du texte publié, ni que les données sont '
           'exactes à leur source : si des données étaient falsifiées de façon cohérente avant leur export, le recalcul '
@@ -71,15 +80,18 @@ def markdown(rep: dict) -> str:
         L += ['', '## Conformité au texte de la méthode', '',
               'Le texte public ne suffisait pas à reproduire les notes. Les règles suivantes ont été établies en lisant le '
               'code publié par le site (docs/interpretations.md) :', '']
-        doc = set(tc['documented_in_archived_text']) if tc else set()
+        doc = set(tc['current'].get('documented', [])) if tc else set()
         for i in rep['interpretations']:
             k = kinds.get(i['kind'], i['kind'])
             L.append(f"- {i['id']} · {i['title']} — " + (f'désormais décrite dans le texte archivé (à l’origine : {k})'
                                                         if i['id'] in doc else k))
-        if doc:
-            L += ['', f"Le texte archivé avec ce relevé décrit {len(doc)} règle(s) qui ne figuraient pas, ou figuraient "
-                  'autrement, dans le texte initial de la v5. Un statut « conforme » signifie que le calcul suit le texte '
-                  'publié, pas que ces règles sont les meilleures possibles.']
+        if tc and tc['past']:
+            L += ['', '**Écarts dans les versions antérieures du texte (conservés) :**', '']
+            for p in tc['past']:
+                L.append(f"- relevé {p['snapshot']} : contradictions {', '.join(p['contradictions']) or 'aucune'} ; "
+                         f"ambiguïtés {', '.join(p['ambiguities']) or 'aucune'}")
+            L += ['', 'Compléter le texte après coup est une révision de la méthode publiée : elle ne rend pas conformes '
+                  'les relevés publiés avant elle.']
         if tc:
             L += ['', 'Effet des règles retenues par le site par rapport à la lecture littérale du texte initial (v5 du '
                   '14/11/2026). Ce tableau reste publié même quand le texte décrit la règle : il montre ce que ce choix '
@@ -96,10 +108,12 @@ def markdown(rep: dict) -> str:
         L += ['', '## Agences retenues pour les contrôles à la source (phase C)', '']
         if s['status'] == 'tire':
             L += [f"Graine : {s['seed']} · règle {s['rule_version']} · tour drand {s['drand']['round']} "
-                  '(cohérence de la balise vérifiée ; signature BLS non vérifiée cryptographiquement)', '']
+                  '(signature BLS de la balise vérifiée avec la clé publique du réseau drand)', '']
             from collections import Counter
             for why, n in sorted(Counter(s['agencies'].values()).items()):
                 L.append(f'- {why} : {n}')
+        elif s['status'] == 'non_engage':
+            L.append(f"Ce relevé n’est pas celui engagé pour le tirage (relevé engagé : {s['committed_snapshot'] or 'aucun'}).")
         elif s['status'] == 'en_attente':
             L.append(f"Tirage en attente : échéance fixe {s['planned']['utc']}, tour drand {s['planned']['drand_round']}. "
                      'Aucun échantillon n’est publié avant.')

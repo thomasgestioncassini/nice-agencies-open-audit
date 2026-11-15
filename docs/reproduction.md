@@ -11,6 +11,9 @@ Les étapes que les exports ne permettent pas de refaire (lecture des textes d'a
 
 ## Tirage des agences contrôlées à la source
 
-L'archivage fixe l'échéance du tirage : le premier 06:00 UTC qui suit (`draw_planned` dans le manifeste du relevé). La valeur aléatoire publique drand de ce tour (chaîne quicknet) est enregistrée dans `snapshots/<date>/draw.json`. Relancer l'archivage ou le tirage ne permet pas d'en obtenir une autre. Sans balise valide, aucun échantillon n'est publié.
+1. **Échéance fixe par relevé**, connue d'avance : le premier mardi à 06:00 UTC après la date du relevé (`draw_planned` dans le manifeste). Elle ne dépend ni de l'heure d'archivage ni du moment où le tirage est lancé.
+2. **Relevé engagé** : le dernier relevé de cette date archivé avant l'échéance. À l'archivage, l'empreinte SHA-256 du manifeste est écrite dans le journal et le résumé de l'exécution GitHub Actions, horodatés par GitHub (`archive_run` dans le manifeste). Les données peuvent changer avant l'échéance, mais personne ne connaît alors l'aléa ; après l'échéance, aucun autre relevé ne peut être retenu.
+3. **Aléa public** : la balise drand (chaîne quicknet, League of Entropy) du tour correspondant à l'échéance, enregistrée dans `draw.json`. Sa signature BLS est vérifiée avec la clé publique du réseau, épinglée dans `auditor/drandverify.py` et contrôlée sur une balise réelle. Bibliothèque : `pip install --require-hashes --no-deps -r requirements-tirage.txt`.
+4. **Sans balise authentique, aucun tirage.** Il n'existe pas de valeur de secours.
 
-Contrôles faits : numéro de tour, chaîne, valeur aléatoire égale au SHA-256 de la signature. Non fait à ce stade : la vérification cryptographique de la signature BLS (bibliothèque spécialisée nécessaire, prévue en phase D). Vous pouvez la faire avec le client officiel drand à partir de `draw.json`.
+Limites restantes : l'administrateur du dépôt peut supprimer des exécutions GitHub Actions ou réécrire l'historique, et modifier `config/audit-policy.json`. Chaque rapport publie l'empreinte des fichiers de `config/` ; un horodatage extérieur des engagements est prévu en phase D.

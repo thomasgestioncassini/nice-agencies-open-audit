@@ -34,24 +34,45 @@ def page_text(path: Path) -> str | None:
     return ' '.join(t.split())
 
 
-def text_conformity(data_dir, cfg: dict, interpretations: list[dict], watch: list[str]) -> dict:
-    """Le texte de la méthode archivé avec le relevé (methode-details.html) est lu : une règle dont la phrase
-    descriptive y figure est « documentée » ; sinon elle garde son classement d'origine."""
+def _norm(x: str) -> str:
+    return ' '.join(x.replace('\u2019', "'").split())
+
+
+def read_text_rules(page: str | None, interpretations: list[dict]) -> dict:
+    """Pour un texte de méthode archivé : règles décrites (phrase descriptive présente) et contradictions résiduelles
+    (phrase contraire encore présente). Ce contrôle par phrases ne vaut pas relecture complète du texte : il ne détecte
+    que les contradictions déjà répertoriées dans config/interpretations.json."""
+    if page is None:
+        return {'archived': False}
+    documented = sorted(i['id'] for i in interpretations if i.get('documented_by') and _norm(i['documented_by']) in page)
+    residual = sorted(i['id'] for i in interpretations for c in i.get('contradicted_by', []) if _norm(c) in page)
+    open_ = [i for i in interpretations if i['id'] not in documented or i['id'] in residual]
+    return {'archived': True, 'documented': documented, 'residual_contradictions': residual,
+            'contradictions': [i['id'] for i in open_ if i['kind'] == 'contradiction'],
+            'ambiguities': [i['id'] for i in open_ if i['kind'] == 'ambiguite'],
+            'undocumented': [i['id'] for i in open_ if i['kind'] == 'non_documente']}
+
+
+def text_conformity(data_dir, cfg: dict, interpretations: list[dict], watch: list[str], history: list[tuple] = ()) -> dict:
+    """history : [(nom du relevé, chemin du texte archivé)] des relevés ANTÉRIEURS. Une contradiction passée reste
+    publiée même quand le texte a été corrigé depuis."""
     page = page_text(Path(data_dir) / 'methode-details.html')
-    documented = {i['id'] for i in interpretations if page and i.get('documented_by')
-                  and ' '.join(i['documented_by'].split()) in page}
+    cur = read_text_rules(page, interpretations)
     base = recalculate(data_dir, cfg)['agencies']
     effects = {}
     for v in TEXT_VARIANTS:
         effects[v] = _diff(base, recalculate(data_dir, cfg, {v})['agencies'], watch)
     effects['ensemble'] = _diff(base, recalculate(data_dir, cfg, set(TEXT_VARIANTS))['agencies'], watch)
-    open_ = [i for i in interpretations if i['id'] not in documented]
-    contradictions = [i['id'] for i in open_ if i['kind'] == 'contradiction']
-    ambiguities = [i['id'] for i in open_ if i['kind'] == 'ambiguite']
-    undocumented = [i['id'] for i in open_ if i['kind'] == 'non_documente']
-    status = 'ecarts' if contradictions or ambiguities else ('incomplet' if undocumented else 'conforme')
-    if page is None:
-        status = 'echec'
-    return {'status': status, 'text_archived': page is not None, 'documented_in_archived_text': sorted(documented),
-            'contradictions': contradictions, 'ambiguities': ambiguities, 'undocumented': undocumented,
-            'effects': effects}
+    past = []
+    for name, path in history:
+        r = read_text_rules(page_text(Path(path)), interpretations)
+        if r['archived'] and (r['contradictions'] or r['ambiguities']):
+            past.append({'snapshot': name, 'contradictions': r['contradictions'], 'ambiguities': r['ambiguities']})
+    if not cur['archived']:
+        doc = coh = 'echec'
+    else:
+        doc = 'complete' if not cur['undocumented'] and not cur['contradictions'] and not cur['ambiguities'] else 'partielle'
+        coh = 'contradictions_residuelles' if cur['contradictions'] or cur['residual_contradictions'] else \
+            'aucune_contradiction_repertoriee'
+    return {'documentation': doc, 'coherence': coh, 'history': 'ecarts_anterieurs' if past else 'aucun_ecart_anterieur',
+            'current': cur, 'past': past, 'effects': effects}

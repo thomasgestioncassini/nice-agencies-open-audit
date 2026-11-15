@@ -23,7 +23,9 @@ from . import fetch as F
 from .compare import compare
 from .recalculate import read_csv, recalculate
 from .report import dump, markdown, statuses
-from .sampling import check_beacon, draw_time, fetch_beacon, round_at, seed_of, select
+import os
+
+from .sampling import check_beacon, committed_snapshot, draw_deadline, fetch_beacon, round_at, seed_of, select
 from .textcheck import text_conformity
 from .validate import validate
 
@@ -69,46 +71,66 @@ def cmd_fetch(args) -> int:
         snap = ROOT / 'snapshots' / date
         if snap.exists():
             old = json.loads((snap / 'manifest.json').read_text(encoding='utf-8'))
-            same = all(old['inputs'].get(n, {}).get('sha256') == v['sha256'] for n, v in got['files'].items()
-                       if n != 'methode-details.html')
+            same = all(old['inputs'].get(n, {}).get('sha256') == v['sha256'] for n, v in got['files'].items())
             if same:
                 print(f'relevé {date} déjà archivé à l’identique : {snap}')
                 return 0
-            snap = ROOT / 'snapshots' / f"{date}_{got['started_utc'][11:19].replace(':', '')}"   # republication en cours de semaine
+            # tout changement, y compris du seul texte de la méthode, crée un nouveau relevé archivé
+            snap = ROOT / 'snapshots' / f"{date}_{got['started_utc'][11:19].replace(':', '')}"
         archived = F.archive(tmp / 'inputs', snap)
         archived_at = time.time()
-        dts = draw_time(archived_at)
+        dts = draw_deadline(date)
+        run = os.environ.get('GITHUB_RUN_ID')
         manifest = {'date_releve': date, 'fetch': got, 'inputs': archived, 'archived_utc':
                     dt.datetime.fromtimestamp(archived_at, dt.timezone.utc).isoformat(timespec='seconds'),
                     'draw_planned': {'utc': dt.datetime.fromtimestamp(dts, dt.timezone.utc).isoformat(timespec='seconds'),
-                                     'drand_round': round_at(dts)},
+                                     'drand_round': round_at(dts), 'rule': 'premier mardi 06:00 UTC après la date du relevé'},
+                    'archive_run': ({'id': run, 'url': f"{os.environ.get('GITHUB_SERVER_URL')}/"
+                                     f"{os.environ.get('GITHUB_REPOSITORY')}/actions/runs/{run}"} if run else None),
                     'auditor_code': code_version()}
         dump(snap / 'manifest.json', manifest)
+        commit = F.sha256(snap / 'manifest.json')
+        line = f'ENGAGEMENT relevé {snap.name} · SHA-256 du manifeste {commit} · archivé {manifest["archived_utc"]}'
+        print(line)                           # journal d'exécution GitHub, horodaté par GitHub
+        if os.environ.get('GITHUB_STEP_SUMMARY'):
+            with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as f:
+                f.write(line + '\n\n')
         print(f'archivé : {snap} ({len(archived)} fichiers, {len(got["errors"])} erreur(s))')
         return 1 if required_missing else 0
 
 
+def all_manifests() -> list[dict]:
+    out = []
+    for p in sorted((ROOT / 'snapshots').glob('*/manifest.json')):
+        m = json.loads(p.read_text(encoding='utf-8'))
+        m['_dir'] = p.parent
+        out.append(m)
+    return out
+
+
 def planned_draw(snap_manifest: dict) -> dict:
-    if 'draw_planned' in snap_manifest:
-        return snap_manifest['draw_planned']
-    t = dt.datetime.fromisoformat(snap_manifest['archived_utc']).timestamp()   # relevés archivés avant la règle 1.1
-    d = draw_time(t)
-    return {'utc': dt.datetime.fromtimestamp(d, dt.timezone.utc).isoformat(timespec='seconds'), 'drand_round': round_at(d)}
+    d = draw_deadline(snap_manifest['date_releve'])
+    return {'utc': dt.datetime.fromtimestamp(d, dt.timezone.utc).isoformat(timespec='seconds'), 'drand_round': round_at(d),
+            'rule': 'premier mardi 06:00 UTC après la date du relevé'}
 
 
 def cmd_draw(args) -> int:
-    """Récupère la balise drand du tour fixé à l'archivage et l'enregistre dans snapshots/<date>/draw.json."""
+    """Enregistre la balise drand du tour fixé pour le relevé, dans le relevé engagé (dernier archivé avant l'échéance)."""
     snap = Path(args.snapshot).resolve()
     man = json.loads((snap / 'manifest.json').read_text(encoding='utf-8'))
     plan = planned_draw(man)
+    chosen = committed_snapshot(all_manifests(), man['date_releve'])
+    if chosen is None or chosen['_dir'].resolve() != snap:
+        print(f"relevé non engagé pour le tirage du {man['date_releve']} : "
+              f"{chosen['_dir'].name if chosen else 'aucun relevé archivé avant l’échéance'}")
+        return 6
     if time.time() < dt.datetime.fromisoformat(plan['utc']).timestamp():
         print(f"tirage pas encore possible : échéance {plan['utc']} (tour {plan['drand_round']})")
         return 4
     b = fetch_beacon(plan['drand_round'])
     errs = check_beacon(b, plan['drand_round'])
-    dump(snap / 'draw.json', {'planned': plan, 'beacon': b, 'checks_errors': errs,
-                              'bls_signature_verified': False})
-    print('balise enregistrée' + (' AVEC ERREURS : ' + '; '.join(errs) if errs else ''))
+    dump(snap / 'draw.json', {'planned': plan, 'beacon': b, 'checks_errors': errs, 'bls_signature_verified': not errs})
+    print('balise enregistrée et authentifiée' if not errs else 'balise REFUSÉE : ' + '; '.join(errs))
     return 0 if not errs else 5
 
 
@@ -140,14 +162,24 @@ def cmd_run(args) -> int:
                 res = recalculate(data, cfg)
                 cmp_ = compare(data, res, policy)
                 cmp_['m_ref'] = res['m_ref']
-                textc = text_conformity(data, cfg, interp, publisher)
+                hist = []
+                for m in all_manifests():
+                    if m['archived_utc'] < snap_manifest['archived_utc'] and 'methode-details.html' in m['inputs']:
+                        hp = data.parent / f"{data.name}_texte_{m['_dir'].name}.html"
+                        import gzip
+                        hp.write_bytes(gzip.open(m['_dir'] / m['inputs']['methode-details.html']['archive']).read())
+                        hist.append((m['_dir'].name, hp))
+                textc = text_conformity(data, cfg, interp, publisher, hist)
             except Exception as e:            # noqa: BLE001 — un calcul en échec donne un statut « echec »
                 error = f'{type(e).__name__}: {e}'
         sources = {r['agence']: r for r in read_csv(data / 'sources-agences.csv')} if (data / 'sources-agences.csv').exists() else {}
         plan = planned_draw(snap_manifest)
-        sampling = {'status': 'en_attente', 'planned': plan, 'bls_signature_verified': False}
+        chosen = committed_snapshot(all_manifests(), snap_manifest['date_releve'])
+        sampling = {'status': 'en_attente', 'planned': plan, 'committed_snapshot': rel(chosen['_dir']) if chosen else None}
         draw_file = snap / 'draw.json'
-        if draw_file.exists():
+        if chosen is None or chosen['_dir'].resolve() != snap:
+            sampling['status'] = 'non_engage'
+        elif draw_file.exists():
             draw = json.loads(draw_file.read_text(encoding='utf-8'))
             errs = check_beacon(draw['beacon'], plan['drand_round'])
             if errs:
@@ -155,7 +187,7 @@ def cmd_run(args) -> int:
             else:
                 seed = seed_of({n: v['sha256'] for n, v in snap_manifest['inputs'].items()}, draw['beacon'])
                 sampling.update(select(read_csv(data / 'agences.csv'), sources, policy, seed), status='tire',
-                                drand={k: draw['beacon'][k] for k in ('round', 'url')})
+                                drand={k: draw['beacon'][k] for k in ('round', 'url')}, bls_signature_verified=True)
         reg_none = [s for s, r in (res or {}).get('agencies', {}).items() if r['detail']['avis']['regularity'] is None]
     st = statuses(cmp_, val, textc)
     rid = f"{snap_manifest['date_releve']}_{generated.strftime('%Y%m%dT%H%M%SZ')}"
@@ -172,6 +204,7 @@ def cmd_run(args) -> int:
         'snapshot': rel(snap), 'statuses': st, 'error': error,
         'calculations': {k: v for k, v in cmp_.items() if k not in ('calculations_csv',)} if cmp_ else None,
         'findings': findings, 'interpretations': interp, 'text_conformity': textc, 'sampling': sampling,
+        'config_sha256': {p.name: F.sha256(p) for p in sorted((ROOT / 'config').glob('*.json'))},
         'previous_snapshot': rel(prev) if prev else None,
         'ai_agents': {'A': 'non exécuté (phase C)', 'B': 'non exécuté (phase C)'}, 'limits': LIMITS,
     }

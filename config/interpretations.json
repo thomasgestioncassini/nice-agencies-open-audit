@@ -35,7 +35,10 @@
   "kind": "contradiction",
   "text_quote": "« Doublons retirés : un même avis publié sur plusieurs plateformes ne compte qu'une fois. » (section 3, règles de comptage du pilier Avis)",
   "text_variant": "régularité calculée sur les avis retenus, doublons retirés",
-  "documented_by": "La régularité, qui mesure l'étalement dans le temps, les compte tous"
+  "documented_by": "La régularité, qui mesure l'étalement dans le temps, les compte tous",
+  "contradicted_by": [
+   "ne compte qu'une fois."
+  ]
  },
  {
   "id": "I-5",
@@ -55,7 +58,10 @@
   "kind": "ambiguite",
   "text_quote": "« Il n'y a plus de redistribution du poids d'un pilier manquant. » (section 10) — le texte parle d'un pilier ; ici, c'est un sous-critère.",
   "text_variant": "régularité non relevée = valeur neutre 50, sans redistribution",
-  "documented_by": "ses 15 % sont reportés sur la qualité et le volume"
+  "documented_by": "ses 15 % sont reportés sur la qualité et le volume",
+  "contradicted_by": [
+   "information manque. 11. Contrôles"
+  ]
  },
  {
   "id": "I-7",
@@ -66,7 +72,10 @@
   "kind": "contradiction",
   "text_quote": "« Les agences sont rangées selon leur note exacte. » (section 9)",
   "text_variant": "aucun arrondi intermédiaire ; rang selon la note non arrondie",
-  "documented_by": "puis arrondie au centième"
+  "documented_by": "puis arrondie au centième",
+  "contradicted_by": [
+   "selon leur note exacte"
+  ]
  },
  {
   "id": "I-8",
@@ -103,7 +112,10 @@
   "kind": "ambiguite",
   "text_quote": "« À note égale, celle qui a le plus d'avis passe devant. » (section 9) — sans dire lesquels.",
   "text_variant": "départage par le nombre d'avis comptés (vente et achat)",
-  "documented_by": "tous profils d'auteurs confondus"
+  "documented_by": "tous profils d'auteurs confondus",
+  "contradicted_by": [
+   "celle qui a le plus d'avis passe devant"
+  ]
  },
  {
   "id": "I-12",

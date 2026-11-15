@@ -103,8 +103,13 @@ def validate(data_dir: Path, cfg: dict, publisher: list[str], prev_dir: Path | N
     for a in read_csv(data_dir / 'agregats-plateformes.csv'):
         declared[(a['agence'], a['plateforme'])] += float(a['nombre'] or 0)
     itemized = Counter((x['agence'], x['plateforme']) for x in items if x['releve_complet'] == '1')
-    gaps = {f'{k[0]}|{k[1]}': {'releves': n, 'declares': declared[k]} for k, n in itemized.items()
-            if k in declared and abs(n - declared[k]) > max(2, 0.1 * declared[k])}
+    every = {f'{k[0]}|{k[1]}': {'releves': n, 'declares': declared[k]} for k, n in itemized.items()
+             if k in declared and n != declared[k]}
+    no_agg = [f'{k[0]}|{k[1]}' for k in itemized if k not in declared]
+    out.append(finding('V-12a', 'info', 'toutes les plateformes relevées en entier dont le nombre d’avis relevés diffère, '
+                       'même d’un avis, du nombre affiché (les deux nombres viennent des exports du site)',
+                       [k.split('|')[0] for k in every], len(every), detail=every, sans_agregat=no_agg))
+    gaps = {k: v for k, v in every.items() if abs(v['releves'] - v['declares']) > max(2, 0.1 * v['declares'])}
     if gaps:
         out.append(finding('V-12', 'majeur', 'plateformes déclarées relevées en entier dont le nombre d’avis relevés '
                            's’écarte de plus de 10 % (et de plus de 2) du nombre affiché par la plateforme : doubles '
@@ -191,16 +196,31 @@ def history(prev_dir: Path, data_dir: Path, publisher: list[str]) -> list[dict]:
     back = Counter(x['agence'] for x in cur if (x['agence'], x['plateforme'], x['id']) not in prev_keys
                    and (x['agence'], x['plateforme']) in complete_before and x['date'] and
                    dt.date.fromisoformat(x['date'][:10]) < p_ref - dt.timedelta(days=31))
-    big = {a: n for a, n in back.items() if n >= 5}
-    out.append(finding('V-13a', 'majeur' if big else 'info', 'avis apparus depuis le relevé précédent avec une date '
-                       'antérieure de plus d’un mois, sur une plateforme déjà relevée en entier (5 ou plus par agence)',
-                       list(big), sum(back.values()), per_agency=big,
-                       publisher_counts={p: back.get(p, 0) for p in publisher}))
+    # Tous les cas sont publiés agence par agence ; le seuil (5 avis, ou 1 pour l'éditeur) ne fixe que la gravité
+    def sev(c):
+        return 'majeur' if any(n >= 5 for n in c.values()) or any(c.get(p) for p in publisher) else 'info'
+    out.append(finding('V-13a', sev(back), 'avis apparus depuis le relevé précédent avec une date antérieure de plus '
+                       'd’un mois, sur une plateforme déjà relevée en entier', list(back), sum(back.values()),
+                       per_agency=dict(back), publisher_counts={p: back.get(p, 0) for p in publisher}))
     gone = Counter(k[0] for k in prev_keys - cur_keys)
-    big_gone = {a: n for a, n in gone.items() if n >= 5}
-    out.append(finding('V-13b', 'majeur' if big_gone else 'info', 'avis disparus depuis le relevé précédent '
-                       '(5 ou plus par agence)', list(big_gone), sum(gone.values()), per_agency=big_gone,
-                       publisher_counts={p: gone.get(p, 0) for p in publisher}))
+    out.append(finding('V-13b', sev(gone), 'avis disparus depuis le relevé précédent', list(gone), sum(gone.values()),
+                       per_agency=dict(gone), publisher_counts={p: gone.get(p, 0) for p in publisher}))
+    # V-13d : même avis (même identifiant), classement modifié : note, profil, problème, drapeaux de comptage
+    fields = ('note', 'profil', 'probleme', 'compte_vente_achat', 'retenu_qualite', 'retenu_service', 'nb_agences_partageant')
+    pmap = {(x['agence'], x['plateforme'], x['id']): x for x in prev}
+    changed_cls = Counter()
+    kinds = Counter()
+    for x in cur:
+        o = pmap.get((x['agence'], x['plateforme'], x['id']))
+        if o:
+            diff = [f for f in fields if o.get(f) != x.get(f)]
+            if diff:
+                changed_cls[x['agence']] += 1
+                kinds.update(diff)
+    out.append(finding('V-13d', sev(changed_cls), 'avis déjà relevés dont la note, le profil, le problème signalé ou '
+                       'les drapeaux de comptage ont changé depuis le relevé précédent', list(changed_cls),
+                       sum(changed_cls.values()), per_agency=dict(changed_cls), fields=dict(kinds),
+                       publisher_counts={p: changed_cls.get(p, 0) for p in publisher}))
     pc = {(r['agence'], r['critere']): r for r in read_csv(prev_dir / 'criteres-sites.csv')}
     changed = [r['agence'] for r in read_csv(data_dir / 'criteres-sites.csv')
                if (r['agence'], r['critere']) in pc and pc[(r['agence'], r['critere'])]['points'] != r['points']

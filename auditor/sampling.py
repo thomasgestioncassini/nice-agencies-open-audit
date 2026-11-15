@@ -7,9 +7,9 @@ Règle (config/audit-policy.json, section « sampling ») :
 3. Situations comparables pour l'ancienneté : toutes les agences dont la société exploite plusieurs fiches (même SIREN),
    dont l'enseigne a une date de lancement relevée, ou dont l'ancienneté a été saisie à la main.
 4. Échantillon aléatoire : N agences tirées parmi les autres. La graine combine l'empreinte SHA-256 des fichiers
-   archivés et la valeur aléatoire publique drand (League of Entropy) du tour fixé à l'avance : le premier 06:00 UTC
-   qui suit l'archivage. Ni l'éditeur ni l'auditeur ne connaissent cette valeur quand les données sont figées, et
-   relancer l'archivage ne permet pas d'en choisir une autre. Sans balise valide, aucun tirage n'est fait.
+   archivés et la valeur aléatoire publique drand (League of Entropy) du tour fixé d'avance pour le relevé : le premier
+   mardi 06:00 UTC après sa date. Seul compte le dernier relevé archivé avant cette échéance. La signature BLS de la
+   balise est vérifiée avec la clé publique du réseau. Sans balise authentique, aucun tirage n'est fait.
 """
 from __future__ import annotations
 
@@ -26,13 +26,22 @@ QUICKNET_GENESIS, QUICKNET_PERIOD = 1692803367, 3      # paramètres publics de 
 SLOT_HOUR_UTC = 6
 
 
-def draw_time(archived_ts: float) -> float:
-    """Échéance FIXE du tirage : le premier 06:00 UTC qui suit l'archivage. Elle ne dépend pas du moment où l'auditeur
-    choisit de lancer le tirage : relancer l'archivage ou le tirage ne permet pas de choisir un autre aléa."""
-    day = dt.datetime.fromtimestamp(archived_ts, dt.timezone.utc).replace(hour=SLOT_HOUR_UTC, minute=0, second=0, microsecond=0)
-    if day.timestamp() <= archived_ts:
-        day += dt.timedelta(days=1)
-    return day.timestamp()
+def draw_deadline(date_releve: str) -> float:
+    """Échéance FIXE du tirage, propre au relevé et connue d'avance : le premier mardi à 06:00 UTC qui suit la date du
+    relevé. Elle ne dépend ni de l'heure d'archivage ni du moment où le tirage est lancé."""
+    d = dt.date.fromisoformat(date_releve)
+    ahead = (1 - d.weekday()) % 7 or 7          # mardi = 1
+    t = dt.datetime.combine(d + dt.timedelta(days=ahead), dt.time(SLOT_HOUR_UTC), dt.timezone.utc)
+    return t.timestamp()
+
+
+def committed_snapshot(snapshots: list[dict], date_releve: str) -> dict | None:
+    """Relevé engagé pour le tirage : le DERNIER relevé de cette date archivé AVANT l'échéance. Les données peuvent
+    changer avant l'échéance (l'aléa n'est pas encore connu) ; après, aucun autre relevé ne peut être choisi."""
+    dl = draw_deadline(date_releve)
+    ok = [m for m in snapshots if m['date_releve'] == date_releve
+          and dt.datetime.fromisoformat(m['archived_utc']).timestamp() < dl]
+    return max(ok, key=lambda m: m['archived_utc']) if ok else None
 
 
 def round_at(t: float) -> int:
@@ -40,9 +49,10 @@ def round_at(t: float) -> int:
     return max(1, math.ceil((t - QUICKNET_GENESIS) / QUICKNET_PERIOD) + 1)
 
 
-def check_beacon(b: dict, expected_round: int) -> list[str]:
-    """Contrôles réalisables avec la bibliothèque standard. La vérification cryptographique de la signature BLS n'est
-    PAS faite ici (bibliothèque BLS nécessaire, prévue en phase D) : le rapport l'indique."""
+def check_beacon(b: dict, expected_round: int, require_bls: bool = True) -> list[str]:
+    """Tour, chaîne, cohérence de la valeur aléatoire ET signature BLS authentique (drandverify). Sans bibliothèque BLS,
+    la balise est refusée si require_bls est vrai."""
+    from .drandverify import verify
     errors = []
     if b.get('round') != expected_round:
         errors.append(f"tour {b.get('round')} au lieu du tour attendu {expected_round}")
@@ -53,6 +63,12 @@ def check_beacon(b: dict, expected_round: int) -> list[str]:
             errors.append('valeur aléatoire différente du SHA-256 de la signature')
     except (KeyError, ValueError):
         errors.append('signature ou valeur aléatoire absente')
+        return errors
+    ok = verify(b['round'], b['signature'])
+    if ok is False:
+        errors.append('signature BLS invalide : la balise ne provient pas du réseau drand')
+    elif ok is None and require_bls:
+        errors.append('signature BLS non vérifiable (bibliothèque py_ecc absente, voir requirements-tirage.txt)')
     return errors
 
 

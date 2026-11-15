@@ -13,13 +13,15 @@ Auditeur ouvert du classement des agences immobilières de Nice publié sur [mei
 | D | Exécution hebdomadaire, signatures, registre, surveillance externe | non commencée |
 | E | Affichage sur le site | non commencée |
 
-## Trois dimensions, quatre statuts
+## Trois dimensions, six statuts
 
 Chaque rapport donne un statut séparé pour :
 
-1. **les calculs**, en deux statuts :
+1. **les calculs et le texte de la méthode** :
    - *reproduction* : les notes publiées découlent-elles des données publiées, selon les règles que le site applique ?
-   - *conformité au texte* : ces règles sont-elles celles que le texte public de la méthode annonce ? L'effet de chaque écart sur les notes et les rangs est mesuré.
+   - *règles décrites* : le texte archivé avec le relevé décrit-il chaque règle appliquée ?
+   - *contradictions encore présentes* : le texte affirme-t-il encore une règle contraire au calcul ? (contrôle par phrases répertoriées, pas une relecture complète)
+   - *écarts antérieurs* : une version archivée antérieure du texte contredisait-elle le calcul ? Ces écarts restent publiés même après correction du texte. L'effet de chaque écart sur les notes et les rangs est mesuré.
 2. **la vérification des données primaires** : les données d'entrée sont-elles exactes à leur source (plateformes d'avis, sites des agences, registre des entreprises) ?
 3. **l'analyse des biais** : la méthode avantage-t-elle certaines agences, dont celles de l'éditeur ?
 

@@ -11,6 +11,8 @@
 | Arrêt du système, retrait d'un rapport | même compte, techniquement possible | surveillance externe (phase D) ; inscriptions Rekor ; copies tierces |
 | Développement | Claude (Anthropic), outil utilisé par l'éditeur, qui a aussi écrit le code de production du site | moteur rédigé à partir du texte public de la méthode ; règles tirées du code listées dans docs/interpretations.md |
 
+Interventions techniquement possibles pour l'administrateur et non encore détectables par un tiers : supprimer des exécutions GitHub Actions (et donc des journaux d'engagement), réécrire l'historique Git, retirer un relevé archivé avant qu'un tiers en ait fait une copie. Un horodatage et une conservation hors du dépôt sont prévus en phase D.
+
 Ce que GitHub, les empreintes, les signatures ou l'usage de deux IA **ne garantissent pas** : l'impossibilité pour l'administrateur de modifier l'infrastructure, ni la justesse des conclusions. Une signature prouve l'intégrité d'un fichier et son origine technique, rien de plus.
 
 Amélioration possible : confier un droit d'administration ou une copie miroir à un tiers extérieur.

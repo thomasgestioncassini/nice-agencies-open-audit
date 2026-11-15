@@ -25,6 +25,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Bibliothèque de vérification BLS (empreintes verrouillées)
+        run: python -m pip install --require-hashes --no-deps -r requirements-tirage.txt
       - name: Archivage du relevé publié
         run: python -m auditor fetch
       - name: Tirage drand (seulement si l'échéance fixe est passée)
@@ -49,6 +51,7 @@ jobs:
       - name: Tests sur les relevés archivés (aucun test sauté accepté)
         env:
           AUDIT_REQUIRE_SNAPSHOT: '1'
+          AUDIT_REQUIRE_BLS: '1'
         run: python -m unittest -v
       - name: Publication dans le dépôt (aucune relecture)
         run: |

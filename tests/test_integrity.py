@@ -179,6 +179,21 @@ class CoordinatedForgery(unittest.TestCase):
         f = next(x for x in val['findings'] if x['code'] == 'V-13b')
         self.assertEqual(f['per_agency'].get('gestion-cassini'), 10)
 
+    def test_history_comparison_flags_reclassified_reviews_even_one(self):
+        """Critique de ChatGPT : un avis existant reclassé (profil, problème, drapeaux) doit être signalé, même seul."""
+        prev_tmp, prev = restored(REFERENCE)
+        cur_tmp, cur = restored(REFERENCE)
+        with prev_tmp, cur_tmp:
+            head, items = rows(cur / 'avis-elementaires.csv')
+            x = next(x for x in items if x['agence'] == 'immovendu' and x['probleme'] == 'probleme')
+            x['probleme'] = 'ok'                               # un problème signalé effacé pour l'éditeur
+            write_rows(cur / 'avis-elementaires.csv', head, items)
+            val = validate(cur, CFG, POLICY['sampling']['publisher_agencies'], prev)
+        f = next(x for x in val['findings'] if x['code'] == 'V-13d')
+        self.assertEqual(f['per_agency'], {'immovendu': 1})
+        self.assertEqual(f['severity'], 'majeur')
+        self.assertEqual(f['fields'], {'probleme': 1})
+
 
 if __name__ == '__main__':
     unittest.main()
