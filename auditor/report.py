@@ -71,11 +71,19 @@ def markdown(rep: dict) -> str:
         L += ['', '## Conformité au texte de la méthode', '',
               'Le texte public ne suffisait pas à reproduire les notes. Les règles suivantes ont été établies en lisant le '
               'code publié par le site (docs/interpretations.md) :', '']
+        doc = set(tc['documented_in_archived_text']) if tc else set()
         for i in rep['interpretations']:
-            L.append(f"- {i['id']} · {i['title']} — {kinds.get(i['kind'], i['kind'])}")
+            k = kinds.get(i['kind'], i['kind'])
+            L.append(f"- {i['id']} · {i['title']} — " + (f'désormais décrite dans le texte archivé (à l’origine : {k})'
+                                                        if i['id'] in doc else k))
+        if doc:
+            L += ['', f"Le texte archivé avec ce relevé décrit {len(doc)} règle(s) qui ne figuraient pas, ou figuraient "
+                  'autrement, dans le texte initial de la v5. Un statut « conforme » signifie que le calcul suit le texte '
+                  'publié, pas que ces règles sont les meilleures possibles.']
         if tc:
-            L += ['', 'Effet de chaque contradiction ou ambiguïté, si l’on applique la lecture littérale du texte '
-                  '(diagnostic seulement, les notes officielles ne changent pas) :', '',
+            L += ['', 'Effet des règles retenues par le site par rapport à la lecture littérale du texte initial (v5 du '
+                  '14/11/2026). Ce tableau reste publié même quand le texte décrit la règle : il montre ce que ce choix '
+                  'change (diagnostic seulement, les notes officielles ne changent pas) :', '',
                   '| Règle | Notes changées | Rangs changés | Déplacement max | Top 10 inchangé | ImmoVendu | Gestion Cassini |',
                   '| --- | --- | --- | --- | --- | --- | --- |']
             for k, e in tc['effects'].items():

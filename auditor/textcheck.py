@@ -7,7 +7,10 @@ Ces variantes sont des diagnostics : elles ne remplacent jamais les notes offici
 """
 from __future__ import annotations
 
+import html
+import re
 import statistics
+from pathlib import Path
 
 from .recalculate import TEXT_VARIANTS, recalculate
 
@@ -23,15 +26,32 @@ def _diff(base: dict, var: dict, watch: list[str]) -> dict:
                                 for s in watch if s in base}}
 
 
+def page_text(path: Path) -> str | None:
+    if not path.exists():
+        return None
+    t = re.sub(r'<script.*?</script>|<style.*?</style>', ' ', path.read_text(encoding='utf-8'), flags=re.S)
+    t = html.unescape(re.sub(r'<[^>]+>', ' ', t)).replace('\u2019', "'")
+    return ' '.join(t.split())
+
+
 def text_conformity(data_dir, cfg: dict, interpretations: list[dict], watch: list[str]) -> dict:
+    """Le texte de la méthode archivé avec le relevé (methode-details.html) est lu : une règle dont la phrase
+    descriptive y figure est « documentée » ; sinon elle garde son classement d'origine."""
+    page = page_text(Path(data_dir) / 'methode-details.html')
+    documented = {i['id'] for i in interpretations if page and i.get('documented_by')
+                  and ' '.join(i['documented_by'].split()) in page}
     base = recalculate(data_dir, cfg)['agencies']
     effects = {}
     for v in TEXT_VARIANTS:
         effects[v] = _diff(base, recalculate(data_dir, cfg, {v})['agencies'], watch)
     effects['ensemble'] = _diff(base, recalculate(data_dir, cfg, set(TEXT_VARIANTS))['agencies'], watch)
-    contradictions = [i['id'] for i in interpretations if i['kind'] == 'contradiction']
-    ambiguities = [i['id'] for i in interpretations if i['kind'] == 'ambiguite']
-    undocumented = [i['id'] for i in interpretations if i['kind'] == 'non_documente']
+    open_ = [i for i in interpretations if i['id'] not in documented]
+    contradictions = [i['id'] for i in open_ if i['kind'] == 'contradiction']
+    ambiguities = [i['id'] for i in open_ if i['kind'] == 'ambiguite']
+    undocumented = [i['id'] for i in open_ if i['kind'] == 'non_documente']
     status = 'ecarts' if contradictions or ambiguities else ('incomplet' if undocumented else 'conforme')
-    return {'status': status, 'contradictions': contradictions, 'ambiguities': ambiguities,
-            'undocumented': undocumented, 'effects': effects}
+    if page is None:
+        status = 'echec'
+    return {'status': status, 'text_archived': page is not None, 'documented_in_archived_text': sorted(documented),
+            'contradictions': contradictions, 'ambiguities': ambiguities, 'undocumented': undocumented,
+            'effects': effects}
