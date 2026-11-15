@@ -1,0 +1,44 @@
+name: archivage-manuel
+
+# Phase B : déclenchement manuel uniquement. L'exécution hebdomadaire programmée relève de la phase D.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: archivage
+  cancel-in-progress: false
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Archivage du relevé publié
+        run: python -m auditor fetch
+      - name: Recalcul des relevés sans rapport
+        run: |
+          set +e
+          for s in snapshots/*/; do
+            d=$(basename "$s")
+            ls -d reports/${d}_* >/dev/null 2>&1 && continue
+            python -m auditor run "$s"; echo "code de sortie $?"
+          done
+      - name: Vérification des empreintes
+        run: for r in reports/*/; do python -m auditor verify "$r"; done
+      - name: Tests sur les relevés archivés
+        run: python -m unittest -v
+      - name: Publication dans le dépôt (aucune relecture)
+        run: |
+          git config user.name "nice-agencies-open-audit[bot]"
+          git config user.email "audit-bot@users.noreply.github.com"
+          git add snapshots reports
+          git diff --cached --quiet && { echo "rien de nouveau"; exit 0; }
+          git commit -m "Relevé archivé et rapport (exécution ${GITHUB_RUN_ID})"
+          git push
