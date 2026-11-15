@@ -1,0 +1,111 @@
+{
+ "date_releve": "2026-11-15",
+ "fetch": {
+  "started_utc": "2026-11-15T11:38:14+00:00",
+  "base": "https://meilleure-agence-nice.fr",
+  "files": {
+   "parametres.json": {
+    "url": "https://meilleure-agence-nice.fr/methode/reproduction/parametres.json?audit=1794742694",
+    "http_status": 200,
+    "bytes": 327,
+    "sha256": "9d9972a08f32209c461131b51c4c3b51118f6c62c6527e23caeaccb2485ef45d",
+    "fetched_utc": "2026-11-15T11:38:15+00:00"
+   },
+   "agences.csv": {
+    "url": "https://meilleure-agence-nice.fr/methode/reproduction/agences.csv?audit=1794742694",
+    "http_status": 200,
+    "bytes": 53592,
+    "sha256": "ac48cf0bf48cf46315e6f225948138fa81240dc6c0a45ca6107906554c863b88",
+    "fetched_utc": "2026-11-15T11:38:15+00:00"
+   },
+   "avis-elementaires.csv": {
+    "url": "https://meilleure-agence-nice.fr/methode/reproduction/avis-elementaires.csv?audit=1794742694",
+    "http_status": 200,
+    "bytes": 4309265,
+    "sha256": "cc008d863c55936fd8c2017fe009fbe2e86dc0fb922d6d71d1ef6fbeb06c053f",
+    "fetched_utc": "2026-11-15T11:38:15+00:00"
+   },
+   "agregats-plateformes.csv": {
+    "url": "https://meilleure-agence-nice.fr/methode/reproduction/agregats-plateformes.csv?audit=1794742694",
+    "http_status": 200,
+    "bytes": 23603,
+    "sha256": "eefc6be892b2614a777a1f298fabb7e436a2e812e15a5f6809b164564ebb8aec",
+    "fetched_utc": "2026-11-15T11:38:15+00:00"
+   },
+   "criteres-sites.csv": {
+    "url": "https://meilleure-agence-nice.fr/methode/reproduction/criteres-sites.csv?audit=1794742694",
+    "http_status": 200,
+    "bytes": 743376,
+    "sha256": "341018b9d019870e3edee740907f9146cd342c982307a6d27f4f9a62cc25097c",
+    "fetched_utc": "2026-11-15T11:38:15+00:00"
+   },
+   "classement-notes.txt": {
+    "url": "https://meilleure-agence-nice.fr/classement-notes.txt?audit=1794742694",
+    "http_status": 200,
+    "bytes": 100003,
+    "sha256": "f72c717b39463cd3a1abc5ab72b1720df6f8c1809425e996e6c32bf41004784f",
+    "fetched_utc": "2026-11-15T11:38:15+00:00"
+   },
+   "methode-details.html": {
+    "url": "https://meilleure-agence-nice.fr/methode/details/?audit=1794742694",
+    "http_status": 200,
+    "bytes": 87753,
+    "sha256": "0abab51d77753b8c99abc68081042e929ea2c2250092f37329426dd1f625ecd7",
+    "fetched_utc": "2026-11-15T11:38:15+00:00"
+   }
+  },
+  "errors": [
+   {
+    "file": "sources-agences.csv",
+    "url": "https://meilleure-agence-nice.fr/methode/reproduction/sources-agences.csv?audit=1794742694",
+    "error": "HTTPError: HTTP Error 404: Not Found"
+   }
+  ]
+ },
+ "inputs": {
+  "agences.csv": {
+   "sha256": "ac48cf0bf48cf46315e6f225948138fa81240dc6c0a45ca6107906554c863b88",
+   "archive": "agences.csv.gz",
+   "archive_sha256": "aec818f657d870258a8e25f0850726ce74dc15b5e4e328d3e170faa179da8e4d"
+  },
+  "agregats-plateformes.csv": {
+   "sha256": "eefc6be892b2614a777a1f298fabb7e436a2e812e15a5f6809b164564ebb8aec",
+   "archive": "agregats-plateformes.csv.gz",
+   "archive_sha256": "16a18f72a071bc54a9d7b13120406837d7a5fcbf6162ba14fc71bc51237b4a60"
+  },
+  "avis-elementaires.csv": {
+   "sha256": "cc008d863c55936fd8c2017fe009fbe2e86dc0fb922d6d71d1ef6fbeb06c053f",
+   "archive": "avis-elementaires.csv.gz",
+   "archive_sha256": "3bfc8eb1af2ce8a7d7bf1d961994bdcd89261c6d175f59037aba1b163f952254"
+  },
+  "classement-notes.txt": {
+   "sha256": "f72c717b39463cd3a1abc5ab72b1720df6f8c1809425e996e6c32bf41004784f",
+   "archive": "classement-notes.txt.gz",
+   "archive_sha256": "029c46ab75c161e707ca0a180f18cfc5cda6060b091f3deb152dc52b4231640c"
+  },
+  "criteres-sites.csv": {
+   "sha256": "341018b9d019870e3edee740907f9146cd342c982307a6d27f4f9a62cc25097c",
+   "archive": "criteres-sites.csv.gz",
+   "archive_sha256": "bd726c4301c9dbcc3e1d749e24d826926fdcc56061d67ddfe1da7b196180fbde"
+  },
+  "methode-details.html": {
+   "sha256": "0abab51d77753b8c99abc68081042e929ea2c2250092f37329426dd1f625ecd7",
+   "archive": "methode-details.html.gz",
+   "archive_sha256": "1262cec64fae8edba1f305b6ca2e156de0d1902cc893f8312c11a6c5a4304d9a"
+  },
+  "parametres.json": {
+   "sha256": "9d9972a08f32209c461131b51c4c3b51118f6c62c6527e23caeaccb2485ef45d",
+   "archive": "parametres.json.gz",
+   "archive_sha256": "69141268dcafe1e9cc8618df173e41a161cae6ba6b7d168ac96af7f8668c4c9b"
+  }
+ },
+ "archived_utc": "2026-11-15T11:38:16+00:00",
+ "drand": {
+  "chain": "52db9ba70e0cc0f6eaf7803dd07447a1f5477735fd3f661792ba94600c84e971",
+  "round": 33979778,
+  "randomness": "2493156edd12094b86145cceaf7d4c0852d34a7414574584f246f520bfa61d8f",
+  "signature": "b160f13ec4f82d8a41117c3a40b3f32697cc4e37270b60a881200417170780ad42a92e74475d1fc48e0072096d97af43",
+  "url": "https://api.drand.sh/52db9ba70e0cc0f6eaf7803dd07447a1f5477735fd3f661792ba94600c84e971/public/33979778"
+ },
+ "auditor_code": "9d96f53bbb497047297fa20b39e6a71a6b87ffa0"
+}
