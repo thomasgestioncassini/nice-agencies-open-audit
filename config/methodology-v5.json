@@ -1,0 +1,97 @@
+{
+  "version": "v5 du 14/11/2026",
+  "source": "https://meilleure-agence-nice.fr/methode/details/",
+  "note": "Valeurs recopiées du texte public de la méthode. Ce fichier appartient à l'auditeur : il n'est jamais lu depuis le site audité. Toute modification est un commit public.",
+  "weights": {
+    "avis": 43,
+    "serv": 16,
+    "hono": 17,
+    "conf": 11,
+    "info": 8,
+    "anc": 5
+  },
+  "criteria_count": {
+    "avis": 3,
+    "serv": 2,
+    "hono": 4,
+    "conf": 7,
+    "info": 6,
+    "anc": 1
+  },
+  "reviews": {
+    "quality_share": 0.7,
+    "volume_share": 0.15,
+    "regularity_share": 0.15,
+    "smoothing_fictitious_reviews": 15,
+    "half_life_months": 36,
+    "volume_cap": 200,
+    "excluded_profiles": [
+      "locataire",
+      "bailleur",
+      "syndic"
+    ],
+    "undated_review_weight": 0.5
+  },
+  "service": {
+    "response_share": 0.4,
+    "problems_share": 0.6,
+    "problems_score_zero_at_share": 0.25,
+    "min_texts": 10,
+    "no_negative_review_score": 75
+  },
+  "fees_points": {
+    "Barème publié": 30,
+    "Payeur indiqué": 30,
+    "Montants TTC": 20,
+    "Barème complet": 20,
+    "illisible": 20
+  },
+  "legal_points": {
+    "Carte professionnelle": 25,
+    "RC professionnelle": 20,
+    "Garant financier": 15,
+    "Médiateur": 15,
+    "RCS/SIREN": 10,
+    "Détention de fonds": 10,
+    "Confidentialité": 5
+  },
+  "seniority": {
+    "full_score_years": 20
+  },
+  "missing": {
+    "neutral_value": 50
+  },
+  "levels": [
+    [
+      85,
+      "Excellente"
+    ],
+    [
+      75,
+      "Très bonne"
+    ],
+    [
+      60,
+      "Bonne"
+    ],
+    [
+      45,
+      "Correcte"
+    ],
+    [
+      0,
+      "À améliorer"
+    ]
+  ],
+  "worked_example": {
+    "pillars": {
+      "avis": 90,
+      "serv": 80,
+      "hono": 70,
+      "conf": 100,
+      "info": 83,
+      "anc": 50
+    },
+    "note": 83.5
+  }
+}

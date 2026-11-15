@@ -1,0 +1,26 @@
+{
+  "policy_version": "1.0 du 15/11/2026",
+  "note": "Règles de l'auditeur fixées AVANT le premier audit. Toute modification est un commit public, daté, dont l'effet est publié dans le rapport suivant.",
+  "tolerance": {
+    "pillar_decimals": 1,
+    "note_decimals": 2,
+    "justification": "Le site publie chaque pilier au dixième et la note au centième (colonnes de agences.csv). Une valeur est conforme si le recalcul, arrondi à la même précision, donne exactement la valeur publiée. Aucune marge supplémentaire."
+  },
+  "sampling": {
+    "rule_version": "1.0",
+    "publisher_agencies": ["gestion-cassini", "immovendu"],
+    "neighbours_each_side": 5,
+    "random_sample_size": 20,
+    "seed": "SHA-256 des fichiers archivés + valeur aléatoire drand (quicknet) du premier tour publié après l'archivage"
+  },
+  "statuses": {
+    "calculs": ["conforme", "divergences", "echec", "non_execute"],
+    "donnees_primaires": ["verifiees", "partiellement_verifiees", "non_verifiees", "echec"],
+    "biais": ["analyse_publiee", "non_evalue", "echec"]
+  },
+  "budget": {
+    "phase_b": "aucun appel d'IA : 0 $",
+    "monthly_usd_per_provider": 15,
+    "monthly_usd_total": 30
+  }
+}

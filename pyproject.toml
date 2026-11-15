@@ -1,0 +1,7 @@
+[project]
+name = "nice-agencies-open-audit"
+version = "0.1.0"
+description = "Auditeur ouvert du classement meilleure-agence-nice.fr"
+requires-python = ">=3.10"
+dependencies = []
+license = {text = "MIT"}

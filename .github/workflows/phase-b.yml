@@ -1,0 +1,38 @@
+name: phase-b-recalcul
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Tests (sans réseau ni clé d'API)
+        run: python -m unittest -v
+      - name: Archivage du relevé publié
+        run: python -m auditor fetch
+      - name: Recalcul indépendant de chaque relevé archivé
+        run: |
+          set +e
+          for s in snapshots/*/; do python -m auditor run "$s"; echo "code de sortie $?"; done
+      - name: Vérification des empreintes
+        run: for r in reports/*/; do python -m auditor verify "$r"; done
+      - name: Tests sur le relevé archivé
+        run: python -m unittest -v
+      - uses: actions/upload-artifact@v4
+        with:
+          name: preuves-execution-${{ github.run_id }}
+          path: |
+            snapshots/
+            reports/
+          retention-days: 90
