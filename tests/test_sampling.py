@@ -7,7 +7,7 @@ import json
 import os
 
 from auditor.drandverify import verify
-from auditor.commitment import check_proof
+from auditor.commitment import check_proof, engagements_from_github, evaluate
 from auditor.sampling import CHAIN_HASH, check_beacon, choose_committed, draw_deadline, round_at, seed_of, select
 from tests.helpers import POLICY, REFERENCE
 
@@ -59,6 +59,46 @@ class Sampling(unittest.TestCase):
              'c': {'errors': ['le journal GitHub ne contient pas l’empreinte de ce manifeste'], 'proof': None}}
         self.assertEqual(choose_committed(c), 'b')
         self.assertIsNone(choose_committed({'c': c['c']}))
+
+    def fake_github(self, runs):
+        """runs : [(id, fin, [lignes ENGAGEMENT])] → fonction get() simulant l'API de GitHub."""
+        def get(url, raw=False):
+            if '/workflows/archive.yml/runs' in url:
+                return {'workflow_runs': [{'id': i, 'updated_at': end} for i, end, _ in runs]}
+            rid = url.split('/runs/')[1].split('/')[0] if '/runs/' in url else None
+            if url.endswith('/jobs'):
+                return {'jobs': [{'id': rid}]}
+            if url.endswith('/logs'):
+                jid = url.split('/jobs/')[1].split('/')[0]
+                return '\n'.join('2026-11-15T12:00:00Z ' + l for i, _, ls in runs if str(i) == jid for l in ls)
+            r = next(x for x in runs if str(x[0]) == rid)
+            return {'repository': {'full_name': 'thomasgestioncassini/nice-agencies-open-audit'}, 'path':
+                    '.github/workflows/archive.yml', 'conclusion': 'success', 'updated_at': r[1], 'created_at': r[1]}
+        return get
+
+    def line(self, name, sha):
+        return f'ENGAGEMENT relevé {name} · SHA-256 du manifeste {sha} · archivé x'
+
+    def test_candidates_come_from_github_not_from_the_repository(self):
+        dl = draw_deadline('2026-11-15')
+        get = self.fake_github([(1, '2026-11-15T12:00:00Z', [self.line('2026-11-15_A', 'aa' * 32)]),
+                                (2, '2026-11-16T12:00:00Z', [self.line('2026-11-15_B', 'bb' * 32)]),
+                                (3, '2026-11-17T07:00:00Z', [self.line('2026-11-15_C', 'cc' * 32)])])   # après l'échéance
+        eng = engagements_from_github('2026-11-15', dl, get)
+        self.assertEqual(sorted(eng), ['2026-11-15_A', '2026-11-15_B'])
+        # cas normal : les deux relevés sont dans le dépôt, B (le dernier engagé) est retenu
+        cands, refusal = evaluate(eng, {'2026-11-15_A': 'aa' * 32, '2026-11-15_B': 'bb' * 32}, dl)
+        self.assertIsNone(refusal)
+        self.assertEqual(choose_committed(cands), '2026-11-15_B')
+        # B retiré du dépôt pour retomber sur A : tirage refusé, A n'est PAS retenu à sa place
+        cands, refusal = evaluate(eng, {'2026-11-15_A': 'aa' * 32}, dl)
+        self.assertIn('2026-11-15_B', refusal)
+        # B modifié dans le dépôt : tirage refusé
+        cands, refusal = evaluate(eng, {'2026-11-15_A': 'aa' * 32, '2026-11-15_B': 'ff' * 32}, dl)
+        self.assertIn('différent', refusal)
+        # relevé présent dans le dépôt mais jamais engagé : inadmissible
+        cands, refusal = evaluate(eng, {'2026-11-15_A': 'aa' * 32, '2026-11-15_B': 'bb' * 32, '2026-11-15_Z': 'zz'}, dl)
+        self.assertTrue(cands['2026-11-15_Z']['errors'])
 
     def test_no_fallback_without_beacon(self):
         with self.assertRaises(ValueError):

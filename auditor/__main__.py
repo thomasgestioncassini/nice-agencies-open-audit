@@ -25,7 +25,7 @@ from .recalculate import read_csv, recalculate
 from .report import dump, markdown, statuses
 import os
 
-from .commitment import check_proof, fetch_proof
+from .commitment import engagements_from_github, evaluate
 from .sampling import check_beacon, choose_committed, draw_deadline, fetch_beacon, round_at, seed_of, select
 from .textcheck import text_conformity
 from .validate import validate
@@ -125,22 +125,18 @@ def cmd_draw(args) -> int:
     if time.time() < deadline:
         print(f"tirage pas encore possible : échéance {plan['utc']} (tour {plan['drand_round']})")
         return 4
-    candidates = {}
-    for m in all_manifests():
-        if m['date_releve'] != date:
-            continue
-        name = m['_dir'].name
-        run = (m.get('archive_run') or {}).get('id')
-        if not run:
-            candidates[name] = {'errors': ['aucune exécution d’archivage désignée (engagement impossible à prouver)'],
-                                'proof': None}
-            continue
-        try:
-            proof = fetch_proof(run)
-            errs = check_proof(proof, name, F.sha256(m['_dir'] / 'manifest.json'), deadline)
-        except Exception as e:                # noqa: BLE001 — exécution supprimée ou API injoignable : non admis
-            proof, errs = None, [f'preuve GitHub indisponible ({type(e).__name__}: {e})']
-        candidates[name] = {'errors': errs, 'proof': proof}
+    # 1. Les candidats viennent de GitHub (toutes les exécutions d'archivage réussies avant l'échéance), pas du dépôt
+    try:
+        engaged = engagements_from_github(date, deadline)
+    except Exception as e:                    # noqa: BLE001 — sans liste GitHub, pas de tirage
+        print(f'liste des engagements GitHub indisponible ({type(e).__name__}: {e}) : pas de tirage')
+        return 6
+    local = {m['_dir'].name: F.sha256(m['_dir'] / 'manifest.json') for m in all_manifests() if m['date_releve'] == date}
+    candidates, refusal = evaluate(engaged, local, deadline)
+    if refusal:
+        dump(snap / 'draw-refus.json', {'planned': plan, 'candidates': candidates, 'refusal': refusal})
+        print('tirage refusé : ' + refusal)
+        return 7
     chosen = choose_committed(candidates)
     for n, c in candidates.items():
         print(f"{n} : {'engagement prouvé' if not c['errors'] else '; '.join(c['errors'])}")

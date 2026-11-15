@@ -57,3 +57,52 @@ def check_proof(proof: dict, snapshot_name: str, manifest_sha256: str, deadline_
     if not any(l.startswith(want) for l in proof.get('engagement_lines', [])):
         errs.append('le journal GitHub ne contient pas l’empreinte de ce manifeste')
     return errs
+
+
+def engagements_from_github(date_releve: str, deadline_ts: float, get=_get) -> dict:
+    """Liste, depuis GitHub et non depuis le dépôt, tous les relevés de cette date engagés avant l'échéance : chaque
+    exécution réussie du workflow d'archivage terminée avant l'échéance, et chaque ligne ENGAGEMENT de son journal.
+    Renvoie {nom du relevé: {'sha256': ..., 'proof': ...}}. Un relevé ainsi engagé mais absent du dépôt, ou différent,
+    rend le tirage impossible : il ne peut pas être remplacé par un autre."""
+    out, page = {}, 1
+    while True:
+        r = get(f'{API}/repos/{REPO}/actions/workflows/archive.yml/runs?status=success&per_page=100&page={page}')
+        runs = r.get('workflow_runs', [])
+        for run in runs:
+            end = run.get('updated_at')
+            if not end or dt.datetime.fromisoformat(end.replace('Z', '+00:00')).timestamp() >= deadline_ts:
+                continue
+            proof = fetch_proof(run['id'], get)
+            for line in proof['engagement_lines']:
+                parts = line.split()
+                try:
+                    name, sha = parts[2], parts[parts.index('manifeste') + 1]
+                except (IndexError, ValueError):
+                    continue
+                if name[:10] == date_releve:
+                    out[name] = {'sha256': sha, 'proof': proof}
+        if len(runs) < 100:
+            return out
+        page += 1
+
+
+def evaluate(engaged: dict, local_sha256: dict, deadline_ts: float) -> tuple[dict, str | None]:
+    """engaged : sortie de engagements_from_github ; local_sha256 : {relevé du dépôt: empreinte de son manifeste}.
+    Renvoie (candidats avec leurs erreurs, motif de refus ou None). Si le dernier relevé engagé selon GitHub est absent
+    ou modifié dans le dépôt, le tirage est refusé : aucun relevé antérieur ne peut le remplacer."""
+    cands = {}
+    for name, e in engaged.items():
+        errs = check_proof(e['proof'], name, e['sha256'], deadline_ts)
+        if name not in local_sha256:
+            errs.append('relevé engagé sur GitHub mais absent du dépôt')
+        elif local_sha256[name] != e['sha256']:
+            errs.append('manifeste du dépôt différent de celui engagé sur GitHub')
+        cands[name] = {'errors': errs, 'proof': e['proof']}
+    for name in local_sha256:
+        if name not in engaged:
+            cands[name] = {'errors': ['aucun engagement GitHub avant l’échéance'], 'proof': None}
+    last = max(((e['proof']['updated_at'], n) for n, e in engaged.items()), default=None)
+    refusal = None
+    if last and cands[last[1]]['errors']:
+        refusal = f'le dernier relevé engagé sur GitHub ({last[1]}) est inadmissible : ' + '; '.join(cands[last[1]]['errors'])
+    return cands, refusal
