@@ -29,6 +29,7 @@ jobs:
         run: python -m auditor fetch
       - name: Tirage drand (seulement si l'échéance fixe est passée)
         run: |
+          set +e
           for s in snapshots/*/; do
             [ -f "$s/draw.json" ] && continue
             python -m auditor draw "$s"; echo "code de sortie $?"
