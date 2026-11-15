@@ -7,7 +7,8 @@ import json
 import os
 
 from auditor.drandverify import verify
-from auditor.sampling import CHAIN_HASH, check_beacon, committed_snapshot, draw_deadline, round_at, seed_of, select
+from auditor.commitment import check_proof
+from auditor.sampling import CHAIN_HASH, check_beacon, choose_committed, draw_deadline, round_at, seed_of, select
 from tests.helpers import POLICY, REFERENCE
 
 REAL = json.loads((REFERENCE / 'manifest.json').read_text(encoding='utf-8')).get('drand') if (REFERENCE / 'manifest.json').exists() else None
@@ -36,12 +37,28 @@ class Sampling(unittest.TestCase):
         self.assertEqual(draw_deadline('2026-11-17'), utc(2026, 11, 24, 6, 0))   # mardi → mardi suivant
         self.assertEqual(round_at(utc(2026, 11, 15, 11, 38, 16)), 33979778)       # tour réellement publié à cet instant
 
-    def test_committed_snapshot_is_the_last_archived_before_deadline(self):
-        m = [{'date_releve': '2026-11-15', 'archived_utc': '2026-11-15T11:38:16+00:00', 'n': 1},
-             {'date_releve': '2026-11-15', 'archived_utc': '2026-11-16T22:00:00+00:00', 'n': 2},
-             {'date_releve': '2026-11-15', 'archived_utc': '2026-11-17T06:00:01+00:00', 'n': 3}]   # après l'échéance
-        self.assertEqual(committed_snapshot(m, '2026-11-15')['n'], 2)
-        self.assertIsNone(committed_snapshot(m[2:], '2026-11-15'))
+    def proof(self, name='2026-11-15_121239', sha='ab' * 32, end='2026-11-15T12:13:11Z', **kw):
+        p = {'repository': 'thomasgestioncassini/nice-agencies-open-audit', 'path': '.github/workflows/archive.yml',
+             'conclusion': 'success', 'updated_at': end,
+             'engagement_lines': [f'ENGAGEMENT relevé {name} · SHA-256 du manifeste {sha} · archivé {end}']}
+        p.update(kw)
+        return p
+
+    def test_commitment_must_be_proved_by_github_before_deadline(self):
+        dl = draw_deadline('2026-11-15')
+        self.assertEqual(check_proof(self.proof(), '2026-11-15_121239', 'ab' * 32, dl), [])
+        self.assertTrue(check_proof(self.proof(), '2026-11-15_121239', 'cd' * 32, dl))            # autre manifeste
+        self.assertTrue(check_proof(self.proof(end='2026-11-17T06:00:00Z'), '2026-11-15_121239', 'ab' * 32, dl))
+        self.assertTrue(check_proof(self.proof(conclusion='failure'), '2026-11-15_121239', 'ab' * 32, dl))
+        self.assertTrue(check_proof(self.proof(path='.github/workflows/autre.yml'), '2026-11-15_121239', 'ab' * 32, dl))
+        self.assertTrue(check_proof(self.proof(repository='autre/depot'), '2026-11-15_121239', 'ab' * 32, dl))
+
+    def test_committed_snapshot_uses_github_time_and_ignores_unproved(self):
+        c = {'a': {'errors': [], 'proof': {'updated_at': '2026-11-15T12:00:00Z'}},
+             'b': {'errors': [], 'proof': {'updated_at': '2026-11-16T22:00:00Z'}},
+             'c': {'errors': ['le journal GitHub ne contient pas l’empreinte de ce manifeste'], 'proof': None}}
+        self.assertEqual(choose_committed(c), 'b')
+        self.assertIsNone(choose_committed({'c': c['c']}))
 
     def test_no_fallback_without_beacon(self):
         with self.assertRaises(ValueError):

@@ -35,13 +35,13 @@ def draw_deadline(date_releve: str) -> float:
     return t.timestamp()
 
 
-def committed_snapshot(snapshots: list[dict], date_releve: str) -> dict | None:
-    """Relevé engagé pour le tirage : le DERNIER relevé de cette date archivé AVANT l'échéance. Les données peuvent
-    changer avant l'échéance (l'aléa n'est pas encore connu) ; après, aucun autre relevé ne peut être choisi."""
-    dl = draw_deadline(date_releve)
-    ok = [m for m in snapshots if m['date_releve'] == date_releve
-          and dt.datetime.fromisoformat(m['archived_utc']).timestamp() < dl]
-    return max(ok, key=lambda m: m['archived_utc']) if ok else None
+def choose_committed(candidates: dict) -> str | None:
+    """candidates : {relevé: {'errors': [...], 'proof': {...}}}. Relevé engagé : parmi ceux dont l'engagement est prouvé
+    par GitHub avant l'échéance, celui dont l'exécution d'archivage s'est terminée en dernier (horodatage de GitHub).
+    Avant l'échéance, l'aléa est inconnu : changer de relevé ne permet pas de choisir l'échantillon. Après, aucun
+    relevé nouveau ne peut être prouvé antérieur."""
+    ok = {n: c['proof']['updated_at'] for n, c in candidates.items() if not c['errors']}
+    return max(ok, key=lambda n: (ok[n], n)) if ok else None
 
 
 def round_at(t: float) -> int:

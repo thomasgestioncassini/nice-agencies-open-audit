@@ -25,7 +25,8 @@ from .recalculate import read_csv, recalculate
 from .report import dump, markdown, statuses
 import os
 
-from .sampling import check_beacon, committed_snapshot, draw_deadline, fetch_beacon, round_at, seed_of, select
+from .commitment import check_proof, fetch_proof
+from .sampling import check_beacon, choose_committed, draw_deadline, fetch_beacon, round_at, seed_of, select
 from .textcheck import text_conformity
 from .validate import validate
 
@@ -115,22 +116,43 @@ def planned_draw(snap_manifest: dict) -> dict:
 
 
 def cmd_draw(args) -> int:
-    """Enregistre la balise drand du tour fixé pour le relevé, dans le relevé engagé (dernier archivé avant l'échéance)."""
+    """Tirage d'un relevé daté : vérifie auprès de GitHub l'engagement de chaque relevé archivé pour cette date, retient
+    le relevé engagé, récupère et authentifie la balise drand du tour fixé, écrit draw.json dans le relevé engagé."""
     snap = Path(args.snapshot).resolve()
     man = json.loads((snap / 'manifest.json').read_text(encoding='utf-8'))
-    plan = planned_draw(man)
-    chosen = committed_snapshot(all_manifests(), man['date_releve'])
-    if chosen is None or chosen['_dir'].resolve() != snap:
-        print(f"relevé non engagé pour le tirage du {man['date_releve']} : "
-              f"{chosen['_dir'].name if chosen else 'aucun relevé archivé avant l’échéance'}")
-        return 6
-    if time.time() < dt.datetime.fromisoformat(plan['utc']).timestamp():
+    date, plan = man['date_releve'], planned_draw(man)
+    deadline = dt.datetime.fromisoformat(plan['utc']).timestamp()
+    if time.time() < deadline:
         print(f"tirage pas encore possible : échéance {plan['utc']} (tour {plan['drand_round']})")
         return 4
+    candidates = {}
+    for m in all_manifests():
+        if m['date_releve'] != date:
+            continue
+        name = m['_dir'].name
+        run = (m.get('archive_run') or {}).get('id')
+        if not run:
+            candidates[name] = {'errors': ['aucune exécution d’archivage désignée (engagement impossible à prouver)'],
+                                'proof': None}
+            continue
+        try:
+            proof = fetch_proof(run)
+            errs = check_proof(proof, name, F.sha256(m['_dir'] / 'manifest.json'), deadline)
+        except Exception as e:                # noqa: BLE001 — exécution supprimée ou API injoignable : non admis
+            proof, errs = None, [f'preuve GitHub indisponible ({type(e).__name__}: {e})']
+        candidates[name] = {'errors': errs, 'proof': proof}
+    chosen = choose_committed(candidates)
+    for n, c in candidates.items():
+        print(f"{n} : {'engagement prouvé' if not c['errors'] else '; '.join(c['errors'])}")
+    if chosen is None:
+        print('aucun relevé engagé : pas de tirage')
+        return 6
     b = fetch_beacon(plan['drand_round'])
     errs = check_beacon(b, plan['drand_round'])
-    dump(snap / 'draw.json', {'planned': plan, 'beacon': b, 'checks_errors': errs, 'bls_signature_verified': not errs})
-    print('balise enregistrée et authentifiée' if not errs else 'balise REFUSÉE : ' + '; '.join(errs))
+    dump(ROOT / 'snapshots' / chosen / 'draw.json', {
+        'planned': plan, 'committed_snapshot': chosen, 'candidates': candidates, 'beacon': b,
+        'checks_errors': errs, 'bls_signature_verified': not errs})
+    print(f'relevé engagé : {chosen} · ' + ('balise authentifiée' if not errs else 'balise REFUSÉE : ' + '; '.join(errs)))
     return 0 if not errs else 5
 
 
@@ -174,20 +196,29 @@ def cmd_run(args) -> int:
                 error = f'{type(e).__name__}: {e}'
         sources = {r['agence']: r for r in read_csv(data / 'sources-agences.csv')} if (data / 'sources-agences.csv').exists() else {}
         plan = planned_draw(snap_manifest)
-        chosen = committed_snapshot(all_manifests(), snap_manifest['date_releve'])
-        sampling = {'status': 'en_attente', 'planned': plan, 'committed_snapshot': rel(chosen['_dir']) if chosen else None}
+        sampling = {'status': 'en_attente', 'planned': plan}
         draw_file = snap / 'draw.json'
-        if chosen is None or chosen['_dir'].resolve() != snap:
-            sampling['status'] = 'non_engage'
+        sibling = [m for m in all_manifests() if m['date_releve'] == snap_manifest['date_releve']
+                   and (m['_dir'] / 'draw.json').exists() and m['_dir'].resolve() != snap]
+        if sibling:
+            sampling.update(status='non_engage', committed_snapshot=sibling[0]['_dir'].name)
         elif draw_file.exists():
             draw = json.loads(draw_file.read_text(encoding='utf-8'))
-            errs = check_beacon(draw['beacon'], plan['drand_round'])
+            sampling['committed_snapshot'] = draw['committed_snapshot']
+            sampling['commitment'] = (draw['candidates'][draw['committed_snapshot']]['proof'] or {}).get('html_url')
+            # rejoué hors ligne : la signature BLS est revérifiée si py_ecc est installé
+            errs = check_beacon(draw['beacon'], plan['drand_round'], require_bls=False)
+            from .drandverify import verify
+            sampling['bls_reverified'] = verify(draw['beacon']['round'], draw['beacon']['signature'])
+            if sampling['bls_reverified'] is False:
+                errs.append('signature BLS invalide')
             if errs:
                 sampling.update(status='echec', errors=errs)
             else:
                 seed = seed_of({n: v['sha256'] for n, v in snap_manifest['inputs'].items()}, draw['beacon'])
                 sampling.update(select(read_csv(data / 'agences.csv'), sources, policy, seed), status='tire',
-                                drand={k: draw['beacon'][k] for k in ('round', 'url')}, bls_signature_verified=True)
+                                drand={k: draw['beacon'][k] for k in ('round', 'url')},
+                                bls_signature_verified_at_draw=draw.get('bls_signature_verified'))
         reg_none = [s for s, r in (res or {}).get('agencies', {}).items() if r['detail']['avis']['regularity'] is None]
     st = statuses(cmp_, val, textc)
     rid = f"{snap_manifest['date_releve']}_{generated.strftime('%Y%m%dT%H%M%SZ')}"
