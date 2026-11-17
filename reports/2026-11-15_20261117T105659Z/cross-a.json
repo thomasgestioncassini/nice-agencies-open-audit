@@ -1,0 +1,107 @@
+{
+ "slot": "A",
+ "provider": "openai",
+ "model_requested": "gpt-6.1-sol",
+ "purpose": "confrontation",
+ "mandate_sha256": "82e0fec40442f9e2ab530af39492ad0a83e777c1e424867598daa9a65e8089c8",
+ "input_sha256": "1e1b81a1ad88cde8111c81458a782a418ed3b252d2a7349c70759bb3c5fab1d0",
+ "input_chars": 228179,
+ "estimate_usd": 0.3939,
+ "model": "gpt-6.1-sol",
+ "tokens_in": 75861,
+ "tokens_out": 5443,
+ "finish_reason": "completed",
+ "usd": 0.2062,
+ "status": "ok",
+ "errors": [],
+ "output": {
+  "positions": [
+   {
+    "id": "B-1",
+    "position": "conteste",
+    "justification": "Nature : fait_verifie et calcul_reproduit. Deux contradictions de notation sont effectivement étayées : ImmoVendu indique « Honoraires à la charge du VENDEUR ou de l’ACQUEREUR en fonction du mandat de vente » malgré 0/30 ; French Riviera Studios affiche explicitement des montants TTC malgré 0/20. Corriger uniquement ces critères ajouterait respectivement 5,10 et 3,40 points globaux. En revanche, l'absence de tableau dans une extraction textuelle, même non tronquée, ne prouve ni l'absence d'image ou de document intégré ni une différence injustifiée de traitement avec John Royce et LBI. Les quatre autres contradictions alléguées sont donc des points non vérifiables, pas des erreurs avérées. Pour Gestion Cassini, les 8,50 points représentent seulement l'écart arithmétique entre 70 et 20 en honoraires ; rien ne démontre que 20 soit sa bonne note. Les observations initiales datent en outre du 12 novembre et les relectures du 17 novembre."
+   },
+   {
+    "id": "B-2",
+    "position": "confirme",
+    "justification": "Nature : fait_verifie dans le paquet et calcul_reproduit pour les écarts. ImmoVendu utilise bien le SIREN 400877866, créé le 02/05/1995, avec anc=100, alors que enseigne_depuis=2024. Le scénario fourni donne 90,66−86,37=4,29 points et un passage du rang 2 au rang 13. Il s'agit d'un avantage relatif à ce contrefactuel, non d'une erreur de date juridique. V-10 montre une règle partagée avec des concurrentes ; ses 43 groupes comprennent celui de l'éditeur, et non 43 groupes concurrents supplémentaires. V-10b empêche d'estimer combien d'autres enseignes bénéficient du même effet. Aucune exception ad hoc n'est démontrée."
+   },
+   {
+    "id": "B-3",
+    "position": "confirme",
+    "justification": "Nature : fait_verifie pour les résultats fournis ; non_verifiable pour une nouvelle exécution intégrale. effet_des_regles_vs_texte_initial.ensemble indique bien 362 notes et 289 rangs modifiés, un déplacement maximal de 37 et huit membres du Top 10 conservés. Gestion Cassini passe de 124 à 123 dans la variante combinée ; ImmoVendu reste deuxième. Il faut toutefois présenter ces variantes comme des comparaisons au texte initial, pas comme 289 erreurs actuelles de rang : les statuts annoncent une documentation actuelle complète et des écarts historiques. Les extraits I-4 et I-7 conservent des tensions littérales avec les formulations générales citées ; le texte intégral actuel n'est pas fourni pour les résoudre. I-6 et I-11 restent des ambiguïtés plutôt que des contradictions certaines."
+   },
+   {
+    "id": "B-4",
+    "position": "conteste",
+    "justification": "Nature : calcul_reproduit pour l'association ; hypothese pour son interprétation causale. L'écart entre les tiers est bien 71,99−47,96=24,03 points, avec les écarts de piliers annoncés. Mais les groupes diffèrent aussi en honoraires, information, conformité, service et ancienneté. Ces moyennes ne démontrent donc pas que la méthode cause tout cet écart ni qu'elle favorise des structures de grande taille : le regroupement porte sur le nombre d'avis, pas sur la taille des entreprises. La sensibilité au volume mérite examen, mais sa contribution propre exige un contrefactuel à caractéristiques constantes absent du paquet."
+   },
+   {
+    "id": "B-5",
+    "position": "confirme",
+    "justification": "Nature : fait_verifie pour les simulations fournies et calcul_reproduit pour les écarts. Sans ancienneté, 546/552 agences changent de rang, soit 98,9 %, avec médiane 13 et maximum 51 ; Gestion Cassini recule de 20 places et ImmoVendu de quatre. Les variations de poids données modifient entre 451 et 515 rangs. Réserve importante : top10_inchanges=6 signifie quatre membres remplacés, pas nécessairement seulement quatre positions modifiées. L'ancienneté contribue directement à défavoriser les sociétés jeunes, mais la comparaison agrégée 59,88 contre 61,65 n'isole pas à elle seule tous les déterminants de leur classement. La densité des notes comme explication de la mobilité reste une hypothèse."
+   },
+   {
+    "id": "B-6",
+    "position": "conteste",
+    "justification": "Nature : fait_verifie pour le contrôle ; non_verifiable pour les extrapolations. V-9 rapporte effectivement 524 cas non applicables sur 526, soit 99,6 %, et les nombres de critères totalisent 23. En revanche, criteres_non_applicables:1 ne nomme pas le critère concerné pour les deux agences de l'éditeur : leur inclusion dans ces 524 cas n'est pas établie individuellement. Le paquet ne fournit pas non plus la formule permettant d'affirmer une redistribution mécanique du poids de ce critère. La quasi-inopérance annoncée est documentée, mais ces deux précisions ne sont pas prouvées."
+   },
+   {
+    "id": "B-7",
+    "position": "confirme",
+    "justification": "Nature : fait_verifie. Les 38 entrées comprennent bien 12 pdf_non_lu, deux extractions binaires PDF impropres à une lecture du barème, un échec HTTP, ainsi que les six autres cas cités, soit 21 cas où la notation complète ne peut être validée indépendamment. Cela ne signifie pas que les 17 autres agences soient intégralement jugeables : plusieurs extractions restantes ne permettent pas non plus de trancher certains critères. Le statut technique lu ne garantit pas la lisibilité sémantique ; inversement, l'échec d'extraction ne démontre aucune absence de barème chez l'agence."
+   },
+   {
+    "id": "B-8",
+    "position": "conteste",
+    "justification": "Nature : fait_verifie pour l'hétérogénéité visible ; hypothese pour plusieurs exclusions proposées. BS Invest se présente comme marchand de biens, Artemiz comme chasseur immobilier, WIS comme groupe patrimonial comportant explicitement une activité immobilière ; cela justifie un contrôle du périmètre. Mais le paquet ne prouve pas que BS Invest n'exerce aucune intermédiation, qu'Artemiz travaille exclusivement en recherche, ni que les fiches portant syndic désignent des syndics purs. Pour PAP, la relecture a échoué : l'URL et le nom ne remplacent pas une vérification de son activité. Plusieurs établissements ou enseignes sous un même SIREN ne constituent pas automatiquement des doublons si l'unité classée est l'agence locale. Les conditions précises d'inclusion ne sont pas fournies : des erreurs de classification sont plausibles, pas toutes avérées."
+   },
+   {
+    "id": "B-9",
+    "position": "confirme",
+    "justification": "Nature : fait_verifie pour les écarts de notation et calcul_reproduit pour leurs effets directs. Les honoraires moyens de l'éditeur sont inférieurs de 15,6 points à ceux des voisines ; Gestion Cassini a conf=50 contre 61,2 pour le groupe des voisines et reste 124e. Le 0/30 d'ImmoVendu sur le payeur contredit le texte fourni et représente 5,10 points globaux. I-6 place Gestion Cassini deux rangs plus bas que dans la variante. Ces éléments contredisent un favoritisme uniforme. Réserves : les 20 doublons d'ImmoVendu sont déclarés par le site, leur effet net sur la note n'est pas calculable sans leurs caractéristiques ; le rang après correction des honoraires, notamment une éventuelle première place, n'est pas établi."
+   },
+   {
+    "id": "B-10",
+    "position": "conteste",
+    "justification": "Nature : fait_verifie pour les mentions visibles ; non_verifiable pour certaines confirmations intégrales. Plusieurs validations sont solides, notamment les TTC et l'absence de payeur de vente explicite chez Agence du Port et Riviera, ainsi que les quatre critères de Hestia et Cabinet Immobilier Nice dans les extraits fournis. Mais la complétude littérale n'est pas pleinement confirmée partout : Tosca écrit « inférieurs à 100 000 € » puis « supérieurs à 100 001 € », laissant un intervalle sans taux ; Agence du Port et Maison Quatre ont aussi une borne « supérieur à 500 001 € » après une tranche finissant à 500 000 €. Resid' Immo présente une première borne « 70 000 € » sans opérateur explicite. Enfin, l'absence de barème sur les seules pages relues d'Alliance et WIS ne prouve pas son absence sur tout leur site. L'ambiguïté du payeur chez Artemiz est en revanche correctement identifiée."
+   },
+   {
+    "id": "B-11",
+    "position": "confirme",
+    "justification": "Nature : declaration_site pour les doublons ; fait_verifie pour les discordances rapportées ; non_verifiable pour leur justification primaire. V-6 annonce 833 avis qualifiés de doublons, dont 20 pour ImmoVendu et zéro pour Gestion Cassini. V-7 rapporte 182 discordances de multiplicité concernant notamment les deux agences. Sans textes, les décisions de dédoublonnage et de partage ne peuvent être validées. Les discordances d'export ne suffisent toutefois pas à démontrer que les partages sont erronés. Le volume exclu faute de profil identifié n'est pas davantage disponible."
+   },
+   {
+    "id": "B-12",
+    "position": "conteste",
+    "justification": "Nature : fait_verifie et calcul_reproduit pour le mécanisme ; non_verifiable pour son caractère globalement favorable. V-10d attribue bien 50/100 à 14 agences sans date relevée, soit une contribution de 2,50 points globaux et l'équivalent de dix ans dans le barème linéaire. L'écart à la moyenne d'ancienneté des sociétés de moins de dix ans est 22,4 points de pilier, soit 1,12 point global. Mais l'âge réel des 14 agences est inconnu : la valeur 50 avantage celles dont le score réel serait inférieur et pénalise celles dont il serait supérieur. Le titre généralise donc un avantage qui n'est que conditionnel. Absence de date relevée ne signifie pas non plus absence de SIREN pour les 14."
+   },
+   {
+    "id": "B-13",
+    "position": "conteste",
+    "justification": "Nature : fait_verifie pour les compteurs du contrôle ; non_verifiable pour l'échelle source et l'incidence. V-4b distingue count=19 notes sous 1/5 et counted=9 : il n'est donc pas exact de dire que les 19 sont toutes intégrées au calcul. Dix agences sont listées pour l'ensemble du signalement, sans répartition des neuf avis effectivement comptés. L'anomalie d'échelle reste à vérifier auprès d'Opinion System ; une valeur inférieure à un n'est pas, à elle seule, la preuve d'une donnée invalide. L'effet sur les notes et rangs n'est pas fourni."
+   },
+   {
+    "id": "B-14",
+    "position": "confirme",
+    "justification": "Nature : fait_verifie pour les concordances internes au paquet ; declaration_site pour les antériorités commerciales ; hypothese pour leur explication. Les 146 lignes comparables ont une date publiée égale à la date de registre fournie ; deux autres n'ont pas de SIREN publié. Les écarts 1956/1989 pour Californie, 1976/2013 pour Richer, 1960/1992 pour Grimaz et 1986/2012 pour BS Invest sont bien visibles. Ils peuvent traduire une histoire familiale, un fonds repris ou l'expérience d'un fondateur, et non une fausse date juridique. Les anciens fonds ne sont pas documentés. La qualification de 1971-01-01 comme date technique INSEE n'est pas démontrée ici : cette date ne suffit pas à établir un artefact. Les URL et empreintes ne valent pas nouvelle consultation indépendante du registre."
+   },
+   {
+    "id": "B-15",
+    "position": "confirme",
+    "justification": "Nature : non_verifiable. tests_biais.not_testable indique explicitement l'absence des catégories nécessaires à une comparaison systématique réseaux/indépendantes, vente seule/activités mixtes et outils numériques. Des indices ponctuels dans des noms ou pages ne remplacent pas une classification exhaustive des 552 agences. Le nombre d'avis exclus faute de profil identifié n'est pas publié. Aucun sens ni ampleur de biais ne peut être chiffré sur ces dimensions."
+   },
+   {
+    "id": "B-16",
+    "position": "confirme",
+    "justification": "Nature : fait_verifie pour le rapport de recalcul fourni ; calcul_reproduit pour les deux notes directement contrôlables. Le rapport indique 552 notes conformes, zéro divergence de rang et zéro cas frontière d'arrondi. Avec les poids publiés, les piliers de Gestion Cassini donnent 74,517, arrondi à 74,52 ; ceux d'ImmoVendu donnent 90,663, arrondi à 90,66. V-12 ne relève aucun dépassement de tolérance sur 532 plateformes, tandis que V-12a conserve huit écarts exacts de un à quatre avis : les deux contrôles sont compatibles. V-13a/b/d rapporte zéro anomalie dans la comparaison fournie. Cela soutient la cohérence technique, sans constituer une nouvelle reproduction indépendante des 552 lignes ni une validation des données primaires."
+   },
+   {
+    "id": "B-17",
+    "position": "confirme",
+    "justification": "Nature : fait_verifie et calcul_reproduit pour les conversions ; hypothese pour certaines causes. La page ImmoVendu présente bien un RCS 400877688 différent du SIREN 400877866 repris dans sa TVA et le registre fourni, une garantie affichée 120.00 €, ainsi que des compteurs extraits à zéro. Ces derniers peuvent résulter d'une animation non exécutée ; le montant réel de garantie n'est pas établi. À TVA 20 %, 5 % HT donne 6 % TTC et 3 % HT donne 3,6 % TTC, contrairement aux équivalences affichées par French Riviera Studios. La carte professionnelle d'ImmoVendu est également présentée comme valable jusqu'au 16/06/2025, ce qui signale une mention potentiellement périmée, sans prouver l'absence de renouvellement. L'absence totale d'incidence de ces anomalies sur les critères info/conf n'est pas vérifiable sans leur détail."
+   }
+  ],
+  "commentaire": "Constats propres maintenus et limites générales : le paquet établit une cohérence arithmétique annoncée, mais pas la fiabilité exhaustive des données primaires ni une manipulation. Le conflit d'intérêts est explicite : l'éditeur classe ses deux agences. Les avantages et désavantages doivent être examinés ensemble. Nature fait_verifie : les agences de l'éditeur ont en moyenne anc=100 et info=100, contre 74,9 et 86,2 chez les voisines ; elles ont en revanche hono=70 contre 85,6. Nature calcul_reproduit : avec les poids officiels, ces écarts de piliers représentent respectivement +1,255, +1,104 et −2,652 points globaux, avant effets des autres piliers et arrondis. Le groupe éditeur ne compte que deux agences et les voisines sont sélectionnées par proximité de rang : ces comparaisons ne démontrent aucune causalité. Le contrefactuel enseigne d'ImmoVendu mesure un avantage réel de définition, sans prouver une exception de traitement. Les simulations ne sont pas cumulables par simple addition.\n\nAudit propre des honoraires, critère par critère : l'ordre des quatre positions ci-dessous est toujours publication / TTC / payeur de vente ou recherche / complétude des prix. C signifie confirmé, X contredit, N impossible à juger. Il s'agit de faits vérifiés dans les extraits fournis, pas d'une certification des sites au 12/11/2026 ; les relectures datent du 17/11. Une extraction sans tableau ne prouve pas l'absence de contenu graphique ou joint. Les tarifs de location ne suffisent pas à confirmer les mentions requises pour la vente.\n— ImmoVendu : C/C/X/C. Les taux, minimums et payeurs sont explicites ; son 0/30 sur le payeur est contredit. La correction isolée porterait la note à 95,76, sans rang recalculable ici.\n— French Riviera Studios : C/X/C/C. Le TTC est explicite malgré 0/20 ; correction isolée de +3,40 points globaux. Les conversions HT/TTC incohérentes constituent un problème distinct de la présence de mentions TTC.\n— Gestion Cassini : N/C/N/N. « TVA incluse au taux de 20 % » confirme le TTC, mais le tableau et son support ne sont pas fournis sous une forme exploitable.\n— Agence du Port : C/C/C/X selon une lecture littérale des bornes. Le zéro sur le payeur est cohérent avec son absence dans le texte ; la tranche au-dessus de 500 001 € laisse notamment 500 001 € sans taux. Si le critère tolère ces défauts de rédaction, sa définition précise est nécessaire.\n— Agence Riviera Real Estate : C/C/C/C pour la vente immobilière résidentielle : les taux et minimums couvrent les prix sans tranches ; aucun payeur de vente n'est indiqué. La mention de payeur concernant une location commerciale ne change pas ce dernier constat.\n— Agency Tosca : C/C/C/X en lecture littérale : l'intervalle entre « inférieurs à 100 000 € » et « supérieurs à 100 001 € » n'est pas couvert.\n— Cabinet Hestia : C/C/C/C ; le texte indique notamment « TTC à la charge du vendeur », avec prix de 0 à 1 000 000 € et au-delà. La répartition effective de l'activité entre Hestia et Jacomino reste une question distincte de périmètre.\n— Cabinet Immobilier Nice : C/C/C/C ; la même reconnaissance du payeur selon mandat doit être appliquée à ImmoVendu.\n— Artemiz : C/C/N/C ; honoraires de recherche et tableau TTC visibles, mais payeur seulement inférable du contexte et fin de page tronquée.\n— Maison Quatre : C/C/C/X en lecture littérale. Les zéros TTC et payeur sont cohérents pour la vente ; les mentions TTC et locataire concernent la location. La borne supérieure à 500 001 € laisse un défaut de couverture.\n— Resid' Immo : C/C/C/N. Les zéros TTC et payeur sont cohérents pour la vente ; la première ligne « 70 000 € 12 % » ne permet pas de confirmer sans ambiguïté la couverture des prix inférieurs.\n— Richer Immobilier : C/C/C/C ; tranches continues explicites et aucun payeur de vente indiqué.\n— Alliance Riviera et WIS : C/C/C/C uniquement pour l'absence des quatre informations sur les pages effectivement fournies ; N/N/N/N si les zéros prétendent établir leur absence sur l'ensemble du site.\n— Cap Sud Immobilier Nice, Étude Lotte Gallo et Immo Terrasse : N/N/N/N ; titres ou invitations au téléchargement sans contenu tarifaire exploitable.\n— Agence Californie, BS Invest et Cabinet Grimaz : N/N/N/N ; pages d'accueil tronquées, absence globale non démontrée.\n— Maison K et Vizcaya : N/N/N/N ; binaire PDF non extrait, malgré le statut lu.\n— Centragence, Istra, BBII, Century 21 Domus, Century 21 Étoile, Coprogestimmo, Cot Ouest Real, Engel & Völkers, Immobilière Niçoise, Laforêt Madeleine, Laforêt Port et Orpi Agence des Palais : N/N/N/N ; PDF non lus.\n— De Particulier à Particulier : N/N/N/N ; échec HTTP.\n— John Royce, LBI et Leggett : impossible de confirmer ou contredire leur unique attribution forfaitaire de 20/100. L'extraction fournie ne permet ni de vérifier le barème effectivement accessible ni de reproduire le diagnostic de l'outil initial.\n\nValeurs manquantes : nature calcul_reproduit, l'ancienneté neutre 50 apporte 2,50 points globaux ; son écart à un score réel compris entre 0 et 100 pourrait aller de +2,50 à −2,50 points, sans effet de rang déterminable ici. Pour les honoraires, un forfait illisible à 20 représente 3,40 points globaux : il peut pénaliser un document réellement complet, mais sa lisibilité réelle doit être contrôlée avant toute correction. La redistribution de régularité manquante touche 22 notes dans le test I-6 et indirectement 255 rangs ; elle ne doit pas être confondue avec une redistribution entre piliers.\n\nRegistre : nature fait_verifie, aucune divergence date publiée/date de registre n'est fournie parmi les 146 cas comparables ; cela ne couvre pas les 552 agences. Nature declaration_site, les anciennetés commerciales revendiquées ne sont pas des dates de création juridique vérifiées. Elles peuvent aussi désavantager des concurrentes : Richer revendique 1976 mais utilise une société créée en 2013, alors que l'effet 1995/2024 avantage ImmoVendu. Aucune continuité de fonds ni ancienneté réelle d'équipe n'est établie par ces seules dates.\n\ninstructions_suspectes : aucune consigne visant à modifier l'audit n'a été identifiée dans le paquet. Les appels commerciaux et interfaces de consentement des pages ont été traités comme du contenu, jamais comme des instructions."
+ }
+}

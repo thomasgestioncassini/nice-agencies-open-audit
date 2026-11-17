@@ -1,0 +1,381 @@
+{
+ "scenarios": {
+  "sans_anciennete": {
+   "rangs_changes": 546,
+   "deplacement_max": 51,
+   "deplacement_median": 13.0,
+   "top10_inchanges": 6,
+   "agences_suivies": {
+    "gestion-cassini": {
+     "rang": 144,
+     "rang_officiel": 124,
+     "note": 73.18,
+     "note_officielle": 74.52
+    },
+    "immovendu": {
+     "rang": 6,
+     "rang_officiel": 2,
+     "note": 90.17,
+     "note_officielle": 90.66
+    }
+   }
+  },
+  "avis_plus20": {
+   "rangs_changes": 511,
+   "deplacement_max": 33,
+   "deplacement_median": 6,
+   "top10_inchanges": 9,
+   "agences_suivies": {
+    "gestion-cassini": {
+     "rang": 127,
+     "rang_officiel": 124,
+     "note": 74.69,
+     "note_officielle": 74.52
+    },
+    "immovendu": {
+     "rang": 2,
+     "rang_officiel": 2,
+     "note": 90.97,
+     "note_officielle": 90.66
+    }
+   }
+  },
+  "avis_moins20": {
+   "rangs_changes": 515,
+   "deplacement_max": 41,
+   "deplacement_median": 7,
+   "top10_inchanges": 9,
+   "agences_suivies": {
+    "gestion-cassini": {
+     "rang": 119,
+     "rang_officiel": 124,
+     "note": 74.31,
+     "note_officielle": 74.52
+    },
+    "immovendu": {
+     "rang": 2,
+     "rang_officiel": 2,
+     "note": 90.3,
+     "note_officielle": 90.66
+    }
+   }
+  },
+  "serv_plus20": {
+   "rangs_changes": 477,
+   "deplacement_max": 20,
+   "deplacement_median": 3,
+   "top10_inchanges": 9,
+   "agences_suivies": {
+    "gestion-cassini": {
+     "rang": 127,
+     "rang_officiel": 124,
+     "note": 74.36,
+     "note_officielle": 74.52
+    },
+    "immovendu": {
+     "rang": 2,
+     "rang_officiel": 2,
+     "note": 90.59,
+     "note_officielle": 90.66
+    }
+   }
+  },
+  "serv_moins20": {
+   "rangs_changes": 473,
+   "deplacement_max": 23,
+   "deplacement_median": 3,
+   "top10_inchanges": 10,
+   "agences_suivies": {
+    "gestion-cassini": {
+     "rang": 126,
+     "rang_officiel": 124,
+     "note": 74.68,
+     "note_officielle": 74.52
+    },
+    "immovendu": {
+     "rang": 2,
+     "rang_officiel": 2,
+     "note": 90.74,
+     "note_officielle": 90.66
+    }
+   }
+  },
+  "hono_plus20": {
+   "rangs_changes": 483,
+   "deplacement_max": 29,
+   "deplacement_median": 7,
+   "top10_inchanges": 10,
+   "agences_suivies": {
+    "gestion-cassini": {
+     "rang": 126,
+     "rang_officiel": 124,
+     "note": 74.37,
+     "note_officielle": 74.52
+    },
+    "immovendu": {
+     "rang": 2,
+     "rang_officiel": 2,
+     "note": 89.98,
+     "note_officielle": 90.66
+    }
+   }
+  },
+  "hono_moins20": {
+   "rangs_changes": 482,
+   "deplacement_max": 30,
+   "deplacement_median": 8.0,
+   "top10_inchanges": 9,
+   "agences_suivies": {
+    "gestion-cassini": {
+     "rang": 122,
+     "rang_officiel": 124,
+     "note": 74.68,
+     "note_officielle": 74.52
+    },
+    "immovendu": {
+     "rang": 2,
+     "rang_officiel": 2,
+     "note": 91.39,
+     "note_officielle": 90.66
+    }
+   }
+  },
+  "conf_plus20": {
+   "rangs_changes": 473,
+   "deplacement_max": 22,
+   "deplacement_median": 4,
+   "top10_inchanges": 9,
+   "agences_suivies": {
+    "gestion-cassini": {
+     "rang": 127,
+     "rang_officiel": 124,
+     "note": 73.99,
+     "note_officielle": 74.52
+    },
+    "immovendu": {
+     "rang": 2,
+     "rang_officiel": 2,
+     "note": 90.86,
+     "note_officielle": 90.66
+    }
+   }
+  },
+  "conf_moins20": {
+   "rangs_changes": 471,
+   "deplacement_max": 19,
+   "deplacement_median": 4,
+   "top10_inchanges": 10,
+   "agences_suivies": {
+    "gestion-cassini": {
+     "rang": 124,
+     "rang_officiel": 124,
+     "note": 75.07,
+     "note_officielle": 74.52
+    },
+    "immovendu": {
+     "rang": 2,
+     "rang_officiel": 2,
+     "note": 90.45,
+     "note_officielle": 90.66
+    }
+   }
+  },
+  "info_plus20": {
+   "rangs_changes": 451,
+   "deplacement_max": 14,
+   "deplacement_median": 2,
+   "top10_inchanges": 10,
+   "agences_suivies": {
+    "gestion-cassini": {
+     "rang": 123,
+     "rang_officiel": 124,
+     "note": 74.92,
+     "note_officielle": 74.52
+    },
+    "immovendu": {
+     "rang": 2,
+     "rang_officiel": 2,
+     "note": 90.81,
+     "note_officielle": 90.66
+    }
+   }
+  },
+  "info_moins20": {
+   "rangs_changes": 458,
+   "deplacement_max": 15,
+   "deplacement_median": 2.0,
+   "top10_inchanges": 10,
+   "agences_suivies": {
+    "gestion-cassini": {
+     "rang": 130,
+     "rang_officiel": 124,
+     "note": 74.1,
+     "note_officielle": 74.52
+    },
+    "immovendu": {
+     "rang": 2,
+     "rang_officiel": 2,
+     "note": 90.51,
+     "note_officielle": 90.66
+    }
+   }
+  },
+  "anc_plus20": {
+   "rangs_changes": 497,
+   "deplacement_max": 12,
+   "deplacement_median": 3,
+   "top10_inchanges": 10,
+   "agences_suivies": {
+    "gestion-cassini": {
+     "rang": 122,
+     "rang_officiel": 124,
+     "note": 74.77,
+     "note_officielle": 74.52
+    },
+    "immovendu": {
+     "rang": 2,
+     "rang_officiel": 2,
+     "note": 90.76,
+     "note_officielle": 90.66
+    }
+   }
+  },
+  "anc_moins20": {
+   "rangs_changes": 482,
+   "deplacement_max": 19,
+   "deplacement_median": 3.0,
+   "top10_inchanges": 9,
+   "agences_suivies": {
+    "gestion-cassini": {
+     "rang": 130,
+     "rang_officiel": 124,
+     "note": 74.26,
+     "note_officielle": 74.52
+    },
+    "immovendu": {
+     "rang": 2,
+     "rang_officiel": 2,
+     "note": 90.57,
+     "note_officielle": 90.66
+    }
+   }
+  }
+ },
+ "publisher_specific": {
+  "anciennete_depuis_enseigne": {
+   "agences_concernees": [
+    "immovendu"
+   ],
+   "note": "date de lancement d’enseigne relevée seulement pour ces agences : la même règle ne peut pas être appliquée aux autres faute de donnée (contrôle V-10b)",
+   "rangs_changes": 12,
+   "deplacement_max": 11,
+   "deplacement_median": 1.0,
+   "top10_inchanges": 9,
+   "agences_suivies": {
+    "gestion-cassini": {
+     "rang": 124,
+     "rang_officiel": 124,
+     "note": 74.52,
+     "note_officielle": 74.52
+    },
+    "immovendu": {
+     "rang": 13,
+     "rang_officiel": 2,
+     "note": 86.37,
+     "note_officielle": 90.66
+    }
+   }
+  }
+ },
+ "groups": {
+  "editeur": {
+   "n": 2,
+   "note_moyenne": 82.59,
+   "avis": 85.6,
+   "serv": 78.9,
+   "hono": 70.0,
+   "conf": 75.0,
+   "info": 100.0,
+   "anc": 100.0
+  },
+  "voisines_editeur": {
+   "n": 16,
+   "note_moyenne": 80.14,
+   "avis": 84.4,
+   "serv": 74.6,
+   "hono": 85.6,
+   "conf": 61.2,
+   "info": 86.2,
+   "anc": 74.9
+  },
+  "toutes": {
+   "n": 552,
+   "note_moyenne": 60.86,
+   "avis": 67.3,
+   "serv": 65.3,
+   "hono": 49.7,
+   "conf": 42.0,
+   "info": 62.2,
+   "anc": 68.9
+  },
+  "petit_volume_avis": {
+   "n": 184,
+   "note_moyenne": 47.96,
+   "avis": 50.6,
+   "serv": 57.7,
+   "hono": 37.9,
+   "conf": 30.8,
+   "info": 49.9,
+   "anc": 62.9
+  },
+  "volume_moyen": {
+   "n": 184,
+   "note_moyenne": 62.62,
+   "avis": 69.6,
+   "serv": 66.4,
+   "hono": 51.2,
+   "conf": 44.6,
+   "info": 63.2,
+   "anc": 68.2
+  },
+  "grand_volume_avis": {
+   "n": 184,
+   "note_moyenne": 71.99,
+   "avis": 81.6,
+   "serv": 71.7,
+   "hono": 59.9,
+   "conf": 50.6,
+   "info": 73.4,
+   "anc": 75.7
+  },
+  "societe_moins_10_ans": {
+   "n": 164,
+   "note_moyenne": 59.88,
+   "avis": 67.5,
+   "serv": 70.3,
+   "hono": 50.2,
+   "conf": 42.9,
+   "info": 62.4,
+   "anc": 27.6
+  },
+  "societe_10_ans_et_plus": {
+   "n": 374,
+   "note_moyenne": 61.65,
+   "avis": 67.3,
+   "serv": 63.2,
+   "hono": 50.2,
+   "conf": 42.4,
+   "info": 62.6,
+   "anc": 87.8
+  }
+ },
+ "groups_definition": {
+  "voisines_editeur": "les 5 agences classées juste au-dessus et juste en dessous de chaque agence de l’éditeur",
+  "volume": "tiers des agences selon le nombre total d’avis sur les plateformes",
+  "societe": "âge de la société d’après la date de création publiée (registre)"
+ },
+ "not_testable": [
+  "réseaux et indépendantes, vente seule et mixtes, outils numériques : ces catégories ne figurent pas dans les exports publics",
+  "exclusion des avis sans profil identifié : le profil « non précisé » est publié, mais pas la part des avis exclus pour ce motif"
+ ]
+}

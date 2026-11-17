@@ -1,0 +1,147 @@
+{
+ "slot": "B",
+ "provider": "google",
+ "model_requested": "gemini-4-hydrogen",
+ "purpose": "confrontation",
+ "mandate_sha256": "82e0fec40442f9e2ab530af39492ad0a83e777c1e424867598daa9a65e8089c8",
+ "input_sha256": "9a3d91c44e26b366b57fb9c1c111a1ee0810133b4810d80446efad088425d059",
+ "input_chars": 230222,
+ "estimate_usd": 0.5664,
+ "model": "gemini-4-hydrogen",
+ "tokens_in": 90397,
+ "tokens_out": 17115,
+ "finish_reason": "STOP",
+ "usd": 0.264,
+ "status": "ok",
+ "errors": [],
+ "output": {
+  "positions": [
+   {
+    "id": "A-1",
+    "position": "confirme",
+    "justification": "Les données confirment que SARL GESTION CASSINI est à la fois l'éditeur du classement (classement.editeur) et l'exploitante des agences classées gestion-cassini (rang 124) et immovendu (rang 2), toutes deux rattachées au SIREN 400877866. La distinction entre conflit d'intérêts structurel avéré et absence de preuve de favoritisme intentionnel ou de garanties d'indépendance est exacte."
+   },
+   {
+    "id": "A-2",
+    "position": "confirme",
+    "justification": "Dans agences_editeur.immovendu.sources et registre_entreprises, le SIREN 400877866 a bien été créé le 1995-05-02 (anc = 100.0) alors que enseigne_depuis indique 2024. Le scénario publisher_specific.anciennete_depuis_enseigne réduit la note d'ImmoVendu de 90.66 à 86.37 (-4.29 points) et son rang de 2 à 13. Les contrôles V-10 (43 groupes de SIREN partagés) et V-10b (1 seule date d'enseigne relevée sur 552) confirment aussi l'asymétrie du test."
+   },
+   {
+    "id": "A-3",
+    "position": "confirme",
+    "justification": "Les pages extraites montrent bien des modèles d'activité distincts : marchand de biens achetant et vendant pour compte propre (bs-invest), immobilier commercial (cabinet-grimaz), chasseur immobilier côté acquéreur (artemiz-chasseur-immobilier) et plateforme de particuliers (de-particulier-a-particulier, en HTTPError). L'absence des catégories vente seule et mixtes est confirmée dans tests_biais.not_testable, justifiant le statut d'hypothèse."
+   },
+   {
+    "id": "A-4",
+    "position": "confirme",
+    "justification": "resultats_deterministes.statuts.donnees_primaires vaut bien non_verifiees. Les contrôles V-6 (833 doublons sans texte publié, dont 20 pour immovendu et 0 pour gestion-cassini), V-7 (182 écarts incluant les deux agences de l'éditeur), I-9 et tests_biais.not_testable (part des avis exclus sans profil non publiée) confirment l'impossibilité de vérifier de manière indépendante ces piliers qui totalisent 59 % du score (43 % + 16 %)."
+   },
+   {
+    "id": "A-5",
+    "position": "confirme",
+    "justification": "Les statuts affichent texte_documentation complete et texte_coherence aucune_contradiction_repertoriee (avec texte_historique ecarts_anterieurs), alors que regles_appliquees_absentes_ou_contraires_au_texte relève des contradictions de type contradiction en I-4 et I-7 par rapport aux citations du texte initial, avec un impact combiné de 362 notes et 289 rangs modifiés dans ensemble (immovendu restant 2e et gestion-cassini passant de 124 à 123)."
+   },
+   {
+    "id": "A-6",
+    "position": "confirme",
+    "justification": "La règle I-6 confirme la redistribution des 15 % de la régularité (soit 6.45 points sur 43 % de pondération Avis) vers la qualité et le volume lorsqu'aucun avis n'est relevé un par un. La variante neutre I-6 modifie 22 notes et 255 rangs (déplacement maximal de 37 places) et améliore le rang de gestion-cassini de 124 à 122 tout en maintenant immovendu à la 2e place."
+   },
+   {
+    "id": "A-7",
+    "position": "confirme",
+    "justification": "Les traitements divergent effectivement selon l'origine de l'absence : 14 dates de création absentes reçoivent 50/100 soit 2.5 points sur 5 % (V-10d) ; 3 barèmes jugés illisibles (john-royce-real-estate, lbi, leggett-immobilier-nice) reçoivent un forfait de 20/100 soit 3.4 points sur 17 % contre 17 points pour un barème complet (écart de 13.6 points) ; et la régularité absente est redistribuée (I-6)."
+   },
+   {
+    "id": "A-8",
+    "position": "confirme",
+    "justification": "Dans tests_biais.groups, petit_volume_avis (n=184) obtient une moyenne de 47.96 (Avis 50.6) contre 71.99 (Avis 81.6) pour grand_volume_avis (n=184), soit +24.03 points dont 13.33 points pondérés sur le pilier Avis ((81.6 - 50.6) * 0.43). Comme tous les autres piliers sont également supérieurs dans le tiers à grand volume, l'absence de conclusion causale est justifiée."
+   },
+   {
+    "id": "A-9",
+    "position": "confirme",
+    "justification": "ImmoVendu publie 30/20/0/20 sur ses honoraires, mais son texte extrait indique explicitement « Honoraires à la charge du VENDEUR ou de l’ACQUEREUR en fonction du mandat de vente », formule analogue à celle de cabinet-immobilier-nice qui obtient 30/30 sur le payeur. Les autres critères (publication, TTC, taux fixes et minima) correspondent aux points attribués. Le passage de 70 à 100 sur un pilier à 17 % ajouterait bien 5.10 points (90.663 + 5.10 = 95.763, arrondi à 95.76), défavorable ici à l'éditeur."
+   },
+   {
+    "id": "A-10",
+    "position": "confirme",
+    "justification": "French Riviera Studios affiche 30/0/30/20 alors que sa page mentionne explicitement des montants TTC (« 7% TTC », « 5 % TTC », « 9% TTC », « 17% TTC », « 10€ TTC/M2 »), ce qui contredit le zéro si le critère vérifie la présence d'indications TTC (+3.40 points possibles). Le constat relève à juste titre l'incohérence arithmétique (5 % HT = 6 % TTC et 3 % HT = 3.6 % TTC à 20 % de TVA) et l'absence de précision sur une exigence d'exactitude fiscale."
+   },
+   {
+    "id": "A-11",
+    "position": "confirme",
+    "justification": "Sur la page d'honoraires d'ImmoVendu, les mentions légales affichent « SAS GESTION CASSINI » (alors que l'éditeur est désigné comme SARL), un numéro RCS « 400 877 688 » divergent du SIREN 400877866 figurant dans les sources, le registre et la TVA affichée (« FR 62 400 877 866 »), ainsi qu'une carte professionnelle valable jusqu'au 16/06/2025 alors que le relevé date de novembre 2026. La réserve sur l'absence de grille détaillée des piliers conf (100) et info (100) est pertinente."
+   },
+   {
+    "id": "A-12",
+    "position": "confirme",
+    "justification": "La somme des critères est bien 3+2+4+7+6+1 = 23 et le contrôle V-9 établit que « Annonce publiée depuis moins de 30 jours » est non applicable pour 524 agences sur 526 (99.62 %). Les deux agences de l'éditeur portent également criteres_non_applicables:1 dans leurs sources. La recommandation de transparence sur les dénominateurs effectifs est fondée."
+   },
+   {
+    "id": "A-13",
+    "position": "confirme",
+    "justification": "Dans tests_biais.scenarios, sans_anciennete modifie 546 rangs (médiane 13.0, max 51) et fait reculer gestion-cassini (124 -> 144) et immovendu (2 -> 6). En revanche, ImmoVendu reste 2e dans les 12 scénarios à ±20 %, et gestion-cassini est pénalisée par un poids accru des honoraires (124 -> 126 en hono_plus20, 124 -> 122 en hono_moins20)."
+   },
+   {
+    "id": "A-14",
+    "position": "confirme",
+    "justification": "La comparaison entre groups.editeur (n=2) et voisines_editeur (n=16) montre un désavantage en honoraires (70.0 vs 85.6, soit -2.652 points pondérés à 17 %) et des écarts favorables en information (100.0 vs 86.2, soit +1.104 point), ancienneté (100.0 vs 74.9, soit +1.255 point) et confiance en moyenne (75.0 vs 61.2, soit +1.518 point), ce dernier chiffre masquant le 50.0 de gestion-cassini face au 100.0 d'immovendu."
+   },
+   {
+    "id": "A-15",
+    "position": "confirme",
+    "justification": "Les bornes littérales posent effectivement problème : agency-tosca (30/20/0/20) exclut littéralement 100 000 € et 100 001 € ; maison-quatre (30/0/0/20) et agence-du-port (30/20/0/20) ont une dernière tranche « > 500 001 € » ou « Supérieur à 500 001 € » après « 500 000 € » ; resid-immo (30/0/0/20) affiche « 70 000 € 12 % » et « > 250 001 € ». Les constats sur publication, TTC et absence de payeur en vente sont conformes aux textes fournis, avec la réserve pertinente sur l'extraction des opérateurs."
+   },
+   {
+    "id": "A-16",
+    "position": "confirme",
+    "justification": "Pour gestion-cassini (30/20/0/20), le texte extrait ne contient que « TVA incluse au taux de 20 % » sans barème chiffré (confirmant TTC 20, rendant le reste invérifiable). Pour cap-sud-immobilier-nice (30/20/30/20), etude-lotte-gallo (30/20/0/20) et immo-terrasse (30/20/30/20), aucun montant ni tableau n'apparaît dans le texte extrait (simple intitulé ou lien de téléchargement PDF), rendant les quatre critères impossibles à juger sur ces extraits."
+   },
+   {
+    "id": "A-17",
+    "position": "confirme",
+    "justification": "Les six agences mentionnées ont toutes 0/0/0/0 et une page de type site : agence-californie, bs-invest et cabinet-grimaz ont des textes tronqués (text_truncated:true), de-particulier-a-particulier est en status echec (HTTPError), alliance-riviera affiche une page en refonte et wis-patrimoine-wis une page d'accueil sans barème. Ces extraits ne permettent pas de confirmer l'absence de barème sur l'ensemble de leurs sites."
+   },
+   {
+    "id": "A-18",
+    "position": "confirme",
+    "justification": "Douze entrées de baremes_relus ont status pdf_non_lu et deux (agence-immobiliere-maison-k-immobilier-nice-cote-d-azur et agence-vizcaya) ont status lu mais un texte brut %PDF binaire et tronqué. Aucun des critères de contenu publiés (30/20/0/0 pour Maison K, 30/20/30/20 pour Vizcaya et les scores des 12 autres) ne peut être confirmé ou infirmé d'après ces éléments."
+   },
+   {
+    "id": "A-19",
+    "position": "confirme",
+    "justification": "Pour john-royce-real-estate, lbi et leggett-immobilier-nice, un score forfaitaire unique de 20/100 (« Barème trouvé mais illisible par notre outil ») est publié sans détail des quatre critères. Les textes fournis ne contiennent aucun tarif (pages sans grille pour les deux premières, texte tronqué avant la section honoraires pour Leggett), rendant impossible toute confirmation ou infirmation."
+   },
+   {
+    "id": "A-20",
+    "position": "confirme",
+    "justification": "Les règles I-1 (note globale et poids fixe 0.5 sans profil ni date pour les plateformes non relevées en entier), I-2 (moyenne simple des moyennes d'agences d'agregats-plateformes.csv, classées ou non, donnant m_ref = 4.453) et I-8 (réponses aux avis négatifs restreintes aux avis Google vente/achat <= 3 étoiles dont la réponse a été relevée) sont conformes aux descriptions du paquet."
+   },
+   {
+    "id": "A-21",
+    "position": "confirme",
+    "justification": "Le contrôle V-4b recense exactement 19 avis inférieurs à 1/5 (dont 9 comptabilisés) répartis sur 10 agences concurrentes (aucune des deux agences de l'éditeur), conservés tels quels dans la moyenne en attendant la vérification de l'échelle d'Opinion System à la source."
+   },
+   {
+    "id": "A-22",
+    "position": "confirme",
+    "justification": "Pour agence-riviera-real-estate et richer-immobilier, les textes confirment 30/20/0/20 (le payeur n'étant précisé que pour la location/gestion, pas pour la vente). Pour cabinet-hestia et cabinet-immobilier-nice, les textes confirment 30/20/30/20. Pour artemiz-chasseur-immobilier (30/20/30/20), la grille est complète et TTC, mais le payeur acquéreur n'est déductible que du contexte de chasse immobilière sans mention explicite dans le barème."
+   },
+   {
+    "id": "A-23",
+    "position": "confirme",
+    "justification": "Les pondérations totalisent 100 % et les recalculs sont exacts : 76.7*0.43 + 69.6*0.16 + 70*0.17 + 50*0.11 + 100*0.08 + 100*0.05 = 74.517 (arrondi 74.52) pour gestion-cassini, et 94.5*0.43 + 88.3*0.16 + 70*0.17 + 100*0.11 + 100*0.08 + 100*0.05 = 90.663 (arrondi 90.66) pour immovendu. Le rapport recalcul annonce 552/552 notes conformes, et I-7/I-11 ont des impacts maximaux de 3 et 1 places sans affecter les rangs de l'éditeur."
+   },
+   {
+    "id": "A-24",
+    "position": "confirme",
+    "justification": "Le contrôle V-12 ne relève aucun dépassement de tolérance sur 532 plateformes, et V-12a indique 8 écarts exacts (sept de 1 avis et un de 4 avis : 89 relevés contre 85 déclarés pour agence-immobiliere-century-21-a-cimiez-lafage|google). Les contrôles V-13a, V-13b et V-13d sont tous à zéro, y compris pour gestion-cassini et immovendu."
+   },
+   {
+    "id": "A-25",
+    "position": "confirme",
+    "justification": "Les conclusions principales sont exactes : 146 lignes conformes et 2 SIREN non publiés dans registre_entreprises, écarts explicables entre histoire commerciale et date de société (1989 vs 1956 pour agence-californie, 2013 vs 1976 pour richer-immobilier), et échantillon mixte non extrapolable comme un tirage purement aléatoire. À noter toutefois une coquille mineure dans les preuves citées par l'autre auditeur : cabinet-grimaz est enregistré au 1992-03-20 (1992) et non 1993."
+   }
+  ],
+  "commentaire": "Tous les constats (A-1 à A-25) de l'autre auditeur sont solidement étayés par les données du paquet, nuancés sur leurs limites et équilibrés entre éléments défavorables et favorables à l'éditeur. Seule une inexactitude mineure de millésime a été relevée dans A-25 concernant la date de création de société de cabinet-grimaz (1992-03-20 dans registre_entreprises, et non 1993), sans remettre en cause la validité du constat."
+ }
+}

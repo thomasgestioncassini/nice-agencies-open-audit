@@ -1,0 +1,302 @@
+# Analyse initiale — IA A
+
+Fournisseur : openai · modèle : gpt-6.1-sol · statut : **ok**
+Empreinte du mandat : 82e0fec40442f9e2ab530af39492ad0a83e777c1e424867598daa9a65e8089c8 · empreinte de l’entrée : 342a9c91117454c73b024052efe8bd7872823458096b9afebce614066b0ac448
+Coût : 0.2383 $ (68181 jetons lus, 10191 écrits)
+
+> Texte produit par l’IA, publié sans aucune modification ni relecture de l’éditeur.
+
+## Résumé
+
+Audit critique du paquet fourni, sans consultation externe. Les deux notes de l’éditeur sont arithmétiquement reproductibles ; le rapport fourni annonce aussi 552 notes et rangs conformes. Cette conformité ne valide toutefois ni les données primaires ni la pertinence du classement. Les principaux risques concernent le conflit d’intérêts structurel, l’avantage donné à l’ancienneté juridique plutôt qu’à celle de l’enseigne, l’hétérogénéité du traitement des informations manquantes et plusieurs classifications à vérifier. Une erreur d’honoraires défavorable à ImmoVendu est identifiable : son payeur est bien indiqué conditionnellement au mandat, comme chez un concurrent crédité. Les tests révèlent des effets favorables et défavorables à l’éditeur, sans preuve suffisante de manipulation intentionnelle.
+
+## Constats
+
+### A-1 · Conflit d’intérêts structurel entre éditeur et agences évaluées
+
+Catégorie : conflit_interets · nature : fait_verifie · gravité : majeur · concerne l’éditeur : oui
+
+La même société publie les règles et bénéficie de deux positions dans le classement. Cela exige une séparation documentée des fonctions et une validation indépendante des classifications, particulièrement celles issues de lectures automatisées. Le conflit d’intérêts est établi dans les données ; un favoritisme intentionnel ne l’est pas.
+
+Preuves : classement.editeur : SARL GESTION CASSINI ; classement.agences_editeur : gestion-cassini et immovendu ; agences_editeur : rangs 124 et 2 ; même SIREN 400877866
+
+Incertitude : L’existence et l’efficacité de procédures indépendantes de collecte, de validation et de recours ne sont pas établies par le paquet.
+
+### A-2 · L’ancienneté juridique avantage fortement ImmoVendu sans mesurer l’âge de son enseigne
+
+Catégorie : anciennete · nature : fait_verifie · gravité : majeur · concerne l’éditeur : oui
+
+La date de 1995 n’est pas contredite par le registre : elle décrit la société, pas le lancement d’ImmoVendu. Le choix de l’indicateur procure à cette enseigne récente le plafond de 100 et, dans le test ciblé fourni, 4,29 points et 11 places supplémentaires. Des concurrentes peuvent bénéficier du même mécanisme. Il serait injustifié de présenter le rang 13 comme un classement global corrigé.
+
+Preuves : immovendu.sources : date_creation_societe 1995-05-02 ; enseigne_depuis 2024 ; anc 100 ; registre_entreprises : dates publiée et du registre identiques pour le SIREN 400877866 ; publisher_specific.anciennete_depuis_enseigne : ImmoVendu 90,66 → 86,37 ; rang 2 → 13 ; V-10 : même règle de date pour 43 groupes de sociétés ; V-10b : date d’enseigne disponible pour seulement 1 agence sur 552
+
+Incertitude : Le scénario d’enseigne n’est pas applicable symétriquement aux concurrentes ; le mois de lancement de 2024 n’est pas fourni.
+
+### A-3 · Le périmètre semble mélanger des activités immobilières difficilement comparables
+
+Catégorie : donnees · nature : hypothese · gravité : majeur · concerne l’éditeur : non
+
+Un marchand de biens vendant ses propres actifs ne se compare pas nécessairement à une agence d’intermédiation ; un spécialiste commercial ou un chasseur peut aussi être pénalisé par des critères résidentiels ou orientés vendeurs. Il faut vérifier ces classifications avant d’interpréter leurs zéros comme des défauts. Aucune exclusion définitive ne peut être décidée sur ces seuls extraits.
+
+Preuves : bs-invest.texte_page : « Marchand de biens sur la Côte d’Azur » et proposition d’achat aux vendeurs ; cabinet-grimaz.texte_page : « Transactions commerciales » et spécialisation en immobilier commercial ; artemiz-chasseur-immobilier.texte_page : honoraires de recherche et accompagnement de l’acquéreur ; de-particulier-a-particulier : URL pap.fr ; lecture en échec ; tests_biais.not_testable : catégories vente seule et mixtes absentes des exports
+
+Incertitude : Les activités juridiques détaillées, cartes professionnelles, mandats et règles d’inclusion ne sont pas fournis. Le cas PAP n’est pas vérifiable ici.
+
+### A-4 · Les classifications déterminantes des avis restent largement non vérifiables
+
+Catégorie : donnees · nature : non_verifiable · gravité : majeur · concerne l’éditeur : oui
+
+Les exports ne permettent pas de valider les doublons, les profils vente/achat, les problèmes détectés ou les partages textuels. Or les piliers Avis et Service pèsent ensemble 59 %. Les signalements ne prouvent pas des erreurs, mais empêchent une certification indépendante des données. Les mêmes réserves doivent s’appliquer aux agences de l’éditeur et aux concurrentes.
+
+Preuves : resultats_deterministes.statuts.donnees_primaires : non_verifiees ; V-6 : 833 avis déclarés doublons ; textes absents ; ImmoVendu 20, Gestion Cassini 0 ; V-7 : 182 discordances de présence entre fiches et partage déclaré ; les deux agences de l’éditeur sont concernées ; I-9 : problèmes signalés mesurés parmi les avis uniques dont le texte a été lu par l’IA ; tests_biais.not_testable : part des avis exclus pour profil non identifié indisponible
+
+Incertitude : Les unités et effets individuels des 182 signalements ne sont pas détaillés ; le partage peut impliquer des fiches hors export.
+
+### A-5 · Le diagnostic documentaire global est trop affirmatif au regard des écarts recensés
+
+Catégorie : methode · nature : fait_verifie · gravité : majeur · concerne l’éditeur : oui
+
+Il faut distinguer conformité au code, conformité au texte initial et conformité au texte actuel. Le paquet contient des éléments incompatibles avec une validation documentaire inconditionnelle, sans permettre d’affirmer que toutes les contradictions persistent dans la version actuelle. Dans la variante d’ensemble fournie, ImmoVendu reste deuxième et Gestion Cassini passe de 124 à 123 : les écarts ne démontrent donc pas un avantage systématique à l’éditeur.
+
+Preuves : statuts : texte_documentation complete ; texte_coherence aucune_contradiction_repertoriee ; texte_historique ecarts_anterieurs ; I-4 : doublons comptés pour la régularité malgré la citation « ne compte qu’une fois » ; I-7 : rang calculé au centième malgré la citation « selon leur note exacte » ; effet_des_regles_vs_texte_initial.ensemble : 362 notes et 289 rangs changés ; déplacement maximal 37 ; 8 membres du top 10 conservés
+
+Incertitude : Le texte public complet et ses versions successives ne sont pas joints. Les champs documented_by suggèrent des précisions ou corrections qu’il est impossible de dater ici.
+
+### A-6 · L’absence de régularité redistribue le poids au lieu d’attribuer une valeur neutre
+
+Catégorie : methode · nature : fait_verifie · gravité : majeur · concerne l’éditeur : oui
+
+L’absence de données modifie ce que mesure le pilier Avis selon l’agence. Les 15 % internes représentent nominalement 6,45 points de la note totale. La phrase interdisant la redistribution d’un pilier ne suffit toutefois pas à interdire celle d’un sous-critère : c’est une ambiguïté de périmètre, pas à elle seule une contradiction certaine. La règle de production désavantage ici Gestion Cassini de deux places par rapport à la variante neutre.
+
+Preuves : I-6 : les 15 % de régularité sont reportés sur qualité et volume si aucun avis n’est relevé individuellement ; Variante I-6 : 22 notes changées, 255 rangs changés, déplacement maximal 37 ; Gestion Cassini : rang de production 124, variante 122 ; ImmoVendu : 2 dans les deux cas
+
+Incertitude : Les scores des 22 agences concernées et le texte intégral de la règle actuelle manquent.
+
+### A-7 · Les valeurs manquantes et les difficultés techniques reçoivent des traitements très différents
+
+Catégorie : methode · nature : calcul_reproduit · gravité : majeur · concerne l’éditeur : non
+
+Une ancienneté inconnue apporte 2,5 points de note, alors qu’un barème illisible n’apporte que 3,4 points sur 17. Entre un barème réellement complet à 100 et le forfait 20, l’écart atteint 13,6 points de note. La méthode peut ainsi mesurer la lisibilité par l’outil plutôt que la transparence pour le consommateur. Une absence de donnée n’est pas automatiquement une absence de conformité.
+
+Preuves : V-10d : 14 dates de création absentes, ancienneté fixée à 50 ; baremes_relus : John Royce, LBI et Leggett notés forfaitairement 20/100 pour barème illisible ; I-6 : régularité absente retirée avec redistribution ; Poids : honoraires 17 %, ancienneté 5 %
+
+Incertitude : La qualité réelle des barèmes illisibles et les résultats d’une lecture humaine ne sont pas connus.
+
+### A-8 · Le classement est fortement associé au volume d’avis, sans démonstration causale de qualité
+
+Catégorie : biais · nature : calcul_reproduit · gravité : majeur · concerne l’éditeur : non
+
+Le tiers à grand volume dépasse le tiers à petit volume de 24,03 points de note ; l’écart du seul pilier Avis vaut environ 13,33 points pondérés. Cela signale un avantage structurel possible à la visibilité et à l’accumulation d’avis. Les différences simultanées sur les autres piliers interdisent d’attribuer tout l’écart au volume ou de conclure que cet avantage serait injustifié.
+
+Preuves : groups.petit_volume_avis : n 184, note moyenne 47,96, pilier Avis 50,6 ; groups.grand_volume_avis : n 184, note moyenne 71,99, pilier Avis 81,6 ; Les grands volumes ont aussi des scores moyens supérieurs sur Service, Honoraires, Confiance, Information et Ancienneté ; Poids Avis : 43 %
+
+Incertitude : Aucun test à qualité constante, modèle ajusté ou détail des sous-pondérations Avis n’est fourni.
+
+### A-9 · Le zéro attribué au payeur d’ImmoVendu est contredit par son texte
+
+Catégorie : honoraires · nature : fait_verifie · gravité : majeur · concerne l’éditeur : oui
+
+Verdicts d’après le texte fourni : Barème publié 30 confirmé ; Montants TTC 20 confirmé ; Payeur indiqué 0 contredit ; Barème complet 20 confirmé, les taux fixes par catégorie et minima ne nécessitant pas de tranches supplémentaires. Selon le même standard que le concurrent, le pilier devrait passer de 70 à 100. À autres données constantes, cela ajouterait 5,10 points, soit une note arrondie de 95,76. Cette erreur est défavorable à l’éditeur.
+
+Preuves : ImmoVendu : points publiés 30/20/0/20 ; ImmoVendu.texte_page : « Honoraires à la charge du VENDEUR ou de l’ACQUEREUR en fonction du mandat de vente » ; Cabinet Immobilier Nice : 30 points au payeur avec « vendeur ou acquéreur, selon les conditions du mandat » ; ImmoVendu : taux TTC par catégorie et minima de 6 500 € ou 3 000 €
+
+Incertitude : Lecture du 17 novembre contre observation publiée du 12 novembre ; aucun historique de page ne prouve l’identité des deux états. Le nouveau rang n’est pas calculable ici.
+
+### A-10 · Le zéro TTC de French Riviera Studios est contredit, mais son texte fiscal est incohérent
+
+Catégorie : honoraires · nature : fait_verifie · gravité : majeur · concerne l’éditeur : non
+
+Verdicts : Barème publié 30 confirmé ; Montants TTC 0 contredit selon le libellé de présence de TTC ; Payeur indiqué 30 confirmé ; Barème complet 20 confirmé pour les taux fixes affichés. Avec une TVA de 20 %, 5 % HT donne 6 % TTC et 3 % HT donne 3,6 % TTC, non 7 % et 5 %. Le barème distingue donc présence et exactitude insuffisamment. Accorder les 20 points TTC ajouterait 3,40 points de note, sans corriger les erreurs fiscales de la page.
+
+Preuves : Points publiés : 30/0/30/20 ; Texte : vente « 5% HT […] soit 7% TTC » et honoraires à la charge du vendeur ; Texte : recherche « 3% HT […] soit 5 % TTC […] TVA […] à 20% »
+
+Incertitude : Une exigence de montants TTC fiscalement exacts pourrait justifier un autre verdict, mais elle ne figure pas dans le libellé fourni. Lecture postérieure de cinq jours.
+
+### A-11 · La page d’ImmoVendu contient des identifiants contradictoires et une échéance ancienne
+
+Catégorie : donnees · nature : fait_verifie · gravité : majeur · concerne l’éditeur : oui
+
+Les mentions ne sont pas cohérentes entre elles et la date de validité affichée est dépassée d’environ 17 mois. Cela justifie une vérification des scores parfaits si les critères évaluent l’exactitude et l’actualité de ces informations. Il ne faut pas en déduire une absence de carte valide ni modifier arbitrairement les piliers sans leur grille détaillée.
+
+Preuves : ImmoVendu.texte_page : « SAS GESTION CASSINI » contre SARL dans le paquet ; RCS affiché : 400 877 688 ; SIREN du registre et des sources : 400877866 ; TVA affichée : FR 62 400 877 866 ; Carte professionnelle affichée valable jusqu’au 16/06/2025 ; relevé en novembre 2026 ; Piliers publiés ImmoVendu : conf 100 ; info 100
+
+Incertitude : Le renouvellement réel de la carte, la forme juridique actuelle et les critères détaillés des piliers Confiance et Information ne sont pas vérifiés.
+
+### A-12 · Un des 23 critères annoncés n’est applicable que dans deux cas du contrôle
+
+Catégorie : methode · nature : calcul_reproduit · gravité : majeur · concerne l’éditeur : oui
+
+Le critère est non applicable dans 99,62 % des 526 cas contrôlés. Afficher 23 critères ne signifie donc pas que 23 dimensions discriminent effectivement les agences. Il faut publier les dénominateurs et poids effectifs par fiche. Aucun avantage particulier à l’éditeur ne peut être déduit de cette seule fréquence.
+
+Preuves : nombre_criteres : 3 + 2 + 4 + 7 + 6 + 1 = 23 ; V-9 : « Annonce publiée depuis moins de 30 jours » non applicable pour 524 agences sur 526 ; Sources des deux agences de l’éditeur : criteres_non_applicables:1
+
+Incertitude : Les 26 agences hors du dénominateur de 526 et la règle précise de neutralisation ne sont pas expliquées. Le critère non applicable de l’éditeur n’est pas identifié.
+
+### A-13 · La sensibilité aux poids est réelle, mais ne révèle pas un avantage uniforme de l’éditeur
+
+Catégorie : biais · nature : fait_verifie · gravité : mineur · concerne l’éditeur : oui
+
+Le choix d’inclure l’ancienneté soutient nettement les deux agences de l’éditeur. À l’inverse, le poids des honoraires les pénalise relativement à leurs voisines. La deuxième place d’ImmoVendu résiste aux variations locales fournies, mais pas à la suppression complète de l’ancienneté ni au changement ciblé de définition de l’âge.
+
+Preuves : sans_anciennete : 546 rangs changés ; déplacement médian 13 ; maximum 51 ; sans_anciennete : Gestion Cassini 124 → 144 ; ImmoVendu 2 → 6 ; Les 12 scénarios de variation de poids de ±20 % laissent ImmoVendu au rang 2 ; hono_plus20 : Gestion Cassini 124 → 126 ; hono_moins20 : 124 → 122
+
+Incertitude : Les variantes sont des choix méthodologiques alternatifs, pas des corrections prouvées. Leur protocole complet de renormalisation n’est pas joint.
+
+### A-14 · Les avantages de l’éditeur sont compensés en partie par ses honoraires et le score de confiance de Gestion Cassini
+
+Catégorie : biais · nature : calcul_reproduit · gravité : mineur · concerne l’éditeur : oui
+
+Par rapport aux voisines, les honoraires coûtent environ 2,65 points pondérés à l’éditeur. Information et Ancienneté lui apportent environ 1,10 et 1,26 point ; Confiance environ 1,52 point en moyenne, mais masque une forte différence entre ses deux agences. Ces comparaisons décrivent les scores, sans prouver une préférence de collecte ni une causalité.
+
+Preuves : groups.editeur contre voisines_editeur : Avis 85,6/84,4 ; Service 78,9/74,6 ; Honoraires 70/85,6 ; Même comparaison : Confiance 75/61,2 ; Information 100/86,2 ; Ancienneté 100/74,9 ; Gestion Cassini.conf : 50 ; ImmoVendu.conf : 100 ; Définition des voisines : agences immédiatement autour des positions publiées
+
+Incertitude : Moyennes de piliers arrondies ; groupe éditeur limité à deux agences ; voisinage sélectionné selon le résultat étudié.
+
+### A-15 · Certains points de complétude des barèmes sont fragiles aux bornes de prix
+
+Catégorie : honoraires · nature : fait_verifie · gravité : mineur · concerne l’éditeur : non
+
+Tosca : publication 30 et TTC 20 confirmés ; payeur 0 confirmé dans le texte de transaction ; complétude 20 contredite en lecture littérale, les seuils étant exclus. Maison Quatre et Resid’Immo : publication 30 confirmée ; TTC 0 et payeur 0 confirmés pour la vente, les mentions locatives ne suffisant pas ; complétude 20 impossible à confirmer strictement. Agence du Port : publication, TTC et absence de payeur de vente confirmés ; complétude impossible à confirmer strictement à la borne 500 001 €. Une règle de tolérance explicite doit s’appliquer à toutes les agences.
+
+Preuves : Tosca : « inférieurs à 100 000€ » puis « supérieurs à 100 001€ » ; points 30/20/0/20 ; Maison Quatre : dernière tranche « > 500 001 € » après 250 001–500 000 € ; points 30/0/0/20 ; Resid’Immo : première ligne « 70 000 € 12 % » sans borne inférieure ; dernière tranche « > 250 001 € » ; points 30/0/0/20 ; Agence du Port : dernière tranche « Supérieur à 500 001 € » après 200 001–500 000 €
+
+Incertitude : Les opérateurs peuvent avoir été dégradés par l’extraction. La grille ne précise pas si elle exige une couverture littérale des seuils ou une lecture commerciale usuelle.
+
+### A-16 · Des pages d’honoraires sans montants extraits ne permettent pas de valider les points
+
+Catégorie : honoraires · nature : non_verifiable · gravité : mineur · concerne l’éditeur : oui
+
+Gestion Cassini : TTC 20 confirmé par la mention générale ; publication 30, payeur 0 et complétude 20 impossibles à juger. Cap Sud, Étude Lotte et Immo Terrasse : chacun des quatre scores est impossible à juger sur le seul texte extrait. Les liens suggèrent une publication mais ne valident pas le contenu. Il serait asymétrique de condamner Gestion Cassini tout en validant les concurrentes confrontées à la même limite, ou inversement.
+
+Preuves : Gestion Cassini : points 30/20/0/20 ; extrait limité à « Honoraires TVA incluse au taux de 20 % » ; Cap Sud : points 30/20/30/20 ; extrait « Tarifs » sans montants ; Étude Lotte : points 30/20/0/20 ; « Télécharger nos honoraires » ; Immo Terrasse : points 30/20/30/20 ; « Ouvrir le PDF dans un nouvel onglet »
+
+Incertitude : Images, documents intégrés et PDF liés ne sont pas lus ; text_truncated:false ne garantit pas une extraction de ces éléments.
+
+### A-17 · Des zéros d’honoraires ne sont pas confirmables à partir d’extraits de pages d’accueil
+
+Catégorie : honoraires · nature : non_verifiable · gravité : mineur · concerne l’éditeur : non
+
+Pour chacune de ces six agences, les quatre scores restent impossibles à juger à l’échelle du site. Pour Alliance Riviera et WIS, les quatre zéros sont compatibles avec la page lue, mais l’absence sur cette page ne prouve pas l’absence ailleurs. Pour les trois extraits tronqués et PAP, l’insuffisance est encore plus nette. La pertinence d’exiger un barème d’agence à BS Invest doit en outre être vérifiée.
+
+Preuves : Agence Californie, BS Invest et Cabinet Grimaz : quatre zéros ; text_truncated:true ; PAP : quatre zéros ; status echec, HTTPError ; Alliance Riviera : quatre zéros ; page de refonte sans barème ; WIS : quatre zéros ; page présentant les branches du groupe, sans barème
+
+Incertitude : Aucune exploration complète des sites ni archive au 12 novembre n’est fournie.
+
+### A-18 · Les PDF non lus ou mal décodés ne valident aucun critère de contenu
+
+Catégorie : honoraires · nature : non_verifiable · gravité : mineur · concerne l’éditeur : non
+
+Pour chacune des quatorze agences listées, verdict sur chacun des quatre critères publiés : impossible à juger d’après le texte fourni. Une URL de PDF ou une réponse HTTP 200 constitue une piste de publication, non une lecture du barème. Cette limite ne justifie ni de valider les notes existantes ni de les remplacer par zéro.
+
+Preuves : Douze entrées baremes_relus ont status pdf_non_lu ; Maison K et Vizcaya : status lu mais texte_page commençant par %PDF avec flux binaires et texte tronqué ; Maison K : points 30/20/0/0 ; Vizcaya : 30/20/30/20
+
+Incertitude : Les PDF ne sont pas rendus ni soumis à une extraction textuelle adaptée dans le paquet.
+
+### A-19 · Les trois forfaits pour barème illisible ne sont pas validés par les relectures
+
+Catégorie : honoraires · nature : non_verifiable · gravité : mineur · concerne l’éditeur : non
+
+Le score forfaitaire de 20/100 est impossible à confirmer comme appréciation de transparence. Les quatre critères ordinaires ne sont pas publiés séparément pour ces trois agences et sont tous impossibles à juger. L’échec de la relecture ne démontre pas que le barème est illisible pour un internaute.
+
+Preuves : Points publiés : « Barème trouvé mais illisible par notre outil : 20 sur 100 » pour les trois agences ; John Royce et LBI : aucun montant extrait ; Leggett : texte tronqué avant la section tarifaire annoncée dans le sommaire
+
+Incertitude : Aucune lecture humaine du document tarifaire ni donnée détaillée des quatre critères n’est fournie.
+
+### A-20 · Les plateformes agrégées et la référence niçoise modifient le périmètre de mesure
+
+Catégorie : methode · nature : fait_verifie · gravité : mineur · concerne l’éditeur : non
+
+Les avis agrégés ne bénéficient pas du même filtrage de profil ni de la même datation que les avis individuels. La « moyenne de Nice » dépend aussi d’agences non classées et n’est pas la moyenne de tous les avis ni nécessairement celle des 552 classées. Enfin, mesurer les réponses seulement parmi les cas renseignés peut introduire un biais de sélection. Ces choix doivent être explicités et testés, sans présumer leur direction.
+
+Preuves : I-1 : plateformes incomplètes comptées via note globale, poids fixe 0,5 par avis, sans profil ni date ; I-2 : moyenne simple des moyennes d’agences de agregats-plateformes.csv, classées ou non ; recalcul.m_ref : 4,453 ; I-8 : réponses négatives limitées aux avis Google vente/achat à trois étoiles ou moins, réponse renseignée
+
+Incertitude : Nombre de plateformes agrégées, profils inclus, couverture des réponses et effets individuels non fournis. Le statut actuel de leur documentation n’est pas établi.
+
+### A-21 · Des notes d’avis inférieures à une étoile nécessitent une validation de l’échelle source
+
+Catégorie : donnees · nature : fait_verifie · gravité : mineur · concerne l’éditeur : non
+
+Si l’échelle source autorise ces valeurs, il peut ne pas y avoir d’erreur ; sinon, une conversion ou une donnée est incorrecte. Il faut vérifier la source avant de borner arbitrairement les notes à 1. L’effet final ne peut pas être chiffré à partir du seul nombre d’avis.
+
+Preuves : V-4b : 19 avis sous 1/5 signalés, dont counted 9 ; V-4b : notes conservées telles quelles ; échelle d’Opinion System à vérifier ; V-4b : dix agences listées, aucune des deux agences de l’éditeur
+
+Incertitude : Les notes individuelles, l’échelle d’origine et leur effet sur les résultats ne sont pas joints.
+
+### A-22 · Plusieurs barèmes confirment les scores, avec une réserve sur le payeur d’Artemiz
+
+Catégorie : honoraires · nature : fait_verifie · gravité : info · concerne l’éditeur : non
+
+Riviera et Richer : les quatre scores sont confirmés pour la transaction immobilière résidentielle ; les payeurs locatifs ne justifient pas de points pour la vente. Hestia et Cabinet Immobilier Nice : les quatre scores sont confirmés par le texte. Artemiz : publication 30, TTC 20 et complétude 20 confirmés ; payeur 30 impossible à confirmer sans savoir si la grille accepte l’identification implicite de l’acquéreur par le contexte de chasse immobilière. Cette réserve ne constitue pas une contradiction certaine.
+
+Preuves : Riviera : taux de vente TTC fixes selon mandat, sans payeur de vente ; points 30/20/0/20 ; Richer : quatre tranches continues, TTC explicite, sans payeur de vente ; points 30/20/0/20 ; Hestia : TTC, charge vendeur, deux tranches et minimum ; points 30/20/30/20 ; Cabinet Immobilier Nice : TTC, barème et payeur conditionnel au mandat explicites ; points 30/20/30/20 ; Artemiz : grille de recherche TTC de 7 500 € à 2,30 % ; points 30/20/30/20
+
+Incertitude : Relectures du 17 novembre, distinctes de l’observation du 12. Artemiz ne nomme pas explicitement le payeur dans le passage tarifaire.
+
+### A-23 · Les deux notes de l’éditeur sont reproduites ; la conformité exhaustive demeure un résultat du rapport fourni
+
+Catégorie : calcul · nature : calcul_reproduit · gravité : info · concerne l’éditeur : oui
+
+Les deux notes vérifiables sont cohérentes avec les poids et piliers affichés. Le rapport exhaustif est favorable à la fidélité d’exécution, mais ne vaut pas validation des classifications, des sources ou des choix normatifs. Les effets des arrondis et du départage fournis restent limités : maximum trois places pour I-7 et une place pour I-11, sans changement des rangs de l’éditeur.
+
+Preuves : Poids : 43 + 16 + 17 + 11 + 8 + 5 = 100 ; Gestion Cassini : 76,7×0,43 + 69,6×0,16 + 70×0,17 + 50×0,11 + 100×0,08 + 100×0,05 = 74,517 → 74,52 ; ImmoVendu : 94,5×0,43 + 88,3×0,16 + 70×0,17 + 100×0,11 + 100×0,08 + 100×0,05 = 90,663 → 90,66 ; recalcul : 552 notes conformes, 0 divergente, 0 frontière d’arrondi, 0 rang divergent
+
+Incertitude : Les 550 autres lignes détaillées, les avis bruts et le code exécutable ne sont pas joints ; leur recalcul n’est pas reproduit indépendamment dans cet audit.
+
+### A-24 · Les contrôles de volumes et d’historique n’apportent pas d’indice de retouche ciblée
+
+Catégorie : donnees · nature : fait_verifie · gravité : info · concerne l’éditeur : oui
+
+Les huit différences exactes ne contredisent pas le contrôle tolérant V-12. Elles peuvent provenir de décalages de collecte et ne prouvent pas une suppression sélective. L’absence de changements détectés contredit l’hypothèse d’une retouche observable entre ces relevés, sans certifier l’authenticité initiale ni les périodes antérieures.
+
+Preuves : V-12 : 532 plateformes intégralement relevées, aucune hors tolérance de 10 % ou deux avis ; V-12a : huit écarts exacts ; sept de un avis et un de quatre avis, 89 relevés contre 85 déclarés ; V-13a, V-13b et V-13d : zéro apparition antidatée détectée, disparition ou modification ; publisher_counts des contrôles V-13 : zéro pour les deux agences de l’éditeur
+
+Incertitude : Contrôles fondés sur les exports du site ; durée entre relevés et exhaustivité historique non précisées.
+
+### A-25 · Les comparaisons au registre sont favorables, mais l’échantillon n’est pas intégralement représentatif
+
+Catégorie : anciennete · nature : fait_verifie · gravité : info · concerne l’éditeur : oui
+
+Aucun écart de date n’est recensé parmi les 146 comparaisons conformes, y compris pour l’éditeur. Les écarts entre histoire commerciale et création juridique peuvent tenir à une reprise, une restructuration ou une continuité familiale ; ils ne prouvent pas une date de registre erronée. La règle peut donc aussi désavantager des concurrentes à histoire ancienne. L’engagement de l’instantané et le tirage traçable sont favorables, mais les résultats de cet échantillon mixte ne doivent pas être extrapolés comme un taux d’erreur aléatoire sur 552 agences.
+
+Preuves : registre_entreprises.counts : 146 conformes et deux SIREN non publiés ; Agence Californie : société 1989, héritage familial revendiqué depuis 1956 ; Cabinet Grimaz : société 1993, activité revendiquée depuis 1960 ; Richer : société 2013, agence familiale revendiquée depuis 1976 ; echantillon : instantané engagé, règle de tirage et graine fournis ; vérifications BLS déclarées vraies ; sélection mêlant aléatoire, voisines, éditeur et ancienneté comparable
+
+Incertitude : Les réponses API et signatures ne sont pas vérifiées extérieurement ici. Les histoires commerciales revendiquées ne prouvent pas une continuité juridique.
+
+## Points favorables au classement
+
+- Les poids totalisent 100 % et les notes de Gestion Cassini et d’ImmoVendu sont reproduites à partir des piliers publiés.
+- Le rapport déterministe annonce 552 notes et rangs conformes, sans divergence ni frontière d’arrondi.
+- Les 146 comparaisons de dates renseignées au registre sont conformes dans le paquet ; la date juridique de l’éditeur n’est pas falsifiée d’après ces données.
+- La règle d’ancienneté par société est également appliquée à de nombreux groupes concurrents.
+- ImmoVendu reste deuxième dans les douze variations locales de poids fournies et dans les variantes documentaires étudiées.
+- Les contrôles historiques ne détectent aucune modification des avis entre les relevés considérés.
+- Les scores d’honoraires de plusieurs concurrentes sont confirmés ; l’erreur de payeur identifiée chez ImmoVendu lui est défavorable.
+- Le paquet expose des limites, des variantes et un protocole d’échantillonnage traçable plutôt que de fournir uniquement des résultats favorables.
+
+## Points défavorables au classement
+
+- L’éditeur classe ses propres agences, dont ImmoVendu au deuxième rang, sans séparation indépendante démontrée dans le paquet.
+- La conformité arithmétique ne valide pas les avis, profils, doublons, problèmes détectés par IA ou classifications d’activité.
+- L’ancienneté juridique donne le maximum à une enseigne lancée en 2024 ; le test ciblé fait passer ImmoVendu du rang 2 au rang 13, sans permettre une correction symétrique des concurrentes.
+- Les données absentes entraînent selon les cas neutralisation, redistribution, zéro ou forfait technique de 20/100, avec des effets potentiellement importants.
+- La comparaison aux textes comporte des ambiguïtés de version et des contradictions historiques matériellement sensibles.
+- Les deux erreurs de contenu les plus directement identifiables en honoraires concernent le payeur d’ImmoVendu et la présence de montants TTC chez French Riviera Studios.
+- Les points parfaits Confiance et Information d’ImmoVendu appellent une vérification au regard des incohérences de ses mentions légales.
+- Le périmètre d’activités et la forte association avec le volume d’avis limitent l’interprétation du classement comme mesure homogène de qualité.
+
+## Instructions suspectes repérées dans les données
+
+
+## Limites
+
+- Audit limité au paquet : aucune URL, réponse API, archive, empreinte ou signature cryptographique n’a été vérifiée extérieurement.
+- Le texte intégral actuel de la méthode, ses archives, le code exécutable et les exports détaillés des 552 agences ne sont pas joints.
+- Les résultats des simulations sont analysés comme résultats fournis ; ils ne sont pas présentés comme des simulations indépendamment réexécutées.
+- Les barèmes ont été relus le 17 novembre 2026 alors que les points portent une observation du 12 novembre : une différence peut résulter d’une mise à jour intermédiaire.
+- Une extraction textuelle sans tableau, image ou PDF ne prouve pas que le contenu est absent de la page rendue ; une mention text_truncated:false ne lève pas cette limite.
+- Les verdicts de complétude portent sur les transactions et catégories effectivement décrites ; les exigences exactes aux bornes de prix et sur le payeur conditionnel doivent être précisées.
+- L’absence de dates de lancement d’enseigne chez les concurrentes empêche une comparaison équitable sur cet indicateur.
+- Les moyennes de groupes sont descriptives, arrondies et non ajustées ; elles ne démontrent ni causalité ni intention.
+- Les scénarios modifient des règles différentes et leurs effets ne doivent pas être additionnés.
+- Aucune instruction d’audit malveillante n’a été identifiée ; les appels à l’action commerciaux et bandeaux de cookies ont été traités comme du contenu de page.
+- Les données ne permettent pas de conclure à une manipulation intentionnelle, ni de certifier la fiabilité substantielle du classement.

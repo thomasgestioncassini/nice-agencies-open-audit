@@ -1,0 +1,211 @@
+# Analyse initiale — IA B
+
+Fournisseur : google · modèle : gemini-4-hydrogen · statut : **ok**
+Empreinte du mandat : 82e0fec40442f9e2ab530af39492ad0a83e777c1e424867598daa9a65e8089c8 · empreinte de l’entrée : 4134e776a8149ecc7828c29d481220be81845c040ff72aa2017f0e1c5739cca6
+Coût : 0.3959 $ (82683 jetons lus, 36254 écrits)
+
+> Texte produit par l’IA, publié sans aucune modification ni relecture de l’éditeur.
+
+## Résumé
+
+Le contre-audit indépendant du classement meilleure-agence-nice.fr (relevé du 15/11/2026, méthode v5, 552 agences) établit une reproductibilité déterministe complète des calculs à partir des données d'entrée (552/552 notes et rangs conformes, aucune divergence d'arrondi), sans preuve de manipulation délibérée en faveur des deux agences de l'éditeur SARL GESTION CASSINI. En particulier, les agences de l'éditeur subissent aussi des désavantages notables : immovendu est injustement privée de 30/30 sur le critère Payeur indiqué (-5,10 points globaux) et perd 20 avis doublons, tandis que gestion-cassini se classe 124e/552 et recule de 2 rangs du fait de la règle I-6. Toutefois, le classement présente plusieurs défauts majeurs : des erreurs factuelles d'extraction et de notation des barèmes d'honoraires (6 des 23 pages HTML relues contredites, 16 des 38 agences de l'échantillon impossibles à juger), un avantage structurel d'ancienneté de +4,29 points (+11 rangs, 2e au lieu de 13e) pour l'enseigne récente immovendu (2024) via le SIREN de 1995 sans données comparables pour les concurrentes (1/552 renseignée), un critère inapplicable pour 524 agences sur 526, des écarts importants entre les règles codées et le texte initial (289 rangs modifiés), des biais structurels massifs liés au volume d'avis (+24,03 points) et à l'ancienneté (546 rangs déplacés sans ce pilier), ainsi que l'inclusion d'acteurs hors périmètre (site d'annonces PAP, marchand de biens, chasseur immobilier).
+
+## Constats
+
+### B-1 · Contradictions factuelles dans la notation des barèmes d'honoraires sur 6 agences relues en HTML
+
+Catégorie : honoraires · nature : fait_verifie · gravité : majeur · concerne l’éditeur : oui
+
+Sur les 23 pages HTML relues dans baremes_relus, 6 présentent des points publiés contredits par le texte extrait. Deux agences sont clairement sous-notées : immovendu (agence de l'éditeur) reçoit 0/30 sur Payeur indiqué alors que sa formulation est quasi identique à celle de cabinet-immobilier-nice (30/30), ce qui la pénalise de 5,10 points sur sa note globale (90,66 au lieu de 95,76) ; french-riviera-studios-com reçoit 0/20 sur Montants TTC alors que tous ses taux TTC figurent dans le texte. Inversement, cap-sud-immobilier-nice (100/100) et gestion-cassini (70/100) obtiennent des points complets de publication et de complétude sur des pages Apimo sans texte de barème dans le HTML (contre 20/100 pour john-royce-real-estate et lbi, soit +8,50 points globaux pour gestion-cassini), tandis qu'etude-lotte-gallo (70/100) et immo-terrasse (100/100) ne contiennent qu'un lien PDF non lu.
+
+Preuves : baremes_relus.immovendu: points_publies Payeur indique=0/30 vs texte_page 'Honoraires a la charge du VENDEUR ou de l'ACQUEREUR en fonction du mandat de vente' ; baremes_relus.french-riviera-studios-com: points_publies Montants TTC=0/20 vs texte_page '7% TTC', '5 % TTC', '9% TTC', '17% TTC', '10€ TTC/M2', '3€ TTC/M2' ; baremes_relus.gestion-cassini: points_publies=70/100 (30,20,0,20) avec text_truncated=false ne contenant que 'Honoraires TVA incluse au taux de 20 %' sans tableau ni tranches ; baremes_relus.cap-sud-immobilier-nice: points_publies=100/100 (30,20,30,20) avec text_truncated=false sans aucun bareme dans texte_page ; baremes_relus.etude-lotte-gallo (70/100) et immo-terrasse (100/100): text_truncated=false ne contenant qu'un lien vers un PDF ; baremes_relus.john-royce-real-estate et lbi: points_publies=20/100 (bareme trouve mais illisible) sur des pages Apimo similaires sans tableau HTML
+
+Incertitude : Pour gestion-cassini, cap-sud-immobilier-nice, etude-lotte-gallo et immo-terrasse, le bareme existait peut-etre sous forme d'image ou de PDF lie le 12/11/2026 lors du releve initial, ce que la relecture HTML du 17/11/2026 ne capture pas ; toutefois, le traitement inegal avec john-royce-real-estate et lbi (20/100) est avéré.
+
+### B-2 · Avantage d'ancienneté de +4,29 points (+11 rangs) pour immovendu grâce au SIREN de 1995 malgré une enseigne de 2024
+
+Catégorie : conflit_interets · nature : calcul_reproduit · gravité : majeur · concerne l’éditeur : oui
+
+immovendu, enseigne lancée en 2024, hérite de la date de création de la SARL GESTION CASSINI (02/05/1995, soit 31 ans), obtenant ainsi la note maximale de 100,0 en ancienneté. Le test contrefactuel montre que le calcul sur la date de l'enseigne (2024) ferait baisser immovendu de 90,66 à 86,37 (-4,29 points) et la rétrograderait du 2e au 13e rang (-11 places). Cette règle étant toutefois identique pour les 43 groupes SIREN concurrents et l'éditeur ayant lui-même publié enseigne_depuis=2024, cela constitue un biais d'attribution juridique plutôt qu'une exception ad hoc démontrée.
+
+Preuves : agences_editeur.immovendu: rang=2, note=90.66, anc=100.0, siren=400877866, date_creation_societe=1995-05-02, enseigne_depuis=2024 ; tests_biais.publisher_specific.anciennete_depuis_enseigne: rang=13 (officiel 2), note=86.37 (officielle 90.66), rangs_changes=12, deplacement_max=11 ; controles.V-10b: severity=majeur, count=1 sur 552 (brands.immovendu=2024) ; controles.V-10: count=43 groupes SIREN partageant la meme date d'anciennete
+
+Incertitude : Faute de collecte de la date de lancement d'enseigne pour les 551 autres agences (V-10b), il est impossible de déterminer combien de concurrentes parmi les 43 groupes multi-agences à SIREN unique (V-10) bénéficient d'un avantage identique.
+
+### B-3 · Écarts entre les règles codées et le texte méthodologique initial affectant 362 notes et 289 rangs
+
+Catégorie : methode · nature : calcul_reproduit · gravité : majeur · concerne l’éditeur : oui
+
+Quatre règles appliquées dans le code (avis.py, service.py, build.py) divergent du texte méthodologique initial : la redistribution des 15 % de régularité manquante sur la qualité et le volume (I-6, 255 rangs changés, jusqu'à 37 places), l'arrondi intermédiaire au dixième et final au centième au lieu de la note exacte (I-7, 357 notes et 67 rangs changés), le maintien des doublons et plateformes incomplètes dans le dénominateur de régularité (I-4, 49 rangs changés, 2 changements dans le Top 10) et le départage tous profils confondus (I-11, 6 rangs). Quatre autres règles (I-1, I-2, I-8, I-10) n'étaient pas documentées dans le texte initial. Sur l'éditeur, I-6 pénalise gestion-cassini de 2 rangs et I-4 l'avantage d'1 rang (net -1 rang).
+
+Preuves : regles_appliquees_absentes_ou_contraires_au_texte: I-4 (contradiction), I-7 (contradiction), I-6 (ambiguite), I-11 (ambiguite), I-1/I-2/I-8/I-10 (non_documente) ; effet_des_regles_vs_texte_initial.ensemble: notes_changees=362, rangs_changes=289, deplacement_max=37, top10_inchanges=8 ; effet_des_regles_vs_texte_initial.I-6: notes_changees=22, rangs_changes=255, gestion-cassini 124 (prod) vs 122 (variante) ; effet_des_regles_vs_texte_initial.I-4: notes_changees=8, rangs_changes=49, gestion-cassini 124 (prod) vs 125 (variante) ; effet_des_regles_vs_texte_initial.I-7: notes_changees=357, rangs_changes=67 ; resultats_deterministes.statuts: texte_coherence=aucune_contradiction_repertoriee, texte_historique=ecarts_anterieurs
+
+Incertitude : La version v5 du 14/11/2026 a documenté a posteriori plusieurs de ces règles (champ documented_by), d'où le statut texte_coherence=aucune_contradiction_repertoriee et texte_historique=ecarts_anterieurs, mais la liste des règles relève toujours deux contradictions formelles (I-4 et I-7).
+
+### B-4 · Biais structurel majeur lié au volume d'avis : +24,03 points d'écart entre grand et petit volume
+
+Catégorie : biais · nature : calcul_reproduit · gravité : majeur · concerne l’éditeur : non
+
+La comparaison par tiers de volume total d'avis révèle un écart moyen de +24,03 points entre les 184 agences à grand volume (71,99) et les 184 agences à petit volume (47,96). Cet écart se retrouve sur tous les piliers, notamment avis (+31,0 points), info (+23,5), hono (+22,0), conf (+19,8), serv (+14,0) et anc (+12,8). La méthode favorise ainsi fortement les structures établies générant un flux élevé et régulier d'avis.
+
+Preuves : tests_biais.groups.petit_volume_avis (n=184): note_moyenne=47.96 (avis=50.6, serv=57.7, hono=37.9, conf=30.8, info=49.9, anc=62.9) ; tests_biais.groups.volume_moyen (n=184): note_moyenne=62.62 (avis=69.6, serv=66.4, hono=51.2, conf=44.6, info=63.2, anc=68.2) ; tests_biais.groups.grand_volume_avis (n=184): note_moyenne=71.99 (avis=81.6, serv=71.7, hono=59.9, conf=50.6, info=73.4, anc=75.7) ; tests_biais.groups.toutes (n=552): note_moyenne=60.86
+
+Incertitude : Les données agrégées ne permettent pas de dissocier la part d'écart due à une meilleure qualité réelle des grandes agences de la part imputable aux seuils de volume et à la régularité.
+
+### B-5 · Forte sensibilité du classement au pilier Ancienneté (546 rangs modifiés) et aux variations de poids
+
+Catégorie : biais · nature : calcul_reproduit · gravité : majeur · concerne l’éditeur : oui
+
+Bien que l'ancienneté ne pèse que 5 %, sa suppression déplace 546 agences sur 552 (98,9 %, médiane 13 rangs, max 51) et modifie 4 places sur 10 dans le Top 10. Elle pénalise particulièrement les deux agences de l'éditeur (anc=100,0), faisant reculer gestion-cassini de 20 rangs et immovendu de 4 rangs. De façon générale, les sociétés de moins de 10 ans obtiennent un meilleur score de service (70,3 vs 63,2) mais sont ramenées en dessous de la moyenne globale (59,88 vs 61,65) par le pilier ancienneté (27,6 vs 87,8).
+
+Preuves : tests_biais.scenarios.sans_anciennete: rangs_changes=546, deplacement_max=51, deplacement_median=13.0, top10_inchanges=6 ; tests_biais.scenarios.sans_anciennete.agences_suivies: gestion-cassini rang 124->144 (note 74.52->73.18), immovendu rang 2->6 (note 90.66->90.17) ; tests_biais.groups.societe_moins_10_ans (n=164): anc=27.6, serv=70.3, note=59.88 vs societe_10_ans_et_plus (n=374): anc=87.8, serv=63.2, note=61.65 ; tests_biais.scenarios.*_plus20/*_moins20: rangs_changes entre 451 (info_plus20) et 515 (avis_moins20) sur 552
+
+Incertitude : La forte mobilité des rangs lors des perturbations à +/- 20 % reflète en partie une forte densité de notes intermédiaires autour de la moyenne (60,86).
+
+### B-6 · Critère 'Annonce publiée depuis moins de 30 jours' non applicable pour 524 agences sur 526
+
+Catégorie : methode · nature : fait_verifie · gravité : majeur · concerne l’éditeur : oui
+
+Le contrôle V-9 signale que le critère 'Annonce publiée depuis moins de 30 jours' est non applicable pour 524 des 526 agences concernées (99,6 %), y compris les deux agences de l'éditeur. La méthode continue pourtant de l'afficher parmi les 23 critères d'évaluation, alors qu'il est quasi inopérant et entraîne mécaniquement une repondération implicite des autres critères du pilier concerné.
+
+Preuves : controles.V-9: severity=majeur, count=524, total=526 ; classement.methode.nombre_criteres: total=23 ; agences_editeur.gestion-cassini.sources.regles_valeurs_absentes='criteres_non_applicables:1' ; agences_editeur.immovendu.sources.regles_valeurs_absentes='criteres_non_applicables:1'
+
+Incertitude : Le paquet ne précise pas à quel pilier appartient exactement ce critère (vraisemblablement info ou conf) ni le poids exact qu'il avait avant sa neutralisation sur 99,6 % des fiches.
+
+### B-7 · Couverture très incomplète de l'audit des barèmes d'honoraires (21 agences sur 38 impossibles à juger)
+
+Catégorie : donnees · nature : fait_verifie · gravité : majeur · concerne l’éditeur : non
+
+Sur les 38 agences de baremes_relus, il est impossible de vérifier indépendamment les points publiés pour 21 agences : 12 renvoient vers des PDF non extraits (pdf_non_lu), 2 sont marquées 'lu' à tort sur du binaire PDF brut (agence-immobiliere-maison-k-immobilier-nice-cote-d-azur, agence-vizcaya), 1 échoue en HTTP (de-particulier-a-particulier), 1 est tronquée avant la section #honoraires (leggett-immobilier-nice), 2 sont des pages Apimo sans texte lisible notées 20/100 (john-royce-real-estate, lbi) et 3 sont des pages d'accueil tronquées notées 0/100 (agence-californie, bs-invest, cabinet-grimaz).
+
+Preuves : baremes_relus: 12 entrees avec status='pdf_non_lu' ; baremes_relus: 2 entrees (maison-k, vizcaya) avec status='lu' mais texte_page contenant du binaire '%PDF-1.3'/'%PDF-1.4' ; baremes_relus.de-particulier-a-particulier: status='echec', error='HTTPError' ; baremes_relus.leggett-immobilier-nice: text_truncated=true coupe avant l'ancre #honoraires ; baremes_relus.john-royce-real-estate et lbi: 20/100 illisible, texte_page sans bareme ; baremes_relus.agence-californie, bs-invest, cabinet-grimaz: page='site' avec text_truncated=true
+
+Incertitude : Pour agence-californie, bs-invest et cabinet-grimaz, aucun barème n'apparaît dans la partie lue de la page d'accueil, ce qui concorde avec 0/100, mais la troncature empêche d'exclure formellement un lien en pied de page ; pour john-royce-real-estate et lbi, l'illisibilité HTML concorde avec la mention 'illisible' (20/100) sans permettre de vérifier le contenu réel.
+
+### B-8 · Erreurs de périmètre et de classification parmi les 552 entités classées
+
+Catégorie : donnees · nature : fait_verifie · gravité : majeur · concerne l’éditeur : oui
+
+Le classement mélange des agences immobilières de transaction classiques avec des acteurs de nature différente : un portail d'annonces de particulier à particulier (de-particulier-a-particulier), un marchand de biens opérant pour compte propre sans mandat d'agence (bs-invest, pénalisé à 0/100 faute de barème de transaction), un chasseur immobilier (artemiz-chasseur-immobilier) et un cabinet patrimonial multi-activités (wis-patrimoine-wis). Par ailleurs, 43 sociétés sont fragmentées en plusieurs fiches distinctes (jusqu'à 7 fiches par SIREN, et 2 pour SARL GESTION CASSINI), incluant parfois des entités de syndic ou gestion locative.
+
+Preuves : baremes_relus.de-particulier-a-particulier: pap.fr (plateforme d'annonces entre particuliers, SIREN 304555154) ; baremes_relus.bs-invest: texte_page 'BS Invest - Marchand de biens sur la Cote d'Azur' (0/100 en honoraires) ; baremes_relus.artemiz-chasseur-immobilier: chasseur immobilier exclusif (mandat de recherche uniquement) ; baremes_relus.wis-patrimoine-wis: groupe de gestion de patrimoine et conseil digital (0/100 en honoraires) ; controles.V-10: 43 groupes SIREN incluant plusieurs fiches/enseignes ou activites syndic/gestion d'une meme societe
+
+Incertitude : L'échantillon ne fournit le texte du site que pour 38 agences ; la proportion exacte d'entités hors périmètre (marchands de biens, chasseurs, syndics purs, portails) sur l'ensemble des 552 fiches reste inconnue.
+
+### B-9 · Désavantages documentés des agences de l'éditeur contredisant un biais de favoritisme systématique
+
+Catégorie : conflit_interets · nature : fait_verifie · gravité : mineur · concerne l’éditeur : oui
+
+Plusieurs éléments factuels vont à l'encontre de l'hypothèse d'un trucage généralisé au profit de l'éditeur : immovendu est injustement privée de 30 points sur son barème d'honoraires (coûtant 5,10 points globaux et potentiellement la 1ère place) et se voit retirer 20 doublons ; la moyenne hono de l'éditeur (70,0) est inférieure à celle de ses voisines (85,6) ; gestion-cassini n'obtient que 50,0 en conf (contre 61,2 pour les voisines), perd 2 rangs sous l'effet de I-6 et reste classée 124e sur 552.
+
+Preuves : baremes_relus.immovendu: Payeur indique=0/30 malgre mention explicite VENDEUR ou ACQUEREUR (-5,10 pts globaux) ; tests_biais.groups: editeur hono=70.0 vs voisines_editeur hono=85.6 ; agences_editeur.gestion-cassini: rang=124, note=74.52, conf=50.0 (vs voisines_editeur conf=61.2) ; controles.V-6: publisher_counts.immovendu=20 avis doublons retires ; controles.V-7: gestion-cassini et immovendu figurent parmi les 49 agences touchees par les avis partages ; effet_des_regles_vs_texte_initial.I-6: gestion-cassini rang 124 (prod) vs 122 (variante conforme au texte initial) ; tests_biais.scenarios.hono_moins20: immovendu monte de 90.66 a 91.39
+
+Incertitude : Aucun élément ne permet de vérifier si des avantages non documentés existent dans les données primaires (textes des avis ou critères info/conf non audités individuellement).
+
+### B-10 · Confirmation des points d'honoraires pour 10 agences HTML et ambiguïté sur 1 chasseur immobilier
+
+Catégorie : honoraires · nature : fait_verifie · gravité : mineur · concerne l’éditeur : non
+
+Sur les 23 pages HTML relues, les 4 critères d'honoraires sont pleinement confirmés pour 10 agences (y compris la reconnaissance correcte de l'anglais 'incl. VAT' pour agence-riviera-real-estate et l'absence de mention TTC/payeur pour maison-quatre et resid-immo). Pour artemiz-chasseur-immobilier, 3 critères (30, 20, 20) sont confirmés mais les 30/30 sur Payeur indiqué restent ambigus faute de mention explicite acquéreur/vendeur dans l'extrait visible.
+
+Preuves : baremes_relus confirmes (10): agence-du-port (30,20,0,20), agence-riviera-real-estate (30,20,0,20), agency-tosca (30,20,0,20), alliance-riviera (0,0,0,0), cabinet-hestia (30,20,30,20), cabinet-immobilier-nice (30,20,30,20), maison-quatre (30,0,0,20), resid-immo (30,0,0,20), richer-immobilier (30,20,0,20), wis-patrimoine-wis (0,0,0,0) ; baremes_relus.artemiz-chasseur-immobilier: 100/100 (30,20,30,20), texte_page ne mentionne pas explicitement 'a la charge de l'acquereur/vendeur' dans le bloc honoraires
+
+Incertitude : Pour artemiz-chasseur-immobilier, la fin de la page est tronquée (text_truncated=true) et le contexte de chasseur immobilier ('honoraires de recherche') implique l'acquéreur sans le nommer explicitement comme payeur dans le tableau.
+
+### B-11 · Non-vérifiabilité de 833 doublons et 182 avis partagés discordants faute de textes publiés
+
+Catégorie : donnees · nature : non_verifiable · gravité : mineur · concerne l’éditeur : oui
+
+Le classement retire 833 avis qualifiés de doublons (V-6) et relève 182 anomalies sur des avis déclarés partagés entre k agences mais présents sur un nombre différent de fiches dans l'export (V-7, incluant gestion-cassini et immovendu). La détection reposant sur le texte des avis, absent des exports, un auditeur externe ne peut vérifier ni ces retraits ni le volume d'avis exclus faute de profil identifié.
+
+Preuves : controles.V-6: count=833 avis declares doublons (non verifiable faute de textes dans les exports), publisher_counts={gestion-cassini:0, immovendu:20} ; controles.V-7: severity=mineur, count=182 avis partages sur 49 agences (dont gestion-cassini et immovendu) ; tests_biais.not_testable: exclusion des avis sans profil identifie non verifiable dans les exports
+
+Incertitude : Rien n'indique une erreur dans les décomptes de doublons ou de partages, mais l'absence de textes d'avis dans les exports publics rend tout contrôle indépendant impossible.
+
+### B-12 · Traitement favorable des 14 agences sans date de création via une valeur neutre à 50/100
+
+Catégorie : biais · nature : fait_verifie · gravité : mineur · concerne l’éditeur : non
+
+Les 14 agences dont la date de création n'a pas été relevée (dont 2 dans l'échantillon vérifié au registre sans SIREN publié) reçoivent automatiquement 50/100 en ancienneté, soit l'équivalent de 10 ans d'existence. Ce score neutre est nettement supérieur à la moyenne des 164 sociétés de moins de 10 ans effectivement identifiées (27,6/100).
+
+Preuves : controles.V-10d: count=14 agences, valeur neutre=50 ; tests_biais.groups.societe_moins_10_ans (n=164): anc=27.6 ; registre_entreprises: statut=siren_non_publie pour agence-riviera-real-estate et alliance-riviera
+
+Incertitude : L'ancienneté réelle des 14 sociétés dont le SIREN n'a pas été relevé étant inconnue, certaines peuvent avoir plus de 10 ans et être pénalisées par la valeur 50, mais les sociétés récentes ou sans SIREN identifiable en tirent un avantage net.
+
+### B-13 · Inclusion de 19 avis notés sous 1/5 sans vérification de l'échelle Opinion System
+
+Catégorie : donnees · nature : fait_verifie · gravité : mineur · concerne l’éditeur : non
+
+Dix-neuf avis (dont 9 effectivement comptés, répartis sur 10 agences) portent une note inférieure à 1/5 et sont intégrés tels quels dans le calcul de la note moyenne d'avis, alors qu'une échelle à étoiles commence usuellement à 1/5.
+
+Preuves : controles.V-4b: severity=mineur, count=19, counted=9, 10 agences listees
+
+Incertitude : L'impact quantitatif exact sur la moyenne pondérée des 10 agences concernées n'est pas chiffré dans le paquet, et seule la vérification à la source sur Opinion System permettrait de confirmer la légitimité d'une note de 0 à <1 sur 5.
+
+### B-14 · Exactitude des dates SIREN publiées mais écarts avec l'ancienneté commerciale réelle
+
+Catégorie : anciennete · nature : fait_verifie · gravité : mineur · concerne l’éditeur : oui
+
+Sur les 148 agences vérifiées au registre des entreprises, les 146 disposant d'un SIREN publié concordent à 100 % avec l'API publique (date_publiee == date_registre), tandis que 2 n'ont pas de SIREN publié. Les écarts significatifs portent sur l'interprétation économique de cette date : d'un côté, des enseignes récentes ou multiples profitent de l'ancienneté d'un SIREN préexistant (cas documenté d'immovendu 2024 sur SIREN 1995, et 43 groupes SIREN en V-10) ; de l'autre, plusieurs agences revendiquent une antériorité familiale ou commerciale bien plus ancienne que leur société actuelle (jusqu'à 37 ans d'écart pour richer-immobilier), ou portent la date technique INSEE 1971-01-01.
+
+Preuves : registre_entreprises.counts: conforme=146, siren_non_publie=2 ; registre_entreprises: date_publiee==date_registre pour les 146 lignes conformes ; immovendu: date_registre=1995-05-02 vs enseigne_depuis=2024 ; baremes_relus vs registre: agence-californie 'depuis 1956' vs 1989-02-17; richer-immobilier 'Depuis 1976' vs 2013-10-24; cabinet-grimaz 'depuis 1960' vs 1992-03-20; bs-invest 'Depuis 1986' vs 2012-04-13 ; registre_entreprises: borne-et-delaunay-valperga et cabinet-borne-et-delaunay au 1971-01-01; cabinet-hestia 2026-01-29 publiant le bareme Jacomino Immobilier
+
+Incertitude : Pour les 43 groupes de SIREN partagés (V-10), l'absence de données historiques sur chaque enseigne ou fonds de commerce ne permet pas de mesurer l'ampleur globale des écarts entre date juridique de la personne morale et date d'exercice réelle.
+
+### B-15 · Impossibilité de tester les biais réseaux/indépendantes et outils numériques depuis les exports
+
+Catégorie : biais · nature : non_verifiable · gravité : mineur · concerne l’éditeur : non
+
+Plusieurs dimensions structurantes du marché immobilier niçois ne peuvent pas faire l'objet de tests contrefactuels car les variables catégorielles correspondantes (appartenance à un réseau, activité mixte ou vente seule, équipement numérique) ainsi que le volume d'avis exclus pour profil non précisé ne figurent pas dans les exports publics.
+
+Preuves : tests_biais.not_testable: reseaux et independantes, vente seule et mixtes, outils numeriques absents des exports publics ; tests_biais.not_testable: exclusion des avis sans profil identifie non publies
+
+Incertitude : Des biais systématiques selon le modèle économique (franchise vs indépendant, mono-activité vs gestion/syndic) peuvent exister sans pouvoir être mesurés sur le paquet fourni.
+
+### B-16 · Reproductibilité déterministe parfaite des 552 notes et rangs et cohérence des comptages
+
+Catégorie : calcul · nature : calcul_reproduit · gravité : info · concerne l’éditeur : oui
+
+Le recalcul indépendant reproduit à l'identique les 552 notes et les 552 rangs publiés, sans aucune divergence d'arrondi ni d'ordre. Les contrôles de volume par plateforme (532 plateformes complètes dans les tolérances en V-12, avec seulement 8 écarts de 1 à 4 avis en V-12a) et les contrôles longitudinaux (0 avis rétroactif, disparu ou modifié en V-13) confirment la stabilité technique du pipeline de calcul.
+
+Preuves : resultats_deterministes.recalcul: examined=552, notes={conforme:552, divergente:0, frontiere_arrondi:0}, ranks_divergent=0, m_ref=4.453 ; controles.V-12: 532 plateformes relevees en entier dans la tolerance (count=0 hors tolerance) ; controles.V-12a: 8 micro-ecarts de 1 a 4 avis sur 532 plateformes ; controles.V-13a/V-13b/V-13d: count=0 anomalie longitudinale
+
+Incertitude : La conformité du recalcul garantit l'intégrité arithmétique entre données agrégées et scores finaux, mais ne valide pas l'exactitude des données primaires non vérifiées (statuts.donnees_primaires=non_verifiees).
+
+### B-17 · Anomalies mineures sur les mentions et calculs des sites sources relus
+
+Catégorie : donnees · nature : fait_verifie · gravité : info · concerne l’éditeur : oui
+
+La lecture des pages sources met en évidence des erreurs rédactionnelles propres aux sites des agences : sur le site d'immovendu, le numéro RCS comporte une interversion de chiffres (400 877 688 au lieu de 400 877 866), le montant de garantie transaction affiche 120,00 € et les compteurs d'expérience affichent 0 ; sur le site de french-riviera-studios-com, les conversions HT vers TTC à 20 % sont arithmétiquement erronées (5 % HT affiché à 7 % TTC au lieu de 6 %, et 3 % HT affiché à 5 % TTC au lieu de 3,6 %).
+
+Preuves : baremes_relus.immovendu: texte_page 'RCS n°400 877 688' vs TVA 'FR 62 400 877 866' et registre '400877866' ; garantie '120.00 €' ; compteurs '0 ans / Annee de creation 0' ; baremes_relus.french-riviera-studios-com: texte_page '5% HT soit 7% TTC' et '3% HT soit 5 % TTC selon le taux de TVA actuel a 20%'
+
+Incertitude : Aucune incidence sur les points calculés dans le classement pour ces anomalies rédactionnelles internes aux sites des agences.
+
+## Points favorables au classement
+
+- Reproductibilité déterministe intégrale : 552/552 notes et 552/552 rangs reproduits exactement sans divergence ni cas limite d'arrondi.
+- Stabilité des relevés et cohérence volumétrique : 0 anomalie longitudinale (V-13a/b/d) et 532/532 plateformes dans les tolérances de comptage (V-12).
+- Exactitude du registre des entreprises : 100 % des 146 SIREN publiés dans l'échantillon concordent exactement avec la date officielle du registre.
+- Absence de trucage unilatéral pour l'éditeur : immovendu est même pénalisée de -5,10 points par erreur sur son barème d'honoraires et de 20 doublons retirés, et gestion-cassini est classée 124e/552.
+- Reconnaissance généralement fiable des barèmes HTML complets lorsqu'ils sont lisibles (10/10 agences témoins confirmées, y compris une page en anglais).
+
+## Points défavorables au classement
+
+- Erreurs factuelles graves de notation des barèmes d'honoraires sur 6 des 23 pages HTML relues (dont les 2 agences de l'éditeur : immovendu lésée de 30 pts et gestion-cassini notée 70/100 sans barème HTML).
+- Avantage d'ancienneté de +4,29 points (+11 rangs, 2e vs 13e) pour immovendu (enseigne de 2024 adossée au SIREN de 1995), sans donnée comparable collectée pour les 551 concurrentes (V-10b).
+- Écarts entre les règles codées et le texte initial modifiant 362 notes et 289 rangs (I-6, I-7, I-4, I-11), malgré la documentation ultérieure en v5.
+- Critère 'Annonce publiée depuis moins de 30 jours' non applicable pour 524/526 agences (99,6 %), faussant le décompte des 23 critères.
+- Biais structurels prononcés en faveur du grand volume d'avis (+24,03 points) et des sociétés anciennes (546/552 rangs déplacés sans l'ancienneté).
+- Inclusion d'acteurs hors périmètre (site entre particuliers PAP, marchand de biens, chasseur immobilier) et couverture incomplète de la relecture des barèmes (12 PDF non lus, 2 PDF lus en binaire brut, pages tronquées).
+
+## Instructions suspectes repérées dans les données
+
+
+## Limites
+
+- Les données primaires des avis (textes complets, profils des auteurs exclus, échelle d'Opinion System, réponses aux avis) ne figurent pas dans le paquet et n'ont pas pu être vérifiées.
+- Douze barèmes d'honoraires au format PDF (pdf_non_lu), deux flux PDF binaires non décodés et cinq pages HTML tronquées ou en échec HTTP empêchent de juger 21 des 38 agences de baremes_relus.
+- La date de lancement d'enseigne (enseigne_depuis) n'ayant été relevée que pour 1 agence sur 552 (immovendu), l'effet de l'adossement d'enseignes récentes à des SIREN anciens ne peut pas être chiffré pour les 43 groupes concurrents.
+- Les tests de biais par type d'agence (réseaux vs indépendantes, vente seule vs mixte, outils numériques) et l'impact de l'exclusion des avis sans profil sont déclarés non testables à partir des exports publics.
+- L'échantillon vérifié pour le registre des entreprises et la relecture des barèmes porte sur 148 et 38 agences respectivement (sur 552), selon les règles de tirage documentées.

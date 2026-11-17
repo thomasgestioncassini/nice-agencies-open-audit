@@ -1,0 +1,36 @@
+{
+ "report_id": "2026-11-15_20261117T105659Z",
+ "outputs_sha256": {
+  "agent-a.json": "ad7f7a2481bb1276a3447e76919264b5b924bc2da51ee5be015addba90515d89",
+  "agent-a.md": "a21a5361d59b37b78d507064663c0cace7e3d992143337bbf39e5965216e5deb",
+  "agent-b.json": "0c959ee8f7b052fe2ee0cd7f9d1ad0dfee98e2ee1198ae23d1171e06679b6297",
+  "agent-b.md": "0580dc1a7fc34d4a72c7a1103c97112b7f08c10f60c8c68b9d36b3315b5a38a3",
+  "anomalies.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+  "bias.json": "37e11f62cbe96ddb50832e6554a1286fc31cbd19560ec422667c77159e963b5d",
+  "calculations.csv": "abf7f1c2e20eec8f99bd26d7e7b712e7d6b322482a9ae02986a59a31281195a2",
+  "cross-a.json": "6a1d59d9e6cfa209423261d593fbd4d6d3ea91fe733736707fcafecb74e2453b",
+  "cross-b.json": "24f7c4ac11fede92cc5dbe32f96b860955ff0e481fefb76af610bde8339f7648",
+  "disagreements.md": "0dc185c749cc8043b5835144179277dd79ce5c269e74007fd718e9db7fbb111c",
+  "injections.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "package-public.json": "f61e6c3ef116e8270bd0b69cbaccaf49d7ac71df3c5626de3c05ea9e6c3f7f71",
+  "registry.json": "ba3eda417dc2714a2ba607beeb394d78961b3f9661887d38fc5b82bd1539d6e4",
+  "report.json": "06f5946fde442634ff1e79cc91d7f8f810473128780056674dc7e0cbb2eb3e2e",
+  "report.md": "42dcca23419b0525952e5fb8d9a2eadbba6d73f196034beb97280d49c47d0134",
+  "sites.json": "504c4a9bdf0ff34912171e68271723e71b4b9e1e71728f9587b8cc8e32734c9d"
+ },
+ "snapshot": "snapshots/2026-11-15_121239",
+ "snapshot_manifest_sha256": "8ab22405d1649a935d56b12c21b8cf201ac5e56bf69385b55248d4996502430a",
+ "inputs_sha256": {
+  "agences.csv": "ac48cf0bf48cf46315e6f225948138fa81240dc6c0a45ca6107906554c863b88",
+  "agregats-plateformes.csv": "eefc6be892b2614a777a1f298fabb7e436a2e812e15a5f6809b164564ebb8aec",
+  "avis-elementaires.csv": "cc008d863c55936fd8c2017fe009fbe2e86dc0fb922d6d71d1ef6fbeb06c053f",
+  "classement-notes.txt": "f72c717b39463cd3a1abc5ab72b1720df6f8c1809425e996e6c32bf41004784f",
+  "criteres-sites.csv": "3f016081d5e0be1937cbc6f7d6c9113eb21691428dbcfd20dac32a4e8b8c848c",
+  "methode-details.html": "bed46b9a8c7851b44da57fb301eadc54e883306772c94eafe085654ff46b9cef",
+  "parametres.json": "f29e5c96961916a2707e57a3e02cdbd2e44cde665e8add384c382de6cf5dca0c",
+  "sources-agences.csv": "e70439835211b05b786f6b025ba349670aa5495c38353a1c8a670855e446f7ba"
+ },
+ "code_version": "dcfde38bbadf5b8bb56c5f4f77c13d94c3bd0f68",
+ "python": "3.12.16",
+ "command": "python -m auditor run snapshots/2026-11-15_121239"
+}
