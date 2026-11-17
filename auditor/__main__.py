@@ -246,7 +246,8 @@ def cmd_run(args) -> int:
                    'sources': sources, 'criteria': crit, 'sampling': sampling if sampling.get('status') == 'tire' else None,
                    'statuses': st, 'findings': val['findings'], 'interpretations': interp,
                    'calc_summary': {k: v for k, v in cmp_.items() if k in ('examined', 'notes', 'ranks_divergent', 'm_ref')},
-                   'text_effects': (textc or {}).get('effects')}
+                   'text_effects': (textc or {}).get('effects'), 'data_dir': data,
+                   'networks': json.loads((ROOT / 'config' / 'networks.json').read_text(encoding='utf-8'))['patterns']}
             ai = aiaudit.run(ctx, out, models, mandate, Ledger(ROOT, models), rid)
             prim = ai['primary']
             st['donnees_primaires'] = 'partiellement_verifiees' if prim['registre_verifie'] or prim['baremes_lus'] else 'non_verifiees'

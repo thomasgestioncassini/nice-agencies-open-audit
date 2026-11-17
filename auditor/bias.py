@@ -2,8 +2,13 @@
 les notes officielles. Règles fixées à l'avance, identiques pour toutes les agences."""
 from __future__ import annotations
 
+import csv
 import datetime as dt
+import json
+import shutil
 import statistics
+import tempfile
+from pathlib import Path
 
 from .recalculate import PILLARS
 
@@ -35,7 +40,7 @@ def _groupstats(pillars: dict, notes: dict, members: list[str]) -> dict:
 
 
 def bias_tests(recalc: dict, weights: dict, sources: dict, publisher: list[str], neighbours: list[str],
-               date_releve: str) -> dict:
+               date_releve: str, extra: dict | None = None) -> dict:
     ag = recalc['agencies']
     pillars = {s: r['pillars'] for s, r in ag.items()}
     tie = {s: r['reviews_total'] for s, r in ag.items()}
@@ -79,7 +84,68 @@ def bias_tests(recalc: dict, weights: dict, sources: dict, publisher: list[str],
         'voisines_editeur': 'les 5 agences classées juste au-dessus et juste en dessous de chaque agence de l’éditeur',
         'volume': 'tiers des agences selon le nombre total d’avis sur les plateformes',
         'societe': 'âge de la société d’après la date de création publiée (registre)'}
-    out['not_testable'] = ['réseaux et indépendantes, vente seule et mixtes, outils numériques : ces catégories ne '
-                           'figurent pas dans les exports publics', 'exclusion des avis sans profil identifié : le '
-                           'profil « non précisé » est publié, mais pas la part des avis exclus pour ce motif']
+    out['not_testable'] = []
+    if extra is not None:
+        cat = categories(ag, sources, extra.get('criteria') or {}, extra.get('networks') or [])
+        out['groups'].update({g: _groupstats(pillars, notes, m) for g, m in cat['groups'].items()})
+        out['groups_definition'].update(cat['definition'])
+        out['not_testable'] += cat['not_testable']
+        if extra.get('data_dir') and extra.get('cfg'):
+            out['avis_non_precises'] = non_precise(extra['data_dir'], extra['cfg'], base, tie, publisher)
+    else:
+        out['not_testable'].append('catégories réseau, activités, outils numériques et profils : données non fournies')
+    return out
+
+
+def categories(ag: dict, sources: dict, criteria: dict, networks: list[str]) -> dict:
+    """Catégories fixées par l'auditeur à partir des seuls exports publics (priorité 4 de la revue ChatGPT)."""
+    groups, nt = {}, []
+    def host(s):
+        return (sources.get(s, {}).get('url_site') or '').lower().replace('.', '-').replace('/', '-')
+    net = [s for s in ag if any(p in s or p in host(s) for p in networks)]
+    groups['reseau'] = net
+    groups['independante'] = [s for s in ag if s not in net]
+    acts = {s: (sources.get(s, {}).get('activites') or '') for s in ag}
+    if any(acts.values()):
+        groups['vente_seule'] = [s for s, a in acts.items() if a and set(a.split(',')) <= {'vente'}]
+        groups['vente_et_location_ou_gestion'] = [s for s, a in acts.items() if a and set(a.split(',')) - {'vente'}]
+    else:
+        nt.append('vente seule et mixtes : la colonne « activites » ne figure pas dans sources-agences.csv de ce relevé')
+    est = {}
+    for s, rows in criteria.items():
+        for r in rows:
+            if r.get('critere', '').startswith('Estimation en ligne') and r.get('max') not in ('', None):
+                est[s] = r.get('points') not in ('', '0', '0.0', None)
+    groups['estimation_en_ligne'] = [s for s in ag if est.get(s) is True]
+    groups['sans_estimation_en_ligne'] = [s for s in ag if est.get(s) is False]
+    return {'groups': groups, 'not_testable': nt, 'definition': {
+        'reseau': 'site ou identifiant contenant un motif de config/networks.json (liste fixée avant les résultats)',
+        'activites': 'colonne « activites » de sources-agences.csv (vente, location, gestion) telle que relevée par le site',
+        'outils_numeriques': 'critère « Estimation en ligne du prix de vente » de criteres-sites.csv (non applicable : exclu)'}}
+
+
+def non_precise(data_dir, cfg: dict, base: dict, tie: dict, publisher: list[str]) -> dict:
+    """Avis dont le profil n'est pas précisé : aucun n'est exclu ; part et effet contrefactuel de leur retrait."""
+    from .recalculate import recalculate
+    data_dir = Path(data_dir)
+    with open(data_dir / 'avis-elementaires.csv', encoding='utf-8') as f:
+        rows = list(csv.DictReader(f, delimiter=';'))
+    np_ = [r for r in rows if r['profil'] == 'non_precise']
+    counted = [r for r in rows if r['compte_vente_achat'] == '1']
+    out = {'avis_non_precises': len(np_), 'dont_comptes': sum(r['compte_vente_achat'] == '1' for r in np_),
+           'avis_comptes': len(counted),
+           'part_dans_les_avis_comptes': round(sum(r['compte_vente_achat'] == '1' for r in np_) / len(counted), 3) if counted else None,
+           'exclus_faute_de_profil': sum(r['compte_vente_achat'] != '1' for r in np_)}
+    with tempfile.TemporaryDirectory() as t:
+        t = Path(t)
+        for p in data_dir.iterdir():
+            if p.is_file() and p.name != 'avis-elementaires.csv':
+                shutil.copy(p, t / p.name)
+        with open(t / 'avis-elementaires.csv', 'w', encoding='utf-8', newline='') as f:
+            w = csv.DictWriter(f, fieldnames=list(rows[0]), delimiter=';')
+            w.writeheader()
+            w.writerows(r for r in rows if r['profil'] != 'non_precise')
+        alt = recalculate(t, cfg)['agencies']
+    var = ranks({s: r['pillars'] for s, r in alt.items()}, cfg['weights'], tie)
+    out['scenario_sans_non_precises'] = _summary(base, var, publisher)
     return out

@@ -1,0 +1,5 @@
+{
+ "version": "1 du 17/11/2026",
+ "note": "Liste de l'auditeur, fixée avant tout résultat : une agence est rattachée à un réseau si l'adresse de son site ou son identifiant (slug) contient l'un de ces motifs. Sert aux seuls tests de biais (catégorie réseau / indépendante), jamais au calcul des notes.",
+ "patterns": ["orpi", "century21", "century-21", "laforet", "guy-hoquet", "guyhoquet", "era-immobilier", "erafrance", "foncia", "citya", "square-habitat", "squarehabitat", "sixieme-avenue", "sixiemeavenue", "stephaneplaza", "stephane-plaza", "nestenn", "ladresse", "l-adresse", "barnes", "sothebys", "sotheby-s", "engelvoelkers", "engel-volkers", "engel-voelkers", "coldwell", "nexity", "immobiliere-lafayette", "cimm-immobilier", "cimm", "vaneau", "john-taylor", "johntaylor", "keller-williams", "kwfrance", "remax", "re-max", "agence-de-la-gare", "arthurimmo", "optimhome", "michael-zingraf", "michaelzingraf", "christies", "ashley-parker", "ashleyparker"]
+}

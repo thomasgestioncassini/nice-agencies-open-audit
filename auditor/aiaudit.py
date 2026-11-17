@@ -101,7 +101,9 @@ def run(ctx: dict, out: Path, models: dict, mandate: str, ledger: Ledger, report
     ctx['registry'] = check_registry(ctx['sources'], to_registry, registry_get, pause=0 if registry_get else 0.2)
     ctx['sites'] = check_sites(ctx['sources'], ctx['criteria'], to_sites, **({'fetcher': site_fetcher} if site_fetcher else {}))
     neighbours = [s for s, why in sample.items() if why.startswith('voisine')]
-    ctx['bias'] = bias_tests(ctx['recalc'], ctx['cfg']['weights'], ctx['sources'], pub, neighbours, ctx['date_releve'])
+    extra = {'criteria': ctx['criteria'], 'networks': ctx.get('networks') or [], 'data_dir': ctx.get('data_dir'),
+             'cfg': ctx['cfg']}
+    ctx['bias'] = bias_tests(ctx['recalc'], ctx['cfg']['weights'], ctx['sources'], pub, neighbours, ctx['date_releve'], extra)
     package = build_package(ctx)
     injections = AG.scan_injections(package)
     pkg_json = json.dumps(package, ensure_ascii=False, sort_keys=True)

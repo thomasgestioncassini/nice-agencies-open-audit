@@ -81,3 +81,19 @@ class Dedup(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class Categories(unittest.TestCase):
+    def test_categories_from_exports(self):
+        from auditor.bias import categories
+        ag = {'orpi-agence-x': {}, 'cabinet-y': {}, 'agence-z': {}}
+        src = {'cabinet-y': {'url_site': 'https://www.century21-y.com/', 'activites': 'vente'},
+               'agence-z': {'url_site': 'https://z.fr', 'activites': 'vente,gestion'}, 'orpi-agence-x': {'activites': ''}}
+        crit = {'agence-z': [{'critere': 'Estimation en ligne du prix de vente', 'points': '1', 'max': '1'}],
+                'cabinet-y': [{'critere': 'Estimation en ligne du prix de vente', 'points': '0', 'max': '1'}]}
+        c = categories(ag, src, crit, ['orpi', 'century21'])
+        self.assertEqual(sorted(c['groups']['reseau']), ['cabinet-y', 'orpi-agence-x'])
+        self.assertEqual(c['groups']['vente_seule'], ['cabinet-y'])
+        self.assertEqual(c['groups']['vente_et_location_ou_gestion'], ['agence-z'])
+        self.assertEqual(c['groups']['estimation_en_ligne'], ['agence-z'])
+        self.assertEqual(c['groups']['sans_estimation_en_ligne'], ['cabinet-y'])
