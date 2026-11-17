@@ -21,9 +21,8 @@ l'éditeur du classement, qui exploite deux agences classées (GOVERNANCE.md).
 
 ## Décisions qui ne reposent que sur l'éditeur
 
-Les arbitrages des constats contestés (docs/arbitrages-phase-c.md) sont rendus par l'éditeur. Quand une question touche
-ses agences et n'a pas été tranchée par un tiers, l'éditeur s'engage à appliquer la lecture la moins favorable à ses
-agences et à l'afficher dans la méthode (premier cas : ancienneté d'ImmoVendu, méthode v5.5).
+Les arbitrages des constats contestés (docs/arbitrages-phase-c.md) sont rendus par l'éditeur. Ils ne valent pas
+validation indépendante, même lorsqu'ils sont défavorables à ses agences.
 
 ## Lacunes documentaires connues
 
