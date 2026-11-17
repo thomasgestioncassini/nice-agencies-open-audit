@@ -202,9 +202,18 @@ def history(prev_dir: Path, data_dir: Path, publisher: list[str]) -> list[dict]:
     out.append(finding('V-13a', sev(back), 'avis apparus depuis le relevé précédent avec une date antérieure de plus '
                        'd’un mois, sur une plateforme déjà relevée en entier', list(back), sum(back.values()),
                        per_agency=dict(back), publisher_counts={p: back.get(p, 0) for p in publisher}))
-    gone = Counter(k[0] for k in prev_keys - cur_keys)
-    out.append(finding('V-13b', sev(gone), 'avis disparus depuis le relevé précédent', list(gone), sum(gone.values()),
-                       per_agency=dict(gone), publisher_counts={p: gone.get(p, 0) for p in publisher}))
+    # une agence retirée du classement emporte ses avis : ce n'est pas une disparition d'avis chez une agence classée,
+    # mais un changement de périmètre, publié à part (agences retirées et nombre d'avis concernés)
+    cur_ag = {r['agence'] for r in read_csv(data_dir / 'agences.csv')}
+    prev_ag = {r['agence'] for r in read_csv(prev_dir / 'agences.csv')}
+    removed = Counter(k[0] for k in prev_keys - cur_keys if k[0] not in cur_ag)
+    gone = Counter(k[0] for k in prev_keys - cur_keys if k[0] in cur_ag)
+    out.append(finding('V-13b', sev(gone), 'avis disparus depuis le relevé précédent, chez des agences toujours classées',
+                       list(gone), sum(gone.values()), per_agency=dict(gone), publisher_counts={p: gone.get(p, 0) for p in publisher}))
+    left = sorted(prev_ag - cur_ag)
+    out.append(finding('V-13e', 'majeur' if any(p in left for p in publisher) else 'info',
+                       'agences retirées du classement depuis le relevé précédent (leurs avis sortent avec elles)', left, len(left),
+                       per_agency={a: removed.get(a, 0) for a in left}, publisher_counts={p: int(p in left) for p in publisher}))
     # V-13d : même avis (même identifiant), classement modifié : note, profil, problème, drapeaux de comptage
     fields = ('note', 'profil', 'probleme', 'compte_vente_achat', 'retenu_qualite', 'retenu_service', 'nb_agences_partageant')
     pmap = {(x['agence'], x['plateforme'], x['id']): x for x in prev}
