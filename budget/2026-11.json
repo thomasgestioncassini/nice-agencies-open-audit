@@ -1,0 +1,31 @@
+{
+ "month": "2026-11",
+ "providers": {
+  "A": {
+   "model": "gpt-6.1-sol",
+   "calls": [
+    {
+     "utc": "2026-11-17T10:48:42+00:00",
+     "report": "canari",
+     "purpose": "canari",
+     "tokens_in": 1178,
+     "tokens_out": 1459,
+     "usd": 0.0169
+    }
+   ]
+  },
+  "B": {
+   "model": "gemini-4-hydrogen",
+   "calls": [
+    {
+     "utc": "2026-11-17T10:48:59+00:00",
+     "report": "canari",
+     "purpose": "canari",
+     "tokens_in": 1736,
+     "tokens_out": 3790,
+     "usd": 0.031
+    }
+   ]
+  }
+ }
+}
