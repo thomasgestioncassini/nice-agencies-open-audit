@@ -115,6 +115,14 @@
      "tokens_in": 21066,
      "tokens_out": 4331,
      "usd": 0.0854
+    },
+    {
+     "utc": "2026-11-17T21:26:10+00:00",
+     "report": "canari",
+     "purpose": "canari",
+     "tokens_in": 1178,
+     "tokens_out": 1477,
+     "usd": 0.0171
     }
    ]
   },
@@ -224,6 +232,14 @@
      "tokens_in": 23720,
      "tokens_out": 10493,
      "usd": 0.1143
+    },
+    {
+     "utc": "2026-11-17T21:26:28+00:00",
+     "report": "canari",
+     "purpose": "canari",
+     "tokens_in": 1736,
+     "tokens_out": 4080,
+     "usd": 0.0332
     }
    ]
   }
