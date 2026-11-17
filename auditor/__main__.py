@@ -34,8 +34,15 @@ ROOT = Path(__file__).resolve().parent.parent
 TARGET = 'https://meilleure-agence-nice.fr'
 LIMITS = [
     'Le recalcul reprend tels quels les résultats d’étapes que les exports ne permettent pas de refaire : profil de '
-    'l’auteur et problème signalé (lus par une IA du site), détection des doublons et des avis partagés (faite sur les '
-    'textes, non publiés), points attribués en lisant les sites des agences, date de création des sociétés.',
+    'l’auteur et problème signalé (lus par une IA du site), points attribués en lisant les sites des agences, date de '
+    'création des sociétés. Le dédoublonnage est refait (V-14), mais sur des empreintes produites par le site : il ne '
+    'prouve pas que ces empreintes correspondent aux avis réellement publiés sur les plateformes.',
+    'Un statut « conforme » vaut pour la dimension qu’il nomme, jamais pour le classement entier. Ce rapport n’est pas '
+    'une certification du classement (docs/portee-et-limites.md).',
+    'Les écarts entre catégories d’agences (tests de biais) sont descriptifs et non ajustés : ils ne prouvent ni une '
+    'discrimination, ni son absence.',
+    'Les arbitrages des constats contestés sont rendus par l’éditeur, partie intéressée (docs/arbitrages-phase-c.md) : '
+    'ils ne valent pas validation indépendante.',
     'Les données primaires (avis sur les plateformes, pages des sites, registre des entreprises) ne sont pas recontrôlées '
     'à leur source dans ce rapport.',
     'Le moteur a été écrit par Claude (Anthropic), qui a aussi écrit le code de production du site. Il a été rédigé à '
