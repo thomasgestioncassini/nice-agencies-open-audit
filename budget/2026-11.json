@@ -51,6 +51,22 @@
      "tokens_in": 18944,
      "tokens_out": 4552,
      "usd": 0.0834
+    },
+    {
+     "utc": "2026-11-17T15:04:52+00:00",
+     "report": "2026-11-17_20261117T150158Z",
+     "purpose": "audit",
+     "tokens_in": 15074,
+     "tokens_out": 8715,
+     "usd": 0.1173
+    },
+    {
+     "utc": "2026-11-17T15:06:15+00:00",
+     "report": "2026-11-17_20261117T150158Z",
+     "purpose": "confrontation",
+     "tokens_in": 21787,
+     "tokens_out": 4341,
+     "usd": 0.087
     }
    ]
   },
@@ -96,6 +112,22 @@
      "tokens_in": 21591,
      "tokens_out": 9586,
      "usd": 0.1043
+    },
+    {
+     "utc": "2026-11-17T15:04:09+00:00",
+     "report": "2026-11-17_20261117T150158Z",
+     "purpose": "audit",
+     "tokens_in": 17461,
+     "tokens_out": 24321,
+     "usd": 0.2086
+    },
+    {
+     "utc": "2026-11-17T15:05:47+00:00",
+     "report": "2026-11-17_20261117T150158Z",
+     "purpose": "confrontation",
+     "tokens_in": 23442,
+     "tokens_out": 11663,
+     "usd": 0.1226
     }
    ]
   }
