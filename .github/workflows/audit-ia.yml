@@ -1,0 +1,65 @@
+name: audit-ia
+
+# Phase C : déclenchement manuel. Le rythme mensuel automatique relève de la phase D.
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "canari (test d'injection, quelques centimes) ou audit (audit complet du relevé engagé)"
+        type: choice
+        options: [canari, audit]
+        default: canari
+      releve:
+        description: "Dossier du relevé à auditer (mode audit), par exemple 2026-11-15_121239"
+        type: string
+        default: '2026-11-15_121239'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: audit-ia
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Bibliothèque de vérification BLS (empreintes verrouillées)
+        run: python -m pip install --require-hashes --no-deps -r requirements-tirage.txt
+      - name: Tests (sans IA réelle, aucun test sauté accepté)
+        env:
+          AUDIT_REQUIRE_SNAPSHOT: '1'
+          AUDIT_REQUIRE_BLS: '1'
+        run: python -m unittest -v
+      - name: Test canari sur les vraies IA
+        if: ${{ inputs.mode == 'canari' }}
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python -m auditor canary
+      - name: Audit complet par deux IA
+        if: ${{ inputs.mode == 'audit' }}
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          RELEVE: ${{ inputs.releve }}
+        run: |
+          case "$RELEVE" in *[!A-Za-z0-9_-]*) echo "nom de relevé invalide"; exit 1;; esac
+          set +e
+          python -m auditor run "snapshots/$RELEVE" --ia; echo "code de sortie $?"
+      - name: Vérification des empreintes
+        run: for r in reports/*/; do [ -f "$r/manifest.json" ] && python -m auditor verify "$r"; done; true
+      - name: Publication dans le dépôt (aucune relecture)
+        run: |
+          git config user.name "nice-agencies-open-audit[bot]"
+          git config user.email "audit-bot@users.noreply.github.com"
+          git add reports budget
+          git diff --cached --quiet && { echo "rien de nouveau"; exit 0; }
+          git commit -m "Audit IA (${{ inputs.mode }}, exécution ${GITHUB_RUN_ID})"
+          git push

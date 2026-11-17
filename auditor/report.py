@@ -11,6 +11,7 @@ TITLES = {
     'texte_historique': 'Texte de la méthode — écarts dans les versions archivées antérieures',
     'donnees_primaires': 'Vérification des données primaires',
     'biais': 'Analyse des biais',
+    'audit_ia': 'Audit contradictoire par deux IA',
 }
 LABELS = {
     'conforme': 'CONFORME',
@@ -26,6 +27,12 @@ LABELS = {
     'non_execute': 'NON EXÉCUTÉ',
     'non_verifiees': 'NON VÉRIFIÉES — les données d’entrée (avis, pages des sites, registre) n’ont pas été recontrôlées à leur source',
     'non_evalue': 'NON ÉVALUÉ — aucune analyse de biais n’a été menée dans ce rapport',
+    'partiellement_verifiees': 'PARTIELLEMENT — dates de création des sociétés comparées au registre national et barèmes '
+                               'd’honoraires relus pour les agences tirées ; les avis ne sont pas revérifiés sur les plateformes',
+    'analyse_publiee': 'ANALYSE PUBLIÉE — tests contrefactuels sans IA et analyses des deux IA ci-dessous (diagnostic, '
+                       'les notes officielles ne changent pas)',
+    'complet': 'COMPLET — les deux IA ont rendu leur analyse',
+    'incomplet': 'INCOMPLET — une seule IA a rendu son analyse ; aucune seconde validation n’est inventée',
 }
 
 
@@ -119,6 +126,21 @@ def markdown(rep: dict) -> str:
                      'Aucun échantillon n’est publié avant.')
         else:
             L.append('Tirage en échec : ' + '; '.join(s.get('errors', [])) + '. Aucun échantillon n’est publié.')
+    ai = rep.get('ai_audit')
+    if ai:
+        L += ['', '## Audit contradictoire par deux IA', '',
+              f"Paquet de données identique pour les deux IA, empreinte {ai['package_sha256']} ({ai['package_chars']} caractères).", '']
+        for slot in ('A', 'B'):
+            m = ai['models'][slot]
+            L.append(f"- IA {slot} · {m['provider']} · {m.get('model') or m['model_requested']} · statut **{m['status']}**"
+                     + (f" · {m['usd']} $" if m.get('usd') is not None else '') + (f" · {m['error']}" if m.get('error') else ''))
+        L += ['', f"Confrontation : A {ai['cross_status']['A']}, B {ai['cross_status']['B']} · constats confirmés par "
+                  f"l’autre IA : {ai['reconcile'].get('confirmes', 0)} · contestés : {ai['reconcile'].get('contestes', 0)} · "
+                  f"à soumettre à un contrôle humain : {ai['reconcile'].get('controle_humain', 0)}",
+              f"Textes ressemblant à des consignes repérés dans les données : {ai['injections_detected']} (injections.json)",
+              f"Registre des entreprises : {ai['primary']['registre']} · barèmes : {ai['primary']['baremes']}",
+              f"Coût total des appels d’IA : {ai['cost_usd']} $", '',
+              'Analyses complètes : agent-a.md, agent-b.md ; confrontation : disagreements.md ; tests de biais : bias.json.']
     L += ['', '## Limites', '']
     L += [f'- {x}' for x in rep['limits']]
     return '\n'.join(L) + '\n'

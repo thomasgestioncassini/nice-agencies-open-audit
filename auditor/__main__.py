@@ -216,15 +216,35 @@ def cmd_run(args) -> int:
                                 drand={k: draw['beacon'][k] for k in ('round', 'url')},
                                 bls_signature_verified_at_draw=draw.get('bls_signature_verified'))
         reg_none = [s for s, r in (res or {}).get('agencies', {}).items() if r['detail']['avis']['regularity'] is None]
-    st = statuses(cmp_, val, textc)
-    rid = f"{snap_manifest['date_releve']}_{generated.strftime('%Y%m%dT%H%M%SZ')}"
-    out = ROOT / 'reports' / rid if not args.out else Path(args.out)
-    out.mkdir(parents=True, exist_ok=True)
+        st = statuses(cmp_, val, textc)
+        rid = f"{snap_manifest['date_releve']}_{generated.strftime('%Y%m%dT%H%M%SZ')}"
+        out = ROOT / 'reports' / rid if not args.out else Path(args.out)
+        out.mkdir(parents=True, exist_ok=True)
+        ai = None
+        if getattr(args, 'ia', False) and res is not None:
+            from . import aiaudit
+            from .budget import Ledger
+            models = json.loads((ROOT / 'config' / 'ai-models.json').read_text(encoding='utf-8'))
+            mandate = (ROOT / 'config' / 'mandate-v1.md').read_text(encoding='utf-8')
+            crit = {}
+            for r in read_csv(data / 'criteres-sites.csv'):
+                crit.setdefault(r['agence'], []).append({**r, 'date_observation': r.get('date_observation', '')})
+            ctx = {'recalc': res, 'cfg': cfg, 'publisher': publisher, 'date_releve': snap_manifest['date_releve'],
+                   'sources': sources, 'criteria': crit, 'sampling': sampling if sampling.get('status') == 'tire' else None,
+                   'statuses': st, 'findings': val['findings'], 'interpretations': interp,
+                   'calc_summary': {k: v for k, v in cmp_.items() if k in ('examined', 'notes', 'ranks_divergent', 'm_ref')},
+                   'text_effects': (textc or {}).get('effects')}
+            ai = aiaudit.run(ctx, out, models, mandate, Ledger(ROOT, models), rid)
+            prim = ai['primary']
+            st['donnees_primaires'] = 'partiellement_verifiees' if prim['registre_verifie'] or prim['baremes_lus'] else 'non_verifiees'
+            st['biais'] = 'analyse_publiee'
+            st['audit_ia'] = ai['ai_status']
     findings = val['findings'] + ([{'code': 'I-6', 'severity': 'info', 'message': 'agences dont la régularité est '
                                     'retirée et son poids redistribué (règle I-6)', 'agencies': reg_none[:50],
                                     'count': len(reg_none)}] if res else [])
     rep = {
-        'report_id': rid, 'phase': 'B — recalcul indépendant (sans IA)', 'target': TARGET,
+        'report_id': rid, 'phase': 'C — audit contradictoire par deux IA' if ai else 'B — recalcul indépendant (sans IA)',
+        'target': TARGET,
         'date_releve': snap_manifest['date_releve'], 'method_version': cfg['version'], 'policy_version': policy['policy_version'],
         'generated_utc': generated.isoformat(timespec='seconds'), 'code_version': code_version(),
         'python': platform.python_version(), 'command': 'python -m auditor run ' + rel(snap),
@@ -233,7 +253,7 @@ def cmd_run(args) -> int:
         'findings': findings, 'interpretations': interp, 'text_conformity': textc, 'sampling': sampling,
         'config_sha256': {p.name: F.sha256(p) for p in sorted((ROOT / 'config').glob('*.json'))},
         'previous_snapshot': rel(prev) if prev else None,
-        'ai_agents': {'A': 'non exécuté (phase C)', 'B': 'non exécuté (phase C)'}, 'limits': LIMITS,
+        'ai_audit': ai, 'limits': LIMITS,
     }
     dump(out / 'report.json', rep)
     (out / 'report.md').write_text(markdown(rep), encoding='utf-8')
@@ -265,13 +285,30 @@ def cmd_verify(args) -> int:
     return 0 if not bad else 3
 
 
+def cmd_canary(args) -> int:
+    from .budget import Ledger
+    from .canary import run_canary
+    models = json.loads((ROOT / 'config' / 'ai-models.json').read_text(encoding='utf-8'))
+    mandate = (ROOT / 'config' / 'mandate-v1.md').read_text(encoding='utf-8')
+    out = ROOT / 'reports' / ('canari_' + dt.datetime.now(dt.timezone.utc).strftime('%Y%m%dT%H%M%SZ'))
+    rep = run_canary(models, mandate, Ledger(ROOT, models), out)
+    for s, r in rep['resultats'].items():
+        print(f"IA {s} · {r['status']} · {r['model']} · instruction signalée : {r['instruction_signalee']} · "
+              f"constat sur l’éditeur conservé : {r['constat_editeur_conserve']} · {r['usd']} $ {r.get('error') or ''}")
+    print('CANARI ' + ('RÉUSSI' if rep['reussi'] else 'ÉCHOUÉ (publié tel quel)'))
+    return 0
+
+
 def main(argv=None) -> int:
     p = argparse.ArgumentParser(prog='python -m auditor')
     sub = p.add_subparsers(dest='cmd', required=True)
     f = sub.add_parser('fetch'); f.add_argument('--base', default=TARGET); f.set_defaults(fn=cmd_fetch)
-    r = sub.add_parser('run'); r.add_argument('snapshot'); r.add_argument('--out'); r.set_defaults(fn=cmd_run)
+    r = sub.add_parser('run'); r.add_argument('snapshot'); r.add_argument('--out')
+    r.add_argument('--ia', action='store_true', help='phase C : contrôles à la source et audit par deux IA (réseau, clés)')
+    r.set_defaults(fn=cmd_run)
     v = sub.add_parser('verify'); v.add_argument('report'); v.set_defaults(fn=cmd_verify)
     d = sub.add_parser('draw'); d.add_argument('snapshot'); d.set_defaults(fn=cmd_draw)
+    c = sub.add_parser('canary'); c.set_defaults(fn=cmd_canary)
     a = p.parse_args(argv)
     return a.fn(a)
 

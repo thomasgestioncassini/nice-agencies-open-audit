@@ -1,0 +1,19 @@
+{
+  "version": "1.0 du 17/11/2026",
+  "note": "Claude (Anthropic) n'est jamais utilisé comme auditeur : il a écrit le code de production du site et produit une partie de ses données. Prix relevés le 17/11/2026 sur les pages tarifaires des fournisseurs ; à vérifier à chaque changement de modèle.",
+  "providers": {
+    "A": {"provider": "openai", "model": "gpt-6.1-sol", "secret": "OPENAI_API_KEY",
+          "usd_per_m_input": 2.0, "usd_per_m_output": 10.0,
+          "long_context_threshold": 272000, "usd_per_m_input_long": 4.0, "usd_per_m_output_long": 15.0,
+          "max_output_tokens": 24000},
+    "B": {"provider": "google", "model": "gemini-4-hydrogen", "secret": "GEMINI_API_KEY",
+          "usd_per_m_input": 1.5, "usd_per_m_output": 7.5,
+          "max_output_tokens": 24000}
+  },
+  "budget": {
+    "monthly_stop_usd_per_provider": 12.0,
+    "provider_hard_caps": "OpenAI : plafond de projet 15 $ appliqué + 15 $ de crédits prépayés sans recharge ; Google : plafond de projet 15 $ + 10 € de crédits prépayés sans recharge",
+    "chars_per_token_estimate": 3.0,
+    "max_input_tokens": 250000
+  }
+}
