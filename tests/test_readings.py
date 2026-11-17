@@ -48,6 +48,13 @@ class Readings(unittest.TestCase):
         self.assertEqual(f['V-15d']['count'], 1)
         self.assertEqual(f['V-15c']['count'], 1)
 
+    def test_calendar_reading_needs_no_declaration_but_needs_a_journal_entry(self):
+        crit = [['a', 'Carte', '25', 'lecture-2026-12-01'], ['b', 'Carte', '0', 'lecture-2026-12-01']]
+        lect = [['lecture-2026-12-01', 'calendrier', 'a', 'site', 'u', '2026-12-01T05:00:00Z', 'ab', '5 pages lues']]
+        f = self.run_with(lect=lect, reg=[], crit=crit)
+        self.assertEqual(f['V-15b']['severity'], 'info')
+        self.assertEqual((f['V-15a']['severity'], f['V-15a']['count']), ('majeur', 1))    # b : aucune entrée au journal
+
     def test_missing_files_is_not_a_pass(self):
         f = self.run_with()
         self.assertEqual(f['V-15']['severity'], 'mineur')

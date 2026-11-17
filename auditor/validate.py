@@ -218,7 +218,9 @@ def readings(data_dir: Path, publisher: list[str]) -> list[dict]:
     orphan = sorted({f'{i}:{a}' for i, ags in used.items() for a in ags if a not in by.get(i, set())})
     out.append(finding('V-15a', 'majeur' if orphan else 'info', 'critères dont l’identifiant de lecture n’a pas d’entrée au '
                        'journal des lectures pour cette agence', orphan[:50], len(orphan)))
-    undeclared = sorted(i for i in set(used) | set(by) if i not in reg or not reg[i].get('motif'))
+    # les lectures du calendrier trimestriel (journal « calendrier ») ne sont pas des relectures exceptionnelles
+    calendar = {r['id_lecture'] for r in lect if r.get('journal') == 'calendrier'} - {r['id_lecture'] for r in lect if r.get('journal') != 'calendrier'}
+    undeclared = sorted(i for i in (set(used) | set(by)) - calendar if i not in reg or not reg[i].get('motif'))
     out.append(finding('V-15b', 'majeur' if undeclared else 'info', 'relectures absentes du registre des relectures '
                        'exceptionnelles, ou sans motif', undeclared, len(undeclared)))
     late = sorted(i for i, r in reg.items() if 'après coup' in (r.get('inscription') or ''))
