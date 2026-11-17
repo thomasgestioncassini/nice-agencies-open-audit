@@ -11,7 +11,7 @@ Auditeur ouvert du classement des agences immobilières de Nice publié sur [mei
 | B | Recalcul indépendant, sans IA, archivage des relevés, tests | close le 17/11/2026 après quatre revues de ChatGPT (procès-verbal dans le dépôt) |
 | C | Deux IA d'audit (OpenAI, Google Gemini), contrôles à la source | close sous conditions le 17/11/2026 : clôture technique et documentaire, pas une certification ([docs/cloture-phase-c.md](docs/cloture-phase-c.md)) |
 | D | Exécution hebdomadaire, signatures, registre, surveillance externe | en cours depuis le 17/11/2026 : archivage hebdomadaire et audit mensuel programmés ; surveillance quotidienne dans le dépôt séparé [nice-agencies-audit-watch](https://github.com/thomasgestioncassini/nice-agencies-audit-watch) (même compte : séparée, pas indépendante de l'éditeur) ; journal des lectures et registre des relectures (V-15) ; registre des audits ([REGISTRE.md](REGISTRE.md)) et attestation Sigstore des nouveaux rapports ; procédure de contestation ([docs/contestation.md](docs/contestation.md)) |
-| E | Affichage sur le site | en ligne depuis le 17/11/2026 : ligne sous la date de mise à jour (✅ / ❌ / ⚠️ attachés au recalcul des notes et à l'état de l'audit, jamais au classement) et page [Audit ouvert](https://meilleure-agence-nice.fr/methode/audit-ouvert/) avec ses limites |
+| E | Affichage sur le site | en ligne depuis le 17/11/2026 : ligne sous la date de mise à jour, sans symbole de validation depuis l'audit de ChatGPT du 17/11 (recalcul et examen des IA distingués, constats ouverts comptés ; ❌ et ⚠️ réservés aux écarts, échecs et retards) et page [Audit ouvert](https://meilleure-agence-nice.fr/methode/audit-ouvert/) avec ses limites |
 
 ## Trois dimensions, six statuts
 
