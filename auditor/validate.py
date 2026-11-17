@@ -191,9 +191,51 @@ def validate(data_dir: Path, cfg: dict, publisher: list[str], prev_dir: Path | N
     else:
         out.append(finding('V-11', 'mineur', 'sources-agences.csv absent : identifiants stables, dates d’observation et '
                            'URL des preuves indisponibles pour ce relevé'))
+    out += readings(data_dir, publisher)
     if prev_dir is not None:
         out += history(prev_dir, data_dir, publisher)
     return {'findings': out, 'blocking': False}
+
+
+def readings(data_dir: Path, publisher: list[str]) -> list[dict]:
+    """V-15 : rapprochement des identifiants de lecture, du journal des lectures et du registre des relectures
+    exceptionnelles (condition 1 de la clôture de la phase C). Le journal est produit par le site audité : ces contrôles
+    établissent sa cohérence, pas qu'une lecture a réellement eu lieu."""
+    lp, rp = data_dir / 'lectures.csv', data_dir / 'relectures-exceptionnelles.csv'
+    crit = read_csv(data_dir / 'criteres-sites.csv')
+    used: dict[str, set] = {}
+    for r in crit:
+        if r.get('id_lecture'):
+            used.setdefault(r['id_lecture'], set()).add(r['agence'])
+    if not lp.exists() or not rp.exists():
+        return [finding('V-15', 'mineur' if used else 'info', 'journal des lectures ou registre des relectures absent de ce '
+                        'relevé : les identifiants de lecture ne peuvent pas être rapprochés', sorted(used), len(used))]
+    lect, reg = read_csv(lp), {r['id_lecture']: r for r in read_csv(rp)}
+    by: dict[str, set] = {}
+    for r in lect:
+        by.setdefault(r['id_lecture'], set()).add(r['agence'])
+    out = []
+    orphan = sorted({f'{i}:{a}' for i, ags in used.items() for a in ags if a not in by.get(i, set())})
+    out.append(finding('V-15a', 'majeur' if orphan else 'info', 'critères dont l’identifiant de lecture n’a pas d’entrée au '
+                       'journal des lectures pour cette agence', orphan[:50], len(orphan)))
+    undeclared = sorted(i for i in set(used) | set(by) if i not in reg or not reg[i].get('motif'))
+    out.append(finding('V-15b', 'majeur' if undeclared else 'info', 'relectures absentes du registre des relectures '
+                       'exceptionnelles, ou sans motif', undeclared, len(undeclared)))
+    late = sorted(i for i, r in reg.items() if 'après coup' in (r.get('inscription') or ''))
+    out.append(finding('V-15c', 'mineur' if late else 'info', 'relectures inscrites au registre après coup', late, len(late)))
+    nostamp = Counter(r['id_lecture'] for r in lect if not r.get('heure_utc') or not r.get('empreinte_texte'))
+    out.append(finding('V-15d', 'mineur' if nostamp else 'info', 'lectures sans heure ou sans empreinte du texte lu',
+                       sorted(nostamp), sum(nostamp.values()), per_reading=dict(nostamp)))
+    sp = data_dir / 'sources-agences.csv'
+    if sp.exists():
+        with_site = {r['agence'] for r in read_csv(sp) if r.get('url_site') and r.get('sans_site') != '1'}
+        gaps = {i: sorted(with_site - by.get(i, set())) for i, r in reg.items() if (r.get('perimetre') or '').startswith('toutes')}
+        gaps = {i: v for i, v in gaps.items() if v}
+        out.append(finding('V-15e', 'majeur' if gaps else 'info', 'relectures annoncées pour toutes les agences mais ne '
+                           'couvrant pas toutes les agences classées ayant un site', [a for v in gaps.values() for a in v][:50],
+                           sum(len(v) for v in gaps.values()), per_reading={i: len(v) for i, v in gaps.items()},
+                           publisher_missing={i: [p for p in publisher if p in v] for i, v in gaps.items()}))
+    return out
 
 
 def history(prev_dir: Path, data_dir: Path, publisher: list[str]) -> list[dict]:

@@ -22,11 +22,13 @@ FILES = {
     'agregats-plateformes.csv': '/methode/reproduction/agregats-plateformes.csv',
     'criteres-sites.csv': '/methode/reproduction/criteres-sites.csv',
     'sources-agences.csv': '/methode/reproduction/sources-agences.csv',
+    'lectures.csv': '/methode/reproduction/lectures.csv',                              # journal des lectures (v5.7 du site)
+    'relectures-exceptionnelles.csv': '/methode/reproduction/relectures-exceptionnelles.csv',
     'classement-notes.txt': '/classement-notes.txt',
     'methode-details.html': '/methode/details/',
     'calcul.zip': '/methode/code/meilleure-agence-nice-calcul.zip',   # données anonymisées (dédoublonnage, V-14)
 }
-OPTIONAL = {'sources-agences.csv', 'calcul.zip'}          # export ajouté le 15/11/2026 : absent des relevés antérieurs
+OPTIONAL = {'sources-agences.csv', 'calcul.zip', 'lectures.csv', 'relectures-exceptionnelles.csv'}          # export ajouté le 15/11/2026 : absent des relevés antérieurs
 MAX_BYTES = 50 * 1024 * 1024                # limite de taille par fichier
 TIMEOUT = 60
 UA = 'nice-agencies-open-audit (+https://github.com/thomasgestioncassini/nice-agencies-open-audit)'
