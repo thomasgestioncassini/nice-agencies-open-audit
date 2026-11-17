@@ -92,7 +92,26 @@ ChatGPT a refusé la clôture tant que des décisions favorables à l'éditeur r
 - **Mentions légales** (méthode v5.5) : une mention compte si elle est exacte, pas seulement présente — carte affichée
   expirée ou numéro de société différent du registre ne comptent plus. L'éditeur a décidé d'appliquer cette règle
   tout de suite à toutes les agences, les siennes comprises, par une relecture commune (et non une exception propre à
-  ImmoVendu). Deux passages : page des mentions légales, puis page du barème de chaque agence, combinés avec une seule règle (une inexactitude lue sur l'une des pages retire le critère ; une mention absente garde sa valeur précédente). Résultat : 533 agences relues, 51 changent (34 gagnent, 17 perdent), 22 affichent une carte expirée ou un numéro de société différent du registre. ImmoVendu perd les deux mentions (carte affichée expirée au 16/06/2025, RCS « 400 877 688 » au lieu de 400 877 866) : 91,43 → 87,58, 3ᵉ → 12ᵉ. Gestion Cassini : inchangée (74,52 ; 131ᵉ, dépassée par d'autres). Journaux : `data/rectifications/mentions-*.json` du site. Incident : le second passage pouvait d'abord effacer une inexactitude lue par le premier (7 cas) ; corrigé avant publication par une combinaison unique des deux passages (`pipeline/mentions_final.py` du site).
+  ImmoVendu). Deux pages lues par agence (mentions légales, barème), combinées avec une seule règle : une inexactitude lue sur l'une des pages retire le critère ; une mention absente garde sa valeur précédente.
+  - **Première relecture (17/11, 16:17–18:10 UTC), publiée à 18:15 UTC puis remplacée.** L'outil de lecture du site
+    (Firecrawl) pouvait renvoyer une copie en cache de 2 jours au plus. ImmoVendu y perdait les deux mentions (carte
+    affichée expirée au 16/06/2025, RCS « 400 877 688 ») : 3ᵉ → 12ᵉ. L'éditeur a signalé que sa page avait été
+    corrigée dans l'après-midi (l'auditeur, qui lit en direct, voyait encore l'ancienne version à 15:01 UTC).
+  - **Relecture en direct de toutes les agences (18:39–20:20 UTC), publiée à 20:27 UTC.** 533 agences relues ; 55
+    changent par rapport à l'état d'avant les relectures ; 22 affichent une carte expirée ou un numéro de société
+    différent du registre ; 11 résultats diffèrent de la lecture en cache, dont les deux agences de l'éditeur.
+    ImmoVendu retrouve les deux mentions (page corrigée : RCS 400 877 866, carte valable jusqu'au 16/06/2028) :
+    12ᵉ → 3ᵉ (91,43). Gestion Cassini gagne la mention « carte professionnelle » (page du barème republiée le 17/11
+    avec le numéro de carte et la CCI) : 131ᵉ → 94ᵉ (74,52 → 77,27).
+  - **À lire avec réserve.** Les deux agences de l'éditeur bénéficient de pages corrigées le jour même, après que
+    l'audit eut relevé leurs erreurs : l'éditeur voit les constats avant les autres agences. La lecture est commune,
+    en direct et à règle unique, mais cet avantage de calendrier est réel. Les 22 autres agences en défaut n'ont pas
+    été prévenues.
+  - Journaux : `data/rectifications/mentions-*.json` du site (`-direct` : lecture en direct ; sans suffixe : lecture
+    pouvant venir du cache). Incident corrigé avant la première publication : le second passage pouvait effacer une
+    inexactitude lue par le premier (7 cas) ; les deux passages sont combinés par `pipeline/mentions_final.py`.
+  - Les relectures du matin (critère payeur, barèmes illisibles) ont pu, elles aussi, lire des copies en cache de 2
+    jours au plus ; elles n'ont pas été refaites.
 
 ### Condition 2 — Règle de relecture
 
