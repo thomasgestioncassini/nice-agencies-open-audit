@@ -38,9 +38,7 @@ def gemini():
         models = [m['name'].split('/')[-1] for m in call('https://generativelanguage.googleapis.com/v1beta/models?pageSize=200', headers=h)['models']
                   if 'generateContent' in m.get('supportedGenerationMethods', [])]
         print('Gemini : clé acceptée ·', len(models), 'modèles ·', ', '.join(models)[:1500])
-        cand = [m for m in models if 'flash' in m and 'lite' not in m and 'image' not in m and 'tts' not in m and 'live' not in m and 'exp' not in m]
-        model = sorted(cand)[-1] if cand else (models[0] if models else None)
-        if model:
+        for model in [m for m in ('gemini-3.8-flash', 'gemini-3.7-flash', 'gemini-2.5-flash') if m in models][:1]:
             r = call(f'https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent',
                      {'contents': [{'parts': [{'text': 'Réponds uniquement : OK'}]}], 'generationConfig': {'maxOutputTokens': 16}}, h)
             print('Gemini : appel test', model, '· jetons', r.get('usageMetadata'))
