@@ -44,11 +44,17 @@ class Alterations(unittest.TestCase):
             for r in ag:
                 if r['agence'] == 'immovendu':
                     r['note_publiee'] = f"{float(r['note_publiee']) + 0.5:.4f}"
-                    r['honoraires'] = '100.0000'
+                    # on gonfle le premier pilier qui n'est pas déjà au maximum (depuis la v5.2,
+                    # le pilier honoraires d'ImmoVendu est à 100 : le gonfler ne changerait rien)
+                    col = next(c for c in ('honoraires', 'service', 'avis') if float(r[c]) < 95)
+                    r[col] = f"{float(r[col]) + 5:.4f}"
+                    picked.append(col)
             write_rows(d / 'agences.csv', head, ag)
+        picked = []
         got = self._publisher_favoured('immovendu', change)
+        key = {'honoraires': 'hono', 'service': 'serv', 'avis': 'avis'}[picked[0]]
         self.assertIn('note', got)
-        self.assertIn('pilier hono', got)
+        self.assertIn(f'pilier {key}', got)
 
     def test_3b_invented_reviews_for_immovendu_are_detected(self):
         """Des avis 5/5 ajoutés aux données d'ImmoVendu sans que les notes publiées changent."""
