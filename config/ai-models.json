@@ -1,14 +1,26 @@
 {
-  "version": "1.0 du 17/11/2026",
+  "version": "1.1 du 17/11/2026 (sortie maximale de Gemini portée à 60 000 jetons après une réponse tronquée)",
   "note": "Claude (Anthropic) n'est jamais utilisé comme auditeur : il a écrit le code de production du site et produit une partie de ses données. Prix relevés le 17/11/2026 sur les pages tarifaires des fournisseurs ; à vérifier à chaque changement de modèle.",
   "providers": {
-    "A": {"provider": "openai", "model": "gpt-6.1-sol", "secret": "OPENAI_API_KEY",
-          "usd_per_m_input": 2.0, "usd_per_m_output": 10.0,
-          "long_context_threshold": 272000, "usd_per_m_input_long": 4.0, "usd_per_m_output_long": 15.0,
-          "max_output_tokens": 24000},
-    "B": {"provider": "google", "model": "gemini-4-hydrogen", "secret": "GEMINI_API_KEY",
-          "usd_per_m_input": 1.5, "usd_per_m_output": 7.5,
-          "max_output_tokens": 24000}
+    "A": {
+      "provider": "openai",
+      "model": "gpt-6.1-sol",
+      "secret": "OPENAI_API_KEY",
+      "usd_per_m_input": 2.0,
+      "usd_per_m_output": 10.0,
+      "long_context_threshold": 272000,
+      "usd_per_m_input_long": 4.0,
+      "usd_per_m_output_long": 15.0,
+      "max_output_tokens": 24000
+    },
+    "B": {
+      "provider": "google",
+      "model": "gemini-4-hydrogen",
+      "secret": "GEMINI_API_KEY",
+      "usd_per_m_input": 1.5,
+      "usd_per_m_output": 7.5,
+      "max_output_tokens": 60000
+    }
   },
   "budget": {
     "monthly_stop_usd_per_provider": 12.0,

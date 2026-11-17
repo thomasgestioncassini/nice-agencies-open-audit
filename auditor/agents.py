@@ -110,7 +110,7 @@ def call_openai(cfg: dict, system: str, user: str, schema: dict, name: str) -> t
     txt = r.get('output_text') or ''.join(c.get('text', '') for o in r.get('output', []) if o.get('type') == 'message'
                                           for c in o.get('content', []))
     u = r.get('usage', {})
-    return json.loads(txt), u.get('input_tokens', 0), u.get('output_tokens', 0), r.get('model', cfg['model'])
+    return txt, u.get('input_tokens', 0), u.get('output_tokens', 0), r.get('model', cfg['model']), r.get('status')
 
 
 def _gemini_schema(s):
@@ -128,10 +128,11 @@ def call_gemini(cfg: dict, system: str, user: str, schema: dict, name: str) -> t
                                  'maxOutputTokens': cfg['max_output_tokens']}}
     r = _post(f"https://generativelanguage.googleapis.com/v1beta/models/{cfg['model']}:generateContent", body,
               {'x-goog-api-key': os.environ[cfg['secret']]})
-    txt = ''.join(p.get('text', '') for p in r['candidates'][0]['content']['parts'] if not p.get('thought'))
+    cand = r['candidates'][0]
+    txt = ''.join(p.get('text', '') for p in cand.get('content', {}).get('parts', []) if not p.get('thought'))
     u = r.get('usageMetadata', {})
     out_tokens = u.get('candidatesTokenCount', 0) + u.get('thoughtsTokenCount', 0)
-    return json.loads(txt), u.get('promptTokenCount', 0), out_tokens, r.get('modelVersion', cfg['model'])
+    return txt, u.get('promptTokenCount', 0), out_tokens, r.get('modelVersion', cfg['model']), cand.get('finishReason')
 
 
 CALLERS = {'openai': call_openai, 'google': call_gemini}
@@ -175,7 +176,7 @@ def run_agent(slot: str, models: dict, mandate: str, task: str, package: dict, s
     except Exception as e:                    # noqa: BLE001 — BudgetExceeded
         return {**meta, 'status': 'budget_atteint', 'error': str(e)}
     try:
-        out, tin, tout, model = (caller or CALLERS[cfg['provider']])(cfg, system, user, schema, name)
+        got = (caller or CALLERS[cfg['provider']])(cfg, system, user, schema, name)
     except Exception as e:                    # noqa: BLE001 — panne, refus, délai : publié comme échec
         detail = ''
         if hasattr(e, 'read'):
@@ -184,9 +185,23 @@ def run_agent(slot: str, models: dict, mandate: str, task: str, package: dict, s
             except Exception:                 # noqa: BLE001
                 pass
         return {**meta, 'status': 'echec', 'error': f'{type(e).__name__}: {e} {detail}'.strip()}
-    meta.update(model=model, tokens_in=tin, tokens_out=tout,
+    if len(got) == 4:                         # IA simulée des tests : objet déjà décodé
+        out, tin, tout, model = got
+        finish, raw = None, None
+    else:
+        raw, tin, tout, model, finish = got
+        try:
+            out = json.loads(raw)
+        except ValueError as e:
+            out = None
+            meta['parse_error'] = f'{type(e).__name__}: {e}'
+    # le coût est enregistré même si la réponse est inutilisable : il a été facturé
+    meta.update(model=model, tokens_in=tin, tokens_out=tout, finish_reason=finish,
                 usd=round(ledger.record(slot, purpose, tin, tout, report_id), 4))
     errs = validate_output(out, schema)
+    if out is None:
+        errs = [meta.get('parse_error', 'sortie vide') + (f' (fin de réponse : {finish})' if finish else '')]
+        meta['raw_output'] = raw                # publiée telle quelle, même tronquée
     return {**meta, 'status': 'sortie_invalide' if errs else 'ok', 'errors': errs, 'output': out}
 
 

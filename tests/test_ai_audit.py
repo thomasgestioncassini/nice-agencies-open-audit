@@ -189,3 +189,20 @@ class AIAudit(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class TruncatedOutput(unittest.TestCase):
+    """Incident du 17/11/2026 : réponse de Gemini tronquée. Le coût facturé doit être compté et la sortie publiée."""
+
+    def test_truncated_json_is_invalid_but_billed(self):
+        root = Path(tempfile.mkdtemp())
+        try:
+            led = Ledger(root, MODELS, '2026-11')
+            caller = lambda cfg, system, user, schema, name: ('{"resume": "coupé', 50000, 24000, 'm', 'MAX_TOKENS')
+            r = AG.run_agent('B', MODELS, MANDATE, 't', {}, AG.FINDING_SCHEMA, 'audit', led, 'x', 'audit', caller)
+            self.assertEqual(r['status'], 'sortie_invalide')
+            self.assertIn('MAX_TOKENS', r['errors'][0])
+            self.assertGreater(led.spent('B'), 0)
+            self.assertEqual(r['raw_output'], '{"resume": "coupé')
+        finally:
+            shutil.rmtree(root, ignore_errors=True)
