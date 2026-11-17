@@ -1,0 +1,132 @@
+{
+ "slot": "B",
+ "provider": "google",
+ "model_requested": "gemini-4-hydrogen",
+ "purpose": "confrontation",
+ "mandate_sha256": "82e0fec40442f9e2ab530af39492ad0a83e777c1e424867598daa9a65e8089c8",
+ "input_sha256": "83ce33979d71b71edf684b6233df81d04efe029a8aed2d661b7f36a11b7f89dd",
+ "input_chars": 70455,
+ "estimate_usd": 0.4865,
+ "model": "gemini-4-hydrogen",
+ "tokens_in": 23720,
+ "tokens_out": 10493,
+ "finish_reason": "STOP · identifiant de réponse dML8asOlN5Tpz7IPqJjtiAM",
+ "usd": 0.1143,
+ "status": "ok",
+ "errors": [],
+ "output": {
+  "positions": [
+   {
+    "id": "A-1",
+    "position": "confirme",
+    "justification": "Fait vérifié dans classement (editeur = SARL GESTION CASSINI, agences_editeur = gestion-cassini et immovendu) et dans agences_editeur (SIREN 400877866, raison sociale GESTION CASSINI, rangs 131 et 12). La version v5.6 mentionne un « gel de l'éditeur » sans règles détaillées dans le paquet."
+   },
+   {
+    "id": "A-2",
+    "position": "confirme",
+    "justification": "Fait vérifié dans baremes_relus : les deux pages contiennent exactement la même phrase (« Honoraires à la charge du VENDEUR ou de l'ACQUEREUR en fonction du mandat de vente »), relue le 2026-11-17 (date_relecture_payeur), mais obtiennent 0/30 pour Gestion Cassini et 30/30 pour ImmoVendu. Avec un poids de 17 %, cet écart représente 5,10 points sur la note finale (74,52 + 5,10 = 79,62 ou 87,58 - 5,10 = 82,48). Les autres critères d'honoraires sont cohérents avec le texte visible, sous réserve de troncature pour ImmoVendu."
+   },
+   {
+    "id": "A-3",
+    "position": "confirme",
+    "justification": "Fait vérifié dans tests_biais.avis_non_precises : 18 264 avis sans profil précisé sont tous comptés sur 33 064 avis comptés (part publiée 0,552). Leur exclusion modifie 526 rangs (médiane 26, max 252, 6/10 du top 10 inchangés) et améliore fortement Gestion Cassini (rang 131 à 62, note 74,52 à 79,24) ainsi que le rang d'ImmoVendu (12 à 9, note 87,58 à 87,50), ce qui contredit une faveur uniforme à l'éditeur."
+   },
+   {
+    "id": "A-4",
+    "position": "confirme",
+    "justification": "Fait vérifié par la règle I-4 (contradiction) : le dénominateur de régularité compte les doublons et plateformes incomplètes malgré la citation générale de retrait des doublons, bien qu'une mention documented_by indique l'exception. La variante I-4 modifie 8 notes et 58 rangs (max 19), faisant passer ImmoVendu de 12 à 13 et laissant Gestion Cassini à 131."
+   },
+   {
+    "id": "A-5",
+    "position": "confirme",
+    "justification": "Fait vérifié par I-6 (ambiguite) et effet_des_regles_vs_texte_initial.I-6 : reporter les 15 % de régularité sur qualité et volume au lieu d'appliquer 50 modifie 21 notes et 210 rangs sur 546 (environ 38,5 %, max 34), déplaçant Gestion Cassini de 131 à 129 sans changer le rang 12 d'ImmoVendu. L'écart textuel porte sur un sous-critère alors que la citation vise un pilier."
+   },
+   {
+    "id": "A-6",
+    "position": "confirme",
+    "justification": "Fait vérifié par I-1 (non_documente, avec champ documented_by) : les avis de plateformes incomplètes utilisent la note globale avec un poids fixe de 0,5 (3 ans) sans profil ni date. Le paquet ne fournit pas la liste des agences ni le nombre d'avis concernés, rendant l'impact propre non quantifiable."
+   },
+   {
+    "id": "A-7",
+    "position": "confirme",
+    "justification": "Fait vérifié : resultats_deterministes.statuts affiche texte_documentation = complete et texte_coherence = aucune_contradiction_repertoriee, alors que regles_appliquees_absentes_ou_contraires_au_texte recense des items non_documente (I-1, I-2, I-8, I-10, I-13), contradiction (I-4, I-7) et ambiguite (I-6, I-11), associés à texte_historique = ecarts_anterieurs. La variante d'ensemble change 359 notes et 254 rangs (46,5 %)."
+   },
+   {
+    "id": "A-8",
+    "position": "confirme",
+    "justification": "Fait vérifié par V-10b (majeur) : la date de lancement d'enseigne n'est relevée que pour 1 agence sur 546 (ImmoVendu, 2024), malgré 43 groupes de SIREN partagés (V-10). Pour le SIREN 400877866 (V-10f), Gestion Cassini utilise 1995-05-02 et ImmoVendu 2024-05-01, ce qui pénalise ImmoVendu sans permettre de détecter d'éventuels cas analogues chez les concurrentes."
+   },
+   {
+    "id": "A-9",
+    "position": "confirme",
+    "justification": "Fait vérifié : resultats_deterministes.statuts.donnees_primaires vaut non_verifiees, echantillon vaut null, et les textes individuels d'avis (utilisés notamment par l'IA pour I-9) sont absents du paquet, à l'exception des deux pages baremes_relus permettant de relever l'incohérence A-2."
+   },
+   {
+    "id": "A-10",
+    "position": "confirme",
+    "justification": "Fait vérifié dans tests_biais.scenarios : tous les chiffres cités correspondent exactement (sans_anciennete : 537 rangs changés, Gestion Cassini 131 à 150, ImmoVendu 12 à 6 ; avis_plus20 : 492 rangs, ImmoVendu 10 ; avis_moins20 : ImmoVendu 16 ; conf_plus20 : ImmoVendu 16 ; conf_moins20 : ImmoVendu 9 ; info_plus20 : Gestion Cassini 128, ImmoVendu 10), montrant des effets opposés selon les critères."
+   },
+   {
+    "id": "A-11",
+    "position": "confirme",
+    "justification": "Calcul reproduit : selon I-10 (juin si le mois est inconnu) et enseigne_depuis = 2024, l'ancienneté en novembre 2026 est de 29 mois, soit 29/12/20*100 = 12,083 arrondi à 12,1 (contre 12,5 pour 2024-05-01). À autres piliers inchangés, la note d'ImmoVendu serait 87,56 et non 87,67 comme indiqué dans publisher_specific.anciennete_depuis_enseigne (rang 11)."
+   },
+   {
+    "id": "A-12",
+    "position": "confirme",
+    "justification": "Fait vérifié par I-7 (contradiction) et effet_des_regles_vs_texte_initial.I-7 : le calcul arrondit sous-critères, piliers (au dixième) puis la note (au centième), contrairement à la citation « note exacte ». Sans ces arrondis, 353 notes et 78 rangs changent (max 2, 9/10 du top 10 conservés), sans affecter les rangs 131 et 12 de l'éditeur."
+   },
+   {
+    "id": "A-13",
+    "position": "confirme",
+    "justification": "Fait vérifié dans le contrôle V-4b (mineur) : 19 avis sous 1/5 sont relevés sur 10 agences concurrentes, dont 9 sont comptés tels quels dans la moyenne, avec recommandation de vérifier l'échelle d'Opinion System à la source."
+   },
+   {
+    "id": "A-14",
+    "position": "confirme",
+    "justification": "Fait vérifié par V-6 (834 doublons : 0 pour Gestion Cassini, 21 pour ImmoVendu), V-7 (186 écarts de partage incluant les deux agences de l'éditeur), V-14 (0 divergence au ré-dédoublonnage) et I-13. En l'absence des textes d'avis dans le paquet, la validité sémantique des rapprochements reste non vérifiable."
+   },
+   {
+    "id": "A-15",
+    "position": "confirme",
+    "justification": "Fait vérifié par I-8 (non_documente) : seuls les avis Google vente/achat de 3 étoiles ou moins (doublons compris) dont la présence ou l'absence de réponse a été relevée entrent au dénominateur. Les taux de couverture par agence et l'effet sur les notes ne figurent pas dans le paquet."
+   },
+   {
+    "id": "A-16",
+    "position": "confirme",
+    "justification": "Fait vérifié dans tests_biais.groups : les écarts moyens cités sont exacts (grand vs petit volume : 72,66 vs 48,05 soit 24,61 ; réseaux vs indépendantes : 72,38 vs 59,75 soit 12,63 ; estimation en ligne vs sans : 69,15 vs 53,95 soit 15,20 ; éditeur n=2 à 81,05 vs toutes à 61,32). De plus, voisines_editeur vaut n=0 et not_testable est vide, limitant la comparaison locale."
+   },
+   {
+    "id": "A-17",
+    "position": "confirme",
+    "justification": "Fait vérifié par I-2 (non_documente) et recalcul.m_ref : la moyenne de Nice (4,453) est la moyenne simple des notes moyennes par agence dans agregats-plateformes.csv (classées ou non), avec mention du 15/11/2026 pour un relevé daté du 17/11/2026. Ce fichier n'étant pas fourni, la valeur n'est pas recalculable."
+   },
+   {
+    "id": "A-18",
+    "position": "confirme",
+    "justification": "Fait vérifié par I-11 (ambiguite) et effet_des_regles_vs_texte_initial.I-11 : le départage à égalité utilise tous les avis des plateformes (locataires, bailleurs et syndic compris) puis l'ordre interne (identifiant stable pour l'auditeur). Limiter aux avis vente/achat modifie 4 rangs d'une place sans changer le top 10 ni les rangs de l'éditeur."
+   },
+   {
+    "id": "A-19",
+    "position": "confirme",
+    "justification": "Calcul reproduit à partir de V-10d : 15 agences sans date de création de société reçoivent 50 points d'ancienneté (équivalent de 10 ans sur l'échelle 0-20 ans), soit 2,50 points de note finale (poids 5 %), alors que la moyenne du pilier sur les 546 agences est 68,6."
+   },
+   {
+    "id": "A-20",
+    "position": "confirme",
+    "justification": "Fait vérifié par V-12a (11 plateformes en écart, dont Winter Google 438 vs 437 et Orpi Agerim Google 115 vs 126 soit environ 8,7 %) et V-12 (0 dépassement de la tolérance de 10 % ou 2 avis sur 525 plateformes). Les deux sources comparées proviennent toutefois des exports du site."
+   },
+   {
+    "id": "A-21",
+    "position": "confirme",
+    "justification": "Calcul reproduit : dans registre_entreprises, Gestion Cassini et ImmoVendu (SIREN 400877866) concordent sur 1995-05-02. L'exception V-10e/V-10f (2024-05-01, justificatif de marque non joint) ramène le pilier ancienneté d'ImmoVendu de 100 à 12,5, soit -87,5 points de pilier (-4,375 points de note). Sans elle, sa note serait 87,581 + 4,375 = 91,956 soit 91,96."
+   },
+   {
+    "id": "A-22",
+    "position": "confirme",
+    "justification": "Calcul reproduit : les poids totalisent 100 et les critères 22 ; Gestion Cassini donne 74,517 arrondi à 74,52 et ImmoVendu donne 87,581 arrondi à 87,58. Les contrôles fournis rapportent 546 notes conformes, 0 divergence de rang et aucun incident en V-13a/b/d/e, mais les 544 autres lignes et relevés antérieurs ne sont pas fournis."
+   }
+  ],
+  "commentaire": "L'ensemble des 22 constats de l'autre auditeur est confirmé : les chiffres, citations, calculs reproductibles et limites de vérifiabilité sont rigoureusement conformes au paquet de données fourni, et l'équilibre entre éléments défavorables et éléments dédouanant une manipulation uniforme de l'éditeur est respecté. Aucune instruction suspecte n'a été détectée dans le bloc de données analysé."
+ }
+}

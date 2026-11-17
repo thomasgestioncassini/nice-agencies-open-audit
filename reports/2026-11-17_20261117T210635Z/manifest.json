@@ -1,0 +1,37 @@
+{
+ "report_id": "2026-11-17_20261117T210635Z",
+ "outputs_sha256": {
+  "agent-a.json": "dd7afba3b34f60fda4b762d8e8bf8506ca7cae2c1ebc05e11ba58717b35b2151",
+  "agent-a.md": "c8a7c6cf8f64382e053fa438a8a7fe0adba0d8f411086aba4b0d3bb72b46bc87",
+  "agent-b.json": "b8fe8341f4e00469ce0375a8f9d5832dc5616d009f85aeac144cc1f9c53dcb10",
+  "agent-b.md": "492fb82098964def9c17cfd9f0209ce714a0176cdb64e176efd3b8d42949f288",
+  "anomalies.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+  "bias.json": "e0be0615d43733493c08d05b797e71d1bc301dd0583b860ea5ba4879a1335faf",
+  "calculations.csv": "47eed180ddfb3ef47744344d8bd28cb4b4396718b2e2381bac1a1ad67c6796b3",
+  "cross-a.json": "74a395e76825e99142256890e320c61497c221c1b3b95470e1b6b7ce0e697bc0",
+  "cross-b.json": "9b139d646db4b7cb414bf6b46483aa2a4aba246c3ca845b60a98983e427a18f5",
+  "disagreements.md": "087d38629aea3e5cb713c8c5b017400f29efbd05f7ba7d436f64d86bce35f14e",
+  "injections.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "package-public.json": "be33002f9d98b14f7ddc353a16fffee1069cf1f93a0779822479a2c276087e3b",
+  "registry.json": "eb9838ff21fb3e568e71a7b625fb0fb4a1e4534f54d17d3ab0790db915e88087",
+  "report.json": "30c0ce88380420222363d7a42f99b81be9bce181127e24df0be5c151858b1a6c",
+  "report.md": "a307cedb709bc208ea3a2d9ff5dffe5a19f87b41cd8b6e227e9caf773faaa39d",
+  "sites.json": "5cdfa34bf61914d8d9f318aebf331be78e43abea065759f760b3cfd5353e9048"
+ },
+ "snapshot": "snapshots/2026-11-17_210119",
+ "snapshot_manifest_sha256": "7967e0032f2dc2d6081fcad83c74faa8ce2a4b3d34a85148e4b6f967c97df36b",
+ "inputs_sha256": {
+  "agences.csv": "6d6d85ef2bfa2b99441f8b8695071a620e1becfc5b51d69df65f093abc0960f6",
+  "agregats-plateformes.csv": "7f85e8b3a9dd34cc800bed243678d435af8b9171ee8c654af61179249cbb427b",
+  "avis-elementaires.csv": "4199664c37925044c77108ad0baab187bd6e7422351e8af01f92e7b536fdfc74",
+  "calcul.zip": "6bcb5e00a5cf1b9b340b8127e40466dc8586d5da74509a78982ec7ef3653ecac",
+  "classement-notes.txt": "6d68d27cfe85c8b8118593a20fb2a4e94c34e363ba4781db70c70f2d434e4ed0",
+  "criteres-sites.csv": "05a78e2105099e6c9745f4aa05e6d25fc304ad044afc7b3eef7021bdebfeb1db",
+  "methode-details.html": "e8f8d45895b0e7736ec99e16ff853d60b06c44c016251f8c89bfc35c037146a9",
+  "parametres.json": "c65513a99a75516ac53c58d3d18466e34c2385fc552a064a8d8bf6964ea1f3b7",
+  "sources-agences.csv": "70cd3232da6799848b5c4f3272e168ffb33014ef795bedfbe6480e6ef9d80924"
+ },
+ "code_version": "edcc3c4cf5985c63e15dcf4549e30da48afb7366",
+ "python": "3.12.16",
+ "command": "python -m auditor run snapshots/2026-11-17_210119"
+}
