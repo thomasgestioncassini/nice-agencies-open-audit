@@ -1,0 +1,122 @@
+{
+ "slot": "B",
+ "provider": "google",
+ "model_requested": "gemini-4-hydrogen",
+ "purpose": "confrontation",
+ "mandate_sha256": "82e0fec40442f9e2ab530af39492ad0a83e777c1e424867598daa9a65e8089c8",
+ "input_sha256": "db226fdd953244eae16f5cdf4931f913ee8fb36a00c3b87d3c69bae2110a37e7",
+ "input_chars": 68447,
+ "estimate_usd": 0.4855,
+ "model": "gemini-4-hydrogen",
+ "tokens_in": 23098,
+ "tokens_out": 9822,
+ "finish_reason": "STOP · identifiant de réponse dbv8asb5LL2p_uMPreCYuA8",
+ "usd": 0.1083,
+ "status": "ok",
+ "errors": [],
+ "output": {
+  "positions": [
+   {
+    "id": "A-1",
+    "position": "confirme",
+    "justification": "Dans classement, editeur vaut SARL GESTION CASSINI et agences_editeur liste gestion-cassini et immovendu. Dans agences_editeur, les deux fiches portent le SIREN 400877866 et la raison_sociale GESTION CASSINI, avec les rangs respectifs 94 et 3 sur 546 agences. Le paquet ne fournit aucune information sur d'eventuelles garanties d'independance editoriale ou de separation."
+   },
+   {
+    "id": "A-2",
+    "position": "confirme",
+    "justification": "Dans baremes_relus, les deux pages (HTTP 200) contiennent exactement la meme mention pour les transactions : Honoraires a la charge du VENDEUR ou de l'ACQUEREUR en fonction du mandat de vente. Or le critere Payeur indique (vendeur ou acquereur), observe le 2026-11-17 pour les deux agences, vaut 0/30 pour gestion-cassini et 30/30 pour immovendu. Avec poids.hono = 17 %, l'ecart de 30 points represente bien 5,10 points sur la note finale (77,27 contre 82,37 recalcule avec +5,10 ; 91,43 contre 86,33 avec -5,10), la regle operationnelle sur une mention conditionnelle n'etant pas fournie."
+   },
+   {
+    "id": "A-3",
+    "position": "confirme",
+    "justification": "Dans tests_biais.avis_non_precises, on releve 18 264 avis non precises, tous comptes (dont_comptes = 18 264), sur 33 064 avis comptes, soit une part de 0,552. Le scenario_sans_non_precises modifie 528 rangs (deplacement median 26,0, maximum 252, top10_inchanges = 7) et ameliore le rang des deux agences de l'editeur (gestion-cassini passe de 94 a 36 et immovendu de 3 a 2), ce qui contredit l'idee que cette regle les avantage systematiquement."
+   },
+   {
+    "id": "A-4",
+    "position": "confirme",
+    "justification": "Le statut resultats_deterministes.statuts.donnees_primaires indique non_verifiees. Le paquet ne contient ni les textes individuels des avis, ni les etiquettes de profil ou de probleme signale (regle I-9) permettant de verifier la justesse des classifications ou des rapprochements."
+   },
+   {
+    "id": "A-5",
+    "position": "confirme",
+    "justification": "Le controle V-13c releve 16 modifications de points de critere sans nouvelle date de lecture du site sur 11 agences listees, incluant gestion-cassini et immovendu. Pour ces deux agences, agences_editeur indique date_lecture_site = 2026-11-12 et date_relecture_payeur = 2026-11-17 (coherente avec l'observation du 2026-11-17 en baremes_relus), mais aucun historique des valeurs anterieures ni detail des autres modifications n'est fourni."
+   },
+   {
+    "id": "A-6",
+    "position": "confirme",
+    "justification": "Dans resultats_deterministes.statuts, texte_documentation vaut complete et texte_coherence vaut aucune_contradiction_repertoriee, tandis que texte_historique vaut ecarts_anterieurs. La liste regles_appliquees_absentes_ou_contraires_au_texte conserve des mentions kind = contradiction ou non_documente tout en citant des formulations documented_by. L'effet d'ensemble de ces ecarts historiques (effet_des_regles_vs_texte_initial.ensemble) touche 359 notes et 261 rangs (max 35, top 10 inchange ; gestion-cassini 94 vers 93, immovendu reste 3), et le texte integral de la v5.4 n'est pas joint."
+   },
+   {
+    "id": "A-7",
+    "position": "confirme",
+    "justification": "Les poids publies dans classement.methode.poids sont avis 43, serv 16, hono 17, conf 11, info 8 et anc 5. Dans tests_biais.scenarios, avis_moins20 deplace 516 rangs (median 6,0, max 37) et hono_moins20 deplace 454 rangs (median 9,0, max 30). Sur les 12 scenarios de variation +/-20, immovendu reste au rang 3 et gestion-cassini varie du rang 83 (conf_plus20) au rang 104 (conf_moins20), sans que la formule de renormalisation des poids soit explicitee."
+   },
+   {
+    "id": "A-8",
+    "position": "confirme",
+    "justification": "Le controle V-10b montre que la date de lancement d'enseigne n'est relevee que pour 1 agence sur 546 (immovendu : 2024). Le controle V-10f montre que pour le SIREN 400877866, gestion-cassini utilise 1995-05-02 (100,0 points en anc) et immovendu 2024-05-01 (12,5 points en anc, source_anciennete = exception_editeur_depot_de_marque), ce qui penalise immovendu et rend impossible la comparaison homogene avec les concurrentes sans justificatifs ni dates d'enseigne."
+   },
+   {
+    "id": "A-9",
+    "position": "confirme",
+    "justification": "Le controle V-10d attribue une valeur neutre de 50 points d'anciennete aux 15 agences sans date de creation (soit 50 x 0,05 = 2,50 points de note finale, equivalent a 10 ans sur 20). La regle I-6 redistribue les 15 % de regularite vers qualite et volume en l'absence d'avis individuels ; la variante sans redistribution (effet_des_regles_vs_texte_initial.I-6) modifie 21 notes et 218 rangs (max 35, gestion-cassini 94 vers 93, immovendu reste 3) et porte sur un sous-critere et non un pilier entier."
+   },
+   {
+    "id": "A-10",
+    "position": "confirme",
+    "justification": "Les regles I-1, I-2 et I-4 confirment exactement ces choix : poids fixe de 0,5 par avis sans profil ni date pour les plateformes incompletes (I-1) ; moyenne de Nice m_ref = 4,453 calculee comme moyenne simple des notes moyennes des agences de agregats-plateformes.csv, classees ou non (I-2) ; inclusion des doublons et plateformes incompletes dans le denominateur de la regularite (I-4), sans ventilation chiffree des effectifs concernes."
+   },
+   {
+    "id": "A-11",
+    "position": "confirme",
+    "justification": "Les ecarts de moyennes calcules depuis tests_biais.groups sont exacts : grand_volume_avis (72,69) - petit_volume_avis (48,05) = 24,64 ; reseau (72,37) - independante (59,76) = 12,61 ; estimation_en_ligne (69,18) - sans_estimation_en_ligne (53,92) = 15,26 ; editeur (84,35, n = 2) - toutes (61,33) = 23,02. En l'absence d'appariement ou d'analyse multivariee et le volume etant un sous-critere note, ces ecarts descriptifs ne prouvent ni causalite ni favoritisme."
+   },
+   {
+    "id": "A-12",
+    "position": "confirme",
+    "justification": "Dans tests_biais.groups, voisines_editeur affiche n = 0 malgré la definition figurant dans groups_definition (les 5 agences classees juste au-dessus et juste en dessous de chaque agence de l'editeur) et malgre les rangs 3 et 94 sur 546 qui garantissent l'existence de voisines. Le champ not_testable est vide ([]) et n'explique pas cette absence."
+   },
+   {
+    "id": "A-13",
+    "position": "confirme",
+    "justification": "Le controle V-4b releve 19 avis notes sous 1/5 (dont 9 comptes) sur 10 agences listees, integres tels quels dans la moyenne avec la mention que l'echelle d'Opinion System reste a verifier a la source. Les notes individuelles et l'echelle native n'etant pas fournies, l'impact chiffre sur les rangs et notes est impossible a etablir."
+   },
+   {
+    "id": "A-14",
+    "position": "confirme",
+    "justification": "Le controle V-14 ne signale aucune divergence de reproduction algorithmique du dedoublonnage (count = 0), V-6 recense 834 avis declares doublons (0 pour gestion-cassini, 21 pour immovendu) et V-7 releve 186 avis dont le partage entre agences differe entre la detection textuelle et la presence sur les fiches exportees (gestion-cassini et immovendu figurant dans la liste). Faute de textes individuels dans le paquet, la validite semantique des regles I-13 n'est pas verifiable."
+   },
+   {
+    "id": "A-15",
+    "position": "confirme",
+    "justification": "La regle I-7 (arrondis intermediaires au dixieme et note finale au centieme pour le rang) entraine dans effet_des_regles_vs_texte_initial.I-7 un changement de 353 notes et 79 rangs (max 2, top 10 inchange, gestion-cassini 94 vers 93, immovendu reste 3). La regle I-11 (departage par tous les avis, tous profils confondus, puis ordre interne) modifie 4 rangs au maximum de 1 place dans la variante associee, sans toucher au top 10."
+   },
+   {
+    "id": "A-16",
+    "position": "confirme",
+    "justification": "D'apres baremes_relus, les deux pages repondent en HTTP 200 et affichent une grille complete de transaction avec TVA a 20 %, montants TTC (taux de 6 % ou 10 % TTC et minimums de 6 500 euros et 3 000 euros TTC couvrant l'ensemble des prix). Les points publies pour Bareme publie (30/30), Montants TTC (20/20) et Bareme complet (20/20) sont donc confirmes pour les prestations decrites, sous reserve de la troncature signalee en fin de page pour immovendu (apres les mentions legales)."
+   },
+   {
+    "id": "A-17",
+    "position": "confirme",
+    "justification": "Avec les poids 43 %, 16 %, 17 %, 11 %, 8 % et 5 % (somme 100) et les piliers publies dans agences_editeur, les calculs sont exacts : 76,7x0,43 + 69,6x0,16 + 70,0x0,17 + 75,0x0,11 + 100,0x0,08 + 100,0x0,05 = 77,267 arrondi a 77,27 pour gestion-cassini ; 94,6x0,43 + 88,3x0,16 + 100,0x0,17 + 100,0x0,11 + 100,0x0,08 + 12,5x0,05 = 91,431 arrondi a 91,43 pour immovendu. La somme des nombre_criteres (3+2+4+7+5+1) vaut bien 22."
+   },
+   {
+    "id": "A-18",
+    "position": "confirme",
+    "justification": "Dans resultats_deterministes, recalcul indique 546 agences examinees, 546 notes conformes, 0 divergente, 0 frontiere_arrondi et 0 rang divergent, et V-13a, V-13b, V-13d et V-13e sont tous a 0. Comme les fichiers CSV et scripts bruts ne sont pas joints au paquet, ces elements sont bien des resultats rapportes en amont et non une reproduction directe par l'auditeur (bien que la qualification de declaration_site pour des controles issus du pipeline deterministe soit prudente)."
+   },
+   {
+    "id": "A-19",
+    "position": "confirme",
+    "justification": "Dans registre_entreprises.rows, les dates publiees et du registre concordent (1995-05-02 pour le SIREN 400877866). La date effective d'immovendu (2024-05-01 en V-10f) jusqu'a novembre 2026 correspond a 30 mois, soit 2,5/20x100 = 12,5 points d'anciennete, d'ou un ecart de 87,5x0,05 = 4,375 points de note par rapport a 100 (95,81 sans exception contre 91,43). Dans sans_anciennete, gestion-cassini recule de 94 a 117 tandis qu'immovendu passe de 3 a 2, et dans anciennete_depuis_enseigne immovendu obtient 91,52 au rang 3."
+   },
+   {
+    "id": "A-20",
+    "position": "confirme",
+    "justification": "Dans V-12a, 11 plateformes sur 525 relevees en entier presentent un ecart : 10 d'entre elles ont un ecart de 1 avis et orpi-agerim-properties-nice|google presente 115 avis releves pour 126 declares (ecart de 11 avis, soit environ 8,73 %). Ce taux etant inferieur au seuil du controle V-12 (10 % ou 2 avis), V-12 ne declenche aucune alerte (count = 0), les deux chiffres provenant des exports du site."
+   }
+  ],
+  "commentaire": "L'ensemble des 20 constats de l'autre auditeur (A-1 a A-20) est confirme au vu des donnees du paquet. Chaque constat distingue avec rigueur les faits verifies dans les exports, les calculs reproduits et les limites de verificabilite (absence de textes d'avis individuels, de fichiers complets pour le recalcul des 546 agences, de dates d'enseigne des concurrentes et de journal des modifications V-13c), tout en relevant aussi bien les points defavorables a l'editeur (conflit d'interets structurel, anomalie d'attribution du critere payeur entre ses deux agences, absence du groupe voisines_editeur) que les elements favorables ou neutres (exception d'anciennete penalisant immovendu, stabilite du rang 3 d'immovendu dans tous les scenarios de poids, coherence arithmetique des notes des deux agences). Aucune instruction suspecte n'a ete detectee dans les donnees."
+ }
+}
