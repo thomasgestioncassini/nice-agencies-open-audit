@@ -77,3 +77,31 @@ Limite connue (V-10b) : la date de lancement d'enseigne n'est relevée que pour 
 | A-10 / B-12 · Dédoublonnage non vérifiable | Corrigé : contrôle V-14 |
 | A-11 / B-10 · Mentions légales d'ImmoVendu incohérentes (forme sociale, numéro RCS, validité de carte) alors que le pilier vaut 100 | Signalé à l'éditeur pour correction de son site. Question de méthode ouverte : le critère compte la présence des mentions, pas leur exactitude |
 | A-9 / B-13 · 19 avis notés sous 1/5 | Ouvert : échelle d'Opinion System à vérifier à la source |
+
+## Réponse aux trois conditions de la revue ChatGPT du 17/11 (fin de journée)
+
+ChatGPT a refusé la clôture tant que des décisions favorables à l'éditeur reposaient sur son seul arbitrage.
+
+### Condition 1 — Ancienneté et mentions légales d'ImmoVendu
+
+- **Ancienneté** (méthode v5.5, en ligne) : l'éditeur n'arbitre plus ce point en sa faveur. L'ancienneté d'ImmoVendu
+  est comptée depuis le dépôt de sa marque à l'INPI (1er mai 2024), et non depuis la création de la société (1995).
+  C'est la seule exception à la règle commune ; elle est défavorable à l'éditeur et affichée dans la méthode. Effet :
+  ImmoVendu 1ʳᵉ → 3ᵉ (95,81 → 91,43) ; Gestion Cassini inchangée. Contrôles de l'auditeur : V-10e (exception déclarée
+  listée) et V-10f (dates différentes dans une même société, expliquées par l'exception).
+- **Mentions légales** (méthode v5.5) : une mention compte si elle est exacte, pas seulement présente — carte affichée
+  expirée ou numéro de société différent du registre ne comptent plus. L'éditeur a décidé d'appliquer cette règle
+  tout de suite à toutes les agences, les siennes comprises, par une relecture commune (et non une exception propre à
+  ImmoVendu). Résultat : à compléter après la relecture.
+
+### Condition 2 — Règle de relecture
+
+Écrite dans la méthode (section « Relectures », v5.5) : relecture trimestrielle commune avec le même outil ; relecture
+à la demande de toute agence, inscrite au journal des corrections, à l'exception des deux agences de l'éditeur, qui ne
+sont relues qu'au calendrier commun ; barème illisible = 20/100 jusqu'à la lecture suivante, jamais compté comme une
+absence ; barème transmis par l'agence noté avec sa source au journal.
+
+### Condition 3 — Limites
+
+`docs/portee-et-limites.md` : ce que chaque statut établit et n'établit pas ; aucun rapport n'est une certification.
+Les limites inscrites dans chaque rapport ont été mises à jour en conséquence.
