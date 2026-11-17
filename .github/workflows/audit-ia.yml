@@ -68,4 +68,4 @@ jobs:
           git add reports budget
           git diff --cached --quiet && { echo "rien de nouveau"; exit 0; }
           git commit -m "Audit IA (${{ inputs.mode }}, exécution ${GITHUB_RUN_ID})"
-          git push
+          for i in 1 2 3; do git pull --rebase --quiet && git push && break; sleep 5; done

@@ -70,4 +70,4 @@ jobs:
           git add snapshots reports
           git diff --cached --quiet && { echo "rien de nouveau"; exit 0; }
           git commit -m "Relevé archivé et rapport (exécution ${GITHUB_RUN_ID})"
-          git push
+          for i in 1 2 3; do git pull --rebase --quiet && git push && break; sleep 5; done
