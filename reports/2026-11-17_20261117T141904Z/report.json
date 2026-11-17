@@ -1,0 +1,971 @@
+{
+ "report_id": "2026-11-17_20261117T141904Z",
+ "phase": "B — recalcul indépendant (sans IA)",
+ "target": "https://meilleure-agence-nice.fr",
+ "date_releve": "2026-11-17",
+ "method_version": "v5.4 du 17/11/2026 (poids et calcul de la v5 du 14/11/2026 ; 22 critères depuis la v5.3 ; texte des doublons décrit en v5.4)",
+ "policy_version": "1.0 du 15/11/2026",
+ "generated_utc": "2026-11-17T14:19:04+00:00",
+ "code_version": "e2bb9632e3fa593274bd70625a0dc516ccd5fca5",
+ "python": "3.12.16",
+ "command": "python -m auditor run snapshots/2026-11-17",
+ "snapshot": "snapshots/2026-11-17",
+ "statuses": {
+  "calculs_reproduction": "conforme",
+  "texte_documentation": "partielle",
+  "texte_coherence": "aucune_contradiction_repertoriee",
+  "texte_historique": "ecarts_anterieurs",
+  "donnees_primaires": "non_verifiees",
+  "biais": "non_evalue",
+  "dedoublonnage": "non_verifie"
+ },
+ "error": null,
+ "calculations": {
+  "examined": 555,
+  "notes": {
+   "conforme": 555,
+   "divergente": 0,
+   "frontiere_arrondi": 0
+  },
+  "ranks_divergent": 0,
+  "anomalies": [],
+  "m_ref": 4.453
+ },
+ "findings": [
+  {
+   "code": "V-4b",
+   "severity": "mineur",
+   "message": "avis notés sous 1/5, minimum habituel d’une échelle à étoiles : ils entrent tels quels dans la moyenne ; échelle d’Opinion System à vérifier à la source",
+   "agencies": [
+    "agence-immobiliere-nice-citya-baie-des-anges",
+    "citya-dalbera-gestion",
+    "nestenn-nice-port-riquier",
+    "orpi-alazard-immo",
+    "orpi-dasa-immo-nice",
+    "orpi-helios-transactions-nice",
+    "orpi-immobiliere-gti-nice",
+    "orpi-lior",
+    "riviera-ts-immobilier-orpi",
+    "votre-agence-immo-nice-nord"
+   ],
+   "count": 19,
+   "counted": 9
+  },
+  {
+   "code": "V-12a",
+   "severity": "info",
+   "message": "toutes les plateformes relevées en entier dont le nombre d’avis relevés diffère, même d’un avis, du nombre affiché (les deux nombres viennent des exports du site)",
+   "agencies": [
+    "agence-winter-immobilier",
+    "beau-site-estate",
+    "foncia-agence-immobiliere-achat-vente-nice-bd-napoleon-iii",
+    "gairaut-immobilier-nice-nord",
+    "isit-immobilier",
+    "keller-williams-massena",
+    "laforet-nice-fabron",
+    "nemeos-immobilier-nice-mont-boron",
+    "optimmo-arson-agence-immobiliere-a-nice",
+    "orpi-agerim-properties-nice",
+    "palais-immobilier-prestige-agence-de-nice-port-mont-boron"
+   ],
+   "count": 11,
+   "detail": {
+    "agence-winter-immobilier|google": {
+     "releves": 438,
+     "declares": 437.0
+    },
+    "orpi-agerim-properties-nice|google": {
+     "releves": 115,
+     "declares": 126.0
+    },
+    "gairaut-immobilier-nice-nord|google": {
+     "releves": 100,
+     "declares": 99.0
+    },
+    "foncia-agence-immobiliere-achat-vente-nice-bd-napoleon-iii|google": {
+     "releves": 79,
+     "declares": 80.0
+    },
+    "laforet-nice-fabron|google": {
+     "releves": 80,
+     "declares": 79.0
+    },
+    "optimmo-arson-agence-immobiliere-a-nice|google": {
+     "releves": 312,
+     "declares": 311.0
+    },
+    "palais-immobilier-prestige-agence-de-nice-port-mont-boron|google": {
+     "releves": 23,
+     "declares": 22.0
+    },
+    "keller-williams-massena|google": {
+     "releves": 458,
+     "declares": 459.0
+    },
+    "isit-immobilier|google": {
+     "releves": 132,
+     "declares": 133.0
+    },
+    "nemeos-immobilier-nice-mont-boron|google": {
+     "releves": 28,
+     "declares": 27.0
+    },
+    "beau-site-estate|google": {
+     "releves": 14,
+     "declares": 13.0
+    }
+   },
+   "sans_agregat": []
+  },
+  {
+   "code": "V-12",
+   "severity": "info",
+   "message": "nombre d’avis relevés un par un cohérent avec le nombre affiché par la plateforme pour les 534 plateformes relevées en entier (écart toléré : 10 % ou 2 avis)",
+   "agencies": [],
+   "count": 0
+  },
+  {
+   "code": "V-6",
+   "severity": "info",
+   "message": "avis déclarés doublons par le site (non vérifiable à partir des exports : les textes ne sont pas publiés)",
+   "agencies": [
+    "aagestion",
+    "agence-beaumont-immobilier",
+    "agence-du-centre",
+    "agence-du-ray",
+    "agence-immobiliere-guy-hoquet-nice-gambetta",
+    "agence-winter-immobilier",
+    "akorimmo-nice-centre",
+    "akorimmo-nice-nord",
+    "aparte-immobilier",
+    "cabinet-immobilier-nice",
+    "citya-dalbera-gestion",
+    "confiance-immobiliere",
+    "domi-nice-immobilier",
+    "era-immobilier-raimbaldi-nice-centre",
+    "espaces-atypiques-nice-cannes-agence-immobiliere",
+    "foncia-agence-immobiliere-achat-vente-nice-bd-napoleon-iii",
+    "gestion-immobiliere-tissinie-achat-vente-location-saisonnier",
+    "groupe-nice-transactions",
+    "immo-de-france-cote-d-azur-nice",
+    "immo-terrasse",
+    "immobiliere-nicoise",
+    "immovendu",
+    "keller-williams-massena",
+    "l-adresse-cec-gestion",
+    "l-agence-rivoli",
+    "l-agence-signature",
+    "la-chouette-agence-immobiliere",
+    "lambda-immobilier-bo-marche",
+    "maison-quatre",
+    "midem-nice-ouest-immobilier",
+    "nestenn-nice-port-riquier",
+    "optimmo",
+    "optimmo-arson-agence-immobiliere-a-nice",
+    "orpi-agence-des-palais",
+    "orpi-agerim-properties-nice",
+    "orpi-alazard-immo",
+    "orpi-dasa-immo-nice",
+    "orpi-helios-transactions-nice",
+    "orpi-immobiliere-gti-nice",
+    "orpi-lior",
+    "orpi-lp-invest-immobilier-nice",
+    "orpi-riviera-ts-immobilier",
+    "partners-immo-nice",
+    "riviera-angels-immobilier",
+    "riviera-ts-immobilier-orpi",
+    "safi-mediterranee-agence-immobiliere",
+    "saint-roch-property",
+    "votre-agence-immo",
+    "votre-agence-immo-nice-est",
+    "votre-agence-immo-nice-nord"
+   ],
+   "count": 834,
+   "publisher_counts": {
+    "gestion-cassini": 0,
+    "immovendu": 21
+   }
+  },
+  {
+   "code": "V-7",
+   "severity": "mineur",
+   "message": "avis déclarés partagés entre k agences, mais présents sur un autre nombre de fiches dans l’export (le partage est détecté sur le texte, que l’export ne contient pas)",
+   "agencies": [
+    "agence-immobiliere-century-21-maison-de-l-immobilier",
+    "agence-immobiliere-lamy-rue-barla",
+    "agence-immobiliere-nice-citya-baie-des-anges",
+    "agence-privilege",
+    "agence-privilege-2",
+    "agence-solucio-remere-portage-immobilier",
+    "agence-winter-immobilier",
+    "agit",
+    "ashley-parker-agence-carre-d-or",
+    "ashley-parker-agence-mont-boron",
+    "aurus-immobilier",
+    "bomarche",
+    "cabinet-vogue",
+    "cabinet-vogue-bd-victor-hugo",
+    "carletta-immobilier",
+    "century-21-lafage-transactions-nice-bonaparte",
+    "century-21-lafage-transactions-nice-mont-boron",
+    "cimiez-residences-cap-de-croix",
+    "citya-dalbera-gestion",
+    "cl-immo-gestion",
+    "confiance-immobiliere",
+    "confiance-immobiliere-av-de-la-californie",
+    "cot-ouest-real-nice",
+    "foncia-agence-immobiliere-achat-vente-nice-bd-napoleon-iii",
+    "foncia-agence-immobiliere-achat-vente-nice-r-arson",
+    "gestion-cassini",
+    "gestion-immobiliere-tissinie-achat-vente-location-saisonnier",
+    "immo-cp-musiciens",
+    "immo-cp-musiciens-rue-verdi",
+    "immo-de-france-cote-d-azur-nice",
+    "immovendu",
+    "l-adresse-cec-cessole-nice-nord",
+    "l-adresse-cec-gestion",
+    "l-agence-rivoli",
+    "laforet-nice-gambetta",
+    "laforet-nice-madeleine",
+    "laforet-nice-port",
+    "leprince-immobilier",
+    "m-a-v-developpement-immobilier-carre-d-or-nice",
+    "maison-quatre",
+    "massena-immobilier",
+    "mirabello-immobilier",
+    "nice-properties-massena",
+    "nice-properties-opera",
+    "nice-properties-promenade",
+    "orpi-lior",
+    "palais-immobilier-agence-du-vieux-nice",
+    "votre-agence-immo-nice-nord",
+    "zuccarelli-immobilier"
+   ],
+   "count": 186
+  },
+  {
+   "code": "V-9",
+   "severity": "majeur",
+   "message": "critère « Annonce publiée depuis moins de 30 jours » non applicable pour 526 agences sur 528 : la méthode le compte parmi les 23 critères, mais il ne pèse presque nulle part",
+   "agencies": [],
+   "count": 526,
+   "total": 528
+  },
+  {
+   "code": "V-10",
+   "severity": "info",
+   "message": "agences exploitées par une même société (même SIREN) : même date d’ancienneté",
+   "agencies": [
+    "agence-du-port",
+    "agence-immo2nice",
+    "agence-immobiliere-century-21-a-cimiez-lafage",
+    "agence-immobiliere-century-21-maison-de-l-immobilier",
+    "agence-immobiliere-nice-citya-baie-des-anges",
+    "agence-nice-gambetta",
+    "agence-privilege",
+    "agence-privilege-2",
+    "agence-winter-immobilier",
+    "agence-winter-immobilier-gioffredo",
+    "agency-fabron",
+    "agit",
+    "akorimmo-nice-centre",
+    "akorimmo-nice-nord",
+    "ang-immobilier",
+    "arthurimmo",
+    "arthurimmo-com-lmi-la-maison-immobiliere",
+    "ashley-parker-agence-carre-d-or",
+    "ashley-parker-agence-cimiez",
+    "ashley-parker-agence-le-port",
+    "ashley-parker-agence-mont-boron",
+    "blue-residences",
+    "bomarche",
+    "borne-et-delaunay-valperga",
+    "cabinet-agir-gestion-locative-et-transaction-immobiliere",
+    "cabinet-assalit-syndic",
+    "cabinet-borne-et-delaunay",
+    "cabinet-cordier",
+    "cabinet-cordier-bd-virgile-barel",
+    "cabinet-merengone-associes",
+    "cabinet-rasori",
+    "cabinet-vogue",
+    "cabinet-vogue-bd-victor-hugo",
+    "century-21-gilles-bosse-immobilier-pessicart",
+    "century-21-gilles-bosse-immobilier-ventes-immobilieres",
+    "century-21-lafage-promenade-agence-immobiliere-a-nice-promenade-des-an",
+    "century-21-lafage-transactions",
+    "century-21-lafage-transactions-nice-bonaparte",
+    "century-21-lafage-transactions-nice-mont-boron",
+    "cimiez-immobilier",
+    "cimiez-residences-boulevard-de-cimiez",
+    "cimiez-residences-cap-de-croix",
+    "citya-dalbera-gestion",
+    "confiance-immobiliere",
+    "confiance-immobiliere-av-de-la-californie",
+    "cot-ouest-immobilier-napoleon-iii",
+    "cot-ouest-immobilier-nice-la-lanterne",
+    "cot-ouest-real-nice",
+    "cote-riviera-agence-massena",
+    "cp-immo-massena"
+   ],
+   "count": 43,
+   "groups": {
+    "813618659": [
+     "agence-immo2nice",
+     "immobilier2nice-maison2nice-gestion2nice"
+    ],
+    "478261233": [
+     "agence-immobiliere-century-21-a-cimiez-lafage",
+     "century-21-lafage-transactions",
+     "century-21-lafage-promenade-agence-immobiliere-a-nice-promenade-des-an",
+     "century-21-lafage-transactions-nice-mont-boron",
+     "french-riviera-property",
+     "lafayette-transactions",
+     "century-21-lafage-transactions-nice-bonaparte"
+    ],
+    "380435248": [
+     "agence-immobiliere-nice-citya-baie-des-anges",
+     "citya-dalbera-gestion"
+    ],
+    "817573181": [
+     "agence-nice-gambetta",
+     "ang-immobilier"
+    ],
+    "538779729": [
+     "agence-privilege",
+     "agence-privilege-2"
+    ],
+    "394227128": [
+     "agence-winter-immobilier-gioffredo",
+     "agence-winter-immobilier"
+    ],
+    "511186363": [
+     "akorimmo-nice-centre",
+     "akorimmo-nice-nord",
+     "maison-06"
+    ],
+    "443739784": [
+     "ashley-parker-agence-carre-d-or",
+     "ashley-parker-agence-cimiez",
+     "ashley-parker-agence-mont-boron",
+     "laugier-properties",
+     "ashley-parker-agence-le-port"
+    ],
+    "809672710": [
+     "blue-residences",
+     "cimiez-residences-boulevard-de-cimiez",
+     "cimiez-residences-cap-de-croix"
+    ],
+    "442281127": [
+     "cabinet-agir-gestion-locative-et-transaction-immobiliere",
+     "agit"
+    ],
+    "510085798": [
+     "cimiez-immobilier",
+     "easy-property-fabron",
+     "les-belles-terres"
+    ],
+    "490825791": [
+     "gecko-immobilier-nice-centre",
+     "gecko-immobilier-nice-port"
+    ],
+    "533987293": [
+     "gubernatis-immobilier-agence-immobiliere-vente-appartement-maison-vill",
+     "cabinet-merengone-associes"
+    ],
+    "823781760": [
+     "la-maison-orea-nice-cimiez-riviera",
+     "grand-bleu-estate",
+     "la-maison-orea-nice-nord",
+     "la-maison-orea-nice-ouest",
+     "la-maison-orea-nice-port",
+     "la-maison-orea-felix-faure",
+     "la-maison-orea-carre-d-or"
+    ],
+    "801820184": [
+     "leprince-immobilier",
+     "leprince-immobilier-cimiez"
+    ],
+    "832564470": [
+     "nice-carre-d-or",
+     "france-properties-real-estate",
+     "nice-carre-d-or-immobilier"
+    ],
+    "391026531": [
+     "palais-immobilier-liberation",
+     "palais-immobilier-agence-du-vieux-nice"
+    ],
+    "449530203": [
+     "square-habitat-nice-location-gestion-syndic-de-copropriete",
+     "square-habitat-transaction-nice-gambetta",
+     "square-habitat-nice-republique"
+    ],
+    "349534115": [
+     "agence-immobiliere-century-21-maison-de-l-immobilier",
+     "immo-gestion"
+    ],
+    "451454730": [
+     "groupe-nice-transactions",
+     "groupe-nice-transactions-est"
+    ],
+    "350791422": [
+     "l-adresse-cec-gestion",
+     "l-adresse-cec-cessole-nice-nord"
+    ],
+    "394928576": [
+     "lambda-immobilier-bo-marche",
+     "bomarche"
+    ],
+    "507939171": [
+     "nice-nord-immo",
+     "votre-agence-immo-nice-nord",
+     "votre-agence-immo",
+     "votre-agence-immo-nice-est"
+    ],
+    "431430297": [
+     "optimmo",
+     "cabinet-assalit-syndic",
+     "optimmo-syndic-gestion-nice-ouest",
+     "optimmo-arson-agence-immobiliere-a-nice"
+    ],
+    "814646592": [
+     "agency-fabron",
+     "palais-immobilier-agence-de-nice-saint-antoine-ginestiere",
+     "palais-immobilier-araucaria",
+     "palais-immobilier-prestige-agence-de-nice-port-mont-boron"
+    ],
+    "451688949": [
+     "cot-ouest-immobilier-napoleon-iii",
+     "cot-ouest-real-nice",
+     "cot-ouest-immobilier-nice-la-lanterne"
+    ],
+    "503698664": [
+     "foncia-agence-immobiliere-achat-vente-nice-bd-napoleon-iii",
+     "foncia-agence-immobiliere-achat-vente-nice-r-arson",
+     "foncia-transaction-riviera-nice-massena",
+     "cote-riviera-agence-massena"
+    ],
+    "821286614": [
+     "agence-du-port",
+     "l-immobiliere-du-port"
+    ],
+    "400877866": [
+     "gestion-cassini",
+     "immovendu"
+    ],
+    "397422833": [
+     "cabinet-cordier",
+     "cabinet-cordier-bd-virgile-barel"
+    ],
+    "502612815": [
+     "cabinet-vogue",
+     "cabinet-vogue-bd-victor-hugo"
+    ],
+    "453784258": [
+     "century-21-gilles-bosse-immobilier-pessicart",
+     "century-21-gilles-bosse-immobilier-ventes-immobilieres"
+    ],
+    "971800735": [
+     "cabinet-borne-et-delaunay",
+     "borne-et-delaunay-valperga"
+    ],
+    "503449779": [
+     "confiance-immobiliere",
+     "confiance-immobiliere-av-de-la-californie"
+    ],
+    "834288490": [
+     "cp-immo-massena",
+     "immo-cp-musiciens-rue-verdi"
+    ],
+    "819687401": [
+     "maison-a-nice",
+     "omaison"
+    ],
+    "808428783": [
+     "norait-immobilier",
+     "norait-immobilier-rue-cros-de-capeu"
+    ],
+    "804806412": [
+     "arthurimmo",
+     "arthurimmo-com-lmi-la-maison-immobiliere"
+    ],
+    "350499877": [
+     "nice-properties-promenade",
+     "nice-properties-massena",
+     "nice-properties-opera"
+    ],
+    "441695657": [
+     "ici-info-conseil-immobilier",
+     "cabinet-rasori"
+    ],
+    "342698008": [
+     "fit-immobilier",
+     "fit-immobilier-port"
+    ],
+    "797669413": [
+     "postillon-patrimoine",
+     "postillon-immobilier"
+    ],
+    "487971681": [
+     "turner-consultant",
+     "turner-international-real-estate-consulting"
+    ]
+   }
+  },
+  {
+   "code": "V-10b",
+   "severity": "majeur",
+   "message": "date de lancement d’enseigne relevée pour seulement 1 agence(s) sur 555 : la comparaison « enseigne récente, société ancienne » ne peut pas être faite pour les concurrentes à partir des exports",
+   "agencies": [
+    "immovendu"
+   ],
+   "count": 1,
+   "brands": {
+    "immovendu": "2024"
+   }
+  },
+  {
+   "code": "V-10c",
+   "severity": "info",
+   "message": "ancienneté saisie à la main (rachat déclaré prouvé)",
+   "agencies": [],
+   "count": 0
+  },
+  {
+   "code": "V-10d",
+   "severity": "info",
+   "message": "date de création de la société non relevée (valeur neutre 50)",
+   "agencies": [
+    "agence-auguste-immobilier-nice-riquier",
+    "agence-immobiliere-l-adresse-nice-carre-d-or",
+    "agence-immobiliere-lamy-rue-barla",
+    "agence-riviera-real-estate",
+    "agence-solucio-remere-portage-immobilier",
+    "alliance-riviera",
+    "cabinet-arditi",
+    "dernier-etage-com",
+    "easy-immobilier-fabron",
+    "immo-cp-musiciens",
+    "immo-riviera-transactions",
+    "jean-christophe-dimino-immobilier-nice-cote-d-azur",
+    "nice-gestion",
+    "orpi-nina-co-nice",
+    "prestige-real-estate-luxury"
+   ],
+   "count": 15
+  },
+  {
+   "code": "V-13a",
+   "severity": "info",
+   "message": "avis apparus depuis le relevé précédent avec une date antérieure de plus d’un mois, sur une plateforme déjà relevée en entier",
+   "agencies": [],
+   "count": 0,
+   "per_agency": {},
+   "publisher_counts": {
+    "gestion-cassini": 0,
+    "immovendu": 0
+   }
+  },
+  {
+   "code": "V-13b",
+   "severity": "info",
+   "message": "avis disparus depuis le relevé précédent, chez des agences toujours classées",
+   "agencies": [],
+   "count": 0,
+   "per_agency": {},
+   "publisher_counts": {
+    "gestion-cassini": 0,
+    "immovendu": 0
+   }
+  },
+  {
+   "code": "V-13e",
+   "severity": "info",
+   "message": "agences retirées du classement depuis le relevé précédent (leurs avis sortent avec elles)",
+   "agencies": [],
+   "count": 0,
+   "per_agency": {},
+   "publisher_counts": {
+    "gestion-cassini": 0,
+    "immovendu": 0
+   }
+  },
+  {
+   "code": "V-13d",
+   "severity": "info",
+   "message": "avis déjà relevés dont la note, le profil, le problème signalé ou les drapeaux de comptage ont changé depuis le relevé précédent",
+   "agencies": [],
+   "count": 0,
+   "per_agency": {},
+   "fields": {},
+   "publisher_counts": {
+    "gestion-cassini": 0,
+    "immovendu": 0
+   }
+  },
+  {
+   "code": "V-13c",
+   "severity": "majeur",
+   "message": "points de critère modifiés sans nouvelle date de lecture du site",
+   "agencies": [
+    "a2-property-estate-agency-nice-nord",
+    "agence-107-promenade",
+    "agence-istra",
+    "agence-republique-investigere",
+    "agence-victoire",
+    "agence-winter-immobilier",
+    "agence-winter-immobilier-gioffredo",
+    "bleu-immo",
+    "blue-residences",
+    "cabinet-crouzet-breil",
+    "century-21-lafage-horeca-commerces",
+    "cimiez-residences-cap-de-croix",
+    "delta-promotion",
+    "elizimmo",
+    "fit-immobilier",
+    "fit-immobilier-port",
+    "forimmo",
+    "gestion-casa-immobiliere",
+    "gestion-immobiliere-tissinie-achat-vente-location-saisonnier",
+    "immovendu",
+    "inter-immobilier",
+    "l-agence-d-ana",
+    "l-immobiliere-dumess",
+    "laforet-nice-centre",
+    "laforet-nice-gambetta",
+    "laforet-nice-port",
+    "michael-zingraf-real-estate-nice",
+    "nice-premium-immobilier",
+    "orpi-lp-invest-immobilier-nice",
+    "orpi-riviera-ts-immobilier-ordimmo",
+    "parc-immobilier-f-pytelewski",
+    "partners-immo-nice",
+    "sud-agence",
+    "turner-international-real-estate-consulting",
+    "viager-union-fonciere",
+    "voslocaux-com",
+    "votre-agence-immo",
+    "votre-agence-immo-nice-nord"
+   ],
+   "count": 38
+  },
+  {
+   "code": "I-6",
+   "severity": "info",
+   "message": "agences dont la régularité est retirée et son poids redistribué (règle I-6)",
+   "agencies": [
+    "agence-immo2nice",
+    "agence-winter-immobilier-gioffredo",
+    "ang-immobilier",
+    "berenice-immobilier",
+    "cabinet-lamorte",
+    "cabinet-salmon",
+    "cimiez-boulevard-immobilier",
+    "picard-nathimmo",
+    "riviera-sud-immobilier",
+    "stherl",
+    "guy-hoquet-riviera",
+    "cabinet-assalit-syndic",
+    "conte-pierre-immobilier-nice",
+    "easy-property-fabron",
+    "optimmo-syndic-gestion-nice-ouest",
+    "agence-riviera-real-estate",
+    "agence-republique-investigere",
+    "cabinet-cres",
+    "cabinet-grimaz",
+    "cabinet-syngestone",
+    "sixieme-avenue-nice-port"
+   ],
+   "count": 21
+  }
+ ],
+ "interpretations": [
+  {
+   "id": "I-1",
+   "title": "Plateformes non relevées avis par avis",
+   "rule": "Quand une plateforme n'a pas été relevée en entier, ses avis comptent par sa note globale, chacun avec le poids fixe 0,5 (celui d'un avis de 3 ans), sans profil ni date.",
+   "text_gap": "Le texte ne décrit pas ce cas.",
+   "source": "avis.py : score(), AGG_AGE",
+   "kind": "non_documente",
+   "documented_by": "compte par sa note globale"
+  },
+  {
+   "id": "I-2",
+   "title": "Moyenne de Nice",
+   "rule": "Moyenne simple, sur toutes les agences listées dans agregats-plateformes.csv (classées ou non), de la note moyenne de chaque agence ; arrondie au millième (4,453 au 15/11/2026).",
+   "text_gap": "Le texte dit seulement « la moyenne de Nice ».",
+   "source": "build.py : _avis.M_REF",
+   "kind": "non_documente",
+   "documented_by": "moyenne simple des notes moyennes de toutes les agences"
+  },
+  {
+   "id": "I-3",
+   "title": "Fenêtre de la régularité",
+   "rule": "Les 12 derniers mois calendaires, mois du relevé compris.",
+   "text_gap": "Le texte dit « les 12 derniers mois ».",
+   "source": "avis.py : months_back()",
+   "kind": "precision",
+   "documented_by": "12 derniers mois calendaires"
+  },
+  {
+   "id": "I-4",
+   "title": "Dénominateur de la régularité",
+   "rule": "Nombre de mois actifs divisé par le nombre d'avis de vente ou d'achat des 12 derniers mois, borné entre 3 et 12. Ce nombre compte les doublons entre plateformes et les plateformes incomplètes.",
+   "text_gap": "Le texte annonce que les doublons sont retirés ; ils ne le sont pas pour ce sous-critère.",
+   "source": "avis.py : score(), variable rec",
+   "kind": "contradiction",
+   "text_quote": "« Doublons retirés : un même avis publié sur plusieurs plateformes ne compte qu'une fois. » (section 3, règles de comptage du pilier Avis)",
+   "text_variant": "régularité calculée sur les avis retenus, doublons retirés",
+   "documented_by": "La régularité, qui mesure l'étalement dans le temps, les compte tous",
+   "contradicted_by": [
+    "ne compte qu'une fois."
+   ]
+  },
+  {
+   "id": "I-5",
+   "title": "Âge d'un avis",
+   "rule": "Âge en mois de 30,44 jours ; le poids est divisé par deux tous les 36 mois, de façon continue.",
+   "text_gap": "Le texte dit « il perd la moitié de son poids après 3 ans », sans préciser la forme continue.",
+   "source": "avis.py : age_weight()",
+   "kind": "precision",
+   "documented_by": "mois de 30,44 jours"
+  },
+  {
+   "id": "I-6",
+   "title": "Régularité non vérifiable",
+   "rule": "Si aucun avis n'a été relevé un par un, la régularité est retirée et son poids (15 %) est réparti sur la qualité et le volume.",
+   "text_gap": "Le texte affirme qu'« il n'y a plus de redistribution du poids d'un pilier manquant » ; ici c'est un sous-critère dont le poids est redistribué.",
+   "source": "avis.py : score(), variable total",
+   "kind": "ambiguite",
+   "text_quote": "« Il n'y a plus de redistribution du poids d'un pilier manquant. » (section 10) — le texte parle d'un pilier ; ici, c'est un sous-critère.",
+   "text_variant": "régularité non relevée = valeur neutre 50, sans redistribution",
+   "documented_by": "ses 15 % sont reportés sur la qualité et le volume",
+   "contradicted_by": [
+    "information manque. 11. Contrôles"
+   ]
+  },
+  {
+   "id": "I-7",
+   "title": "Arrondis",
+   "rule": "Chaque sous-critère et chaque pilier sont arrondis au dixième ; la note est calculée à partir des piliers arrondis, puis arrondie au centième.",
+   "text_gap": "Le texte dit que les agences sont « rangées selon leur note exacte » : la note qui sert au rang est en réalité arrondie au centième.",
+   "source": "build.py : r['t'] ; avis.py, service.py : round(…, 1)",
+   "kind": "contradiction",
+   "text_quote": "« Les agences sont rangées selon leur note exacte. » (section 9)",
+   "text_variant": "aucun arrondi intermédiaire ; rang selon la note non arrondie",
+   "documented_by": "puis arrondie au centième",
+   "contradicted_by": [
+    "selon leur note exacte"
+   ]
+  },
+  {
+   "id": "I-8",
+   "title": "Réponses aux avis négatifs",
+   "rule": "Avis Google de vente ou d'achat à 3 étoiles ou moins, doublons compris, dont la présence ou l'absence de réponse a été relevée.",
+   "text_gap": "Le texte ne précise ni le périmètre exact ni le traitement des avis dont la réponse n'est pas relevée.",
+   "source": "service.py : reply_part()",
+   "kind": "non_documente",
+   "documented_by": "parmi ceux dont la présence d'une réponse a été relevée"
+  },
+  {
+   "id": "I-9",
+   "title": "Problèmes signalés",
+   "rule": "Part des avis uniques (doublons retirés) dont le texte a été lu par l'IA.",
+   "text_gap": "Conforme au texte.",
+   "source": "service.py : text_part()",
+   "kind": "precision"
+  },
+  {
+   "id": "I-10",
+   "title": "Ancienneté",
+   "rule": "Années et mois écoulés depuis la date de création (le jour est ignoré ; juin si le mois est inconnu), divisés par 20, × 100, arrondis au dixième.",
+   "text_gap": "Le texte dit « de 0 à 20 ans, proportionnel ».",
+   "source": "build.py : anc_points()",
+   "kind": "non_documente",
+   "documented_by": "le jour étant ignoré"
+  },
+  {
+   "id": "I-11",
+   "title": "Départage des égalités",
+   "rule": "À note égale (au centième), passe devant l'agence qui a le plus d'avis au total sur les plateformes, avis de locataires, de bailleurs et de syndic compris ; puis l'ordre interne de la base.",
+   "text_gap": "Le texte dit « celle qui a le plus d'avis », sans préciser lesquels. L'auditeur utilise l'identifiant stable en dernier recours.",
+   "source": "build.py : order()",
+   "kind": "ambiguite",
+   "text_quote": "« À note égale, celle qui a le plus d'avis passe devant. » (section 9) — sans dire lesquels.",
+   "text_variant": "départage par le nombre d'avis comptés (vente et achat)",
+   "documented_by": "tous profils d'auteurs confondus",
+   "contradicted_by": [
+    "celle qui a le plus d'avis passe devant"
+   ]
+  },
+  {
+   "id": "I-12",
+   "title": "Ordre des opérations de l'ancienneté",
+   "rule": "Années ÷ 20 × 100 (et non 100 × années ÷ 20) : l'ordre décide du dernier chiffre pour 2 agences dont la valeur tombe exactement sur une demi-unité d'arrondi.",
+   "text_gap": "Sans effet de fond (0,1 point d'ancienneté, soit 0,005 point de note).",
+   "source": "build.py : anc_points()",
+   "kind": "precision"
+  },
+  {
+   "id": "I-13",
+   "title": "Reconnaissance des doublons et des avis partagés",
+   "rule": "Deux avis de plateformes différentes sont un même avis s'ils comptent chacun au moins 5 mots (de plus de 2 lettres) et que leurs mots communs représentent au moins 70 % de leurs mots réunis, ou 90 % des mots du plus court ; sinon (avis sans texte), s'ils ont la même note à un demi-point près, le même prénom d'auteur, des initiales compatibles et des dates à 45 jours au plus. La copie conservée est celle d'Opinion System, puis d'Immodvisor, puis de Google. Un avis est partagé entre agences quand les 120 premiers caractères de son texte (s'il en compte au moins 60) se retrouvent sur les fiches de plusieurs agences classées.",
+   "text_gap": "Le texte annonce le retrait des doublons et le partage des avis entre agences, sans dire comment un doublon est reconnu.",
+   "source": "avis.py : same_review(), unique_reviews(), text_key() ; build.py : SHARED",
+   "kind": "non_documente",
+   "documented_by": "au moins 70 % de mots communs"
+  }
+ ],
+ "text_conformity": {
+  "documentation": "partielle",
+  "coherence": "aucune_contradiction_repertoriee",
+  "history": "ecarts_anterieurs",
+  "current": {
+   "archived": true,
+   "documented": [
+    "I-1",
+    "I-10",
+    "I-11",
+    "I-2",
+    "I-3",
+    "I-4",
+    "I-5",
+    "I-6",
+    "I-7",
+    "I-8"
+   ],
+   "residual_contradictions": [],
+   "contradictions": [],
+   "ambiguities": [],
+   "undocumented": [
+    "I-13"
+   ]
+  },
+  "past": [
+   {
+    "snapshot": "2026-11-15",
+    "contradictions": [
+     "I-4",
+     "I-7"
+    ],
+    "ambiguities": [
+     "I-6",
+     "I-11"
+    ]
+   }
+  ],
+  "effects": {
+   "I-4": {
+    "notes_changees": 8,
+    "rangs_changes": 49,
+    "deplacement_median": 1,
+    "deplacement_max": 15,
+    "top10_inchanges": 10,
+    "agences_suivies": {
+     "gestion-cassini": {
+      "rang_production": 131,
+      "rang_variante": 132
+     },
+     "immovendu": {
+      "rang_production": 1,
+      "rang_variante": 1
+     }
+    }
+   },
+   "I-6": {
+    "notes_changees": 21,
+    "rangs_changes": 237,
+    "deplacement_median": 1,
+    "deplacement_max": 37,
+    "top10_inchanges": 10,
+    "agences_suivies": {
+     "gestion-cassini": {
+      "rang_production": 131,
+      "rang_variante": 129
+     },
+     "immovendu": {
+      "rang_production": 1,
+      "rang_variante": 1
+     }
+    }
+   },
+   "I-7": {
+    "notes_changees": 362,
+    "rangs_changes": 79,
+    "deplacement_median": 1,
+    "deplacement_max": 4,
+    "top10_inchanges": 9,
+    "agences_suivies": {
+     "gestion-cassini": {
+      "rang_production": 131,
+      "rang_variante": 131
+     },
+     "immovendu": {
+      "rang_production": 1,
+      "rang_variante": 1
+     }
+    }
+   },
+   "I-11": {
+    "notes_changees": 0,
+    "rangs_changes": 4,
+    "deplacement_median": 1.0,
+    "deplacement_max": 1,
+    "top10_inchanges": 10,
+    "agences_suivies": {
+     "gestion-cassini": {
+      "rang_production": 131,
+      "rang_variante": 131
+     },
+     "immovendu": {
+      "rang_production": 1,
+      "rang_variante": 1
+     }
+    }
+   },
+   "ensemble": {
+    "notes_changees": 368,
+    "rangs_changes": 283,
+    "deplacement_median": 1,
+    "deplacement_max": 37,
+    "top10_inchanges": 10,
+    "agences_suivies": {
+     "gestion-cassini": {
+      "rang_production": 131,
+      "rang_variante": 130
+     },
+     "immovendu": {
+      "rang_production": 1,
+      "rang_variante": 1
+     }
+    }
+   }
+  }
+ },
+ "sampling": {
+  "status": "en_attente",
+  "planned": {
+   "utc": "2026-11-24T06:00:00+00:00",
+   "drand_round": 34232212,
+   "rule": "premier mardi 06:00 UTC après la date du relevé"
+  }
+ },
+ "config_sha256": {
+  "ai-models.json": "f142683d0b4da8ef583288a845e4dbb9fc100af0305a5c676ac2228872a98ca9",
+  "audit-policy.json": "afdf5bbcb43fe784249004b66a231dfba05d46874fcfdd8c774f1f5c9033428c",
+  "interpretations.json": "b8e3d9c667d04bec75d4e2f4ddfcbf111ad113d28f34cfdbd64dfbaf06ae3492",
+  "methodology-v5.json": "e883bb9589c07b2cbe9fa9931aeffcd3acc3dbf720be1222f1b45ef7c13190b2",
+  "networks.json": "79044473dbb1275a2fa202f8555e8c6523466006d0f8e65aa58fa4cf76114a50"
+ },
+ "previous_snapshot": "snapshots/2026-11-16",
+ "ai_audit": null,
+ "limits": [
+  "Le recalcul reprend tels quels les résultats d’étapes que les exports ne permettent pas de refaire : profil de l’auteur et problème signalé (lus par une IA du site), détection des doublons et des avis partagés (faite sur les textes, non publiés), points attribués en lisant les sites des agences, date de création des sociétés.",
+  "Les données primaires (avis sur les plateformes, pages des sites, registre des entreprises) ne sont pas recontrôlées à leur source dans ce rapport.",
+  "Le moteur a été écrit par Claude (Anthropic), qui a aussi écrit le code de production du site. Il a été rédigé à partir du texte de la méthode, puis complété en lisant le code publié (docs/interpretations.md). Un tiers peut écrire et exécuter son propre moteur à partir des mêmes fichiers archivés.",
+  "Le dépôt, ses workflows et son financement sont contrôlés par SARL GESTION CASSINI (GOVERNANCE.md)."
+ ],
+ "dedup": {
+  "status": "non_verifie",
+  "reason": "paquet anonymisé absent de ce relevé (archivé depuis le 17/11/2026)"
+ }
+}
