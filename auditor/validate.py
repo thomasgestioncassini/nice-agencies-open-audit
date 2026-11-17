@@ -256,6 +256,7 @@ def history(prev_dir: Path, data_dir: Path, publisher: list[str]) -> list[dict]:
              and (r.get('id_lecture') or '') == (o.get('id_lecture') or '')]
     if cases:
         out.append(finding('V-13c', 'majeur', 'points de critère modifiés sans nouvelle date ni nouvel identifiant de lecture '
-                           'du site', [c['agence'] for c in cases], len(cases), cases=cases,
+                           'du site (l’identifiant est déclaré par le site : ce contrôle ne prouve pas qu’une '
+                           'lecture a eu lieu)', [c['agence'] for c in cases], len(cases), cases=cases,
                            publisher_counts={p: sum(c['agence'] == p for c in cases) for p in publisher}))
     return out

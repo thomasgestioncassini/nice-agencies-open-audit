@@ -42,7 +42,7 @@ python3 -m unittest -v                         # tests, dont les altérations vo
 
 Pour archiver le relevé publié en ce moment : `python3 -m auditor fetch` (seule commande qui utilise le réseau).
 
-Détails : [docs/reproduction.md](docs/reproduction.md). Règles que le texte de la méthode ne précise pas : [docs/interpretations.md](docs/interpretations.md). Arbitrages de la phase C (constats contestés, priorités de la revue ChatGPT) : [docs/arbitrages-phase-c.md](docs/arbitrages-phase-c.md). Ce que l’audit établit et n’établit pas : [docs/portee-et-limites.md](docs/portee-et-limites.md).
+Détails : [docs/reproduction.md](docs/reproduction.md). Règles que le texte de la méthode ne précise pas : [docs/interpretations.md](docs/interpretations.md). Arbitrages de la phase C (constats contestés, priorités de la revue ChatGPT) : [docs/arbitrages-phase-c.md](docs/arbitrages-phase-c.md). Ce que l’audit établit et n’établit pas : [docs/portee-et-limites.md](docs/portee-et-limites.md). Clôture de la phase C, conditions et réserves : [docs/cloture-phase-c.md](docs/cloture-phase-c.md).
 
 ## Contenu
 

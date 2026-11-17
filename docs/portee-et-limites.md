@@ -16,7 +16,7 @@ l'éditeur du classement, qui exploite deux agences classées (GOVERNANCE.md).
 | Données primaires | Pour les agences tirées au sort et celles de l'éditeur : dates de société comparées au registre national, barèmes relus à la date de l'audit | Les avis sur les plateformes ; les agences non tirées ; l'état des pages à la date du relevé initial |
 | Biais | Des écarts descriptifs entre catégories (volume d'avis, réseau, activités, outils, âge de la société) et l'effet de variantes de poids ou de règles | Une discrimination causale, ou son absence ; la justesse des poids |
 | Audit des deux IA | Deux analyses séparées, puis la position de chacune sur les constats de l'autre, publiées sans modification | Un consensus ; l'exactitude de chaque constat ; une expertise juridique |
-| Historique (V-13) | Pas d'ajout rétrodaté, de disparition ou de modification d'avis non expliqués entre deux relevés archivés | Ce qui a pu changer avant le premier relevé archivé |
+| Historique (V-13) | Pas d'ajout rétrodaté, de disparition ou de modification d'avis non expliqués entre deux relevés archivés | Ce qui a pu changer avant le premier relevé archivé ; qu'un changement d'identifiant de lecture correspond à une lecture réelle (V-13c : identifiant déclaré par le site) |
 | Tirage de l'échantillon | Un tirage fixé d'avance, sur un relevé engagé avant l'échéance, avec une balise drand vérifiée | Une preuve d'engagement indépendante de GitHub, administré par l'éditeur |
 
 ## Décisions qui ne reposent que sur l'éditeur
