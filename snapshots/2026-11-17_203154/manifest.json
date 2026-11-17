@@ -1,0 +1,131 @@
+{
+ "date_releve": "2026-11-17",
+ "fetch": {
+  "started_utc": "2026-11-17T20:31:54+00:00",
+  "base": "https://meilleure-agence-nice.fr",
+  "files": {
+   "parametres.json": {
+    "url": "https://meilleure-agence-nice.fr/methode/reproduction/parametres.json?audit=1794947514",
+    "http_status": 200,
+    "bytes": 590,
+    "sha256": "e2de9533ada6a0562a0b1daf93826a95f4f5e5c80cff524fa6c0a425b4e0dab7",
+    "fetched_utc": "2026-11-17T20:31:54+00:00"
+   },
+   "agences.csv": {
+    "url": "https://meilleure-agence-nice.fr/methode/reproduction/agences.csv?audit=1794947514",
+    "http_status": 200,
+    "bytes": 52969,
+    "sha256": "1bead9e155a9bc6b2f3946689fe685cd8e461fd5be0f7205d497041f67805194",
+    "fetched_utc": "2026-11-17T20:31:55+00:00"
+   },
+   "avis-elementaires.csv": {
+    "url": "https://meilleure-agence-nice.fr/methode/reproduction/avis-elementaires.csv?audit=1794947514",
+    "http_status": 200,
+    "bytes": 4274271,
+    "sha256": "4199664c37925044c77108ad0baab187bd6e7422351e8af01f92e7b536fdfc74",
+    "fetched_utc": "2026-11-17T20:31:56+00:00"
+   },
+   "agregats-plateformes.csv": {
+    "url": "https://meilleure-agence-nice.fr/methode/reproduction/agregats-plateformes.csv?audit=1794947514",
+    "http_status": 200,
+    "bytes": 23211,
+    "sha256": "7f85e8b3a9dd34cc800bed243678d435af8b9171ee8c654af61179249cbb427b",
+    "fetched_utc": "2026-11-17T20:31:56+00:00"
+   },
+   "criteres-sites.csv": {
+    "url": "https://meilleure-agence-nice.fr/methode/reproduction/criteres-sites.csv?audit=1794947514",
+    "http_status": 200,
+    "bytes": 1128437,
+    "sha256": "3ec7b701257605636e8ca54c334f42dd6bd783c22b786a7f136b5ba555f54b85",
+    "fetched_utc": "2026-11-17T20:31:57+00:00"
+   },
+   "sources-agences.csv": {
+    "url": "https://meilleure-agence-nice.fr/methode/reproduction/sources-agences.csv?audit=1794947514",
+    "http_status": 200,
+    "bytes": 178853,
+    "sha256": "70cd3232da6799848b5c4f3272e168ffb33014ef795bedfbe6480e6ef9d80924",
+    "fetched_utc": "2026-11-17T20:31:57+00:00"
+   },
+   "classement-notes.txt": {
+    "url": "https://meilleure-agence-nice.fr/classement-notes.txt?audit=1794947514",
+    "http_status": 200,
+    "bytes": 98824,
+    "sha256": "b3caa3c1688c521e354895c83a05ce75dd97359a88c75b10e618b82a668d10c4",
+    "fetched_utc": "2026-11-17T20:31:58+00:00"
+   },
+   "methode-details.html": {
+    "url": "https://meilleure-agence-nice.fr/methode/details/?audit=1794947514",
+    "http_status": 200,
+    "bytes": 70624,
+    "sha256": "dc527dbd5b23627918d6cc5103f380c6a41f7e2b048db95e666fd0b9fb2e604f",
+    "fetched_utc": "2026-11-17T20:31:58+00:00"
+   },
+   "calcul.zip": {
+    "url": "https://meilleure-agence-nice.fr/methode/code/meilleure-agence-nice-calcul.zip?audit=1794947514",
+    "http_status": 200,
+    "bytes": 5491189,
+    "sha256": "d9656e5e2237243ef1cc8caabf3c820e931d8b69acec62b3c6b39605f8a424a2",
+    "fetched_utc": "2026-11-17T20:32:00+00:00"
+   }
+  },
+  "errors": []
+ },
+ "inputs": {
+  "agences.csv": {
+   "sha256": "1bead9e155a9bc6b2f3946689fe685cd8e461fd5be0f7205d497041f67805194",
+   "archive": "agences.csv.gz",
+   "archive_sha256": "769ad202d01461ecb8bf4fc8bdf221b7b7ced01115304bcc4dac5d830125b20a"
+  },
+  "agregats-plateformes.csv": {
+   "sha256": "7f85e8b3a9dd34cc800bed243678d435af8b9171ee8c654af61179249cbb427b",
+   "archive": "agregats-plateformes.csv.gz",
+   "archive_sha256": "aa3da80792c1f8a767a033e630a0752e3a383c2de48de09ae7f51cea5630f20f"
+  },
+  "avis-elementaires.csv": {
+   "sha256": "4199664c37925044c77108ad0baab187bd6e7422351e8af01f92e7b536fdfc74",
+   "archive": "avis-elementaires.csv.gz",
+   "archive_sha256": "b1c7df5872bf4ae944b6af78be16d8bff8abbd36e4593f73b9cea405b258f50c"
+  },
+  "calcul.zip": {
+   "sha256": "d9656e5e2237243ef1cc8caabf3c820e931d8b69acec62b3c6b39605f8a424a2",
+   "archive": "calcul.zip.gz",
+   "archive_sha256": "2e29b3bf12d2e5c9c641778cc7926ccc12bbfa029ff505eca89937079eb37dcc"
+  },
+  "classement-notes.txt": {
+   "sha256": "b3caa3c1688c521e354895c83a05ce75dd97359a88c75b10e618b82a668d10c4",
+   "archive": "classement-notes.txt.gz",
+   "archive_sha256": "29719613b4d0eb0b14149c095e3c106cd70709566c71008ce2bda3c50367901c"
+  },
+  "criteres-sites.csv": {
+   "sha256": "3ec7b701257605636e8ca54c334f42dd6bd783c22b786a7f136b5ba555f54b85",
+   "archive": "criteres-sites.csv.gz",
+   "archive_sha256": "10fd7bed72aba90e30b3cd56fd719e692ec238700d639b069e27cf15b046790c"
+  },
+  "methode-details.html": {
+   "sha256": "dc527dbd5b23627918d6cc5103f380c6a41f7e2b048db95e666fd0b9fb2e604f",
+   "archive": "methode-details.html.gz",
+   "archive_sha256": "25193df02e2b3207f4d6300a454c33933df53160a30224919dd27a09565036e4"
+  },
+  "parametres.json": {
+   "sha256": "e2de9533ada6a0562a0b1daf93826a95f4f5e5c80cff524fa6c0a425b4e0dab7",
+   "archive": "parametres.json.gz",
+   "archive_sha256": "f387761a2411d21e37b52c21d306c10e72fd0e3cc90d7f6e1f8b34a07b32eb4b"
+  },
+  "sources-agences.csv": {
+   "sha256": "70cd3232da6799848b5c4f3272e168ffb33014ef795bedfbe6480e6ef9d80924",
+   "archive": "sources-agences.csv.gz",
+   "archive_sha256": "c633248d82f809116eb018931f0e9d0c264c5c5f4cfd7c38701aa8d0a0a1d9a3"
+  }
+ },
+ "archived_utc": "2026-11-17T20:32:00+00:00",
+ "draw_planned": {
+  "utc": "2026-11-24T06:00:00+00:00",
+  "drand_round": 34232212,
+  "rule": "premier mardi 06:00 UTC après la date du relevé"
+ },
+ "archive_run": {
+  "id": "44170235702",
+  "url": "https://github.com/thomasgestioncassini/nice-agencies-open-audit/actions/runs/44170235702"
+ },
+ "auditor_code": "a21b26837086277e99694e87bc99c10b7cae324c"
+}
