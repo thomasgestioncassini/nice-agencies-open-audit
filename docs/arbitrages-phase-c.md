@@ -8,8 +8,9 @@ de deux agences classées (Gestion Cassini et ImmoVendu). Elle est donc partie i
 validation indépendante. Les constats des IA restent publiés tels quels dans les rapports ; rien n'y est modifié ni
 retiré. Aucun consensus entre les deux IA n'a été recherché.
 
-Rapports concernés : `reports/2026-11-15_20261117T105659Z` (premier audit complet) et
-`reports/2026-11-17_20261117T121921Z` (audit du relevé v5.2).
+Rapports concernés : `reports/2026-11-15_20261117T105659Z` (premier audit complet),
+`reports/2026-11-17_20261117T121921Z` (audit du relevé v5.2) et `reports/2026-11-17_20261117T150158Z` (audit du
+relevé final du 17/11 : v5.4 et barèmes relus).
 
 ## Priorités de la revue ChatGPT
 
@@ -19,7 +20,7 @@ Rapports concernés : `reports/2026-11-15_20261117T105659Z` (premier audit compl
 | --- | --- | --- | --- |
 | Formule « vendeur ou acquéreur selon le mandat » notée tantôt 0, tantôt 30 | Règle précisée pour toutes les agences : la formule remplit le critère « payeur indiqué » (méthode v5.2) | 179 barèmes relus ; chaque décision archivée avec la phrase citée (`data/rectifications/payeur-2026-11-17.json` du site) | 38 agences gagnent le critère, dont ImmoVendu (2ᵉ → 1ʳᵉ) ; Gestion Cassini inchangée sur ce critère |
 | Gestion Cassini : 50 points de barème non visibles dans le texte de la page | Points maintenus | Le barème était publié en images (lues par la relecture d'images commune à toutes les agences). La page a été republiée en texte le 17/11 : taux TTC par type de bien et minimums. L'observation d'origine (12/11, images) ne peut pas être reprouvée en texte | Aucun |
-| Gestion Cassini : la page republiée indique désormais le payeur | Pas d'application immédiate | Une agence qui modifie sa page n'est prise en compte qu'à la lecture suivante ; l'éditeur ne s'applique pas un traitement plus rapide | Critère gagné à la prochaine lecture, comme pour toute agence |
+| Gestion Cassini : la page republiée le 17/11 indique désormais le payeur avec la même phrase qu'ImmoVendu, mais garde 0/30 (relevé du 12/11, relu le 17/11 au matin avant la republication) ; constat jugé le plus grave par l'IA B dans l'audit `2026-11-17_20261117T150158Z` | Pas d'application immédiate, décidée par l'éditeur alors que la méthode permet à toute agence de demander une relecture de son site : l'éditeur renonce à cette faculté pour sa propre agence le jour de l'audit | Dates de lecture publiées (`criteres-sites.csv`) | Critère gagné à la prochaine lecture trimestrielle, comme pour toute agence ; environ +5,1 points, environ 68ᵉ au lieu de 129ᵉ |
 | French Riviera Studios : 0/20 en « Montants TTC » malgré des taux TTC affichés | Erreur corrigée par la relecture commune ci-dessous | Constat confirmé par l'IA A ; barème relu le 17/11 | Montants TTC 20/20 ; 353ᵉ → 318ᵉ |
 | 72 barèmes « illisibles » (20/100) dont John Royce et LBI, alors qu'un barème de même type a été lu pour Gestion Cassini | Relecture, avec une seule règle, des 61 barèmes illisibles dont l'adresse est connue et de celui de French Riviera Studios (les 11 autres n'ont pas d'adresse de barème enregistrée) | Règle : si la relecture lit un barème de vente, la grille relue remplace l'ancienne ; sinon rien ne change. Journal : `data/rectifications/baremes-2026-11-17.json` du site | 4 barèmes deviennent lisibles (Nice Carré d'Or 315ᵉ → 154ᵉ, Immobilière Prestige 273ᵉ → 150ᵉ, PHT Real Estate 371ᵉ → 284ᵉ, French Riviera Studios) ; 58 restent illisibles, dont John Royce et LBI, sans perte ; aucune baisse ; agences de l'éditeur inchangées |
 
