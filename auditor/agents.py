@@ -110,7 +110,8 @@ def call_openai(cfg: dict, system: str, user: str, schema: dict, name: str) -> t
     txt = r.get('output_text') or ''.join(c.get('text', '') for o in r.get('output', []) if o.get('type') == 'message'
                                           for c in o.get('content', []))
     u = r.get('usage', {})
-    return txt, u.get('input_tokens', 0), u.get('output_tokens', 0), r.get('model', cfg['model']), r.get('status')
+    return txt, u.get('input_tokens', 0), u.get('output_tokens', 0), r.get('model', cfg['model']), \
+        f"{r.get('status')} · identifiant de réponse {r.get('id')}"
 
 
 def _gemini_schema(s):
@@ -132,7 +133,8 @@ def call_gemini(cfg: dict, system: str, user: str, schema: dict, name: str) -> t
     txt = ''.join(p.get('text', '') for p in cand.get('content', {}).get('parts', []) if not p.get('thought'))
     u = r.get('usageMetadata', {})
     out_tokens = u.get('candidatesTokenCount', 0) + u.get('thoughtsTokenCount', 0)
-    return txt, u.get('promptTokenCount', 0), out_tokens, r.get('modelVersion', cfg['model']), cand.get('finishReason')
+    return txt, u.get('promptTokenCount', 0), out_tokens, r.get('modelVersion', cfg['model']), \
+        f"{cand.get('finishReason')} · identifiant de réponse {r.get('responseId')}"
 
 
 CALLERS = {'openai': call_openai, 'google': call_gemini}

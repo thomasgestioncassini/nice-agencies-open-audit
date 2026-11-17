@@ -206,3 +206,30 @@ class TruncatedOutput(unittest.TestCase):
             self.assertEqual(r['raw_output'], '{"resume": "coupé')
         finally:
             shutil.rmtree(root, ignore_errors=True)
+
+
+class SourceEvidence(unittest.TestCase):
+    """Demande de ChatGPT : des extraits vérifiables des barèmes, sans republier les pages."""
+
+    def test_short_citations_cover_payer_and_ttc(self):
+        from auditor.sitecheck import excerpts
+        text = ('Bienvenue. ' * 200 + 'Honoraires à la charge du vendeur ou de l’acquéreur selon le mandat. '
+                + 'Texte. ' * 200 + 'Tous nos prix sont TTC. ' + 'Fin. ' * 300)
+        cites = excerpts(text)
+        self.assertTrue(any('selon le mandat' in c for c in cites))
+        self.assertTrue(all(len(c) <= 360 for c in cites))
+        self.assertLessEqual(len(cites), 3)
+
+    def test_pdf_is_detected_and_not_executed(self):
+        from auditor import sitecheck
+        class R:
+            status = 200
+            def __enter__(self): return self
+            def __exit__(self, *a): return False
+            def read(self, n): return b'%PDF-1.4 contenu non valide'
+        import urllib.request
+        from unittest import mock
+        with mock.patch.object(urllib.request, 'urlopen', lambda *a, **k: R()):
+            r = sitecheck.fetch('https://exemple.test/bareme.pdf')
+        self.assertTrue(r['status'].startswith(('pdf_non_lu', 'contenu_insuffisant', 'lu')))
+        self.assertIn('sha256', r)

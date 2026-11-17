@@ -16,6 +16,20 @@ MAX_BYTES = 3_000_000
 MAX_TEXT = 6000
 
 
+def pdf_text(raw: bytes) -> str | None:
+    """Texte d'un PDF (pypdf, empreinte verrouillée dans requirements-sources.txt). Aucun script du PDF n'est exécuté."""
+    try:
+        import io
+        from pypdf import PdfReader
+    except ImportError:
+        return None
+    try:
+        r = PdfReader(io.BytesIO(raw))
+        return ' '.join(' '.join((p.extract_text() or '').split()) for p in r.pages[:10])
+    except Exception:                         # noqa: BLE001
+        return ''
+
+
 def page_text(raw: bytes) -> str:
     t = raw.decode('utf-8', 'replace')
     t = re.sub(r'(?is)<(script|style|noscript|svg)[^>]*>.*?</\1>', ' ', t)
@@ -24,12 +38,28 @@ def page_text(raw: bytes) -> str:
     return ' '.join(t.split())
 
 
+KEYS = r'(à la charge|a la charge|charge du (vendeur|mandant|acqu)|selon (le )?mandat|TTC|T\.T\.C|HT\b|hors taxe|honoraires)'
+
+
+def excerpts(text: str, limit: int = 3, width: int = 160) -> list[str]:
+    """Courtes citations (au plus 3, d’environ 350 caractères chacune) autour des mots utiles au contrôle (payeur, TTC). Elles permettent à
+    un tiers de vérifier un constat sans republier la page entière (droit de courte citation)."""
+    out, last = [], -1
+    for m in re.finditer(KEYS, text, re.I):
+        if m.start() < last:
+            continue
+        a, b = max(0, m.start() - width), min(len(text), m.end() + width)
+        out.append(('…' if a else '') + text[a:b] + ('…' if b < len(text) else ''))
+        last = b
+        if len(out) >= limit:
+            break
+    return out
+
+
 def fetch(url: str) -> dict:
     meta = {'url': url, 'utc': dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds')}
     if not url.startswith(('http://', 'https://')):
         return {**meta, 'status': 'url_invalide'}
-    if url.lower().split('?')[0].endswith('.pdf'):
-        return {**meta, 'status': 'pdf_non_lu'}
     try:
         with urllib.request.urlopen(urllib.request.Request(url, headers={'User-Agent': UA}), timeout=30) as r:
             raw = r.read(MAX_BYTES + 1)
@@ -37,10 +67,16 @@ def fetch(url: str) -> dict:
     except Exception as e:                    # noqa: BLE001
         return {**meta, 'status': 'echec', 'error': type(e).__name__}
     meta.update(sha256=hashlib.sha256(raw).hexdigest(), bytes=len(raw))
-    txt = page_text(raw)
+    if raw[:5] == b'%PDF-':
+        txt = pdf_text(raw)
+        if txt is None:
+            return {**meta, 'status': 'pdf_non_lu (bibliothèque pypdf absente)'}
+        meta['format'] = 'pdf'
+    else:
+        txt = page_text(raw)
     if len(txt) < 200:
         return {**meta, 'status': 'contenu_insuffisant (page dynamique ?)'}
-    return {**meta, 'status': 'lu', 'text': txt[:MAX_TEXT], 'text_truncated': len(txt) > MAX_TEXT}
+    return {**meta, 'status': 'lu', 'text': txt[:MAX_TEXT], 'text_truncated': len(txt) > MAX_TEXT, 'citations': excerpts(txt)}
 
 
 def check_sites(sources: dict, criteria: dict, agencies: list[str], fetcher=fetch) -> dict:
