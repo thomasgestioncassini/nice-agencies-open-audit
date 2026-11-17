@@ -20,6 +20,8 @@ on:
 
 permissions:
   contents: write
+  id-token: write        # attestation Sigstore des manifestes
+  attestations: write
 
 concurrency:
   group: audit-ia
@@ -80,11 +82,31 @@ jobs:
             case "$r" in reports/canari_*) echo "canari, sans manifeste : $r"; continue;; esac
             python -m auditor verify "$r"
           done
+      - name: Nouveaux rapports à attester
+        id: nouveaux
+        run: |
+          L=$(git status --porcelain --untracked-files=all reports | awk '{print $2}' | grep '/manifest.json$' || true)
+          { echo 'liste<<FIN'; echo "$L"; echo FIN; } >> "$GITHUB_OUTPUT"
+      - name: Attestation Sigstore des manifestes (signature de l'exécution GitHub, inscrite au journal public Rekor)
+        id: attestation
+        if: steps.nouveaux.outputs.liste != ''
+        continue-on-error: true      # un rapport est publié même si l'attestation échoue ; le registre le montre alors sans attestation
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: ${{ steps.nouveaux.outputs.liste }}
+      - name: Registre des audits
+        env:
+          LISTE: ${{ steps.nouveaux.outputs.liste }}
+          ATTESTE: ${{ steps.attestation.outcome }}
+        run: |
+          if [ "$ATTESTE" = "success" ]; then python -m auditor attested "$GITHUB_RUN_ID" $LISTE; fi
+          python -m auditor registry
       - name: Publication dans le dépôt (aucune relecture)
         run: |
           git config user.name "nice-agencies-open-audit[bot]"
           git config user.email "audit-bot@users.noreply.github.com"
-          git add reports budget
+          touch attestations.json 2>/dev/null; [ -s attestations.json ] || echo "{}" > attestations.json
+          git add reports budget attestations.json REGISTRE.md registre.json
           git diff --cached --quiet && { echo "rien de nouveau"; exit 0; }
           git commit -m "Audit IA (${MODE}, exécution ${GITHUB_RUN_ID})"
           for i in 1 2 3; do git pull --rebase --quiet && git push && break; sleep 5; done

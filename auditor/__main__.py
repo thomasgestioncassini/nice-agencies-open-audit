@@ -306,6 +306,23 @@ def cmd_verify(args) -> int:
     return 0 if not bad else 3
 
 
+def cmd_registry(args) -> int:
+    from .register import build
+    print(f'registre : {len(build(ROOT))} rapports')
+    return 0
+
+
+def cmd_attested(args) -> int:
+    """Inscrit dans attestations.json les manifestes pour lesquels l'exécution GitHub a obtenu une attestation Sigstore."""
+    import hashlib
+    p = ROOT / 'attestations.json'
+    d = json.loads(p.read_text(encoding='utf-8')) if p.exists() else {}
+    for m in args.manifests:
+        d[hashlib.sha256(Path(m).read_bytes()).hexdigest()] = {'manifeste': str(Path(m)), 'execution': args.execution}
+    p.write_text(json.dumps(d, ensure_ascii=False, indent=1, sort_keys=True) + '\n', encoding='utf-8')
+    return 0
+
+
 def cmd_canary(args) -> int:
     from .budget import Ledger
     from .canary import run_canary
@@ -330,6 +347,8 @@ def main(argv=None) -> int:
     v = sub.add_parser('verify'); v.add_argument('report'); v.set_defaults(fn=cmd_verify)
     d = sub.add_parser('draw'); d.add_argument('snapshot'); d.set_defaults(fn=cmd_draw)
     c = sub.add_parser('canary'); c.set_defaults(fn=cmd_canary)
+    g = sub.add_parser('registry'); g.set_defaults(fn=cmd_registry)
+    t = sub.add_parser('attested'); t.add_argument('execution'); t.add_argument('manifests', nargs='*'); t.set_defaults(fn=cmd_attested)
     a = p.parse_args(argv)
     return a.fn(a)
 
