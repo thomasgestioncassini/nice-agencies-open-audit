@@ -93,11 +93,11 @@ ChatGPT a refusé la clôture tant que des décisions favorables à l'éditeur r
   expirée ou numéro de société différent du registre ne comptent plus. L'éditeur a décidé d'appliquer cette règle
   tout de suite à toutes les agences, les siennes comprises, par une relecture commune (et non une exception propre à
   ImmoVendu). Deux pages lues par agence (mentions légales, barème), combinées avec une seule règle : une inexactitude lue sur l'une des pages retire le critère ; une mention absente garde sa valeur précédente.
-  - **Première relecture (17/11, 16:17–18:10 UTC), publiée à 18:15 UTC puis remplacée.** L'outil de lecture du site
+  - **Première relecture (17/11, 16:17–17:49 UTC), publiée à 18:12 UTC puis remplacée.** L'outil de lecture du site
     (Firecrawl) pouvait renvoyer une copie en cache de 2 jours au plus. ImmoVendu y perdait les deux mentions (carte
     affichée expirée au 16/06/2025, RCS « 400 877 688 ») : 3ᵉ → 12ᵉ. L'éditeur a signalé que sa page avait été
     corrigée dans l'après-midi (l'auditeur, qui lit en direct, voyait encore l'ancienne version à 15:01 UTC).
-  - **Relecture en direct de toutes les agences (18:39–20:20 UTC), publiée à 20:27 UTC.** 533 agences relues ; 55
+  - **Relecture en direct de toutes les agences (18:39–19:34 UTC), publiée vers 20:27 UTC.** 533 agences relues ; 55
     changent par rapport à l'état d'avant les relectures ; 22 affichent une carte expirée ou un numéro de société
     différent du registre ; 11 résultats diffèrent de la lecture en cache, dont les deux agences de l'éditeur.
     ImmoVendu retrouve les deux mentions (page corrigée : RCS 400 877 866, carte valable jusqu'au 16/06/2028) :
