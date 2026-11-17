@@ -8,7 +8,7 @@
 | Modification du code, des workflows, du mandat et des règles (config/) | même compte | chaque modification est un commit public daté ; les rapports indiquent la version du code et des règles utilisées |
 | Identité de signature (phase D) | identité de workflow GitHub, sans clé conservée (Sigstore) | journal public de transparence Rekor |
 | Financement des API d'IA (phase C) | SARL GESTION CASSINI | plafonds publiés ; une coupure produit un rapport « IA indisponible » |
-| Arrêt du système, retrait d'un rapport | même compte, techniquement possible | surveillance externe (phase D) ; inscriptions Rekor ; copies tierces |
+| Arrêt du système, retrait d'un rapport | même compte, techniquement possible | surveillance quotidienne depuis le 17/11/2026 dans le dépôt séparé nice-agencies-audit-watch (suppression ou modification d'un rapport, réécriture de l'historique, mandat modifié, audit manquant) — ce dépôt appartient au même compte, que l'éditeur peut aussi modifier ou arrêter ; inscriptions Rekor (à faire) ; copies tierces |
 | Développement | Claude (Anthropic), outil utilisé par l'éditeur, qui a aussi écrit le code de production du site | moteur rédigé à partir du texte public de la méthode ; règles tirées du code listées dans docs/interpretations.md |
 
 Interventions techniquement possibles pour l'administrateur et non encore détectables par un tiers : supprimer des exécutions GitHub Actions (et donc des journaux d'engagement), réécrire l'historique Git, retirer un relevé archivé avant qu'un tiers en ait fait une copie. Un horodatage et une conservation hors du dépôt sont prévus en phase D.
