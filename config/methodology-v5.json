@@ -1,5 +1,5 @@
 {
-  "version": "v5 du 14/11/2026",
+  "version": "v5.3 du 17/11/2026 (poids et calcul de la v5 du 14/11/2026 ; 22 critères depuis le retrait du critère « annonce < 30 jours »)",
   "source": "https://meilleure-agence-nice.fr/methode/details/",
   "note": "Valeurs recopiées du texte public de la méthode. Ce fichier appartient à l'auditeur : il n'est jamais lu depuis le site audité. Toute modification est un commit public.",
   "weights": {
@@ -15,7 +15,7 @@
     "serv": 2,
     "hono": 4,
     "conf": 7,
-    "info": 6,
+    "info": 5,
     "anc": 1
   },
   "reviews": {

@@ -27,7 +27,7 @@ class Formulas(unittest.TestCase):
 
     def test_weights_sum_to_100(self):
         self.assertEqual(sum(CFG['weights'].values()), 100)
-        self.assertEqual(sum(CFG['criteria_count'].values()), 23)
+        self.assertEqual(sum(CFG['criteria_count'].values()), 22)   # v5.3 : critère « annonce < 30 jours » retiré
 
     def test_star_conversion(self):
         self.assertEqual(star_to_100(3), 0)
