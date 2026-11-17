@@ -54,7 +54,8 @@ jobs:
           set +e
           for s in snapshots/*/; do
             d=$(basename "$s")
-            [ "$RECALCULER" != "true" ] && ls -d reports/${d}_* >/dev/null 2>&1 && continue
+            # sans demande de recalcul, un relevé qui a déjà un rapport n'est pas recalculé
+            [ "$RECALCULER" != "true" ] && grep -ls "\"snapshot\": \"snapshots/${d}\"" reports/*/manifest.json >/dev/null 2>&1 && continue
             python -m auditor run "$s"; echo "code de sortie $?"
           done
       - name: Vérification des empreintes
