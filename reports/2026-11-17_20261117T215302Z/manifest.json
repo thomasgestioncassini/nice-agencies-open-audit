@@ -1,0 +1,25 @@
+{
+ "report_id": "2026-11-17_20261117T215302Z",
+ "outputs_sha256": {
+  "anomalies.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+  "calculations.csv": "442721d80fdecb83bcb76687c82a7de1e8a81f2f375e1eadb111e38052ba8606",
+  "report.json": "d51ae88724962c122a20a660815c585223e8c3bb3702d685e8c0a653a7914e77",
+  "report.md": "dbe6d9c7b7c0f04fa9c672c96de8f14fa304a72bb6d7bb02c332f561116572ce"
+ },
+ "snapshot": "snapshots/2026-11-17_203154",
+ "snapshot_manifest_sha256": "5dd92fb995c5cf0e0bb9d716c33d25cdffbde934f4e70cae6f6983e1dd53d7fd",
+ "inputs_sha256": {
+  "agences.csv": "1bead9e155a9bc6b2f3946689fe685cd8e461fd5be0f7205d497041f67805194",
+  "agregats-plateformes.csv": "7f85e8b3a9dd34cc800bed243678d435af8b9171ee8c654af61179249cbb427b",
+  "avis-elementaires.csv": "4199664c37925044c77108ad0baab187bd6e7422351e8af01f92e7b536fdfc74",
+  "calcul.zip": "d9656e5e2237243ef1cc8caabf3c820e931d8b69acec62b3c6b39605f8a424a2",
+  "classement-notes.txt": "b3caa3c1688c521e354895c83a05ce75dd97359a88c75b10e618b82a668d10c4",
+  "criteres-sites.csv": "3ec7b701257605636e8ca54c334f42dd6bd783c22b786a7f136b5ba555f54b85",
+  "methode-details.html": "dc527dbd5b23627918d6cc5103f380c6a41f7e2b048db95e666fd0b9fb2e604f",
+  "parametres.json": "e2de9533ada6a0562a0b1daf93826a95f4f5e5c80cff524fa6c0a425b4e0dab7",
+  "sources-agences.csv": "70cd3232da6799848b5c4f3272e168ffb33014ef795bedfbe6480e6ef9d80924"
+ },
+ "code_version": "35e835e98127f326c2a5487299e1859074f1d51e",
+ "python": "3.12.16",
+ "command": "python -m auditor run snapshots/2026-11-17_203154"
+}

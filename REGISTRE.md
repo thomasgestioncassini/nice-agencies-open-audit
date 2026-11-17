@@ -2,10 +2,23 @@
 
 Tous les rapports du dépôt, du plus récent au plus ancien, y compris les rapports incomplets, en échec et les tests. Recalculé à chaque exécution ; les rapports eux-mêmes sont dans `reports/`. Ce registre n’est pas une certification du classement (docs/portee-et-limites.md).
 
-132 rapports, dont 7 audits des deux IA et 0 avec attestation Sigstore.
+145 rapports, dont 7 audits des deux IA et 13 avec attestation Sigstore.
 
 | Rapport | Type | Relevé | Méthode | Calculs | Doublons | Audit IA | Attestation |
 |---|---|---|---|---|---|---|---|
+| [2026-11-17_20261117T215315Z](reports/2026-11-17_20261117T215315Z/) | recalcul | 2026-11-17_215220 | v5.7 du 17/11/2026 | conforme | conforme | — | exécution 44184269530 |
+| [2026-11-17_20261117T215311Z](reports/2026-11-17_20261117T215311Z/) | recalcul | 2026-11-17_214412 | v5.7 du 17/11/2026 | conforme | conforme | — | exécution 44184269530 |
+| [2026-11-17_20261117T215306Z](reports/2026-11-17_20261117T215306Z/) | recalcul | 2026-11-17_210119 | v5.7 du 17/11/2026 | conforme | conforme | — | exécution 44184269530 |
+| [2026-11-17_20261117T215302Z](reports/2026-11-17_20261117T215302Z/) | recalcul | 2026-11-17_203154 | v5.7 du 17/11/2026 | conforme | conforme | — | exécution 44184269530 |
+| [2026-11-17_20261117T215257Z](reports/2026-11-17_20261117T215257Z/) | recalcul | 2026-11-17_181606 | v5.7 du 17/11/2026 | conforme | conforme | — | exécution 44184269530 |
+| [2026-11-17_20261117T215253Z](reports/2026-11-17_20261117T215253Z/) | recalcul | 2026-11-17_160707 | v5.7 du 17/11/2026 | conforme | conforme | — | exécution 44184269530 |
+| [2026-11-17_20261117T215248Z](reports/2026-11-17_20261117T215248Z/) | recalcul | 2026-11-17_145425 | v5.7 du 17/11/2026 | conforme | conforme | — | exécution 44184269530 |
+| [2026-11-17_20261117T215244Z](reports/2026-11-17_20261117T215244Z/) | recalcul | 2026-11-17_141845 | v5.7 du 17/11/2026 | conforme | conforme | — | exécution 44184269530 |
+| [2026-11-17_20261117T215242Z](reports/2026-11-17_20261117T215242Z/) | recalcul | 2026-11-17_132447 | v5.7 du 17/11/2026 | conforme | non vérifié | — | exécution 44184269530 |
+| [2026-11-17_20261117T215239Z](reports/2026-11-17_20261117T215239Z/) | recalcul | 2026-11-17_131856 | v5.7 du 17/11/2026 | conforme | non vérifié | — | exécution 44184269530 |
+| [2026-11-17_20261117T215237Z](reports/2026-11-17_20261117T215237Z/) | recalcul | 2026-11-17_123601 | v5.7 du 17/11/2026 | conforme | non vérifié | — | exécution 44184269530 |
+| [2026-11-15_20261117T215235Z](reports/2026-11-15_20261117T215235Z/) | recalcul | 2026-11-15_121239 | v5.7 du 17/11/2026 | conforme | non vérifié | — | exécution 44184269530 |
+| [2026-11-15_20261117T215232Z](reports/2026-11-15_20261117T215232Z/) | recalcul | 2026-11-15_115546 | v5.7 du 17/11/2026 | conforme | non vérifié | — | exécution 44184269530 |
 | [2026-11-17_20261117T214500Z](reports/2026-11-17_20261117T214500Z/) | recalcul | 2026-11-17_214412 | v5.7 du 17/11/2026 | conforme | conforme | — | — |
 | [2026-11-17_20261117T214456Z](reports/2026-11-17_20261117T214456Z/) | recalcul | 2026-11-17_210119 | v5.7 du 17/11/2026 | conforme | conforme | — | — |
 | [2026-11-17_20261117T214452Z](reports/2026-11-17_20261117T214452Z/) | recalcul | 2026-11-17_203154 | v5.7 du 17/11/2026 | conforme | conforme | — | — |
