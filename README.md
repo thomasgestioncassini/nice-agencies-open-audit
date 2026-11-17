@@ -8,8 +8,8 @@ Auditeur ouvert du classement des agences immobilières de Nice publié sur [mei
 
 | Phase | Contenu | État |
 | --- | --- | --- |
-| B | Recalcul indépendant, sans IA, archivage des relevés, tests | développée, en cours de validation |
-| C | Deux IA d'audit (OpenAI, Google Gemini), contrôles à la source | non commencée |
+| B | Recalcul indépendant, sans IA, archivage des relevés, tests | close le 17/11/2026 après quatre revues de ChatGPT (procès-verbal dans le dépôt) |
+| C | Deux IA d'audit (OpenAI, Google Gemini), contrôles à la source | close sous conditions le 17/11/2026 : clôture technique et documentaire, pas une certification ([docs/cloture-phase-c.md](docs/cloture-phase-c.md)) |
 | D | Exécution hebdomadaire, signatures, registre, surveillance externe | en cours depuis le 17/11/2026 : archivage hebdomadaire et audit mensuel programmés ; surveillance quotidienne dans le dépôt séparé [nice-agencies-audit-watch](https://github.com/thomasgestioncassini/nice-agencies-audit-watch) (même compte : séparée, pas indépendante de l'éditeur) ; signatures, registre, journal des lectures et contestation à faire |
 | E | Affichage sur le site | non commencée |
 
