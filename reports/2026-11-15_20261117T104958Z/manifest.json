@@ -1,0 +1,34 @@
+{
+ "report_id": "2026-11-15_20261117T104958Z",
+ "outputs_sha256": {
+  "agent-a.json": "6a1f66ccc26a76cd53f5fab0ece73f25884c01a7363372f3f28194495e6be0b5",
+  "agent-a.md": "decd956c234ecb0af864afe2671a80a3be8447a6cd17e2cf7bee03c1da518b36",
+  "agent-b.json": "62bc0f9af5f7c1625dc62c4d4e7733b5d707bcdc3eda8cef7241091c6e6c2798",
+  "agent-b.md": "c94f5d786e4793fca6d043ef46cbdd84931f9a3974b331b65bb827b7d4b0e882",
+  "anomalies.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+  "bias.json": "37e11f62cbe96ddb50832e6554a1286fc31cbd19560ec422667c77159e963b5d",
+  "calculations.csv": "abf7f1c2e20eec8f99bd26d7e7b712e7d6b322482a9ae02986a59a31281195a2",
+  "disagreements.md": "5191796b87f50a9742a34ce735d65ba7fa5ac0e57351ce3ac93a594e1cb773a2",
+  "injections.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "package-public.json": "87367022d72f1072722018b49075e1bb1921d93841b6890f058d28950b35b7cc",
+  "registry.json": "ba3eda417dc2714a2ba607beeb394d78961b3f9661887d38fc5b82bd1539d6e4",
+  "report.json": "c6b683acd1a005a04868e9b59b94b5efd3f63e60cd729baf31588795f22d94a4",
+  "report.md": "d35b1c8a44740415fef84a5f3c8cc57417be55be3fede523db25fe2e5c5db76d",
+  "sites.json": "87b57de503941792576c60be04183f1704eda1e082fd2ab665e44efacf98157b"
+ },
+ "snapshot": "snapshots/2026-11-15_121239",
+ "snapshot_manifest_sha256": "8ab22405d1649a935d56b12c21b8cf201ac5e56bf69385b55248d4996502430a",
+ "inputs_sha256": {
+  "agences.csv": "ac48cf0bf48cf46315e6f225948138fa81240dc6c0a45ca6107906554c863b88",
+  "agregats-plateformes.csv": "eefc6be892b2614a777a1f298fabb7e436a2e812e15a5f6809b164564ebb8aec",
+  "avis-elementaires.csv": "cc008d863c55936fd8c2017fe009fbe2e86dc0fb922d6d71d1ef6fbeb06c053f",
+  "classement-notes.txt": "f72c717b39463cd3a1abc5ab72b1720df6f8c1809425e996e6c32bf41004784f",
+  "criteres-sites.csv": "3f016081d5e0be1937cbc6f7d6c9113eb21691428dbcfd20dac32a4e8b8c848c",
+  "methode-details.html": "bed46b9a8c7851b44da57fb301eadc54e883306772c94eafe085654ff46b9cef",
+  "parametres.json": "f29e5c96961916a2707e57a3e02cdbd2e44cde665e8add384c382de6cf5dca0c",
+  "sources-agences.csv": "e70439835211b05b786f6b025ba349670aa5495c38353a1c8a670855e446f7ba"
+ },
+ "code_version": "5e514ef0cc8e4352814d9ada160483cfb1303a56",
+ "python": "3.12.16",
+ "command": "python -m auditor run snapshots/2026-11-15_121239"
+}

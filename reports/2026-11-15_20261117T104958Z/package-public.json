@@ -1,0 +1,4375 @@
+{
+ "classement": {
+  "site": "https://meilleure-agence-nice.fr",
+  "date_releve": "2026-11-15",
+  "methode": {
+   "version": "v5 du 14/11/2026",
+   "poids": {
+    "avis": 43,
+    "serv": 16,
+    "hono": 17,
+    "conf": 11,
+    "info": 8,
+    "anc": 5
+   },
+   "nombre_criteres": {
+    "avis": 3,
+    "serv": 2,
+    "hono": 4,
+    "conf": 7,
+    "info": 6,
+    "anc": 1
+   },
+   "texte_public": "https://meilleure-agence-nice.fr/methode/details/"
+  },
+  "agences_classees": 552,
+  "editeur": "SARL GESTION CASSINI",
+  "agences_editeur": [
+   "gestion-cassini",
+   "immovendu"
+  ]
+ },
+ "resultats_deterministes": {
+  "statuts": {
+   "calculs_reproduction": "conforme",
+   "texte_documentation": "complete",
+   "texte_coherence": "aucune_contradiction_repertoriee",
+   "texte_historique": "ecarts_anterieurs",
+   "donnees_primaires": "non_verifiees",
+   "biais": "non_evalue"
+  },
+  "recalcul": {
+   "examined": 552,
+   "notes": {
+    "conforme": 552,
+    "divergente": 0,
+    "frontiere_arrondi": 0
+   },
+   "ranks_divergent": 0,
+   "m_ref": 4.453
+  },
+  "controles": [
+   {
+    "code": "V-4b",
+    "severity": "mineur",
+    "message": "avis notés sous 1/5, minimum habituel d’une échelle à étoiles : ils entrent tels quels dans la moyenne ; échelle d’Opinion System à vérifier à la source",
+    "agencies": [
+     "agence-immobiliere-nice-citya-baie-des-anges",
+     "citya-dalbera-gestion",
+     "nestenn-nice-port-riquier",
+     "orpi-alazard-immo",
+     "orpi-dasa-immo-nice",
+     "orpi-helios-transactions-nice",
+     "orpi-immobiliere-gti-nice",
+     "orpi-lior",
+     "riviera-ts-immobilier-orpi",
+     "votre-agence-immo-nice-nord"
+    ],
+    "count": 19,
+    "counted": 9
+   },
+   {
+    "code": "V-12a",
+    "severity": "info",
+    "message": "toutes les plateformes relevées en entier dont le nombre d’avis relevés diffère, même d’un avis, du nombre affiché (les deux nombres viennent des exports du site)",
+    "agencies": [
+     "agence-immobiliere-century-21-a-cimiez-lafage",
+     "century-21-lafage-transactions-nice-bonaparte",
+     "foncia-agence-immobiliere-achat-vente-nice-bd-napoleon-iii",
+     "foncia-transaction-riviera-nice-massena",
+     "immobilier2nice-maison2nice-gestion2nice",
+     "isit-immobilier",
+     "orpi-agerim-properties-nice",
+     "orpi-immobiliere-gti-nice"
+    ],
+    "count": 8,
+    "detail": {
+     "agence-immobiliere-century-21-a-cimiez-lafage|google": {
+      "releves": 89,
+      "declares": 85.0
+     },
+     "orpi-agerim-properties-nice|google": {
+      "releves": 107,
+      "declares": 108.0
+     },
+     "orpi-immobiliere-gti-nice|google": {
+      "releves": 314,
+      "declares": 313.0
+     },
+     "immobilier2nice-maison2nice-gestion2nice|google": {
+      "releves": 55,
+      "declares": 54.0
+     },
+     "foncia-agence-immobiliere-achat-vente-nice-bd-napoleon-iii|google": {
+      "releves": 79,
+      "declares": 80.0
+     },
+     "foncia-transaction-riviera-nice-massena|immodvisor": {
+      "releves": 15,
+      "declares": 14.0
+     },
+     "isit-immobilier|google": {
+      "releves": 132,
+      "declares": 133.0
+     },
+     "century-21-lafage-transactions-nice-bonaparte|google": {
+      "releves": 164,
+      "declares": 163.0
+     }
+    },
+    "sans_agregat": []
+   },
+   {
+    "code": "V-12",
+    "severity": "info",
+    "message": "nombre d’avis relevés un par un cohérent avec le nombre affiché par la plateforme pour les 532 plateformes relevées en entier (écart toléré : 10 % ou 2 avis)",
+    "agencies": [],
+    "count": 0
+   },
+   {
+    "code": "V-6",
+    "severity": "info",
+    "message": "avis déclarés doublons par le site (non vérifiable à partir des exports : les textes ne sont pas publiés)",
+    "agencies": [
+     "aagestion",
+     "agence-beaumont-immobilier",
+     "agence-du-centre",
+     "agence-du-ray",
+     "agence-immobiliere-guy-hoquet-nice-gambetta",
+     "agence-winter-immobilier",
+     "akorimmo-nice-centre",
+     "akorimmo-nice-nord",
+     "aparte-immobilier",
+     "cabinet-immobilier-nice",
+     "citya-dalbera-gestion",
+     "confiance-immobiliere",
+     "domi-nice-immobilier",
+     "era-immobilier-raimbaldi-nice-centre",
+     "espaces-atypiques-nice-cannes-agence-immobiliere",
+     "foncia-agence-immobiliere-achat-vente-nice-bd-napoleon-iii",
+     "gestion-immobiliere-tissinie-achat-vente-location-saisonnier",
+     "groupe-nice-transactions",
+     "immo-de-france-cote-d-azur-nice",
+     "immo-terrasse",
+     "immobiliere-nicoise",
+     "immovendu",
+     "keller-williams-massena",
+     "l-adresse-cec-gestion",
+     "l-agence-rivoli",
+     "l-agence-signature",
+     "la-chouette-agence-immobiliere",
+     "lambda-immobilier-bo-marche",
+     "maison-quatre",
+     "midem-nice-ouest-immobilier",
+     "nestenn-nice-port-riquier",
+     "optimmo",
+     "optimmo-arson-agence-immobiliere-a-nice",
+     "orpi-agence-des-palais",
+     "orpi-agerim-properties-nice",
+     "orpi-alazard-immo",
+     "orpi-dasa-immo-nice",
+     "orpi-helios-transactions-nice",
+     "orpi-immobiliere-gti-nice",
+     "orpi-lior",
+     "orpi-lp-invest-immobilier-nice",
+     "orpi-riviera-ts-immobilier",
+     "partners-immo-nice",
+     "riviera-angels-immobilier",
+     "riviera-ts-immobilier-orpi",
+     "safi-mediterranee-agence-immobiliere",
+     "saint-roch-property",
+     "votre-agence-immo",
+     "votre-agence-immo-nice-est",
+     "votre-agence-immo-nice-nord"
+    ],
+    "count": 833,
+    "publisher_counts": {
+     "gestion-cassini": 0,
+     "immovendu": 20
+    }
+   },
+   {
+    "code": "V-7",
+    "severity": "mineur",
+    "message": "avis déclarés partagés entre k agences, mais présents sur un autre nombre de fiches dans l’export (le partage est détecté sur le texte, que l’export ne contient pas)",
+    "agencies": [
+     "agence-immobiliere-century-21-maison-de-l-immobilier",
+     "agence-immobiliere-lamy-rue-barla",
+     "agence-immobiliere-nice-citya-baie-des-anges",
+     "agence-privilege",
+     "agence-privilege-2",
+     "agence-solucio-remere-portage-immobilier",
+     "agence-winter-immobilier",
+     "agit",
+     "ashley-parker-agence-carre-d-or",
+     "ashley-parker-agence-mont-boron",
+     "aurus-immobilier",
+     "bomarche",
+     "cabinet-vogue",
+     "cabinet-vogue-bd-victor-hugo",
+     "carletta-immobilier",
+     "century-21-lafage-transactions-nice-bonaparte",
+     "century-21-lafage-transactions-nice-mont-boron",
+     "cimiez-residences-cap-de-croix",
+     "citya-dalbera-gestion",
+     "cl-immo-gestion",
+     "confiance-immobiliere",
+     "confiance-immobiliere-av-de-la-californie",
+     "cot-ouest-real-nice",
+     "foncia-agence-immobiliere-achat-vente-nice-bd-napoleon-iii",
+     "foncia-agence-immobiliere-achat-vente-nice-r-arson",
+     "gestion-cassini",
+     "gestion-immobiliere-tissinie-achat-vente-location-saisonnier",
+     "immo-cp-musiciens",
+     "immo-cp-musiciens-rue-verdi",
+     "immo-de-france-cote-d-azur-nice",
+     "immovendu",
+     "l-adresse-cec-cessole-nice-nord",
+     "l-adresse-cec-gestion",
+     "l-agence-rivoli",
+     "laforet-nice-gambetta",
+     "laforet-nice-madeleine",
+     "laforet-nice-port",
+     "leprince-immobilier",
+     "m-a-v-developpement-immobilier-carre-d-or-nice",
+     "maison-quatre",
+     "massena-immobilier",
+     "mirabello-immobilier",
+     "nice-properties-massena",
+     "nice-properties-opera",
+     "nice-properties-promenade",
+     "orpi-lior",
+     "palais-immobilier-agence-du-vieux-nice",
+     "votre-agence-immo-nice-nord",
+     "zuccarelli-immobilier"
+    ],
+    "count": 182
+   },
+   {
+    "code": "V-9",
+    "severity": "majeur",
+    "message": "critère « Annonce publiée depuis moins de 30 jours » non applicable pour 524 agences sur 526 : la méthode le compte parmi les 23 critères, mais il ne pèse presque nulle part",
+    "agencies": [],
+    "count": 524,
+    "total": 526
+   },
+   {
+    "code": "V-10",
+    "severity": "info",
+    "message": "agences exploitées par une même société (même SIREN) : même date d’ancienneté",
+    "agencies": [
+     "agence-du-port",
+     "agence-immo2nice",
+     "agence-immobiliere-century-21-a-cimiez-lafage",
+     "agence-immobiliere-century-21-maison-de-l-immobilier",
+     "agence-immobiliere-nice-citya-baie-des-anges",
+     "agence-nice-gambetta",
+     "agence-privilege",
+     "agence-privilege-2",
+     "agence-winter-immobilier",
+     "agence-winter-immobilier-gioffredo",
+     "agency-fabron",
+     "agit",
+     "akorimmo-nice-centre",
+     "akorimmo-nice-nord",
+     "ang-immobilier",
+     "arthurimmo",
+     "arthurimmo-com-lmi-la-maison-immobiliere",
+     "ashley-parker-agence-carre-d-or",
+     "ashley-parker-agence-cimiez",
+     "ashley-parker-agence-le-port",
+     "ashley-parker-agence-mont-boron",
+     "blue-residences",
+     "bomarche",
+     "borne-et-delaunay-valperga",
+     "cabinet-agir-gestion-locative-et-transaction-immobiliere",
+     "cabinet-assalit-syndic",
+     "cabinet-borne-et-delaunay",
+     "cabinet-cordier",
+     "cabinet-cordier-bd-virgile-barel",
+     "cabinet-merengone-associes",
+     "cabinet-rasori",
+     "cabinet-vogue",
+     "cabinet-vogue-bd-victor-hugo",
+     "century-21-gilles-bosse-immobilier-pessicart",
+     "century-21-gilles-bosse-immobilier-ventes-immobilieres",
+     "century-21-lafage-promenade-agence-immobiliere-a-nice-promenade-des-an",
+     "century-21-lafage-transactions",
+     "century-21-lafage-transactions-nice-bonaparte",
+     "century-21-lafage-transactions-nice-mont-boron",
+     "cimiez-immobilier",
+     "cimiez-residences-boulevard-de-cimiez",
+     "cimiez-residences-cap-de-croix",
+     "citya-dalbera-gestion",
+     "confiance-immobiliere",
+     "confiance-immobiliere-av-de-la-californie",
+     "cot-ouest-immobilier-napoleon-iii",
+     "cot-ouest-immobilier-nice-la-lanterne",
+     "cot-ouest-real-nice",
+     "cote-riviera-agence-massena",
+     "cp-immo-massena"
+    ],
+    "count": 43,
+    "groups": {
+     "813618659": [
+      "agence-immo2nice",
+      "immobilier2nice-maison2nice-gestion2nice"
+     ],
+     "478261233": [
+      "agence-immobiliere-century-21-a-cimiez-lafage",
+      "century-21-lafage-transactions",
+      "century-21-lafage-promenade-agence-immobiliere-a-nice-promenade-des-an",
+      "century-21-lafage-transactions-nice-mont-boron",
+      "french-riviera-property",
+      "lafayette-transactions",
+      "century-21-lafage-transactions-nice-bonaparte"
+     ],
+     "380435248": [
+      "agence-immobiliere-nice-citya-baie-des-anges",
+      "citya-dalbera-gestion"
+     ],
+     "817573181": [
+      "agence-nice-gambetta",
+      "ang-immobilier"
+     ],
+     "538779729": [
+      "agence-privilege",
+      "agence-privilege-2"
+     ],
+     "394227128": [
+      "agence-winter-immobilier-gioffredo",
+      "agence-winter-immobilier"
+     ],
+     "511186363": [
+      "akorimmo-nice-centre",
+      "akorimmo-nice-nord",
+      "maison-06"
+     ],
+     "443739784": [
+      "ashley-parker-agence-carre-d-or",
+      "ashley-parker-agence-cimiez",
+      "ashley-parker-agence-mont-boron",
+      "laugier-properties",
+      "ashley-parker-agence-le-port"
+     ],
+     "809672710": [
+      "blue-residences",
+      "cimiez-residences-boulevard-de-cimiez",
+      "cimiez-residences-cap-de-croix"
+     ],
+     "442281127": [
+      "cabinet-agir-gestion-locative-et-transaction-immobiliere",
+      "agit"
+     ],
+     "510085798": [
+      "cimiez-immobilier",
+      "easy-property-fabron",
+      "les-belles-terres"
+     ],
+     "490825791": [
+      "gecko-immobilier-nice-centre",
+      "gecko-immobilier-nice-port"
+     ],
+     "533987293": [
+      "gubernatis-immobilier-agence-immobiliere-vente-appartement-maison-vill",
+      "cabinet-merengone-associes"
+     ],
+     "823781760": [
+      "la-maison-orea-nice-cimiez-riviera",
+      "grand-bleu-estate",
+      "la-maison-orea-nice-nord",
+      "la-maison-orea-nice-ouest",
+      "la-maison-orea-nice-port",
+      "la-maison-orea-felix-faure",
+      "la-maison-orea-carre-d-or"
+     ],
+     "801820184": [
+      "leprince-immobilier",
+      "leprince-immobilier-cimiez"
+     ],
+     "832564470": [
+      "nice-carre-d-or",
+      "france-properties-real-estate",
+      "nice-carre-d-or-immobilier"
+     ],
+     "391026531": [
+      "palais-immobilier-liberation",
+      "palais-immobilier-agence-du-vieux-nice"
+     ],
+     "449530203": [
+      "square-habitat-nice-location-gestion-syndic-de-copropriete",
+      "square-habitat-transaction-nice-gambetta",
+      "square-habitat-nice-republique"
+     ],
+     "349534115": [
+      "agence-immobiliere-century-21-maison-de-l-immobilier",
+      "immo-gestion"
+     ],
+     "451454730": [
+      "groupe-nice-transactions",
+      "groupe-nice-transactions-est"
+     ],
+     "350791422": [
+      "l-adresse-cec-gestion",
+      "l-adresse-cec-cessole-nice-nord"
+     ],
+     "394928576": [
+      "lambda-immobilier-bo-marche",
+      "bomarche"
+     ],
+     "507939171": [
+      "nice-nord-immo",
+      "votre-agence-immo-nice-nord",
+      "votre-agence-immo",
+      "votre-agence-immo-nice-est"
+     ],
+     "431430297": [
+      "optimmo",
+      "cabinet-assalit-syndic",
+      "optimmo-syndic-gestion-nice-ouest",
+      "optimmo-arson-agence-immobiliere-a-nice"
+     ],
+     "814646592": [
+      "agency-fabron",
+      "palais-immobilier-agence-de-nice-saint-antoine-ginestiere",
+      "palais-immobilier-araucaria",
+      "palais-immobilier-prestige-agence-de-nice-port-mont-boron"
+     ],
+     "451688949": [
+      "cot-ouest-immobilier-napoleon-iii",
+      "cot-ouest-real-nice",
+      "cot-ouest-immobilier-nice-la-lanterne"
+     ],
+     "503698664": [
+      "foncia-agence-immobiliere-achat-vente-nice-bd-napoleon-iii",
+      "foncia-agence-immobiliere-achat-vente-nice-r-arson",
+      "foncia-transaction-riviera-nice-massena",
+      "cote-riviera-agence-massena"
+     ],
+     "821286614": [
+      "agence-du-port",
+      "l-immobiliere-du-port"
+     ],
+     "400877866": [
+      "gestion-cassini",
+      "immovendu"
+     ],
+     "397422833": [
+      "cabinet-cordier",
+      "cabinet-cordier-bd-virgile-barel"
+     ],
+     "502612815": [
+      "cabinet-vogue",
+      "cabinet-vogue-bd-victor-hugo"
+     ],
+     "453784258": [
+      "century-21-gilles-bosse-immobilier-pessicart",
+      "century-21-gilles-bosse-immobilier-ventes-immobilieres"
+     ],
+     "971800735": [
+      "cabinet-borne-et-delaunay",
+      "borne-et-delaunay-valperga"
+     ],
+     "503449779": [
+      "confiance-immobiliere",
+      "confiance-immobiliere-av-de-la-californie"
+     ],
+     "834288490": [
+      "cp-immo-massena",
+      "immo-cp-musiciens-rue-verdi"
+     ],
+     "819687401": [
+      "maison-a-nice",
+      "omaison"
+     ],
+     "808428783": [
+      "norait-immobilier",
+      "norait-immobilier-rue-cros-de-capeu"
+     ],
+     "804806412": [
+      "arthurimmo",
+      "arthurimmo-com-lmi-la-maison-immobiliere"
+     ],
+     "350499877": [
+      "nice-properties-promenade",
+      "nice-properties-massena",
+      "nice-properties-opera"
+     ],
+     "441695657": [
+      "ici-info-conseil-immobilier",
+      "cabinet-rasori"
+     ],
+     "342698008": [
+      "fit-immobilier",
+      "fit-immobilier-port"
+     ],
+     "797669413": [
+      "postillon-patrimoine",
+      "postillon-immobilier"
+     ],
+     "487971681": [
+      "turner-consultant",
+      "turner-international-real-estate-consulting"
+     ]
+    }
+   },
+   {
+    "code": "V-10b",
+    "severity": "majeur",
+    "message": "date de lancement d’enseigne relevée pour seulement 1 agence(s) sur 552 : la comparaison « enseigne récente, société ancienne » ne peut pas être faite pour les concurrentes à partir des exports",
+    "agencies": [
+     "immovendu"
+    ],
+    "count": 1,
+    "brands": {
+     "immovendu": "2024"
+    }
+   },
+   {
+    "code": "V-10c",
+    "severity": "info",
+    "message": "ancienneté saisie à la main (rachat déclaré prouvé)",
+    "agencies": [],
+    "count": 0
+   },
+   {
+    "code": "V-10d",
+    "severity": "info",
+    "message": "date de création de la société non relevée (valeur neutre 50)",
+    "agencies": [
+     "agence-auguste-immobilier-nice-riquier",
+     "agence-immobiliere-l-adresse-nice-carre-d-or",
+     "agence-immobiliere-lamy-rue-barla",
+     "agence-riviera-real-estate",
+     "agence-solucio-remere-portage-immobilier",
+     "alliance-riviera",
+     "cabinet-arditi",
+     "dernier-etage-com",
+     "easy-immobilier-fabron",
+     "immo-cp-musiciens",
+     "jean-christophe-dimino-immobilier-nice-cote-d-azur",
+     "nice-gestion",
+     "orpi-nina-co-nice",
+     "prestige-real-estate-luxury"
+    ],
+    "count": 14
+   },
+   {
+    "code": "V-13a",
+    "severity": "info",
+    "message": "avis apparus depuis le relevé précédent avec une date antérieure de plus d’un mois, sur une plateforme déjà relevée en entier",
+    "agencies": [],
+    "count": 0,
+    "per_agency": {},
+    "publisher_counts": {
+     "gestion-cassini": 0,
+     "immovendu": 0
+    }
+   },
+   {
+    "code": "V-13b",
+    "severity": "info",
+    "message": "avis disparus depuis le relevé précédent",
+    "agencies": [],
+    "count": 0,
+    "per_agency": {},
+    "publisher_counts": {
+     "gestion-cassini": 0,
+     "immovendu": 0
+    }
+   },
+   {
+    "code": "V-13d",
+    "severity": "info",
+    "message": "avis déjà relevés dont la note, le profil, le problème signalé ou les drapeaux de comptage ont changé depuis le relevé précédent",
+    "agencies": [],
+    "count": 0,
+    "per_agency": {},
+    "fields": {},
+    "publisher_counts": {
+     "gestion-cassini": 0,
+     "immovendu": 0
+    }
+   }
+  ],
+  "regles_appliquees_absentes_ou_contraires_au_texte": [
+   {
+    "id": "I-1",
+    "title": "Plateformes non relevées avis par avis",
+    "rule": "Quand une plateforme n'a pas été relevée en entier, ses avis comptent par sa note globale, chacun avec le poids fixe 0,5 (celui d'un avis de 3 ans), sans profil ni date.",
+    "text_gap": "Le texte ne décrit pas ce cas.",
+    "source": "avis.py : score(), AGG_AGE",
+    "kind": "non_documente",
+    "documented_by": "compte par sa note globale"
+   },
+   {
+    "id": "I-2",
+    "title": "Moyenne de Nice",
+    "rule": "Moyenne simple, sur toutes les agences listées dans agregats-plateformes.csv (classées ou non), de la note moyenne de chaque agence ; arrondie au millième (4,453 au 15/11/2026).",
+    "text_gap": "Le texte dit seulement « la moyenne de Nice ».",
+    "source": "build.py : _avis.M_REF",
+    "kind": "non_documente",
+    "documented_by": "moyenne simple des notes moyennes de toutes les agences"
+   },
+   {
+    "id": "I-3",
+    "title": "Fenêtre de la régularité",
+    "rule": "Les 12 derniers mois calendaires, mois du relevé compris.",
+    "text_gap": "Le texte dit « les 12 derniers mois ».",
+    "source": "avis.py : months_back()",
+    "kind": "precision",
+    "documented_by": "12 derniers mois calendaires"
+   },
+   {
+    "id": "I-4",
+    "title": "Dénominateur de la régularité",
+    "rule": "Nombre de mois actifs divisé par le nombre d'avis de vente ou d'achat des 12 derniers mois, borné entre 3 et 12. Ce nombre compte les doublons entre plateformes et les plateformes incomplètes.",
+    "text_gap": "Le texte annonce que les doublons sont retirés ; ils ne le sont pas pour ce sous-critère.",
+    "source": "avis.py : score(), variable rec",
+    "kind": "contradiction",
+    "text_quote": "« Doublons retirés : un même avis publié sur plusieurs plateformes ne compte qu'une fois. » (section 3, règles de comptage du pilier Avis)",
+    "text_variant": "régularité calculée sur les avis retenus, doublons retirés",
+    "documented_by": "La régularité, qui mesure l'étalement dans le temps, les compte tous",
+    "contradicted_by": [
+     "ne compte qu'une fois."
+    ]
+   },
+   {
+    "id": "I-5",
+    "title": "Âge d'un avis",
+    "rule": "Âge en mois de 30,44 jours ; le poids est divisé par deux tous les 36 mois, de façon continue.",
+    "text_gap": "Le texte dit « il perd la moitié de son poids après 3 ans », sans préciser la forme continue.",
+    "source": "avis.py : age_weight()",
+    "kind": "precision",
+    "documented_by": "mois de 30,44 jours"
+   },
+   {
+    "id": "I-6",
+    "title": "Régularité non vérifiable",
+    "rule": "Si aucun avis n'a été relevé un par un, la régularité est retirée et son poids (15 %) est réparti sur la qualité et le volume.",
+    "text_gap": "Le texte affirme qu'« il n'y a plus de redistribution du poids d'un pilier manquant » ; ici c'est un sous-critère dont le poids est redistribué.",
+    "source": "avis.py : score(), variable total",
+    "kind": "ambiguite",
+    "text_quote": "« Il n'y a plus de redistribution du poids d'un pilier manquant. » (section 10) — le texte parle d'un pilier ; ici, c'est un sous-critère.",
+    "text_variant": "régularité non relevée = valeur neutre 50, sans redistribution",
+    "documented_by": "ses 15 % sont reportés sur la qualité et le volume",
+    "contradicted_by": [
+     "information manque. 11. Contrôles"
+    ]
+   },
+   {
+    "id": "I-7",
+    "title": "Arrondis",
+    "rule": "Chaque sous-critère et chaque pilier sont arrondis au dixième ; la note est calculée à partir des piliers arrondis, puis arrondie au centième.",
+    "text_gap": "Le texte dit que les agences sont « rangées selon leur note exacte » : la note qui sert au rang est en réalité arrondie au centième.",
+    "source": "build.py : r['t'] ; avis.py, service.py : round(…, 1)",
+    "kind": "contradiction",
+    "text_quote": "« Les agences sont rangées selon leur note exacte. » (section 9)",
+    "text_variant": "aucun arrondi intermédiaire ; rang selon la note non arrondie",
+    "documented_by": "puis arrondie au centième",
+    "contradicted_by": [
+     "selon leur note exacte"
+    ]
+   },
+   {
+    "id": "I-8",
+    "title": "Réponses aux avis négatifs",
+    "rule": "Avis Google de vente ou d'achat à 3 étoiles ou moins, doublons compris, dont la présence ou l'absence de réponse a été relevée.",
+    "text_gap": "Le texte ne précise ni le périmètre exact ni le traitement des avis dont la réponse n'est pas relevée.",
+    "source": "service.py : reply_part()",
+    "kind": "non_documente",
+    "documented_by": "parmi ceux dont la présence d'une réponse a été relevée"
+   },
+   {
+    "id": "I-9",
+    "title": "Problèmes signalés",
+    "rule": "Part des avis uniques (doublons retirés) dont le texte a été lu par l'IA.",
+    "text_gap": "Conforme au texte.",
+    "source": "service.py : text_part()",
+    "kind": "precision"
+   },
+   {
+    "id": "I-10",
+    "title": "Ancienneté",
+    "rule": "Années et mois écoulés depuis la date de création (le jour est ignoré ; juin si le mois est inconnu), divisés par 20, × 100, arrondis au dixième.",
+    "text_gap": "Le texte dit « de 0 à 20 ans, proportionnel ».",
+    "source": "build.py : anc_points()",
+    "kind": "non_documente",
+    "documented_by": "le jour étant ignoré"
+   },
+   {
+    "id": "I-11",
+    "title": "Départage des égalités",
+    "rule": "À note égale (au centième), passe devant l'agence qui a le plus d'avis au total sur les plateformes, avis de locataires, de bailleurs et de syndic compris ; puis l'ordre interne de la base.",
+    "text_gap": "Le texte dit « celle qui a le plus d'avis », sans préciser lesquels. L'auditeur utilise l'identifiant stable en dernier recours.",
+    "source": "build.py : order()",
+    "kind": "ambiguite",
+    "text_quote": "« À note égale, celle qui a le plus d'avis passe devant. » (section 9) — sans dire lesquels.",
+    "text_variant": "départage par le nombre d'avis comptés (vente et achat)",
+    "documented_by": "tous profils d'auteurs confondus",
+    "contradicted_by": [
+     "celle qui a le plus d'avis passe devant"
+    ]
+   },
+   {
+    "id": "I-12",
+    "title": "Ordre des opérations de l'ancienneté",
+    "rule": "Années ÷ 20 × 100 (et non 100 × années ÷ 20) : l'ordre décide du dernier chiffre pour 2 agences dont la valeur tombe exactement sur une demi-unité d'arrondi.",
+    "text_gap": "Sans effet de fond (0,1 point d'ancienneté, soit 0,005 point de note).",
+    "source": "build.py : anc_points()",
+    "kind": "precision"
+   }
+  ],
+  "effet_des_regles_vs_texte_initial": {
+   "I-4": {
+    "notes_changees": 8,
+    "rangs_changes": 49,
+    "deplacement_median": 1,
+    "deplacement_max": 17,
+    "top10_inchanges": 8,
+    "agences_suivies": {
+     "gestion-cassini": {
+      "rang_production": 124,
+      "rang_variante": 125
+     },
+     "immovendu": {
+      "rang_production": 2,
+      "rang_variante": 2
+     }
+    }
+   },
+   "I-6": {
+    "notes_changees": 22,
+    "rangs_changes": 255,
+    "deplacement_median": 1,
+    "deplacement_max": 37,
+    "top10_inchanges": 10,
+    "agences_suivies": {
+     "gestion-cassini": {
+      "rang_production": 124,
+      "rang_variante": 122
+     },
+     "immovendu": {
+      "rang_production": 2,
+      "rang_variante": 2
+     }
+    }
+   },
+   "I-7": {
+    "notes_changees": 357,
+    "rangs_changes": 67,
+    "deplacement_median": 1,
+    "deplacement_max": 3,
+    "top10_inchanges": 10,
+    "agences_suivies": {
+     "gestion-cassini": {
+      "rang_production": 124,
+      "rang_variante": 124
+     },
+     "immovendu": {
+      "rang_production": 2,
+      "rang_variante": 2
+     }
+    }
+   },
+   "I-11": {
+    "notes_changees": 0,
+    "rangs_changes": 6,
+    "deplacement_median": 1.0,
+    "deplacement_max": 1,
+    "top10_inchanges": 10,
+    "agences_suivies": {
+     "gestion-cassini": {
+      "rang_production": 124,
+      "rang_variante": 124
+     },
+     "immovendu": {
+      "rang_production": 2,
+      "rang_variante": 2
+     }
+    }
+   },
+   "ensemble": {
+    "notes_changees": 362,
+    "rangs_changes": 289,
+    "deplacement_median": 1,
+    "deplacement_max": 37,
+    "top10_inchanges": 8,
+    "agences_suivies": {
+     "gestion-cassini": {
+      "rang_production": 124,
+      "rang_variante": 123
+     },
+     "immovendu": {
+      "rang_production": 2,
+      "rang_variante": 2
+     }
+    }
+   }
+  }
+ },
+ "agences_editeur": {
+  "gestion-cassini": {
+   "rang": 124,
+   "note": 74.52,
+   "piliers": {
+    "avis": 76.7,
+    "serv": 69.6,
+    "hono": 70.0,
+    "conf": 50.0,
+    "info": 100.0,
+    "anc": 100.0
+   },
+   "sources": {
+    "agence": "gestion-cassini",
+    "id": "173",
+    "url_fiche": "https://meilleure-agence-nice.fr/agence/gestion-cassini/",
+    "url_site": "https://www.gestioncassini.com/fr/",
+    "date_releve_avis": "2026-11-15",
+    "date_lecture_site": "2026-11-12",
+    "url_bareme": "https://www.gestioncassini.com/fr/mentions-legales/honoraires",
+    "url_estimation": "https://www.gestioncassini.com/fr/estimation",
+    "bareme_illisible": "0",
+    "sans_site": "0",
+    "piliers_provisoires": "",
+    "regles_valeurs_absentes": "criteres_non_applicables:1",
+    "siren": "400877866",
+    "raison_sociale": "GESTION CASSINI",
+    "date_creation_societe": "1995-05-02",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": ""
+   }
+  },
+  "immovendu": {
+   "rang": 2,
+   "note": 90.66,
+   "piliers": {
+    "avis": 94.5,
+    "serv": 88.3,
+    "hono": 70.0,
+    "conf": 100.0,
+    "info": 100.0,
+    "anc": 100.0
+   },
+   "sources": {
+    "agence": "immovendu",
+    "id": "174",
+    "url_fiche": "https://meilleure-agence-nice.fr/agence/immovendu/",
+    "url_site": "https://www.immo-vendu.fr/",
+    "date_releve_avis": "2026-11-15",
+    "date_lecture_site": "2026-11-12",
+    "url_bareme": "https://www.immo-vendu.fr/honoraires/",
+    "url_estimation": "https://www.immo-vendu.fr/estimation-immobiliere-nice/",
+    "bareme_illisible": "0",
+    "sans_site": "0",
+    "piliers_provisoires": "",
+    "regles_valeurs_absentes": "criteres_non_applicables:1",
+    "siren": "400877866",
+    "raison_sociale": "GESTION CASSINI",
+    "date_creation_societe": "1995-05-02",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": "2024"
+   }
+  }
+ },
+ "tests_biais": {
+  "scenarios": {
+   "sans_anciennete": {
+    "rangs_changes": 546,
+    "deplacement_max": 51,
+    "deplacement_median": 13.0,
+    "top10_inchanges": 6,
+    "agences_suivies": {
+     "gestion-cassini": {
+      "rang": 144,
+      "rang_officiel": 124,
+      "note": 73.18,
+      "note_officielle": 74.52
+     },
+     "immovendu": {
+      "rang": 6,
+      "rang_officiel": 2,
+      "note": 90.17,
+      "note_officielle": 90.66
+     }
+    }
+   },
+   "avis_plus20": {
+    "rangs_changes": 511,
+    "deplacement_max": 33,
+    "deplacement_median": 6,
+    "top10_inchanges": 9,
+    "agences_suivies": {
+     "gestion-cassini": {
+      "rang": 127,
+      "rang_officiel": 124,
+      "note": 74.69,
+      "note_officielle": 74.52
+     },
+     "immovendu": {
+      "rang": 2,
+      "rang_officiel": 2,
+      "note": 90.97,
+      "note_officielle": 90.66
+     }
+    }
+   },
+   "avis_moins20": {
+    "rangs_changes": 515,
+    "deplacement_max": 41,
+    "deplacement_median": 7,
+    "top10_inchanges": 9,
+    "agences_suivies": {
+     "gestion-cassini": {
+      "rang": 119,
+      "rang_officiel": 124,
+      "note": 74.31,
+      "note_officielle": 74.52
+     },
+     "immovendu": {
+      "rang": 2,
+      "rang_officiel": 2,
+      "note": 90.3,
+      "note_officielle": 90.66
+     }
+    }
+   },
+   "serv_plus20": {
+    "rangs_changes": 477,
+    "deplacement_max": 20,
+    "deplacement_median": 3,
+    "top10_inchanges": 9,
+    "agences_suivies": {
+     "gestion-cassini": {
+      "rang": 127,
+      "rang_officiel": 124,
+      "note": 74.36,
+      "note_officielle": 74.52
+     },
+     "immovendu": {
+      "rang": 2,
+      "rang_officiel": 2,
+      "note": 90.59,
+      "note_officielle": 90.66
+     }
+    }
+   },
+   "serv_moins20": {
+    "rangs_changes": 473,
+    "deplacement_max": 23,
+    "deplacement_median": 3,
+    "top10_inchanges": 10,
+    "agences_suivies": {
+     "gestion-cassini": {
+      "rang": 126,
+      "rang_officiel": 124,
+      "note": 74.68,
+      "note_officielle": 74.52
+     },
+     "immovendu": {
+      "rang": 2,
+      "rang_officiel": 2,
+      "note": 90.74,
+      "note_officielle": 90.66
+     }
+    }
+   },
+   "hono_plus20": {
+    "rangs_changes": 483,
+    "deplacement_max": 29,
+    "deplacement_median": 7,
+    "top10_inchanges": 10,
+    "agences_suivies": {
+     "gestion-cassini": {
+      "rang": 126,
+      "rang_officiel": 124,
+      "note": 74.37,
+      "note_officielle": 74.52
+     },
+     "immovendu": {
+      "rang": 2,
+      "rang_officiel": 2,
+      "note": 89.98,
+      "note_officielle": 90.66
+     }
+    }
+   },
+   "hono_moins20": {
+    "rangs_changes": 482,
+    "deplacement_max": 30,
+    "deplacement_median": 8.0,
+    "top10_inchanges": 9,
+    "agences_suivies": {
+     "gestion-cassini": {
+      "rang": 122,
+      "rang_officiel": 124,
+      "note": 74.68,
+      "note_officielle": 74.52
+     },
+     "immovendu": {
+      "rang": 2,
+      "rang_officiel": 2,
+      "note": 91.39,
+      "note_officielle": 90.66
+     }
+    }
+   },
+   "conf_plus20": {
+    "rangs_changes": 473,
+    "deplacement_max": 22,
+    "deplacement_median": 4,
+    "top10_inchanges": 9,
+    "agences_suivies": {
+     "gestion-cassini": {
+      "rang": 127,
+      "rang_officiel": 124,
+      "note": 73.99,
+      "note_officielle": 74.52
+     },
+     "immovendu": {
+      "rang": 2,
+      "rang_officiel": 2,
+      "note": 90.86,
+      "note_officielle": 90.66
+     }
+    }
+   },
+   "conf_moins20": {
+    "rangs_changes": 471,
+    "deplacement_max": 19,
+    "deplacement_median": 4,
+    "top10_inchanges": 10,
+    "agences_suivies": {
+     "gestion-cassini": {
+      "rang": 124,
+      "rang_officiel": 124,
+      "note": 75.07,
+      "note_officielle": 74.52
+     },
+     "immovendu": {
+      "rang": 2,
+      "rang_officiel": 2,
+      "note": 90.45,
+      "note_officielle": 90.66
+     }
+    }
+   },
+   "info_plus20": {
+    "rangs_changes": 451,
+    "deplacement_max": 14,
+    "deplacement_median": 2,
+    "top10_inchanges": 10,
+    "agences_suivies": {
+     "gestion-cassini": {
+      "rang": 123,
+      "rang_officiel": 124,
+      "note": 74.92,
+      "note_officielle": 74.52
+     },
+     "immovendu": {
+      "rang": 2,
+      "rang_officiel": 2,
+      "note": 90.81,
+      "note_officielle": 90.66
+     }
+    }
+   },
+   "info_moins20": {
+    "rangs_changes": 458,
+    "deplacement_max": 15,
+    "deplacement_median": 2.0,
+    "top10_inchanges": 10,
+    "agences_suivies": {
+     "gestion-cassini": {
+      "rang": 130,
+      "rang_officiel": 124,
+      "note": 74.1,
+      "note_officielle": 74.52
+     },
+     "immovendu": {
+      "rang": 2,
+      "rang_officiel": 2,
+      "note": 90.51,
+      "note_officielle": 90.66
+     }
+    }
+   },
+   "anc_plus20": {
+    "rangs_changes": 497,
+    "deplacement_max": 12,
+    "deplacement_median": 3,
+    "top10_inchanges": 10,
+    "agences_suivies": {
+     "gestion-cassini": {
+      "rang": 122,
+      "rang_officiel": 124,
+      "note": 74.77,
+      "note_officielle": 74.52
+     },
+     "immovendu": {
+      "rang": 2,
+      "rang_officiel": 2,
+      "note": 90.76,
+      "note_officielle": 90.66
+     }
+    }
+   },
+   "anc_moins20": {
+    "rangs_changes": 482,
+    "deplacement_max": 19,
+    "deplacement_median": 3.0,
+    "top10_inchanges": 9,
+    "agences_suivies": {
+     "gestion-cassini": {
+      "rang": 130,
+      "rang_officiel": 124,
+      "note": 74.26,
+      "note_officielle": 74.52
+     },
+     "immovendu": {
+      "rang": 2,
+      "rang_officiel": 2,
+      "note": 90.57,
+      "note_officielle": 90.66
+     }
+    }
+   }
+  },
+  "publisher_specific": {
+   "anciennete_depuis_enseigne": {
+    "agences_concernees": [
+     "immovendu"
+    ],
+    "note": "date de lancement d’enseigne relevée seulement pour ces agences : la même règle ne peut pas être appliquée aux autres faute de donnée (contrôle V-10b)",
+    "rangs_changes": 12,
+    "deplacement_max": 11,
+    "deplacement_median": 1.0,
+    "top10_inchanges": 9,
+    "agences_suivies": {
+     "gestion-cassini": {
+      "rang": 124,
+      "rang_officiel": 124,
+      "note": 74.52,
+      "note_officielle": 74.52
+     },
+     "immovendu": {
+      "rang": 13,
+      "rang_officiel": 2,
+      "note": 86.37,
+      "note_officielle": 90.66
+     }
+    }
+   }
+  },
+  "groups": {
+   "editeur": {
+    "n": 2,
+    "note_moyenne": 82.59,
+    "avis": 85.6,
+    "serv": 78.9,
+    "hono": 70.0,
+    "conf": 75.0,
+    "info": 100.0,
+    "anc": 100.0
+   },
+   "voisines_editeur": {
+    "n": 16,
+    "note_moyenne": 80.14,
+    "avis": 84.4,
+    "serv": 74.6,
+    "hono": 85.6,
+    "conf": 61.2,
+    "info": 86.2,
+    "anc": 74.9
+   },
+   "toutes": {
+    "n": 552,
+    "note_moyenne": 60.86,
+    "avis": 67.3,
+    "serv": 65.3,
+    "hono": 49.7,
+    "conf": 42.0,
+    "info": 62.2,
+    "anc": 68.9
+   },
+   "petit_volume_avis": {
+    "n": 184,
+    "note_moyenne": 47.96,
+    "avis": 50.6,
+    "serv": 57.7,
+    "hono": 37.9,
+    "conf": 30.8,
+    "info": 49.9,
+    "anc": 62.9
+   },
+   "volume_moyen": {
+    "n": 184,
+    "note_moyenne": 62.62,
+    "avis": 69.6,
+    "serv": 66.4,
+    "hono": 51.2,
+    "conf": 44.6,
+    "info": 63.2,
+    "anc": 68.2
+   },
+   "grand_volume_avis": {
+    "n": 184,
+    "note_moyenne": 71.99,
+    "avis": 81.6,
+    "serv": 71.7,
+    "hono": 59.9,
+    "conf": 50.6,
+    "info": 73.4,
+    "anc": 75.7
+   },
+   "societe_moins_10_ans": {
+    "n": 164,
+    "note_moyenne": 59.88,
+    "avis": 67.5,
+    "serv": 70.3,
+    "hono": 50.2,
+    "conf": 42.9,
+    "info": 62.4,
+    "anc": 27.6
+   },
+   "societe_10_ans_et_plus": {
+    "n": 374,
+    "note_moyenne": 61.65,
+    "avis": 67.3,
+    "serv": 63.2,
+    "hono": 50.2,
+    "conf": 42.4,
+    "info": 62.6,
+    "anc": 87.8
+   }
+  },
+  "groups_definition": {
+   "voisines_editeur": "les 5 agences classées juste au-dessus et juste en dessous de chaque agence de l’éditeur",
+   "volume": "tiers des agences selon le nombre total d’avis sur les plateformes",
+   "societe": "âge de la société d’après la date de création publiée (registre)"
+  },
+  "not_testable": [
+   "réseaux et indépendantes, vente seule et mixtes, outils numériques : ces catégories ne figurent pas dans les exports publics",
+   "exclusion des avis sans profil identifié : le profil « non précisé » est publié, mais pas la part des avis exclus pour ce motif"
+  ]
+ },
+ "registre_entreprises": {
+  "rows": [
+   {
+    "agence": "agence-californie",
+    "siren": "349672014",
+    "statut": "conforme",
+    "date_publiee": "1989-02-17",
+    "date_registre": "1989-02-17",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=349672014&per_page=1",
+    "sha256": "66db956f88e2a63f2cf9b4a0bea0fdd0475e574ae1d393b20e85cf7bc785e8d7"
+   },
+   {
+    "agence": "agence-du-port",
+    "siren": "821286614",
+    "statut": "conforme",
+    "date_publiee": "2016-06-27",
+    "date_registre": "2016-06-27",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=821286614&per_page=1",
+    "sha256": "3ae8a066d8c6c39fa79c04dea33e25b78907adf022247f7eb72f560c06595fde"
+   },
+   {
+    "agence": "agence-immo2nice",
+    "siren": "813618659",
+    "statut": "conforme",
+    "date_publiee": "2015-09-15",
+    "date_registre": "2015-09-15",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=813618659&per_page=1",
+    "sha256": "f9afdf48b4591fb2b64a04c36b3fe777ed9ba82903d4862bae05e8ae0b509b6f"
+   },
+   {
+    "agence": "agence-immobiliere-centragence",
+    "siren": "487965956",
+    "statut": "conforme",
+    "date_publiee": "2006-01-11",
+    "date_registre": "2006-01-11",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=487965956&per_page=1",
+    "sha256": "c6cfb78cb48c84994416ce873a5600ea84a4e5a32db3c598295cf1e403f097de"
+   },
+   {
+    "agence": "agence-immobiliere-century-21-a-cimiez-lafage",
+    "siren": "478261233",
+    "statut": "conforme",
+    "date_publiee": "2004-08-16",
+    "date_registre": "2004-08-16",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=478261233&per_page=1",
+    "sha256": "a309c8d7ff9e8acbed54b2e1aa94443db7f7f01de80302489789a99f7d468bd9"
+   },
+   {
+    "agence": "agence-immobiliere-century-21-maison-de-l-immobilier",
+    "siren": "349534115",
+    "statut": "conforme",
+    "date_publiee": "1989-01-30",
+    "date_registre": "1989-01-30",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=349534115&per_page=1",
+    "sha256": "95a93601796675f1c34759f0ef753f068b476f45e52d95210aa1c6edd18d7b69"
+   },
+   {
+    "agence": "agence-immobiliere-maison-k-immobilier-nice-cote-d-azur",
+    "siren": "910641331",
+    "statut": "conforme",
+    "date_publiee": "2022-02-22",
+    "date_registre": "2022-02-22",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=910641331&per_page=1",
+    "sha256": "5be6dd65e2e1a68657692145a8b13b30cd00261ffbbe5a12f75e7e5ea737d9ad"
+   },
+   {
+    "agence": "agence-immobiliere-nice-citya-baie-des-anges",
+    "siren": "380435248",
+    "statut": "conforme",
+    "date_publiee": "1991-01-02",
+    "date_registre": "1991-01-02",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=380435248&per_page=1",
+    "sha256": "ef2e4152baed344d84b955654af383987b55b8570fd29d5f1e585ca427843615"
+   },
+   {
+    "agence": "agence-istra",
+    "siren": "392760203",
+    "statut": "conforme",
+    "date_publiee": "1993-11-01",
+    "date_registre": "1993-11-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=392760203&per_page=1",
+    "sha256": "976e8c51d2caa514313a950f09731783968d22952a0910572cf25f68c86d885c"
+   },
+   {
+    "agence": "agence-nice-gambetta",
+    "siren": "817573181",
+    "statut": "conforme",
+    "date_publiee": "2016-01-04",
+    "date_registre": "2016-01-04",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=817573181&per_page=1",
+    "sha256": "9b5a5243d520690b7e17dee2af263a49820913fa957acd358c536d73dcf1dd44"
+   },
+   {
+    "agence": "agence-privilege",
+    "siren": "538779729",
+    "statut": "conforme",
+    "date_publiee": "2011-12-22",
+    "date_registre": "2011-12-22",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=538779729&per_page=1",
+    "sha256": "5ace1927b6e40f3d459c19d3d968123b8ed0420e62a022d3ae479717d247675c"
+   },
+   {
+    "agence": "agence-privilege-2",
+    "siren": "538779729",
+    "statut": "conforme",
+    "date_publiee": "2011-12-22",
+    "date_registre": "2011-12-22",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=538779729&per_page=1",
+    "sha256": "5ace1927b6e40f3d459c19d3d968123b8ed0420e62a022d3ae479717d247675c"
+   },
+   {
+    "agence": "agence-riviera-real-estate",
+    "statut": "siren_non_publie"
+   },
+   {
+    "agence": "agence-vizcaya",
+    "siren": "393711759",
+    "statut": "conforme",
+    "date_publiee": "1994-01-21",
+    "date_registre": "1994-01-21",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=393711759&per_page=1",
+    "sha256": "fa92c240adaec2000a4904b800fe71668614637a2f349eab7ef1d2a9d0233d4d"
+   },
+   {
+    "agence": "agence-winter-immobilier",
+    "siren": "394227128",
+    "statut": "conforme",
+    "date_publiee": "1994-03-04",
+    "date_registre": "1994-03-04",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=394227128&per_page=1",
+    "sha256": "3f7a9cf195f7bf416e88c4221cef2dafed9d5d388b4713cc1fb386da71596e0a"
+   },
+   {
+    "agence": "agence-winter-immobilier-gioffredo",
+    "siren": "394227128",
+    "statut": "conforme",
+    "date_publiee": "1994-03-04",
+    "date_registre": "1994-03-04",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=394227128&per_page=1",
+    "sha256": "3f7a9cf195f7bf416e88c4221cef2dafed9d5d388b4713cc1fb386da71596e0a"
+   },
+   {
+    "agence": "agency-fabron",
+    "siren": "814646592",
+    "statut": "conforme",
+    "date_publiee": "2015-11-12",
+    "date_registre": "2015-11-12",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=814646592&per_page=1",
+    "sha256": "f4a1e433d573e581b528ff797486f5169124c1a2b21f1957f7126667dcbcc55e"
+   },
+   {
+    "agence": "agency-tosca",
+    "siren": "487971343",
+    "statut": "conforme",
+    "date_publiee": "2006-01-02",
+    "date_registre": "2006-01-02",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=487971343&per_page=1",
+    "sha256": "d8436f297e6468a32faa6fca808ab29d2130e3ebefe43d4732c4a40a0ad5c834"
+   },
+   {
+    "agence": "agit",
+    "siren": "442281127",
+    "statut": "conforme",
+    "date_publiee": "2002-06-01",
+    "date_registre": "2002-06-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=442281127&per_page=1",
+    "sha256": "ee7c11456d7a802941cf158309968e719b5eb36f30b89eb888c1b1dd62e91325"
+   },
+   {
+    "agence": "akorimmo-nice-centre",
+    "siren": "511186363",
+    "statut": "conforme",
+    "date_publiee": "2009-03-18",
+    "date_registre": "2009-03-18",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=511186363&per_page=1",
+    "sha256": "57e490f6d04fc13df75e39ee726753021a94d84ae97208d6faa42e4df2ad8491"
+   },
+   {
+    "agence": "akorimmo-nice-nord",
+    "siren": "511186363",
+    "statut": "conforme",
+    "date_publiee": "2009-03-18",
+    "date_registre": "2009-03-18",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=511186363&per_page=1",
+    "sha256": "57e490f6d04fc13df75e39ee726753021a94d84ae97208d6faa42e4df2ad8491"
+   },
+   {
+    "agence": "alliance-riviera",
+    "statut": "siren_non_publie"
+   },
+   {
+    "agence": "ang-immobilier",
+    "siren": "817573181",
+    "statut": "conforme",
+    "date_publiee": "2016-01-04",
+    "date_registre": "2016-01-04",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=817573181&per_page=1",
+    "sha256": "9b5a5243d520690b7e17dee2af263a49820913fa957acd358c536d73dcf1dd44"
+   },
+   {
+    "agence": "artemiz-chasseur-immobilier",
+    "siren": "904990215",
+    "statut": "conforme",
+    "date_publiee": "2021-11-01",
+    "date_registre": "2021-11-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=904990215&per_page=1",
+    "sha256": "0956ff9e5b096e304e2a32f8776b0c5657ccca8b506fe0fd4b3cc98eeb08a926"
+   },
+   {
+    "agence": "arthurimmo",
+    "siren": "804806412",
+    "statut": "conforme",
+    "date_publiee": "2014-09-10",
+    "date_registre": "2014-09-10",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=804806412&per_page=1",
+    "sha256": "81e0ecdcdf0c7144fa187c510a136367d5a1f9c5740c9e422397f5c16ae9134f"
+   },
+   {
+    "agence": "arthurimmo-com-lmi-la-maison-immobiliere",
+    "siren": "804806412",
+    "statut": "conforme",
+    "date_publiee": "2014-09-10",
+    "date_registre": "2014-09-10",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=804806412&per_page=1",
+    "sha256": "81e0ecdcdf0c7144fa187c510a136367d5a1f9c5740c9e422397f5c16ae9134f"
+   },
+   {
+    "agence": "ashley-parker-agence-carre-d-or",
+    "siren": "443739784",
+    "statut": "conforme",
+    "date_publiee": "2002-10-14",
+    "date_registre": "2002-10-14",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=443739784&per_page=1",
+    "sha256": "c60086b099d1df7ad45b2a95182498516b8b7573ba50d99ca9f9e3caecb1f7ba"
+   },
+   {
+    "agence": "ashley-parker-agence-cimiez",
+    "siren": "443739784",
+    "statut": "conforme",
+    "date_publiee": "2002-10-14",
+    "date_registre": "2002-10-14",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=443739784&per_page=1",
+    "sha256": "c60086b099d1df7ad45b2a95182498516b8b7573ba50d99ca9f9e3caecb1f7ba"
+   },
+   {
+    "agence": "ashley-parker-agence-le-port",
+    "siren": "443739784",
+    "statut": "conforme",
+    "date_publiee": "2002-10-14",
+    "date_registre": "2002-10-14",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=443739784&per_page=1",
+    "sha256": "c60086b099d1df7ad45b2a95182498516b8b7573ba50d99ca9f9e3caecb1f7ba"
+   },
+   {
+    "agence": "ashley-parker-agence-mont-boron",
+    "siren": "443739784",
+    "statut": "conforme",
+    "date_publiee": "2002-10-14",
+    "date_registre": "2002-10-14",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=443739784&per_page=1",
+    "sha256": "c60086b099d1df7ad45b2a95182498516b8b7573ba50d99ca9f9e3caecb1f7ba"
+   },
+   {
+    "agence": "bbii-immobilier-international-nice-ad",
+    "siren": "513965970",
+    "statut": "conforme",
+    "date_publiee": "2009-07-28",
+    "date_registre": "2009-07-28",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=513965970&per_page=1",
+    "sha256": "4030acdc96e788dddf49670567857aed147fdec405ed8abfc613fcfa5452d9ac"
+   },
+   {
+    "agence": "blue-residences",
+    "siren": "809672710",
+    "statut": "conforme",
+    "date_publiee": "2015-02-17",
+    "date_registre": "2015-02-17",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=809672710&per_page=1",
+    "sha256": "b3a93eff299d553d3524a5865d41b4759226b1721fcac87dbb73d17a825329ba"
+   },
+   {
+    "agence": "bomarche",
+    "siren": "394928576",
+    "statut": "conforme",
+    "date_publiee": "1994-05-04",
+    "date_registre": "1994-05-04",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=394928576&per_page=1",
+    "sha256": "c70227bc42f95c9b4a6399859668e9a56f7e1767b8de5a5b2e9738ad9490a62f"
+   },
+   {
+    "agence": "borne-et-delaunay-valperga",
+    "siren": "971800735",
+    "statut": "conforme",
+    "date_publiee": "1971-01-01",
+    "date_registre": "1971-01-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=971800735&per_page=1",
+    "sha256": "f10082463bf77fe03ebdd8ffec2b47c885882b49ac4cdd74ae303488ac209d8f"
+   },
+   {
+    "agence": "bs-invest",
+    "siren": "750941098",
+    "statut": "conforme",
+    "date_publiee": "2012-04-13",
+    "date_registre": "2012-04-13",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=750941098&per_page=1",
+    "sha256": "be1def1e489f08d5583e4da566a720473b6e57f0734e897c676334a0d63989ac"
+   },
+   {
+    "agence": "cabinet-agir-gestion-locative-et-transaction-immobiliere",
+    "siren": "442281127",
+    "statut": "conforme",
+    "date_publiee": "2002-06-01",
+    "date_registre": "2002-06-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=442281127&per_page=1",
+    "sha256": "ee7c11456d7a802941cf158309968e719b5eb36f30b89eb888c1b1dd62e91325"
+   },
+   {
+    "agence": "cabinet-assalit-syndic",
+    "siren": "431430297",
+    "statut": "conforme",
+    "date_publiee": "2000-05-10",
+    "date_registre": "2000-05-10",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=431430297&per_page=1",
+    "sha256": "1ebf8d1d54b533a334891c25b7f686f8f5d95482a31391735898082b724f0256"
+   },
+   {
+    "agence": "cabinet-borne-et-delaunay",
+    "siren": "971800735",
+    "statut": "conforme",
+    "date_publiee": "1971-01-01",
+    "date_registre": "1971-01-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=971800735&per_page=1",
+    "sha256": "f10082463bf77fe03ebdd8ffec2b47c885882b49ac4cdd74ae303488ac209d8f"
+   },
+   {
+    "agence": "cabinet-cordier",
+    "siren": "397422833",
+    "statut": "conforme",
+    "date_publiee": "1994-06-17",
+    "date_registre": "1994-06-17",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=397422833&per_page=1",
+    "sha256": "4976ce9dda7e1e56946b269c7b80321f0598f79b006f1492d1305d6a86d2d53c"
+   },
+   {
+    "agence": "cabinet-cordier-bd-virgile-barel",
+    "siren": "397422833",
+    "statut": "conforme",
+    "date_publiee": "1994-06-17",
+    "date_registre": "1994-06-17",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=397422833&per_page=1",
+    "sha256": "4976ce9dda7e1e56946b269c7b80321f0598f79b006f1492d1305d6a86d2d53c"
+   },
+   {
+    "agence": "cabinet-grimaz",
+    "siren": "385054432",
+    "statut": "conforme",
+    "date_publiee": "1992-03-20",
+    "date_registre": "1992-03-20",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=385054432&per_page=1",
+    "sha256": "5c405c54cc2220a45786381c689b9f9c29bc9192d5b385071eda76a4d339d8d0"
+   },
+   {
+    "agence": "cabinet-hestia",
+    "siren": "101055085",
+    "statut": "conforme",
+    "date_publiee": "2026-01-29",
+    "date_registre": "2026-01-29",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=101055085&per_page=1",
+    "sha256": "1b4bdaab15a92949991301182344339a1e7e9aa1d6e137ebea16c3755071abb4"
+   },
+   {
+    "agence": "cabinet-immobilier-nice",
+    "siren": "930727821",
+    "statut": "conforme",
+    "date_publiee": "2024-07-05",
+    "date_registre": "2024-07-05",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=930727821&per_page=1",
+    "sha256": "f9b1f0db0ce30213b8abb1fa3bb6515f00af14da4869f26b4e2a2dae378e2b89"
+   },
+   {
+    "agence": "cabinet-merengone-associes",
+    "siren": "533987293",
+    "statut": "conforme",
+    "date_publiee": "2011-08-01",
+    "date_registre": "2011-08-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=533987293&per_page=1",
+    "sha256": "bebf75ed7b2a5a4b6f67ce4b436cb2aa8662e8c2285272db35ae3e79308f7945"
+   },
+   {
+    "agence": "cabinet-rasori",
+    "siren": "441695657",
+    "statut": "conforme",
+    "date_publiee": "2002-04-08",
+    "date_registre": "2002-04-08",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=441695657&per_page=1",
+    "sha256": "d83763230d7b42736b1a7e375e6de316e0db049fd5e0cba614970776b7bfd5c2"
+   },
+   {
+    "agence": "cabinet-vogue",
+    "siren": "502612815",
+    "statut": "conforme",
+    "date_publiee": "2008-02-12",
+    "date_registre": "2008-02-12",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=502612815&per_page=1",
+    "sha256": "3da32aad0574a9f0760c038f6e7ba5c0be54560a99c2e9decbb132f9f9e73332"
+   },
+   {
+    "agence": "cabinet-vogue-bd-victor-hugo",
+    "siren": "502612815",
+    "statut": "conforme",
+    "date_publiee": "2008-02-12",
+    "date_registre": "2008-02-12",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=502612815&per_page=1",
+    "sha256": "3da32aad0574a9f0760c038f6e7ba5c0be54560a99c2e9decbb132f9f9e73332"
+   },
+   {
+    "agence": "cap-sud-immobilier-nice",
+    "siren": "437867401",
+    "statut": "conforme",
+    "date_publiee": "2001-05-11",
+    "date_registre": "2001-05-11",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=437867401&per_page=1",
+    "sha256": "bae683550db635ac556631189efc1c2cf52480dc33a03b8685423a4d7f4316d8"
+   },
+   {
+    "agence": "century-21-domus-immobilier",
+    "siren": "518484514",
+    "statut": "conforme",
+    "date_publiee": "2009-11-27",
+    "date_registre": "2009-11-27",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=518484514&per_page=1",
+    "sha256": "1dfe9c789416c39892ea349387f64b84f8cb8924aa53a6e751d9b255078c6198"
+   },
+   {
+    "agence": "century-21-etoile-immobilier-nice-ouest",
+    "siren": "532524360",
+    "statut": "conforme",
+    "date_publiee": "2011-05-16",
+    "date_registre": "2011-05-16",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=532524360&per_page=1",
+    "sha256": "132f752671622e4fc5ac3d50357b8862a7dc257aa00423f7c086e3d8384ca074"
+   },
+   {
+    "agence": "century-21-gilles-bosse-immobilier-pessicart",
+    "siren": "453784258",
+    "statut": "conforme",
+    "date_publiee": "2004-06-01",
+    "date_registre": "2004-06-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=453784258&per_page=1",
+    "sha256": "df8eed71412b5184d4a7608dcb489e4aae932453503f53eae7e19bca822dd363"
+   },
+   {
+    "agence": "century-21-gilles-bosse-immobilier-ventes-immobilieres",
+    "siren": "453784258",
+    "statut": "conforme",
+    "date_publiee": "2004-06-01",
+    "date_registre": "2004-06-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=453784258&per_page=1",
+    "sha256": "df8eed71412b5184d4a7608dcb489e4aae932453503f53eae7e19bca822dd363"
+   },
+   {
+    "agence": "century-21-lafage-promenade-agence-immobiliere-a-nice-promenade-des-an",
+    "siren": "478261233",
+    "statut": "conforme",
+    "date_publiee": "2004-08-16",
+    "date_registre": "2004-08-16",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=478261233&per_page=1",
+    "sha256": "a309c8d7ff9e8acbed54b2e1aa94443db7f7f01de80302489789a99f7d468bd9"
+   },
+   {
+    "agence": "century-21-lafage-transactions",
+    "siren": "478261233",
+    "statut": "conforme",
+    "date_publiee": "2004-08-16",
+    "date_registre": "2004-08-16",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=478261233&per_page=1",
+    "sha256": "a309c8d7ff9e8acbed54b2e1aa94443db7f7f01de80302489789a99f7d468bd9"
+   },
+   {
+    "agence": "century-21-lafage-transactions-nice-bonaparte",
+    "siren": "478261233",
+    "statut": "conforme",
+    "date_publiee": "2004-08-16",
+    "date_registre": "2004-08-16",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=478261233&per_page=1",
+    "sha256": "a309c8d7ff9e8acbed54b2e1aa94443db7f7f01de80302489789a99f7d468bd9"
+   },
+   {
+    "agence": "century-21-lafage-transactions-nice-mont-boron",
+    "siren": "478261233",
+    "statut": "conforme",
+    "date_publiee": "2004-08-16",
+    "date_registre": "2004-08-16",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=478261233&per_page=1",
+    "sha256": "a309c8d7ff9e8acbed54b2e1aa94443db7f7f01de80302489789a99f7d468bd9"
+   },
+   {
+    "agence": "cimiez-immobilier",
+    "siren": "510085798",
+    "statut": "conforme",
+    "date_publiee": "2008-10-01",
+    "date_registre": "2008-10-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=510085798&per_page=1",
+    "sha256": "dce2ce32799cb3c23f6c8dc1ac8203dd0f477e2160af5e45775c4a905b748110"
+   },
+   {
+    "agence": "cimiez-residences-boulevard-de-cimiez",
+    "siren": "809672710",
+    "statut": "conforme",
+    "date_publiee": "2015-02-17",
+    "date_registre": "2015-02-17",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=809672710&per_page=1",
+    "sha256": "b3a93eff299d553d3524a5865d41b4759226b1721fcac87dbb73d17a825329ba"
+   },
+   {
+    "agence": "cimiez-residences-cap-de-croix",
+    "siren": "809672710",
+    "statut": "conforme",
+    "date_publiee": "2015-02-17",
+    "date_registre": "2015-02-17",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=809672710&per_page=1",
+    "sha256": "b3a93eff299d553d3524a5865d41b4759226b1721fcac87dbb73d17a825329ba"
+   },
+   {
+    "agence": "citya-dalbera-gestion",
+    "siren": "380435248",
+    "statut": "conforme",
+    "date_publiee": "1991-01-02",
+    "date_registre": "1991-01-02",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=380435248&per_page=1",
+    "sha256": "ef2e4152baed344d84b955654af383987b55b8570fd29d5f1e585ca427843615"
+   },
+   {
+    "agence": "confiance-immobiliere",
+    "siren": "503449779",
+    "statut": "conforme",
+    "date_publiee": "2008-03-31",
+    "date_registre": "2008-03-31",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=503449779&per_page=1",
+    "sha256": "50b19e91677a8383f10df4e7f04b9284e205d3a19e23270eacb2f781458d54b3"
+   },
+   {
+    "agence": "confiance-immobiliere-av-de-la-californie",
+    "siren": "503449779",
+    "statut": "conforme",
+    "date_publiee": "2008-03-31",
+    "date_registre": "2008-03-31",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=503449779&per_page=1",
+    "sha256": "50b19e91677a8383f10df4e7f04b9284e205d3a19e23270eacb2f781458d54b3"
+   },
+   {
+    "agence": "coprogestimmo",
+    "siren": "537468860",
+    "statut": "conforme",
+    "date_publiee": "2011-10-13",
+    "date_registre": "2011-10-13",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=537468860&per_page=1",
+    "sha256": "21883986890a910437a1a759e25490f151827c463141f9bf20477be247f1abeb"
+   },
+   {
+    "agence": "cot-ouest-immobilier-napoleon-iii",
+    "siren": "451688949",
+    "statut": "conforme",
+    "date_publiee": "2004-01-01",
+    "date_registre": "2004-01-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=451688949&per_page=1",
+    "sha256": "2fa7795a3419f0867afc44e517b933be3a4357204cd21d9d67cdf9a7f4261854"
+   },
+   {
+    "agence": "cot-ouest-immobilier-nice-la-lanterne",
+    "siren": "451688949",
+    "statut": "conforme",
+    "date_publiee": "2004-01-01",
+    "date_registre": "2004-01-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=451688949&per_page=1",
+    "sha256": "2fa7795a3419f0867afc44e517b933be3a4357204cd21d9d67cdf9a7f4261854"
+   },
+   {
+    "agence": "cot-ouest-real-nice",
+    "siren": "451688949",
+    "statut": "conforme",
+    "date_publiee": "2004-01-01",
+    "date_registre": "2004-01-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=451688949&per_page=1",
+    "sha256": "2fa7795a3419f0867afc44e517b933be3a4357204cd21d9d67cdf9a7f4261854"
+   },
+   {
+    "agence": "cote-riviera-agence-massena",
+    "siren": "503698664",
+    "statut": "conforme",
+    "date_publiee": "2008-04-01",
+    "date_registre": "2008-04-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=503698664&per_page=1",
+    "sha256": "43af2e7c26f58f57a2119275644cb22e32b38d44cb4bdebfde6fe8a410374f4c"
+   },
+   {
+    "agence": "cp-immo-massena",
+    "siren": "834288490",
+    "statut": "conforme",
+    "date_publiee": "2017-12-22",
+    "date_registre": "2017-12-22",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=834288490&per_page=1",
+    "sha256": "94b0c4af34012ec33ed4a722aa93012d2085a0ce4cb3ea9356a70368cde81ac8"
+   },
+   {
+    "agence": "de-particulier-a-particulier",
+    "siren": "304555154",
+    "statut": "conforme",
+    "date_publiee": "1975-01-01",
+    "date_registre": "1975-01-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=304555154&per_page=1",
+    "sha256": "b0c87c63d78e9b20527516e7f0bb906765257e4e5dd71617c826f06ffd31dc56"
+   },
+   {
+    "agence": "easy-property-fabron",
+    "siren": "510085798",
+    "statut": "conforme",
+    "date_publiee": "2008-10-01",
+    "date_registre": "2008-10-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=510085798&per_page=1",
+    "sha256": "dce2ce32799cb3c23f6c8dc1ac8203dd0f477e2160af5e45775c4a905b748110"
+   },
+   {
+    "agence": "engel-volkers-nice",
+    "siren": "808801955",
+    "statut": "conforme",
+    "date_publiee": "2015-01-01",
+    "date_registre": "2015-01-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=808801955&per_page=1",
+    "sha256": "139c25b36481faf4f6041c7cbe70307ecc51be9298250636865ec2a9aa489090"
+   },
+   {
+    "agence": "etude-lotte-gallo",
+    "siren": "491096491",
+    "statut": "conforme",
+    "date_publiee": "2006-07-01",
+    "date_registre": "2006-07-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=491096491&per_page=1",
+    "sha256": "ad42670a72e53d0a68196aba8798450c5bed0eb41804c640aa7a731dce67725b"
+   },
+   {
+    "agence": "fit-immobilier",
+    "siren": "342698008",
+    "statut": "conforme",
+    "date_publiee": "1987-10-14",
+    "date_registre": "1987-10-14",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=342698008&per_page=1",
+    "sha256": "40da7e4815801d950acfbc592363b99ecb3ef676628612c597e08d4ce35e0814"
+   },
+   {
+    "agence": "fit-immobilier-port",
+    "siren": "342698008",
+    "statut": "conforme",
+    "date_publiee": "1987-10-14",
+    "date_registre": "1987-10-14",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=342698008&per_page=1",
+    "sha256": "40da7e4815801d950acfbc592363b99ecb3ef676628612c597e08d4ce35e0814"
+   },
+   {
+    "agence": "foncia-agence-immobiliere-achat-vente-nice-bd-napoleon-iii",
+    "siren": "503698664",
+    "statut": "conforme",
+    "date_publiee": "2008-04-01",
+    "date_registre": "2008-04-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=503698664&per_page=1",
+    "sha256": "43af2e7c26f58f57a2119275644cb22e32b38d44cb4bdebfde6fe8a410374f4c"
+   },
+   {
+    "agence": "foncia-agence-immobiliere-achat-vente-nice-r-arson",
+    "siren": "503698664",
+    "statut": "conforme",
+    "date_publiee": "2008-04-01",
+    "date_registre": "2008-04-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=503698664&per_page=1",
+    "sha256": "43af2e7c26f58f57a2119275644cb22e32b38d44cb4bdebfde6fe8a410374f4c"
+   },
+   {
+    "agence": "foncia-transaction-riviera-nice-massena",
+    "siren": "503698664",
+    "statut": "conforme",
+    "date_publiee": "2008-04-01",
+    "date_registre": "2008-04-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=503698664&per_page=1",
+    "sha256": "43af2e7c26f58f57a2119275644cb22e32b38d44cb4bdebfde6fe8a410374f4c"
+   },
+   {
+    "agence": "france-properties-real-estate",
+    "siren": "832564470",
+    "statut": "conforme",
+    "date_publiee": "2017-11-01",
+    "date_registre": "2017-11-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=832564470&per_page=1",
+    "sha256": "9e75f70fc249d8c927e35274754eb32112f558fdeb25e657ce93069149e63914"
+   },
+   {
+    "agence": "french-riviera-property",
+    "siren": "478261233",
+    "statut": "conforme",
+    "date_publiee": "2004-08-16",
+    "date_registre": "2004-08-16",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=478261233&per_page=1",
+    "sha256": "a309c8d7ff9e8acbed54b2e1aa94443db7f7f01de80302489789a99f7d468bd9"
+   },
+   {
+    "agence": "french-riviera-studios-com",
+    "siren": "500072921",
+    "statut": "conforme",
+    "date_publiee": "2007-09-20",
+    "date_registre": "2007-09-20",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=500072921&per_page=1",
+    "sha256": "f0e20da8ee4552274379f3c2a1eaa30327524b8236b97b33133a43609cc36c3a"
+   },
+   {
+    "agence": "gecko-immobilier-nice-centre",
+    "siren": "490825791",
+    "statut": "conforme",
+    "date_publiee": "2006-06-23",
+    "date_registre": "2006-06-23",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=490825791&per_page=1",
+    "sha256": "eab5611b44de94c569cf535c9d78dda4ed56f639d59cb1c35c4d38d745f01579"
+   },
+   {
+    "agence": "gecko-immobilier-nice-port",
+    "siren": "490825791",
+    "statut": "conforme",
+    "date_publiee": "2006-06-23",
+    "date_registre": "2006-06-23",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=490825791&per_page=1",
+    "sha256": "eab5611b44de94c569cf535c9d78dda4ed56f639d59cb1c35c4d38d745f01579"
+   },
+   {
+    "agence": "gestion-cassini",
+    "siren": "400877866",
+    "statut": "conforme",
+    "date_publiee": "1995-05-02",
+    "date_registre": "1995-05-02",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=400877866&per_page=1",
+    "sha256": "f5464f6d52e54c9ca9a51512b4349495581579646e0e63a48116c62e8915e4a1"
+   },
+   {
+    "agence": "grand-bleu-estate",
+    "siren": "823781760",
+    "statut": "conforme",
+    "date_publiee": "2016-11-08",
+    "date_registre": "2016-11-08",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=823781760&per_page=1",
+    "sha256": "4e24037003fed9927b278a7ef48353d6f39298868b3964fb69be289ada18153b"
+   },
+   {
+    "agence": "groupe-nice-transactions",
+    "siren": "451454730",
+    "statut": "conforme",
+    "date_publiee": "2004-01-10",
+    "date_registre": "2004-01-10",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=451454730&per_page=1",
+    "sha256": "6a92d43ceccfa7ada509bd8fdb28a60a5cc2113746bafeae7ed62c6596844a0e"
+   },
+   {
+    "agence": "groupe-nice-transactions-est",
+    "siren": "451454730",
+    "statut": "conforme",
+    "date_publiee": "2004-01-10",
+    "date_registre": "2004-01-10",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=451454730&per_page=1",
+    "sha256": "6a92d43ceccfa7ada509bd8fdb28a60a5cc2113746bafeae7ed62c6596844a0e"
+   },
+   {
+    "agence": "gubernatis-immobilier-agence-immobiliere-vente-appartement-maison-vill",
+    "siren": "533987293",
+    "statut": "conforme",
+    "date_publiee": "2011-08-01",
+    "date_registre": "2011-08-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=533987293&per_page=1",
+    "sha256": "bebf75ed7b2a5a4b6f67ce4b436cb2aa8662e8c2285272db35ae3e79308f7945"
+   },
+   {
+    "agence": "ici-info-conseil-immobilier",
+    "siren": "441695657",
+    "statut": "conforme",
+    "date_publiee": "2002-04-08",
+    "date_registre": "2002-04-08",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=441695657&per_page=1",
+    "sha256": "d83763230d7b42736b1a7e375e6de316e0db049fd5e0cba614970776b7bfd5c2"
+   },
+   {
+    "agence": "immo-cp-musiciens-rue-verdi",
+    "siren": "834288490",
+    "statut": "conforme",
+    "date_publiee": "2017-12-22",
+    "date_registre": "2017-12-22",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=834288490&per_page=1",
+    "sha256": "94b0c4af34012ec33ed4a722aa93012d2085a0ce4cb3ea9356a70368cde81ac8"
+   },
+   {
+    "agence": "immo-gestion",
+    "siren": "349534115",
+    "statut": "conforme",
+    "date_publiee": "1989-01-30",
+    "date_registre": "1989-01-30",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=349534115&per_page=1",
+    "sha256": "95a93601796675f1c34759f0ef753f068b476f45e52d95210aa1c6edd18d7b69"
+   },
+   {
+    "agence": "immo-terrasse",
+    "siren": "490551538",
+    "statut": "conforme",
+    "date_publiee": "2006-06-01",
+    "date_registre": "2006-06-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=490551538&per_page=1",
+    "sha256": "561b50bbd84b96a06e7a4576fceffc73801c36f6833a66fb729df867cb180a8b"
+   },
+   {
+    "agence": "immobilier2nice-maison2nice-gestion2nice",
+    "siren": "813618659",
+    "statut": "conforme",
+    "date_publiee": "2015-09-15",
+    "date_registre": "2015-09-15",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=813618659&per_page=1",
+    "sha256": "f9afdf48b4591fb2b64a04c36b3fe777ed9ba82903d4862bae05e8ae0b509b6f"
+   },
+   {
+    "agence": "immobiliere-nicoise",
+    "siren": "839512936",
+    "statut": "conforme",
+    "date_publiee": "2018-05-07",
+    "date_registre": "2018-05-07",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=839512936&per_page=1",
+    "sha256": "030b080a036f934952a499dca106a6b5339f07389f6904b12720b3f735d73778"
+   },
+   {
+    "agence": "immovendu",
+    "siren": "400877866",
+    "statut": "conforme",
+    "date_publiee": "1995-05-02",
+    "date_registre": "1995-05-02",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": "2024",
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=400877866&per_page=1",
+    "sha256": "f5464f6d52e54c9ca9a51512b4349495581579646e0e63a48116c62e8915e4a1"
+   },
+   {
+    "agence": "john-royce-real-estate",
+    "siren": "833342876",
+    "statut": "conforme",
+    "date_publiee": "2017-11-03",
+    "date_registre": "2017-11-03",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=833342876&per_page=1",
+    "sha256": "3f57bca0d51ebbdb94fa7f76f59e1ec29d1a0b896073966a9d0674d5bf92179b"
+   },
+   {
+    "agence": "l-adresse-cec-cessole-nice-nord",
+    "siren": "350791422",
+    "statut": "conforme",
+    "date_publiee": "1989-05-24",
+    "date_registre": "1989-05-24",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=350791422&per_page=1",
+    "sha256": "f103afe3eb874a74bb23cefd9c84a8e1e601168ff8e25a0906fc45b0b63b37ba"
+   },
+   {
+    "agence": "l-adresse-cec-gestion",
+    "siren": "350791422",
+    "statut": "conforme",
+    "date_publiee": "1989-05-24",
+    "date_registre": "1989-05-24",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=350791422&per_page=1",
+    "sha256": "f103afe3eb874a74bb23cefd9c84a8e1e601168ff8e25a0906fc45b0b63b37ba"
+   },
+   {
+    "agence": "l-immobiliere-du-port",
+    "siren": "821286614",
+    "statut": "conforme",
+    "date_publiee": "2016-06-27",
+    "date_registre": "2016-06-27",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=821286614&per_page=1",
+    "sha256": "3ae8a066d8c6c39fa79c04dea33e25b78907adf022247f7eb72f560c06595fde"
+   },
+   {
+    "agence": "la-maison-orea-carre-d-or",
+    "siren": "823781760",
+    "statut": "conforme",
+    "date_publiee": "2016-11-08",
+    "date_registre": "2016-11-08",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=823781760&per_page=1",
+    "sha256": "4e24037003fed9927b278a7ef48353d6f39298868b3964fb69be289ada18153b"
+   },
+   {
+    "agence": "la-maison-orea-felix-faure",
+    "siren": "823781760",
+    "statut": "conforme",
+    "date_publiee": "2016-11-08",
+    "date_registre": "2016-11-08",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=823781760&per_page=1",
+    "sha256": "4e24037003fed9927b278a7ef48353d6f39298868b3964fb69be289ada18153b"
+   },
+   {
+    "agence": "la-maison-orea-nice-cimiez-riviera",
+    "siren": "823781760",
+    "statut": "conforme",
+    "date_publiee": "2016-11-08",
+    "date_registre": "2016-11-08",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=823781760&per_page=1",
+    "sha256": "4e24037003fed9927b278a7ef48353d6f39298868b3964fb69be289ada18153b"
+   },
+   {
+    "agence": "la-maison-orea-nice-nord",
+    "siren": "823781760",
+    "statut": "conforme",
+    "date_publiee": "2016-11-08",
+    "date_registre": "2016-11-08",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=823781760&per_page=1",
+    "sha256": "4e24037003fed9927b278a7ef48353d6f39298868b3964fb69be289ada18153b"
+   },
+   {
+    "agence": "la-maison-orea-nice-ouest",
+    "siren": "823781760",
+    "statut": "conforme",
+    "date_publiee": "2016-11-08",
+    "date_registre": "2016-11-08",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=823781760&per_page=1",
+    "sha256": "4e24037003fed9927b278a7ef48353d6f39298868b3964fb69be289ada18153b"
+   },
+   {
+    "agence": "la-maison-orea-nice-port",
+    "siren": "823781760",
+    "statut": "conforme",
+    "date_publiee": "2016-11-08",
+    "date_registre": "2016-11-08",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=823781760&per_page=1",
+    "sha256": "4e24037003fed9927b278a7ef48353d6f39298868b3964fb69be289ada18153b"
+   },
+   {
+    "agence": "lafayette-transactions",
+    "siren": "478261233",
+    "statut": "conforme",
+    "date_publiee": "2004-08-16",
+    "date_registre": "2004-08-16",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=478261233&per_page=1",
+    "sha256": "a309c8d7ff9e8acbed54b2e1aa94443db7f7f01de80302489789a99f7d468bd9"
+   },
+   {
+    "agence": "laforet-nice-madeleine",
+    "siren": "914402789",
+    "statut": "conforme",
+    "date_publiee": "2022-06-08",
+    "date_registre": "2022-06-08",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=914402789&per_page=1",
+    "sha256": "212c8fbb4d6f9997c71757e8bcd92ee10220ea08e2b97e17d41cb715ac68fc37"
+   },
+   {
+    "agence": "laforet-nice-port",
+    "siren": "908089998",
+    "statut": "conforme",
+    "date_publiee": "2021-11-02",
+    "date_registre": "2021-11-02",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=908089998&per_page=1",
+    "sha256": "e0f07011a6ee9263e262775d351bfcf7ab77b64f8033657700352ebd53011b73"
+   },
+   {
+    "agence": "lambda-immobilier-bo-marche",
+    "siren": "394928576",
+    "statut": "conforme",
+    "date_publiee": "1994-05-04",
+    "date_registre": "1994-05-04",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=394928576&per_page=1",
+    "sha256": "c70227bc42f95c9b4a6399859668e9a56f7e1767b8de5a5b2e9738ad9490a62f"
+   },
+   {
+    "agence": "laugier-properties",
+    "siren": "443739784",
+    "statut": "conforme",
+    "date_publiee": "2002-10-14",
+    "date_registre": "2002-10-14",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=443739784&per_page=1",
+    "sha256": "c60086b099d1df7ad45b2a95182498516b8b7573ba50d99ca9f9e3caecb1f7ba"
+   },
+   {
+    "agence": "lbi",
+    "siren": "490489226",
+    "statut": "conforme",
+    "date_publiee": "2006-06-10",
+    "date_registre": "2006-06-10",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=490489226&per_page=1",
+    "sha256": "58e885db35bb51674f4bca1a468c515acaa59155470b08d329edd5daaf9a7908"
+   },
+   {
+    "agence": "leggett-immobilier-nice",
+    "siren": "434086930",
+    "statut": "conforme",
+    "date_publiee": "2001-01-02",
+    "date_registre": "2001-01-02",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=434086930&per_page=1",
+    "sha256": "63e50f94367e4918ed3d6d106620b1092bec4a858877ce3b4aba7b31ff1115e0"
+   },
+   {
+    "agence": "leprince-immobilier",
+    "siren": "801820184",
+    "statut": "conforme",
+    "date_publiee": "2014-03-24",
+    "date_registre": "2014-03-24",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=801820184&per_page=1",
+    "sha256": "f431b3650c3417b394ea0c9b1dcf4d0259e6b17c275367370fdc6c0d34c7f416"
+   },
+   {
+    "agence": "leprince-immobilier-cimiez",
+    "siren": "801820184",
+    "statut": "conforme",
+    "date_publiee": "2014-03-24",
+    "date_registre": "2014-03-24",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=801820184&per_page=1",
+    "sha256": "f431b3650c3417b394ea0c9b1dcf4d0259e6b17c275367370fdc6c0d34c7f416"
+   },
+   {
+    "agence": "les-belles-terres",
+    "siren": "510085798",
+    "statut": "conforme",
+    "date_publiee": "2008-10-01",
+    "date_registre": "2008-10-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=510085798&per_page=1",
+    "sha256": "dce2ce32799cb3c23f6c8dc1ac8203dd0f477e2160af5e45775c4a905b748110"
+   },
+   {
+    "agence": "maison-06",
+    "siren": "511186363",
+    "statut": "conforme",
+    "date_publiee": "2009-03-18",
+    "date_registre": "2009-03-18",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=511186363&per_page=1",
+    "sha256": "57e490f6d04fc13df75e39ee726753021a94d84ae97208d6faa42e4df2ad8491"
+   },
+   {
+    "agence": "maison-a-nice",
+    "siren": "819687401",
+    "statut": "conforme",
+    "date_publiee": "2016-04-13",
+    "date_registre": "2016-04-13",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=819687401&per_page=1",
+    "sha256": "513573c85cc8960c73eed450de4a989e9e0fc24be0f47bba38526641cfe433d5"
+   },
+   {
+    "agence": "maison-quatre",
+    "siren": "893332791",
+    "statut": "conforme",
+    "date_publiee": "2021-01-20",
+    "date_registre": "2021-01-20",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=893332791&per_page=1",
+    "sha256": "11c738de357543beb36c240ee22ac46dccc5b7abfac985ff378068e10575b4db"
+   },
+   {
+    "agence": "nice-carre-d-or",
+    "siren": "832564470",
+    "statut": "conforme",
+    "date_publiee": "2017-11-01",
+    "date_registre": "2017-11-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=832564470&per_page=1",
+    "sha256": "9e75f70fc249d8c927e35274754eb32112f558fdeb25e657ce93069149e63914"
+   },
+   {
+    "agence": "nice-carre-d-or-immobilier",
+    "siren": "832564470",
+    "statut": "conforme",
+    "date_publiee": "2017-11-01",
+    "date_registre": "2017-11-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=832564470&per_page=1",
+    "sha256": "9e75f70fc249d8c927e35274754eb32112f558fdeb25e657ce93069149e63914"
+   },
+   {
+    "agence": "nice-nord-immo",
+    "siren": "507939171",
+    "statut": "conforme",
+    "date_publiee": "2008-09-01",
+    "date_registre": "2008-09-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=507939171&per_page=1",
+    "sha256": "de0795b8c4cf869346c397a00ba284830468116bf94d011052617ca5a7bf0290"
+   },
+   {
+    "agence": "nice-properties-massena",
+    "siren": "350499877",
+    "statut": "conforme",
+    "date_publiee": "1989-04-24",
+    "date_registre": "1989-04-24",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=350499877&per_page=1",
+    "sha256": "56777eb4dc6ed807d36e31355f107e2d3e5600266aaca739c5d83c3e782cd546"
+   },
+   {
+    "agence": "nice-properties-opera",
+    "siren": "350499877",
+    "statut": "conforme",
+    "date_publiee": "1989-04-24",
+    "date_registre": "1989-04-24",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=350499877&per_page=1",
+    "sha256": "56777eb4dc6ed807d36e31355f107e2d3e5600266aaca739c5d83c3e782cd546"
+   },
+   {
+    "agence": "nice-properties-promenade",
+    "siren": "350499877",
+    "statut": "conforme",
+    "date_publiee": "1989-04-24",
+    "date_registre": "1989-04-24",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=350499877&per_page=1",
+    "sha256": "56777eb4dc6ed807d36e31355f107e2d3e5600266aaca739c5d83c3e782cd546"
+   },
+   {
+    "agence": "norait-immobilier",
+    "siren": "808428783",
+    "statut": "conforme",
+    "date_publiee": "2015-01-15",
+    "date_registre": "2015-01-15",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=808428783&per_page=1",
+    "sha256": "e3ecef918086c37a4bbdee69ff850a58cdf3b3261bf0d0d58804dd9a5aa25488"
+   },
+   {
+    "agence": "norait-immobilier-rue-cros-de-capeu",
+    "siren": "808428783",
+    "statut": "conforme",
+    "date_publiee": "2015-01-15",
+    "date_registre": "2015-01-15",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=808428783&per_page=1",
+    "sha256": "e3ecef918086c37a4bbdee69ff850a58cdf3b3261bf0d0d58804dd9a5aa25488"
+   },
+   {
+    "agence": "omaison",
+    "siren": "819687401",
+    "statut": "conforme",
+    "date_publiee": "2016-04-13",
+    "date_registre": "2016-04-13",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=819687401&per_page=1",
+    "sha256": "513573c85cc8960c73eed450de4a989e9e0fc24be0f47bba38526641cfe433d5"
+   },
+   {
+    "agence": "optimmo",
+    "siren": "431430297",
+    "statut": "conforme",
+    "date_publiee": "2000-05-10",
+    "date_registre": "2000-05-10",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=431430297&per_page=1",
+    "sha256": "1ebf8d1d54b533a334891c25b7f686f8f5d95482a31391735898082b724f0256"
+   },
+   {
+    "agence": "optimmo-arson-agence-immobiliere-a-nice",
+    "siren": "431430297",
+    "statut": "conforme",
+    "date_publiee": "2000-05-10",
+    "date_registre": "2000-05-10",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=431430297&per_page=1",
+    "sha256": "1ebf8d1d54b533a334891c25b7f686f8f5d95482a31391735898082b724f0256"
+   },
+   {
+    "agence": "optimmo-syndic-gestion-nice-ouest",
+    "siren": "431430297",
+    "statut": "conforme",
+    "date_publiee": "2000-05-10",
+    "date_registre": "2000-05-10",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=431430297&per_page=1",
+    "sha256": "1ebf8d1d54b533a334891c25b7f686f8f5d95482a31391735898082b724f0256"
+   },
+   {
+    "agence": "orpi-agence-des-palais",
+    "siren": "534590609",
+    "statut": "conforme",
+    "date_publiee": "2011-09-01",
+    "date_registre": "2011-09-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=534590609&per_page=1",
+    "sha256": "67d21b11af6659079e924f32909c697917ac2750e3c7a9f4d4d28cfbd586c3c4"
+   },
+   {
+    "agence": "palais-immobilier-agence-de-nice-saint-antoine-ginestiere",
+    "siren": "814646592",
+    "statut": "conforme",
+    "date_publiee": "2015-11-12",
+    "date_registre": "2015-11-12",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=814646592&per_page=1",
+    "sha256": "f4a1e433d573e581b528ff797486f5169124c1a2b21f1957f7126667dcbcc55e"
+   },
+   {
+    "agence": "palais-immobilier-agence-du-vieux-nice",
+    "siren": "391026531",
+    "statut": "conforme",
+    "date_publiee": "1993-04-15",
+    "date_registre": "1993-04-15",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=391026531&per_page=1",
+    "sha256": "ae036e16101863530fb3267bacfbf4710978c30c2617e6b6883eabe0d6880e34"
+   },
+   {
+    "agence": "palais-immobilier-araucaria",
+    "siren": "814646592",
+    "statut": "conforme",
+    "date_publiee": "2015-11-12",
+    "date_registre": "2015-11-12",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=814646592&per_page=1",
+    "sha256": "f4a1e433d573e581b528ff797486f5169124c1a2b21f1957f7126667dcbcc55e"
+   },
+   {
+    "agence": "palais-immobilier-liberation",
+    "siren": "391026531",
+    "statut": "conforme",
+    "date_publiee": "1993-04-15",
+    "date_registre": "1993-04-15",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=391026531&per_page=1",
+    "sha256": "ae036e16101863530fb3267bacfbf4710978c30c2617e6b6883eabe0d6880e34"
+   },
+   {
+    "agence": "palais-immobilier-prestige-agence-de-nice-port-mont-boron",
+    "siren": "814646592",
+    "statut": "conforme",
+    "date_publiee": "2015-11-12",
+    "date_registre": "2015-11-12",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=814646592&per_page=1",
+    "sha256": "f4a1e433d573e581b528ff797486f5169124c1a2b21f1957f7126667dcbcc55e"
+   },
+   {
+    "agence": "postillon-immobilier",
+    "siren": "797669413",
+    "statut": "conforme",
+    "date_publiee": "2013-10-01",
+    "date_registre": "2013-10-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=797669413&per_page=1",
+    "sha256": "981543b9761d8aedf206f096cff6974f15fe15204e4678a6ad8bfd346a917738"
+   },
+   {
+    "agence": "postillon-patrimoine",
+    "siren": "797669413",
+    "statut": "conforme",
+    "date_publiee": "2013-10-01",
+    "date_registre": "2013-10-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=797669413&per_page=1",
+    "sha256": "981543b9761d8aedf206f096cff6974f15fe15204e4678a6ad8bfd346a917738"
+   },
+   {
+    "agence": "resid-immo",
+    "siren": "399834373",
+    "statut": "conforme",
+    "date_publiee": "1995-02-02",
+    "date_registre": "1995-02-02",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=399834373&per_page=1",
+    "sha256": "1b01966a26be55c0b1f71a503cd08d7e5c36eb9a15bff6cf3e0aa3af9ccec57f"
+   },
+   {
+    "agence": "richer-immobilier",
+    "siren": "798145082",
+    "statut": "conforme",
+    "date_publiee": "2013-10-24",
+    "date_registre": "2013-10-24",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=798145082&per_page=1",
+    "sha256": "9d1b97e47029a213df0e57965810588b8f2ab00e32b47738342101dadc7dd0d9"
+   },
+   {
+    "agence": "square-habitat-nice-location-gestion-syndic-de-copropriete",
+    "siren": "449530203",
+    "statut": "conforme",
+    "date_publiee": "2003-08-01",
+    "date_registre": "2003-08-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=449530203&per_page=1",
+    "sha256": "028f4bdbb3de7a099da33e8707426f070f05778ebd9e1f939059cf62dea2577d"
+   },
+   {
+    "agence": "square-habitat-nice-republique",
+    "siren": "449530203",
+    "statut": "conforme",
+    "date_publiee": "2003-08-01",
+    "date_registre": "2003-08-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=449530203&per_page=1",
+    "sha256": "028f4bdbb3de7a099da33e8707426f070f05778ebd9e1f939059cf62dea2577d"
+   },
+   {
+    "agence": "square-habitat-transaction-nice-gambetta",
+    "siren": "449530203",
+    "statut": "conforme",
+    "date_publiee": "2003-08-01",
+    "date_registre": "2003-08-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=449530203&per_page=1",
+    "sha256": "028f4bdbb3de7a099da33e8707426f070f05778ebd9e1f939059cf62dea2577d"
+   },
+   {
+    "agence": "turner-consultant",
+    "siren": "487971681",
+    "statut": "conforme",
+    "date_publiee": "2006-01-02",
+    "date_registre": "2006-01-02",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=487971681&per_page=1",
+    "sha256": "1d88491f1ee9cdacf5cd97cd9d6028b8d15f3c731932715b1fcae1e27986a24c"
+   },
+   {
+    "agence": "turner-international-real-estate-consulting",
+    "siren": "487971681",
+    "statut": "conforme",
+    "date_publiee": "2006-01-02",
+    "date_registre": "2006-01-02",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=487971681&per_page=1",
+    "sha256": "1d88491f1ee9cdacf5cd97cd9d6028b8d15f3c731932715b1fcae1e27986a24c"
+   },
+   {
+    "agence": "votre-agence-immo",
+    "siren": "507939171",
+    "statut": "conforme",
+    "date_publiee": "2008-09-01",
+    "date_registre": "2008-09-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=507939171&per_page=1",
+    "sha256": "de0795b8c4cf869346c397a00ba284830468116bf94d011052617ca5a7bf0290"
+   },
+   {
+    "agence": "votre-agence-immo-nice-est",
+    "siren": "507939171",
+    "statut": "conforme",
+    "date_publiee": "2008-09-01",
+    "date_registre": "2008-09-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=507939171&per_page=1",
+    "sha256": "de0795b8c4cf869346c397a00ba284830468116bf94d011052617ca5a7bf0290"
+   },
+   {
+    "agence": "votre-agence-immo-nice-nord",
+    "siren": "507939171",
+    "statut": "conforme",
+    "date_publiee": "2008-09-01",
+    "date_registre": "2008-09-01",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=507939171&per_page=1",
+    "sha256": "de0795b8c4cf869346c397a00ba284830468116bf94d011052617ca5a7bf0290"
+   },
+   {
+    "agence": "wis-patrimoine-wis",
+    "siren": "928623404",
+    "statut": "conforme",
+    "date_publiee": "2024-05-06",
+    "date_registre": "2024-05-06",
+    "source_anciennete": "registre_des_entreprises",
+    "enseigne_depuis": null,
+    "preuve": "https://recherche-entreprises.api.gouv.fr/search?q=928623404&per_page=1",
+    "sha256": "5a1f99c86cb75094e1549a08901b86479f4d40883334fbf71c4215007d9b632c"
+   }
+  ],
+  "counts": {
+   "conforme": 146,
+   "siren_non_publie": 2
+  },
+  "limite": "le registre donne la date de création de la société, pas celle de l’enseigne ; une enseigne récente exploitée par une société ancienne ne peut pas être détectée ainsi"
+ },
+ "baremes_relus": [
+  {
+   "agence": "agence-californie",
+   "page": "site",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "http://www.agencecalifornie.fr/",
+   "utc": "2026-11-17T10:51:23+00:00",
+   "http": 200,
+   "sha256": "891fd13d3afa37c22ece40e704f4e74d61a736cd1c225f7898748b4bb2d5f78d",
+   "bytes": 875509,
+   "status": "lu",
+   "text_truncated": true,
+   "texte_page": ""
+  },
+  {
+   "agence": "agence-du-port",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://agenceduportdenice.fr/nos-honoraires-vente",
+   "utc": "2026-11-17T10:51:24+00:00",
+   "http": 200,
+   "sha256": "a0e7aaff0b87d0158548002fd5029533fe56db0064f40b77857eb0b2725c69cc",
+   "bytes": 42755,
+   "status": "lu",
+   "text_truncated": false,
+   "texte_page": ""
+  },
+  {
+   "agence": "agence-immobiliere-centragence",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://files.netty.immo/file/company39570nqp/146/r8766/bareme_d_honoraires_portrait_65f605624bfdb30f0a030cc3.pdf",
+   "utc": "2026-11-17T10:51:25+00:00",
+   "status": "pdf_non_lu"
+  },
+  {
+   "agence": "agence-immobiliere-maison-k-immobilier-nice-cote-d-azur",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://api.apimo.pro/document_agency/21303?secret=e5e4f6bc7a",
+   "utc": "2026-11-17T10:51:25+00:00",
+   "http": 200,
+   "sha256": "dfb718f06a870ac69e3150d299c824eac48a3271d28e9f18a9f74686226c0e7b",
+   "bytes": 60966,
+   "status": "lu",
+   "text_truncated": true,
+   "texte_page": ""
+  },
+  {
+   "agence": "agence-istra",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.istra.fr/storage/bareme/bareme.pdf",
+   "utc": "2026-11-17T10:51:25+00:00",
+   "status": "pdf_non_lu"
+  },
+  {
+   "agence": "agence-riviera-real-estate",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://agenceriviera.com/en/legals/fees",
+   "utc": "2026-11-17T10:51:25+00:00",
+   "http": 200,
+   "sha256": "24abc855c92fd49d2ffb21db1f3e129d7e28d2ffcb9616a93dc414c7116989c9",
+   "bytes": 13458,
+   "status": "lu",
+   "text_truncated": false,
+   "texte_page": ""
+  },
+  {
+   "agence": "agence-vizcaya",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://api.apimo.pro/document_agency/1463?secret=5268b8bbff",
+   "utc": "2026-11-17T10:51:26+00:00",
+   "http": 200,
+   "sha256": "de37053dd664568e96e0f75c43caa7f047da6f7eebe4bf0e61a1b42e7eb111cb",
+   "bytes": 84876,
+   "status": "lu",
+   "text_truncated": true,
+   "texte_page": ""
+  },
+  {
+   "agence": "agency-tosca",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.agencetosca.com/fr/mentions-legales/honoraires",
+   "utc": "2026-11-17T10:51:27+00:00",
+   "http": 200,
+   "sha256": "3cc6bf8e85d045488c64ce23e285bc6f81780e01e08c018320b41bbc77514219",
+   "bytes": 16015,
+   "status": "lu",
+   "text_truncated": false,
+   "texte_page": ""
+  },
+  {
+   "agence": "alliance-riviera",
+   "page": "site",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "http://www.allianceriviera.com/",
+   "utc": "2026-11-17T10:51:28+00:00",
+   "http": 200,
+   "sha256": "93ea7234e9729bbb762effa65cc1b1e57d8db8739bf98479158683bdd824fe4d",
+   "bytes": 10577,
+   "status": "lu",
+   "text_truncated": false,
+   "texte_page": ""
+  },
+  {
+   "agence": "artemiz-chasseur-immobilier",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.artemiz.immo/comment-ca-marche-quest-ce-quun-chasseur-immobilier/",
+   "utc": "2026-11-17T10:51:29+00:00",
+   "http": 200,
+   "sha256": "e7998086846260511e3b024c54b713d6c373e2680d8b7d66954638572754b557",
+   "bytes": 250055,
+   "status": "lu",
+   "text_truncated": true,
+   "texte_page": ""
+  },
+  {
+   "agence": "bbii-immobilier-international-nice-ad",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://medias.twimmopro.com/agencetwimmonet/680/680/5f314d559b793a933800834e-bareme.pdf",
+   "utc": "2026-11-17T10:51:30+00:00",
+   "status": "pdf_non_lu"
+  },
+  {
+   "agence": "bs-invest",
+   "page": "site",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "http://www.bs-invest.com/",
+   "utc": "2026-11-17T10:51:30+00:00",
+   "http": 200,
+   "sha256": "9b19a9a2c1489999453f333ee30a3aac5e828d3e792aeef7bf496df2b32390ec",
+   "bytes": 99012,
+   "status": "lu",
+   "text_truncated": true,
+   "texte_page": ""
+  },
+  {
+   "agence": "cabinet-grimaz",
+   "page": "site",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://cabinet-grimaz.com/",
+   "utc": "2026-11-17T10:51:31+00:00",
+   "http": 200,
+   "sha256": "2450318a419f38e264da612e986ac0bf85d55c0294cf02d0575e5e20dde1d236",
+   "bytes": 211257,
+   "status": "lu",
+   "text_truncated": true,
+   "texte_page": ""
+  },
+  {
+   "agence": "cabinet-hestia",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.cabinet-hestia.com/honoraires",
+   "utc": "2026-11-17T10:51:33+00:00",
+   "http": 200,
+   "sha256": "5f9f1dc1a66aa785961ca8e9281211c7c4681582bcee76b9c9934b8b839c9bb2",
+   "bytes": 57715,
+   "status": "lu",
+   "text_truncated": false,
+   "texte_page": ""
+  },
+  {
+   "agence": "cabinet-immobilier-nice",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://cabinetimmobiliernice.com/honoraires",
+   "utc": "2026-11-17T10:51:34+00:00",
+   "http": 200,
+   "sha256": "bf5b34589e08281f5fa8a051c80d08a4624dd4f673a66ca4d7fe4e2d2d4a624c",
+   "bytes": 281124,
+   "status": "lu",
+   "text_truncated": true,
+   "texte_page": ""
+  },
+  {
+   "agence": "cap-sud-immobilier-nice",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://capsud-immobilier.fr/fr/nos-honoraires",
+   "utc": "2026-11-17T10:51:34+00:00",
+   "http": 200,
+   "sha256": "86952ab1679aa4157b675ea7bc74874e46a7103f612c71b48dbedb7981e14e71",
+   "bytes": 14687,
+   "status": "lu",
+   "text_truncated": false,
+   "texte_page": ""
+  },
+  {
+   "agence": "century-21-domus-immobilier",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.century21-domus-immobilier-nice.com/imagesBien//202/3105/v5/bareme_honoraires.pdf",
+   "utc": "2026-11-17T10:51:35+00:00",
+   "status": "pdf_non_lu"
+  },
+  {
+   "agence": "century-21-etoile-immobilier-nice-ouest",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.century21-etoile-nice-caucade.com/imagesBien//202/3411/v5/bareme_honoraires.pdf",
+   "utc": "2026-11-17T10:51:35+00:00",
+   "status": "pdf_non_lu"
+  },
+  {
+   "agence": "coprogestimmo",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.coprogestimmo.fr/honoraires.pdf",
+   "utc": "2026-11-17T10:51:35+00:00",
+   "status": "pdf_non_lu"
+  },
+  {
+   "agence": "cot-ouest-real-nice",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://medias.twimmopro.com/agencetwimmonet/308/308/6adf0ebe48154e6bff007825-bareme.pdf",
+   "utc": "2026-11-17T10:51:35+00:00",
+   "status": "pdf_non_lu"
+  },
+  {
+   "agence": "de-particulier-a-particulier",
+   "page": "site",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.pap.fr/",
+   "utc": "2026-11-17T10:51:35+00:00",
+   "status": "echec",
+   "error": "HTTPError"
+  },
+  {
+   "agence": "engel-volkers-nice",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://a.storyblok.com/f/209096/x/5e17e1bd4f/bareme-honoraires-cote-d-azur.pdf",
+   "utc": "2026-11-17T10:51:35+00:00",
+   "status": "pdf_non_lu"
+  },
+  {
+   "agence": "etude-lotte-gallo",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://etudelotte.com/en/legals/fees",
+   "utc": "2026-11-17T10:51:35+00:00",
+   "http": 200,
+   "sha256": "260a692bcd0791d6cab45e138eb0ca73d863764d36937ec24885428055b8de45",
+   "bytes": 14778,
+   "status": "lu",
+   "text_truncated": false,
+   "texte_page": ""
+  },
+  {
+   "agence": "french-riviera-studios-com",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://studios-nice.com/agence-immobiliere-specialiste/nos-honoraires/",
+   "utc": "2026-11-17T10:51:36+00:00",
+   "http": 200,
+   "sha256": "546865edf8f63dfdcd5c41b92f920506a34d0ae7f0025fefe3bfc8078be80c92",
+   "bytes": 148707,
+   "status": "lu",
+   "text_truncated": true,
+   "texte_page": ""
+  },
+  {
+   "agence": "gestion-cassini",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.gestioncassini.com/fr/mentions-legales/honoraires",
+   "utc": "2026-11-17T10:51:38+00:00",
+   "http": 200,
+   "sha256": "c078d4cdf4d2eb241861abfa62ad502994164ef8c9d6196d04303ddc34b3e73d",
+   "bytes": 14599,
+   "status": "lu",
+   "text_truncated": false,
+   "texte_page": ""
+  },
+  {
+   "agence": "immo-terrasse",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://immo-terrasse.com/honoraires",
+   "utc": "2026-11-17T10:51:39+00:00",
+   "http": 200,
+   "sha256": "2f3ca5e6919e8937c99dcd890eed78a4f7512be867766bc311314f06aef61168",
+   "bytes": 35313,
+   "status": "lu",
+   "text_truncated": false,
+   "texte_page": ""
+  },
+  {
+   "agence": "immobiliere-nicoise",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.immobiliere-nicoise.com/docs/honoraires.pdf",
+   "utc": "2026-11-17T10:51:39+00:00",
+   "status": "pdf_non_lu"
+  },
+  {
+   "agence": "immovendu",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.immo-vendu.fr/honoraires/",
+   "utc": "2026-11-17T10:51:39+00:00",
+   "http": 200,
+   "sha256": "cc0df895a9a5fa22e19bdc49bafe40a9426c2965e7d84e7894bd792f3accae8c",
+   "bytes": 122054,
+   "status": "lu",
+   "text_truncated": true,
+   "texte_page": ""
+  },
+  {
+   "agence": "john-royce-real-estate",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème trouvé mais illisible par notre outil : 20 sur 100 (valeur fixe)",
+     "points": "20",
+     "max": "100",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://john-royce.com/en/legals/fees",
+   "utc": "2026-11-17T10:51:41+00:00",
+   "http": 200,
+   "sha256": "61993db20fcac1cddc0b30632c95379ffd2335ba03a7551cd35adb47e8ce8b45",
+   "bytes": 10362,
+   "status": "lu",
+   "text_truncated": false,
+   "texte_page": ""
+  },
+  {
+   "agence": "laforet-nice-madeleine",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://laforetbusiness.laforet-intranet.com/segments/immo/catalog/images/manufacturers_bareme/352420.pdf",
+   "utc": "2026-11-17T10:51:42+00:00",
+   "status": "pdf_non_lu"
+  },
+  {
+   "agence": "laforet-nice-port",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://laforetbusiness.laforet-intranet.com/segments/immo/catalog/images/manufacturers_bareme/351422.pdf",
+   "utc": "2026-11-17T10:51:42+00:00",
+   "status": "pdf_non_lu"
+  },
+  {
+   "agence": "lbi",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème trouvé mais illisible par notre outil : 20 sur 100 (valeur fixe)",
+     "points": "20",
+     "max": "100",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://lbi-nice.com/fr/mentions-legales/honoraires",
+   "utc": "2026-11-17T10:51:42+00:00",
+   "http": 200,
+   "sha256": "bf28261c04e6055e7e25aec1c72be15a7bdf30e50ddb05249b21e0cff6ced215",
+   "bytes": 10056,
+   "status": "lu",
+   "text_truncated": false,
+   "texte_page": ""
+  },
+  {
+   "agence": "leggett-immobilier-nice",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème trouvé mais illisible par notre outil : 20 sur 100 (valeur fixe)",
+     "points": "20",
+     "max": "100",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.leggett-immo.com/informations-legales#honoraires",
+   "utc": "2026-11-17T10:51:43+00:00",
+   "http": 200,
+   "sha256": "e50fb206eb435aa209839c9675bd44e66533dec46b82e193d39289697ab4445c",
+   "bytes": 114655,
+   "status": "lu",
+   "text_truncated": true,
+   "texte_page": ""
+  },
+  {
+   "agence": "maison-quatre",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.la-maison-quatre.com/honoraires",
+   "utc": "2026-11-17T10:51:43+00:00",
+   "http": 200,
+   "sha256": "183495a0142646316c588a5eb38e6f8a3111696124eb9c97742b7980df4f7f80",
+   "bytes": 97966,
+   "status": "lu",
+   "text_truncated": false,
+   "texte_page": ""
+  },
+  {
+   "agence": "orpi-agence-des-palais",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://static.orpi.com/files/baremes/4205.pdf",
+   "utc": "2026-11-17T10:51:44+00:00",
+   "status": "pdf_non_lu"
+  },
+  {
+   "agence": "resid-immo",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.residimmo.fr/honoraires",
+   "utc": "2026-11-17T10:51:44+00:00",
+   "http": 200,
+   "sha256": "bdfdecb58899b806b39dbd5f60126e77d8be0297785a78891574721cabf370b8",
+   "bytes": 196392,
+   "status": "lu",
+   "text_truncated": false,
+   "texte_page": ""
+  },
+  {
+   "agence": "richer-immobilier",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.richerimmobilier.com/honoraires",
+   "utc": "2026-11-17T10:51:45+00:00",
+   "http": 200,
+   "sha256": "ab1727efd4fac17ba26182a26a120cffdac30f83dc494e2202cb3ccb51520e4b",
+   "bytes": 56375,
+   "status": "lu",
+   "text_truncated": false,
+   "texte_page": ""
+  },
+  {
+   "agence": "wis-patrimoine-wis",
+   "page": "site",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://wis-groupe.com/",
+   "utc": "2026-11-17T10:51:45+00:00",
+   "http": 200,
+   "sha256": "39fdf9dae906f5e74e76758eac977429f14763b03549eb67087d83ee3cfafaa3",
+   "bytes": 119090,
+   "status": "lu",
+   "text_truncated": false,
+   "texte_page": ""
+  }
+ ],
+ "echantillon": {
+  "status": "tire",
+  "planned": {
+   "utc": "2026-11-17T06:00:00+00:00",
+   "drand_round": 34030612,
+   "rule": "premier mardi 06:00 UTC après la date du relevé"
+  },
+  "committed_snapshot": "2026-11-15_121239",
+  "commitment": "https://github.com/thomasgestioncassini/nice-agencies-open-audit/actions/runs/43712655990",
+  "bls_reverified": true,
+  "seed": "308601a341a56c8acc947e53882a2c4defa3298d921756af1bc76af20f92432b",
+  "rule_version": "1.0",
+  "agencies": {
+   "agence-californie": "tirage_aleatoire",
+   "agence-du-port": "voisine_de_gestion-cassini",
+   "agence-immo2nice": "anciennete_comparable",
+   "agence-immobiliere-centragence": "tirage_aleatoire",
+   "agence-immobiliere-century-21-a-cimiez-lafage": "anciennete_comparable",
+   "agence-immobiliere-century-21-maison-de-l-immobilier": "anciennete_comparable",
+   "agence-immobiliere-maison-k-immobilier-nice-cote-d-azur": "tirage_aleatoire",
+   "agence-immobiliere-nice-citya-baie-des-anges": "anciennete_comparable",
+   "agence-istra": "voisine_de_immovendu",
+   "agence-nice-gambetta": "anciennete_comparable",
+   "agence-privilege": "anciennete_comparable",
+   "agence-privilege-2": "anciennete_comparable",
+   "agence-riviera-real-estate": "voisine_de_gestion-cassini",
+   "agence-vizcaya": "voisine_de_gestion-cassini",
+   "agence-winter-immobilier": "anciennete_comparable",
+   "agence-winter-immobilier-gioffredo": "anciennete_comparable",
+   "agency-fabron": "anciennete_comparable",
+   "agency-tosca": "voisine_de_gestion-cassini",
+   "agit": "anciennete_comparable",
+   "akorimmo-nice-centre": "anciennete_comparable",
+   "akorimmo-nice-nord": "anciennete_comparable",
+   "alliance-riviera": "tirage_aleatoire",
+   "ang-immobilier": "anciennete_comparable",
+   "artemiz-chasseur-immobilier": "tirage_aleatoire",
+   "arthurimmo": "anciennete_comparable",
+   "arthurimmo-com-lmi-la-maison-immobiliere": "anciennete_comparable",
+   "ashley-parker-agence-carre-d-or": "anciennete_comparable",
+   "ashley-parker-agence-cimiez": "anciennete_comparable",
+   "ashley-parker-agence-le-port": "anciennete_comparable",
+   "ashley-parker-agence-mont-boron": "anciennete_comparable",
+   "bbii-immobilier-international-nice-ad": "tirage_aleatoire",
+   "blue-residences": "anciennete_comparable",
+   "bomarche": "anciennete_comparable",
+   "borne-et-delaunay-valperga": "anciennete_comparable",
+   "bs-invest": "tirage_aleatoire",
+   "cabinet-agir-gestion-locative-et-transaction-immobiliere": "anciennete_comparable",
+   "cabinet-assalit-syndic": "anciennete_comparable",
+   "cabinet-borne-et-delaunay": "anciennete_comparable",
+   "cabinet-cordier": "anciennete_comparable",
+   "cabinet-cordier-bd-virgile-barel": "anciennete_comparable",
+   "cabinet-grimaz": "tirage_aleatoire",
+   "cabinet-hestia": "tirage_aleatoire",
+   "cabinet-immobilier-nice": "voisine_de_immovendu",
+   "cabinet-merengone-associes": "anciennete_comparable",
+   "cabinet-rasori": "anciennete_comparable",
+   "cabinet-vogue": "anciennete_comparable",
+   "cabinet-vogue-bd-victor-hugo": "anciennete_comparable",
+   "cap-sud-immobilier-nice": "voisine_de_gestion-cassini",
+   "century-21-domus-immobilier": "voisine_de_gestion-cassini",
+   "century-21-etoile-immobilier-nice-ouest": "tirage_aleatoire",
+   "century-21-gilles-bosse-immobilier-pessicart": "anciennete_comparable",
+   "century-21-gilles-bosse-immobilier-ventes-immobilieres": "anciennete_comparable",
+   "century-21-lafage-promenade-agence-immobiliere-a-nice-promenade-des-an": "anciennete_comparable",
+   "century-21-lafage-transactions": "anciennete_comparable",
+   "century-21-lafage-transactions-nice-bonaparte": "anciennete_comparable",
+   "century-21-lafage-transactions-nice-mont-boron": "anciennete_comparable",
+   "cimiez-immobilier": "anciennete_comparable",
+   "cimiez-residences-boulevard-de-cimiez": "anciennete_comparable",
+   "cimiez-residences-cap-de-croix": "anciennete_comparable",
+   "citya-dalbera-gestion": "anciennete_comparable",
+   "confiance-immobiliere": "anciennete_comparable",
+   "confiance-immobiliere-av-de-la-californie": "anciennete_comparable",
+   "coprogestimmo": "tirage_aleatoire",
+   "cot-ouest-immobilier-napoleon-iii": "anciennete_comparable",
+   "cot-ouest-immobilier-nice-la-lanterne": "anciennete_comparable",
+   "cot-ouest-real-nice": "voisine_de_gestion-cassini",
+   "cote-riviera-agence-massena": "anciennete_comparable",
+   "cp-immo-massena": "anciennete_comparable",
+   "de-particulier-a-particulier": "tirage_aleatoire",
+   "easy-property-fabron": "anciennete_comparable",
+   "engel-volkers-nice": "voisine_de_immovendu",
+   "etude-lotte-gallo": "voisine_de_gestion-cassini",
+   "fit-immobilier": "anciennete_comparable",
+   "fit-immobilier-port": "anciennete_comparable",
+   "foncia-agence-immobiliere-achat-vente-nice-bd-napoleon-iii": "anciennete_comparable",
+   "foncia-agence-immobiliere-achat-vente-nice-r-arson": "anciennete_comparable",
+   "foncia-transaction-riviera-nice-massena": "anciennete_comparable",
+   "france-properties-real-estate": "anciennete_comparable",
+   "french-riviera-property": "anciennete_comparable",
+   "french-riviera-studios-com": "tirage_aleatoire",
+   "gecko-immobilier-nice-centre": "anciennete_comparable",
+   "gecko-immobilier-nice-port": "anciennete_comparable",
+   "gestion-cassini": "editeur",
+   "grand-bleu-estate": "anciennete_comparable",
+   "groupe-nice-transactions": "anciennete_comparable",
+   "groupe-nice-transactions-est": "anciennete_comparable",
+   "gubernatis-immobilier-agence-immobiliere-vente-appartement-maison-vill": "anciennete_comparable",
+   "ici-info-conseil-immobilier": "anciennete_comparable",
+   "immo-cp-musiciens-rue-verdi": "anciennete_comparable",
+   "immo-gestion": "anciennete_comparable",
+   "immo-terrasse": "voisine_de_immovendu",
+   "immobilier2nice-maison2nice-gestion2nice": "anciennete_comparable",
+   "immobiliere-nicoise": "voisine_de_gestion-cassini",
+   "immovendu": "editeur",
+   "john-royce-real-estate": "tirage_aleatoire",
+   "l-adresse-cec-cessole-nice-nord": "anciennete_comparable",
+   "l-adresse-cec-gestion": "anciennete_comparable",
+   "l-immobiliere-du-port": "anciennete_comparable",
+   "la-maison-orea-carre-d-or": "anciennete_comparable",
+   "la-maison-orea-felix-faure": "anciennete_comparable",
+   "la-maison-orea-nice-cimiez-riviera": "anciennete_comparable",
+   "la-maison-orea-nice-nord": "anciennete_comparable",
+   "la-maison-orea-nice-ouest": "anciennete_comparable",
+   "la-maison-orea-nice-port": "anciennete_comparable",
+   "lafayette-transactions": "anciennete_comparable",
+   "laforet-nice-madeleine": "voisine_de_immovendu",
+   "laforet-nice-port": "tirage_aleatoire",
+   "lambda-immobilier-bo-marche": "anciennete_comparable",
+   "laugier-properties": "anciennete_comparable",
+   "lbi": "tirage_aleatoire",
+   "leggett-immobilier-nice": "tirage_aleatoire",
+   "leprince-immobilier": "anciennete_comparable",
+   "leprince-immobilier-cimiez": "anciennete_comparable",
+   "les-belles-terres": "anciennete_comparable",
+   "maison-06": "anciennete_comparable",
+   "maison-a-nice": "anciennete_comparable",
+   "maison-quatre": "tirage_aleatoire",
+   "nice-carre-d-or": "anciennete_comparable",
+   "nice-carre-d-or-immobilier": "anciennete_comparable",
+   "nice-nord-immo": "anciennete_comparable",
+   "nice-properties-massena": "anciennete_comparable",
+   "nice-properties-opera": "anciennete_comparable",
+   "nice-properties-promenade": "anciennete_comparable",
+   "norait-immobilier": "anciennete_comparable",
+   "norait-immobilier-rue-cros-de-capeu": "anciennete_comparable",
+   "omaison": "anciennete_comparable",
+   "optimmo": "anciennete_comparable",
+   "optimmo-arson-agence-immobiliere-a-nice": "anciennete_comparable",
+   "optimmo-syndic-gestion-nice-ouest": "anciennete_comparable",
+   "orpi-agence-des-palais": "voisine_de_immovendu",
+   "palais-immobilier-agence-de-nice-saint-antoine-ginestiere": "anciennete_comparable",
+   "palais-immobilier-agence-du-vieux-nice": "anciennete_comparable",
+   "palais-immobilier-araucaria": "anciennete_comparable",
+   "palais-immobilier-liberation": "anciennete_comparable",
+   "palais-immobilier-prestige-agence-de-nice-port-mont-boron": "anciennete_comparable",
+   "postillon-immobilier": "anciennete_comparable",
+   "postillon-patrimoine": "anciennete_comparable",
+   "resid-immo": "voisine_de_gestion-cassini",
+   "richer-immobilier": "tirage_aleatoire",
+   "square-habitat-nice-location-gestion-syndic-de-copropriete": "anciennete_comparable",
+   "square-habitat-nice-republique": "anciennete_comparable",
+   "square-habitat-transaction-nice-gambetta": "anciennete_comparable",
+   "turner-consultant": "anciennete_comparable",
+   "turner-international-real-estate-consulting": "anciennete_comparable",
+   "votre-agence-immo": "anciennete_comparable",
+   "votre-agence-immo-nice-est": "anciennete_comparable",
+   "votre-agence-immo-nice-nord": "anciennete_comparable",
+   "wis-patrimoine-wis": "tirage_aleatoire"
+  },
+  "drand": {
+   "round": 34030612,
+   "url": "https://api.drand.sh/52db9ba70e0cc0f6eaf7803dd07447a1f5477735fd3f661792ba94600c84e971/public/34030612"
+  },
+  "bls_signature_verified_at_draw": true
+ }
+}

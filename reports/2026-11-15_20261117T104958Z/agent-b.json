@@ -1,0 +1,13 @@
+{
+ "slot": "B",
+ "provider": "google",
+ "model_requested": "gemini-4-hydrogen",
+ "purpose": "audit",
+ "mandate_sha256": "82e0fec40442f9e2ab530af39492ad0a83e777c1e424867598daa9a65e8089c8",
+ "input_sha256": "4b6ec1da902a636b6baae4efa4c63c4fdaa64daa11c641439abeeb135cd5d0cc",
+ "input_chars": 201222,
+ "estimate_usd": 0.282,
+ "status": "echec",
+ "error": "JSONDecodeError: Unterminated string starting at: line 1 column 20412 (char 20411)",
+ "finished_utc": "2026-11-17T10:54:40+00:00"
+}

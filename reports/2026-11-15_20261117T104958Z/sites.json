@@ -1,0 +1,1310 @@
+{
+ "counts": {
+  "lu": 25,
+  "pdf_non_lu": 12,
+  "echec": 1
+ },
+ "rows": [
+  {
+   "agence": "agence-californie",
+   "page": "site",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "http://www.agencecalifornie.fr/",
+   "utc": "2026-11-17T10:51:23+00:00",
+   "http": 200,
+   "sha256": "891fd13d3afa37c22ece40e704f4e74d61a736cd1c225f7898748b4bb2d5f78d",
+   "bytes": 875509,
+   "status": "lu",
+   "text_truncated": true
+  },
+  {
+   "agence": "agence-du-port",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://agenceduportdenice.fr/nos-honoraires-vente",
+   "utc": "2026-11-17T10:51:24+00:00",
+   "http": 200,
+   "sha256": "a0e7aaff0b87d0158548002fd5029533fe56db0064f40b77857eb0b2725c69cc",
+   "bytes": 42755,
+   "status": "lu",
+   "text_truncated": false
+  },
+  {
+   "agence": "agence-immobiliere-centragence",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://files.netty.immo/file/company39570nqp/146/r8766/bareme_d_honoraires_portrait_65f605624bfdb30f0a030cc3.pdf",
+   "utc": "2026-11-17T10:51:25+00:00",
+   "status": "pdf_non_lu"
+  },
+  {
+   "agence": "agence-immobiliere-maison-k-immobilier-nice-cote-d-azur",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://api.apimo.pro/document_agency/21303?secret=e5e4f6bc7a",
+   "utc": "2026-11-17T10:51:25+00:00",
+   "http": 200,
+   "sha256": "dfb718f06a870ac69e3150d299c824eac48a3271d28e9f18a9f74686226c0e7b",
+   "bytes": 60966,
+   "status": "lu",
+   "text_truncated": true
+  },
+  {
+   "agence": "agence-istra",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.istra.fr/storage/bareme/bareme.pdf",
+   "utc": "2026-11-17T10:51:25+00:00",
+   "status": "pdf_non_lu"
+  },
+  {
+   "agence": "agence-riviera-real-estate",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://agenceriviera.com/en/legals/fees",
+   "utc": "2026-11-17T10:51:25+00:00",
+   "http": 200,
+   "sha256": "24abc855c92fd49d2ffb21db1f3e129d7e28d2ffcb9616a93dc414c7116989c9",
+   "bytes": 13458,
+   "status": "lu",
+   "text_truncated": false
+  },
+  {
+   "agence": "agence-vizcaya",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://api.apimo.pro/document_agency/1463?secret=5268b8bbff",
+   "utc": "2026-11-17T10:51:26+00:00",
+   "http": 200,
+   "sha256": "de37053dd664568e96e0f75c43caa7f047da6f7eebe4bf0e61a1b42e7eb111cb",
+   "bytes": 84876,
+   "status": "lu",
+   "text_truncated": true
+  },
+  {
+   "agence": "agency-tosca",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.agencetosca.com/fr/mentions-legales/honoraires",
+   "utc": "2026-11-17T10:51:27+00:00",
+   "http": 200,
+   "sha256": "3cc6bf8e85d045488c64ce23e285bc6f81780e01e08c018320b41bbc77514219",
+   "bytes": 16015,
+   "status": "lu",
+   "text_truncated": false
+  },
+  {
+   "agence": "alliance-riviera",
+   "page": "site",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "http://www.allianceriviera.com/",
+   "utc": "2026-11-17T10:51:28+00:00",
+   "http": 200,
+   "sha256": "93ea7234e9729bbb762effa65cc1b1e57d8db8739bf98479158683bdd824fe4d",
+   "bytes": 10577,
+   "status": "lu",
+   "text_truncated": false
+  },
+  {
+   "agence": "artemiz-chasseur-immobilier",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.artemiz.immo/comment-ca-marche-quest-ce-quun-chasseur-immobilier/",
+   "utc": "2026-11-17T10:51:29+00:00",
+   "http": 200,
+   "sha256": "e7998086846260511e3b024c54b713d6c373e2680d8b7d66954638572754b557",
+   "bytes": 250055,
+   "status": "lu",
+   "text_truncated": true
+  },
+  {
+   "agence": "bbii-immobilier-international-nice-ad",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://medias.twimmopro.com/agencetwimmonet/680/680/5f314d559b793a933800834e-bareme.pdf",
+   "utc": "2026-11-17T10:51:30+00:00",
+   "status": "pdf_non_lu"
+  },
+  {
+   "agence": "bs-invest",
+   "page": "site",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "http://www.bs-invest.com/",
+   "utc": "2026-11-17T10:51:30+00:00",
+   "http": 200,
+   "sha256": "9b19a9a2c1489999453f333ee30a3aac5e828d3e792aeef7bf496df2b32390ec",
+   "bytes": 99012,
+   "status": "lu",
+   "text_truncated": true
+  },
+  {
+   "agence": "cabinet-grimaz",
+   "page": "site",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://cabinet-grimaz.com/",
+   "utc": "2026-11-17T10:51:31+00:00",
+   "http": 200,
+   "sha256": "2450318a419f38e264da612e986ac0bf85d55c0294cf02d0575e5e20dde1d236",
+   "bytes": 211257,
+   "status": "lu",
+   "text_truncated": true
+  },
+  {
+   "agence": "cabinet-hestia",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.cabinet-hestia.com/honoraires",
+   "utc": "2026-11-17T10:51:33+00:00",
+   "http": 200,
+   "sha256": "5f9f1dc1a66aa785961ca8e9281211c7c4681582bcee76b9c9934b8b839c9bb2",
+   "bytes": 57715,
+   "status": "lu",
+   "text_truncated": false
+  },
+  {
+   "agence": "cabinet-immobilier-nice",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://cabinetimmobiliernice.com/honoraires",
+   "utc": "2026-11-17T10:51:34+00:00",
+   "http": 200,
+   "sha256": "bf5b34589e08281f5fa8a051c80d08a4624dd4f673a66ca4d7fe4e2d2d4a624c",
+   "bytes": 281124,
+   "status": "lu",
+   "text_truncated": true
+  },
+  {
+   "agence": "cap-sud-immobilier-nice",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://capsud-immobilier.fr/fr/nos-honoraires",
+   "utc": "2026-11-17T10:51:34+00:00",
+   "http": 200,
+   "sha256": "86952ab1679aa4157b675ea7bc74874e46a7103f612c71b48dbedb7981e14e71",
+   "bytes": 14687,
+   "status": "lu",
+   "text_truncated": false
+  },
+  {
+   "agence": "century-21-domus-immobilier",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.century21-domus-immobilier-nice.com/imagesBien//202/3105/v5/bareme_honoraires.pdf",
+   "utc": "2026-11-17T10:51:35+00:00",
+   "status": "pdf_non_lu"
+  },
+  {
+   "agence": "century-21-etoile-immobilier-nice-ouest",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.century21-etoile-nice-caucade.com/imagesBien//202/3411/v5/bareme_honoraires.pdf",
+   "utc": "2026-11-17T10:51:35+00:00",
+   "status": "pdf_non_lu"
+  },
+  {
+   "agence": "coprogestimmo",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.coprogestimmo.fr/honoraires.pdf",
+   "utc": "2026-11-17T10:51:35+00:00",
+   "status": "pdf_non_lu"
+  },
+  {
+   "agence": "cot-ouest-real-nice",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://medias.twimmopro.com/agencetwimmonet/308/308/6adf0ebe48154e6bff007825-bareme.pdf",
+   "utc": "2026-11-17T10:51:35+00:00",
+   "status": "pdf_non_lu"
+  },
+  {
+   "agence": "de-particulier-a-particulier",
+   "page": "site",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.pap.fr/",
+   "utc": "2026-11-17T10:51:35+00:00",
+   "status": "echec",
+   "error": "HTTPError"
+  },
+  {
+   "agence": "engel-volkers-nice",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://a.storyblok.com/f/209096/x/5e17e1bd4f/bareme-honoraires-cote-d-azur.pdf",
+   "utc": "2026-11-17T10:51:35+00:00",
+   "status": "pdf_non_lu"
+  },
+  {
+   "agence": "etude-lotte-gallo",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://etudelotte.com/en/legals/fees",
+   "utc": "2026-11-17T10:51:35+00:00",
+   "http": 200,
+   "sha256": "260a692bcd0791d6cab45e138eb0ca73d863764d36937ec24885428055b8de45",
+   "bytes": 14778,
+   "status": "lu",
+   "text_truncated": false
+  },
+  {
+   "agence": "french-riviera-studios-com",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://studios-nice.com/agence-immobiliere-specialiste/nos-honoraires/",
+   "utc": "2026-11-17T10:51:36+00:00",
+   "http": 200,
+   "sha256": "546865edf8f63dfdcd5c41b92f920506a34d0ae7f0025fefe3bfc8078be80c92",
+   "bytes": 148707,
+   "status": "lu",
+   "text_truncated": true
+  },
+  {
+   "agence": "gestion-cassini",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.gestioncassini.com/fr/mentions-legales/honoraires",
+   "utc": "2026-11-17T10:51:38+00:00",
+   "http": 200,
+   "sha256": "c078d4cdf4d2eb241861abfa62ad502994164ef8c9d6196d04303ddc34b3e73d",
+   "bytes": 14599,
+   "status": "lu",
+   "text_truncated": false
+  },
+  {
+   "agence": "immo-terrasse",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://immo-terrasse.com/honoraires",
+   "utc": "2026-11-17T10:51:39+00:00",
+   "http": 200,
+   "sha256": "2f3ca5e6919e8937c99dcd890eed78a4f7512be867766bc311314f06aef61168",
+   "bytes": 35313,
+   "status": "lu",
+   "text_truncated": false
+  },
+  {
+   "agence": "immobiliere-nicoise",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.immobiliere-nicoise.com/docs/honoraires.pdf",
+   "utc": "2026-11-17T10:51:39+00:00",
+   "status": "pdf_non_lu"
+  },
+  {
+   "agence": "immovendu",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.immo-vendu.fr/honoraires/",
+   "utc": "2026-11-17T10:51:39+00:00",
+   "http": 200,
+   "sha256": "cc0df895a9a5fa22e19bdc49bafe40a9426c2965e7d84e7894bd792f3accae8c",
+   "bytes": 122054,
+   "status": "lu",
+   "text_truncated": true
+  },
+  {
+   "agence": "john-royce-real-estate",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème trouvé mais illisible par notre outil : 20 sur 100 (valeur fixe)",
+     "points": "20",
+     "max": "100",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://john-royce.com/en/legals/fees",
+   "utc": "2026-11-17T10:51:41+00:00",
+   "http": 200,
+   "sha256": "61993db20fcac1cddc0b30632c95379ffd2335ba03a7551cd35adb47e8ce8b45",
+   "bytes": 10362,
+   "status": "lu",
+   "text_truncated": false
+  },
+  {
+   "agence": "laforet-nice-madeleine",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://laforetbusiness.laforet-intranet.com/segments/immo/catalog/images/manufacturers_bareme/352420.pdf",
+   "utc": "2026-11-17T10:51:42+00:00",
+   "status": "pdf_non_lu"
+  },
+  {
+   "agence": "laforet-nice-port",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://laforetbusiness.laforet-intranet.com/segments/immo/catalog/images/manufacturers_bareme/351422.pdf",
+   "utc": "2026-11-17T10:51:42+00:00",
+   "status": "pdf_non_lu"
+  },
+  {
+   "agence": "lbi",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème trouvé mais illisible par notre outil : 20 sur 100 (valeur fixe)",
+     "points": "20",
+     "max": "100",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://lbi-nice.com/fr/mentions-legales/honoraires",
+   "utc": "2026-11-17T10:51:42+00:00",
+   "http": 200,
+   "sha256": "bf28261c04e6055e7e25aec1c72be15a7bdf30e50ddb05249b21e0cff6ced215",
+   "bytes": 10056,
+   "status": "lu",
+   "text_truncated": false
+  },
+  {
+   "agence": "leggett-immobilier-nice",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème trouvé mais illisible par notre outil : 20 sur 100 (valeur fixe)",
+     "points": "20",
+     "max": "100",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.leggett-immo.com/informations-legales#honoraires",
+   "utc": "2026-11-17T10:51:43+00:00",
+   "http": 200,
+   "sha256": "e50fb206eb435aa209839c9675bd44e66533dec46b82e193d39289697ab4445c",
+   "bytes": 114655,
+   "status": "lu",
+   "text_truncated": true
+  },
+  {
+   "agence": "maison-quatre",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.la-maison-quatre.com/honoraires",
+   "utc": "2026-11-17T10:51:43+00:00",
+   "http": 200,
+   "sha256": "183495a0142646316c588a5eb38e6f8a3111696124eb9c97742b7980df4f7f80",
+   "bytes": 97966,
+   "status": "lu",
+   "text_truncated": false
+  },
+  {
+   "agence": "orpi-agence-des-palais",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://static.orpi.com/files/baremes/4205.pdf",
+   "utc": "2026-11-17T10:51:44+00:00",
+   "status": "pdf_non_lu"
+  },
+  {
+   "agence": "resid-immo",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.residimmo.fr/honoraires",
+   "utc": "2026-11-17T10:51:44+00:00",
+   "http": 200,
+   "sha256": "bdfdecb58899b806b39dbd5f60126e77d8be0297785a78891574721cabf370b8",
+   "bytes": 196392,
+   "status": "lu",
+   "text_truncated": false
+  },
+  {
+   "agence": "richer-immobilier",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.richerimmobilier.com/honoraires",
+   "utc": "2026-11-17T10:51:45+00:00",
+   "http": 200,
+   "sha256": "ab1727efd4fac17ba26182a26a120cffdac30f83dc494e2202cb3ccb51520e4b",
+   "bytes": 56375,
+   "status": "lu",
+   "text_truncated": false
+  },
+  {
+   "agence": "wis-patrimoine-wis",
+   "page": "site",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "0",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://wis-groupe.com/",
+   "utc": "2026-11-17T10:51:45+00:00",
+   "http": 200,
+   "sha256": "39fdf9dae906f5e74e76758eac977429f14763b03549eb67087d83ee3cfafaa3",
+   "bytes": 119090,
+   "status": "lu",
+   "text_truncated": false
+  }
+ ]
+}
