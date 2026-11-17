@@ -1,7 +1,12 @@
-name: archivage-manuel
+name: archivage
 
-# Phase B : déclenchement manuel uniquement. L'exécution hebdomadaire programmée relève de la phase D.
+# Phase D : archivage programmé chaque semaine, plus déclenchement manuel.
+# Lundi 05:30 UTC : archivage du relevé publié par le site dans la nuit de dimanche à lundi (engagement).
+# Mardi 06:30 UTC : tirage au sort, après l'échéance fixe du mardi 06:00 UTC.
 on:
+  schedule:
+    - cron: '30 5 * * 1'
+    - cron: '30 6 * * 2'
   workflow_dispatch:
     inputs:
       recalculer:

@@ -1,7 +1,11 @@
 name: audit-ia
 
-# Phase C : déclenchement manuel. Le rythme mensuel automatique relève de la phase D.
+# Phase D : audit mensuel automatique, le premier mardi du mois à 07:30 UTC, sur le relevé tiré au sort ce mardi-là
+# (archivé le lundi, tirage à 06:30 UTC). Les autres mardis, l'exécution programmée s'arrête sans appeler d'IA.
+# Déclenchement manuel conservé (canari ou audit d'un relevé nommé).
 on:
+  schedule:
+    - cron: '30 7 * * 2'
   workflow_dispatch:
     inputs:
       mode:
@@ -27,6 +31,22 @@ jobs:
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
+      - name: Mode et relevé
+        env:
+          MODE_IN: ${{ inputs.mode }}
+          RELEVE_IN: ${{ inputs.releve }}
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            if [ "$(date -u +%-d)" -gt 7 ]; then echo "MODE=aucun" >> "$GITHUB_ENV"; echo "Pas le premier mardi du mois : aucun audit."; exit 0; fi
+            # relevé le plus récent ayant un tirage ; il doit dater de moins de 3 jours, sinon l'audit mensuel échoue visiblement
+            R=$(ls -d snapshots/*/ | while read s; do [ -f "$s/draw.json" ] && basename "$s"; done | tail -1)
+            D=$(echo "$R" | cut -c1-10)
+            LIM=$(date -u -d '3 days ago' +%F)
+            if [ -z "$R" ] || [ "$D" \< "$LIM" ]; then echo "::error::aucun relevé tiré au sort cette semaine (dernier : ${R:-aucun}) : audit mensuel impossible"; exit 1; fi
+            echo "MODE=audit" >> "$GITHUB_ENV"; echo "RELEVE=$R" >> "$GITHUB_ENV"; echo "Audit mensuel du relevé $R"
+          else
+            echo "MODE=$MODE_IN" >> "$GITHUB_ENV"; echo "RELEVE=$RELEVE_IN" >> "$GITHUB_ENV"
+          fi
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -38,17 +58,16 @@ jobs:
           AUDIT_REQUIRE_BLS: '1'
         run: python -m unittest -v
       - name: Test canari sur les vraies IA
-        if: ${{ inputs.mode == 'canari' }}
+        if: ${{ env.MODE == 'canari' }}
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python -m auditor canary
       - name: Audit complet par deux IA
-        if: ${{ inputs.mode == 'audit' }}
+        if: ${{ env.MODE == 'audit' }}
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          RELEVE: ${{ inputs.releve }}
         run: |
           case "$RELEVE" in *[!A-Za-z0-9_-]*) echo "nom de relevé invalide"; exit 1;; esac
           set +e
@@ -67,5 +86,5 @@ jobs:
           git config user.email "audit-bot@users.noreply.github.com"
           git add reports budget
           git diff --cached --quiet && { echo "rien de nouveau"; exit 0; }
-          git commit -m "Audit IA (${{ inputs.mode }}, exécution ${GITHUB_RUN_ID})"
+          git commit -m "Audit IA (${MODE}, exécution ${GITHUB_RUN_ID})"
           for i in 1 2 3; do git pull --rebase --quiet && git push && break; sleep 5; done
