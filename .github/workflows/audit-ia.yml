@@ -54,7 +54,13 @@ jobs:
           set +e
           python -m auditor run "snapshots/$RELEVE" --ia; echo "code de sortie $?"
       - name: Vérification des empreintes
-        run: for r in reports/*/; do [ -f "$r/manifest.json" ] && python -m auditor verify "$r"; done; true
+        # les rapports canari (test de bout en bout des IA) n'ont pas de manifeste : ils sont signalés, pas vérifiés
+        run: |
+          set -e
+          for r in reports/*/; do
+            case "$r" in reports/canari_*) echo "canari, sans manifeste : $r"; continue;; esac
+            python -m auditor verify "$r"
+          done
       - name: Publication dans le dépôt (aucune relecture)
         run: |
           git config user.name "nice-agencies-open-audit[bot]"
