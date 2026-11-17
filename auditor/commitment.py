@@ -22,11 +22,13 @@ WORKFLOW = '.github/workflows/archive.yml'
 
 
 def _get(url: str, raw: bool = False):
-    h = {'Accept': 'application/vnd.github+json', 'User-Agent': 'nice-agencies-open-audit'}
+    req = urllib.request.Request(url, headers={'Accept': 'application/vnd.github+json', 'User-Agent': 'nice-agencies-open-audit'})
     tok = os.environ.get('GITHUB_TOKEN') or os.environ.get('GH_TOKEN')
     if tok:
-        h['Authorization'] = f'Bearer {tok}'
-    with urllib.request.urlopen(urllib.request.Request(url, headers=h), timeout=60) as r:
+        # en-tête NON transmis lors d'une redirection : les journaux sont servis par un stockage externe qui refuse
+        # la clé GitHub (erreur 401 du 17/11/2026), et la clé ne doit pas sortir de api.github.com
+        req.add_unredirected_header('Authorization', f'Bearer {tok}')
+    with urllib.request.urlopen(req, timeout=60) as r:
         data = r.read()
     return data.decode('utf-8', 'replace') if raw else json.loads(data)
 

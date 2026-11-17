@@ -100,6 +100,28 @@ class Sampling(unittest.TestCase):
         cands, refusal = evaluate(eng, {'2026-11-15_A': 'aa' * 32, '2026-11-15_B': 'bb' * 32, '2026-11-15_Z': 'zz'}, dl)
         self.assertTrue(cands['2026-11-15_Z']['errors'])
 
+    def test_github_token_is_not_forwarded_on_redirect(self):
+        """Incident du 17/11/2026 : la clé était transmise au stockage des journaux (401) ; tirage refusé, sans dommage."""
+        import urllib.request
+        from unittest import mock
+        from auditor import commitment
+        seen = {}
+
+        class Resp:
+            def __enter__(self): return self
+            def __exit__(self, *a): return False
+            def read(self): return b'{}'
+
+        def fake_urlopen(req, timeout=0):
+            seen['transmis_en_redirection'] = dict(req.headers)     # ce que urllib recopie sur la redirection
+            seen['unredirected'] = dict(req.unredirected_hdrs)
+            return Resp()
+        with mock.patch.dict('os.environ', {'GITHUB_TOKEN': 'jeton-de-test'}), \
+                mock.patch.object(urllib.request, 'urlopen', fake_urlopen):
+            commitment._get('https://api.github.com/x')
+        self.assertIn('Authorization', seen['unredirected'])
+        self.assertNotIn('Authorization', seen['transmis_en_redirection'])
+
     def test_no_fallback_without_beacon(self):
         with self.assertRaises(ValueError):
             seed_of({'a.csv': '00'}, None)
