@@ -51,7 +51,13 @@ jobs:
             python -m auditor run "$s"; echo "code de sortie $?"
           done
       - name: Vérification des empreintes
-        run: for r in reports/*/; do python -m auditor verify "$r"; done
+        # les rapports canari (test de bout en bout des IA) n'ont pas de manifeste : ils sont signalés, pas vérifiés
+        run: |
+          set -e
+          for r in reports/*/; do
+            case "$r" in reports/canari_*) echo "canari, sans manifeste : $r"; continue;; esac
+            python -m auditor verify "$r"
+          done
       - name: Tests sur les relevés archivés (aucun test sauté accepté)
         env:
           AUDIT_REQUIRE_SNAPSHOT: '1'
