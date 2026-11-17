@@ -1,0 +1,47 @@
+{
+ "planned": {
+  "utc": "2026-11-17T06:00:00+00:00",
+  "drand_round": 34030612,
+  "rule": "premier mardi 06:00 UTC après la date du relevé"
+ },
+ "committed_snapshot": "2026-11-15_121239",
+ "candidates": {
+  "2026-11-15_121239": {
+   "errors": [],
+   "proof": {
+    "run_id": "43712655990",
+    "repository": "thomasgestioncassini/nice-agencies-open-audit",
+    "path": ".github/workflows/archive.yml",
+    "conclusion": "success",
+    "updated_at": "2026-11-15T12:13:11Z",
+    "created_at": "2026-11-15T12:12:28Z",
+    "html_url": "https://github.com/thomasgestioncassini/nice-agencies-open-audit/actions/runs/43712655990",
+    "engagement_lines": [
+     "ENGAGEMENT relevé 2026-11-15_121239 · SHA-256 du manifeste 8ab22405d1649a935d56b12c21b8cf201ac5e56bf69385b55248d4996502430a · archivé 2026-11-15T12:12:41+00:00"
+    ]
+   }
+  },
+  "2026-11-15": {
+   "errors": [
+    "aucun engagement GitHub avant l’échéance"
+   ],
+   "proof": null
+  },
+  "2026-11-15_115546": {
+   "errors": [
+    "aucun engagement GitHub avant l’échéance"
+   ],
+   "proof": null
+  }
+ },
+ "beacon": {
+  "chain": "52db9ba70e0cc0f6eaf7803dd07447a1f5477735fd3f661792ba94600c84e971",
+  "round": 34030612,
+  "randomness": "7f80302b293d860c631f9777ad1aefa7c818c6e7b8f288aaf5c823f9bae923d6",
+  "signature": "873eebd9c8093cbab02893d8199383686c658f6dc2415cadba95775d28505c0a9112b3548f568ed0b2f75a2bf26e4fa0",
+  "url": "https://api.drand.sh/52db9ba70e0cc0f6eaf7803dd07447a1f5477735fd3f661792ba94600c84e971/public/34030612",
+  "fetched_utc": "2026-11-17T09:37:58+00:00"
+ },
+ "checks_errors": [],
+ "bls_signature_verified": true
+}
