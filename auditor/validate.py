@@ -245,9 +245,17 @@ def history(prev_dir: Path, data_dir: Path, publisher: list[str]) -> list[dict]:
                        sum(changed_cls.values()), per_agency=dict(changed_cls), fields=dict(kinds),
                        publisher_counts={p: changed_cls.get(p, 0) for p in publisher}))
     pc = {(r['agence'], r['critere']): r for r in read_csv(prev_dir / 'criteres-sites.csv')}
-    changed = [r['agence'] for r in read_csv(data_dir / 'criteres-sites.csv')
-               if (r['agence'], r['critere']) in pc and pc[(r['agence'], r['critere'])]['points'] != r['points']
-               and r.get('date_observation') and r.get('date_observation') == pc[(r['agence'], r['critere'])].get('date_observation')]
-    if changed:
-        out.append(finding('V-13c', 'majeur', 'points de critère modifiés sans nouvelle date de lecture du site', changed, len(changed)))
+    # une nouvelle lecture se reconnaît à une nouvelle date ou, pour deux lectures le même jour, à un nouvel identifiant
+    # de relecture (colonne id_lecture, publiée par le site depuis sa v5.6)
+    cases = [{'agence': r['agence'], 'critere': r['critere'], 'avant': o['points'], 'apres': r['points'],
+              'date_observation': r.get('date_observation'), 'id_lecture': r.get('id_lecture') or ''}
+             for r in read_csv(data_dir / 'criteres-sites.csv')
+             for o in [pc.get((r['agence'], r['critere']))]
+             if o and o['points'] != r['points'] and r.get('date_observation')
+             and r.get('date_observation') == o.get('date_observation')
+             and (r.get('id_lecture') or '') == (o.get('id_lecture') or '')]
+    if cases:
+        out.append(finding('V-13c', 'majeur', 'points de critère modifiés sans nouvelle date ni nouvel identifiant de lecture '
+                           'du site', [c['agence'] for c in cases], len(cases), cases=cases,
+                           publisher_counts={p: sum(c['agence'] == p for c in cases) for p in publisher}))
     return out
