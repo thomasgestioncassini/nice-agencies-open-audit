@@ -65,6 +65,9 @@ Limite connue (V-10b) : la date de lancement d'enseigne n'est relevée que pour 
 | B-8 (premier audit) · Erreurs de périmètre | Règle de périmètre fixée et appliquée (v5.3) |
 | B-1 (second audit) · 70 points d'honoraires de Gestion Cassini | Voir priorité 1 : points maintenus, barème en images puis republié en texte |
 | B-4 (second audit) · Redistribution de la régularité manquante (I-6) | Pas de changement. Règle décrite dans le texte depuis la v5.1 ; l'IA A conteste le constat. Son effet reste publié (variante I-6) |
+| B-4 (audit final) · Écarts entre le texte et le code (359 notes, 282 rangs) | Pas de changement. Ces chiffres mesurent l'effet des règles par rapport au texte INITIAL de la méthode ; le texte actuel les décrit toutes (statut « texte : règles décrites = oui »). L'IA A le conteste pour cette raison. Les écarts passés restent publiés |
+| B-6 (audit final) · Biais liés au volume d'avis, aux réseaux et aux outils numériques | Pas de décision à ce jour. Écarts descriptifs exacts (+24,7, +12,9, +15,4 points), non ajustés ; l'IA A conteste leur lecture causale. Constat ouvert |
+| B-8 (audit final) · Payeur de Gestion Cassini 0/30 pour la phrase notée 30/30 chez ImmoVendu | Voir priorité 1 : écart dû à la date de lecture (12/11 contre republication du 17/11) ; l'éditeur n'utilise pas la relecture sur demande pour sa propre agence. Sur « barème complet », l'IA A juge qu'un taux unique avec minimum couvre tous les prix |
 
 ## Autres constats confirmés par les deux IA
 
