@@ -217,6 +217,19 @@ def cmd_run(args) -> int:
                                 bls_signature_verified_at_draw=draw.get('bls_signature_verified'))
         reg_none = [s for s, r in (res or {}).get('agencies', {}).items() if r['detail']['avis']['regularity'] is None]
         st = statuses(cmp_, val, textc)
+        from .dedupcheck import check as dedup_check
+        try:
+            dedup = dedup_check(data)
+        except Exception as e:                # noqa: BLE001
+            dedup = {'status': 'echec', 'error': f'{type(e).__name__}: {e}'}
+        st['dedoublonnage'] = {'conforme': 'conforme', 'ecarts': 'divergences'}.get(dedup['status'], dedup['status'])
+        if dedup['status'] in ('conforme', 'ecarts'):
+            bad = sorted({r['agence'] for k in ('ecarts_qualite', 'ecarts_service', 'ecarts_partage') for r in dedup[k]}
+                         | set(dedup['sans_donnees_anonymisees']))
+            val['findings'].append({'code': 'V-14', 'severity': 'majeur' if bad else 'info',
+                                    'message': 'agences dont le dédoublonnage des avis, refait par l’auditeur, diffère des '
+                                               'fichiers publiés', 'agencies': bad[:50], 'count': len(bad),
+                                    'publisher_counts': {p: int(p in bad) for p in publisher}})
         rid = f"{snap_manifest['date_releve']}_{generated.strftime('%Y%m%dT%H%M%SZ')}"
         out = ROOT / 'reports' / rid if not args.out else Path(args.out)
         out.mkdir(parents=True, exist_ok=True)
@@ -253,7 +266,7 @@ def cmd_run(args) -> int:
         'findings': findings, 'interpretations': interp, 'text_conformity': textc, 'sampling': sampling,
         'config_sha256': {p.name: F.sha256(p) for p in sorted((ROOT / 'config').glob('*.json'))},
         'previous_snapshot': rel(prev) if prev else None,
-        'ai_audit': ai, 'limits': LIMITS,
+        'ai_audit': ai, 'limits': LIMITS, 'dedup': dedup,
     }
     dump(out / 'report.json', rep)
     (out / 'report.md').write_text(markdown(rep), encoding='utf-8')

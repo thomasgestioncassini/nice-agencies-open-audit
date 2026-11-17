@@ -24,8 +24,9 @@ FILES = {
     'sources-agences.csv': '/methode/reproduction/sources-agences.csv',
     'classement-notes.txt': '/classement-notes.txt',
     'methode-details.html': '/methode/details/',
+    'calcul.zip': '/methode/code/meilleure-agence-nice-calcul.zip',   # données anonymisées (dédoublonnage, V-14)
 }
-OPTIONAL = {'sources-agences.csv'}          # export ajouté le 15/11/2026 : absent des relevés antérieurs
+OPTIONAL = {'sources-agences.csv', 'calcul.zip'}          # export ajouté le 15/11/2026 : absent des relevés antérieurs
 MAX_BYTES = 50 * 1024 * 1024                # limite de taille par fichier
 TIMEOUT = 60
 UA = 'nice-agencies-open-audit (+https://github.com/thomasgestioncassini/nice-agencies-open-audit)'
@@ -39,6 +40,9 @@ def sha256(path: Path) -> str:
     return h.hexdigest()
 
 
+BINARY = {'calcul.zip'}                     # archive ZIP : vérifiée comme ZIP, pas comme texte
+
+
 def download(url: str, dest: Path) -> dict:
     req = urllib.request.Request(url, headers={'User-Agent': UA, 'Cache-Control': 'no-cache'})
     with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
@@ -46,7 +50,11 @@ def download(url: str, dest: Path) -> dict:
         data = r.read(MAX_BYTES + 1)
     if len(data) > MAX_BYTES:
         raise ValueError(f'{url} : fichier plus grand que la limite ({MAX_BYTES} octets)')
-    data.decode('utf-8')                     # rejette un fichier qui n'est pas du texte UTF-8
+    if dest.name in BINARY:
+        if not data.startswith(b'PK'):
+            raise ValueError(f'{url} : ce n’est pas une archive ZIP')
+    else:
+        data.decode('utf-8')                 # rejette un fichier qui n'est pas du texte UTF-8
     dest.write_bytes(data)
     return {'url': url, 'http_status': status, 'bytes': len(data)}
 

@@ -11,6 +11,7 @@ TITLES = {
     'texte_historique': 'Texte de la méthode — écarts dans les versions archivées antérieures',
     'donnees_primaires': 'Vérification des données primaires',
     'biais': 'Analyse des biais',
+    'dedoublonnage': 'Dédoublonnage des avis — refait indépendamment sur les données anonymisées',
     'audit_ia': 'Audit contradictoire par deux IA',
 }
 LABELS = {
@@ -25,6 +26,7 @@ LABELS = {
     'divergences': 'DIVERGENCES — au moins une valeur recalculée diffère de la valeur publiée',
     'echec': 'ÉCHEC — le contrôle n’a pas pu être mené ; ce n’est pas une validation',
     'non_execute': 'NON EXÉCUTÉ',
+    'non_verifie': 'NON VÉRIFIÉ — données anonymisées absentes de ce relevé',
     'non_verifiees': 'NON VÉRIFIÉES — les données d’entrée (avis, pages des sites, registre) n’ont pas été recontrôlées à leur source',
     'non_evalue': 'NON ÉVALUÉ — aucune analyse de biais n’a été menée dans ce rapport',
     'partiellement_verifiees': 'PARTIELLEMENT — dates de création des sociétés comparées au registre national et barèmes '
@@ -76,6 +78,17 @@ def markdown(rep: dict) -> str:
               f"- Valeurs anormales listées dans anomalies.json : {len(c['anomalies'])}", '',
               'Le recalcul utilise les données élémentaires publiées, jamais les notes finales. Il prouve que l’arithmétique '
               'du site est conforme à ses règles ; il ne prouve pas que ces données sont exactes.']
+    dd = rep.get('dedup')
+    if dd and dd.get('status') != 'non_verifie':
+        L += ['', '## Dédoublonnage des avis (V-14)', '',
+              f"Refait par l’auditeur, avec sa propre implémentation de la règle I-13, sur le paquet de données anonymisées "
+              f"publié par le site (aucun script du paquet n’est exécuté), pour {dd['agences']} agences ayant des avis relevés "
+              f"un par un ; {dd['avis_partages_cles']} avis publiés sur les fiches de plusieurs agences.", '',
+              f"- Avis uniques retenus pour la qualité : {len(dd['ecarts_qualite'])} agence(s) en écart",
+              f"- Avis uniques retenus pour le service : {len(dd['ecarts_service'])} agence(s) en écart",
+              f"- Répartition des avis partagés entre agences : {len(dd['ecarts_partage'])} agence(s) en écart",
+              f"- Agences classées sans données anonymisées : {len(dd['sans_donnees_anonymisees'])}", '',
+              'La comparaison se fait agence par agence, en nombres : les identifiants d’avis sont salés dans le paquet.']
     L += ['', '## Contrôles de cohérence des données publiées', '']
     for f in rep['findings']:
         n = f" ({f['count']})" if f.get('count') is not None else ''

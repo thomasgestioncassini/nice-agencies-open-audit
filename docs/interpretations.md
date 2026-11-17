@@ -92,3 +92,10 @@ L'auditeur ne tranche pas et ne modifie aucune règle du classement.
 - Règle appliquée par le site : Années ÷ 20 × 100 (et non 100 × années ÷ 20) : l'ordre décide du dernier chiffre pour 2 agences dont la valeur tombe exactement sur une demi-unité d'arrondi.
 - Texte : Sans effet de fond (0,1 point d'ancienneté, soit 0,005 point de note).
 - Source : build.py : anc_points()
+
+## I-13 · Reconnaissance des doublons et des avis partagés — règle absente du texte
+
+- Règle appliquée par le site : deux avis de plateformes différentes sont un même avis s'ils comptent chacun au moins 5 mots (de plus de 2 lettres) et que leurs mots communs représentent au moins 70 % de leurs mots réunis, ou 90 % des mots du plus court ; sinon (avis sans texte), s'ils ont la même note à un demi-point près, le même prénom d'auteur, des initiales compatibles et des dates à 45 jours au plus. La copie conservée est celle d'Opinion System, puis d'Immodvisor, puis de Google. Un avis est partagé entre agences quand les 120 premiers caractères de son texte (s'il en compte au moins 60) se retrouvent sur les fiches de plusieurs agences classées.
+- Texte : le retrait des doublons et le partage des avis entre agences sont annoncés (section 3), sans dire comment un doublon est reconnu.
+- Contrôle : V-14 refait ce dédoublonnage avec l'implémentation de l'auditeur (auditor/dedupcheck.py), sur le paquet de données anonymisées publié par le site (texte et auteur remplacés par des empreintes salées), et compare les nombres agence par agence aux fichiers de reproduction.
+- Source : avis.py : same_review(), unique_reviews(), text_key() ; build.py : SHARED

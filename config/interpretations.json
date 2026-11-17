@@ -124,5 +124,14 @@
   "text_gap": "Sans effet de fond (0,1 point d'ancienneté, soit 0,005 point de note).",
   "source": "build.py : anc_points()",
   "kind": "precision"
+ },
+ {
+  "id": "I-13",
+  "title": "Reconnaissance des doublons et des avis partagés",
+  "rule": "Deux avis de plateformes différentes sont un même avis s'ils comptent chacun au moins 5 mots (de plus de 2 lettres) et que leurs mots communs représentent au moins 70 % de leurs mots réunis, ou 90 % des mots du plus court ; sinon (avis sans texte), s'ils ont la même note à un demi-point près, le même prénom d'auteur, des initiales compatibles et des dates à 45 jours au plus. La copie conservée est celle d'Opinion System, puis d'Immodvisor, puis de Google. Un avis est partagé entre agences quand les 120 premiers caractères de son texte (s'il en compte au moins 60) se retrouvent sur les fiches de plusieurs agences classées.",
+  "text_gap": "Le texte annonce le retrait des doublons et le partage des avis entre agences, sans dire comment un doublon est reconnu.",
+  "source": "avis.py : same_review(), unique_reviews(), text_key() ; build.py : SHARED",
+  "kind": "non_documente",
+  "documented_by": "au moins 70 % de mots communs"
  }
 ]
