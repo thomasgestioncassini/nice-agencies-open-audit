@@ -1,0 +1,132 @@
+{
+ "slot": "B",
+ "provider": "google",
+ "model_requested": "gemini-4-hydrogen",
+ "purpose": "confrontation",
+ "mandate_sha256": "82e0fec40442f9e2ab530af39492ad0a83e777c1e424867598daa9a65e8089c8",
+ "input_sha256": "f4851682cb05c892e0f78ea80ad9f383483741308ed3ff1cba410c4b77e5dfb7",
+ "input_chars": 64388,
+ "estimate_usd": 0.4835,
+ "model": "gemini-4-hydrogen",
+ "tokens_in": 21591,
+ "tokens_out": 9586,
+ "finish_reason": "STOP · identifiant de réponse 4Eb8aoeVD4HS_uMP65XtuA8",
+ "usd": 0.1043,
+ "status": "ok",
+ "errors": [],
+ "output": {
+  "positions": [
+   {
+    "id": "A-1",
+    "position": "confirme",
+    "justification": "Verifie dans classement.editeur (SARL GESTION CASSINI), classement.agences_editeur (gestion-cassini et immovendu), agences_editeur (rangs 131 et 1) et V-10.groups.400877866. La distinction entre existence d’un conflit d’interets et preuve de manipulation est conforme aux donnees (rang 131 de Gestion Cassini, absence d’information sur la gouvernance editoriale)."
+   },
+   {
+    "id": "A-2",
+    "position": "confirme",
+    "justification": "Verifie par resultats_deterministes.statuts.donnees_primaires (non_verifiees), echantillon (null), I-8, I-9 et tests_biais.not_testable. Aucun avis brut ou etiquette de reference n’etant fourni, la validite des classifications primaires est effectivement non verifiable."
+   },
+   {
+    "id": "A-3",
+    "position": "confirme",
+    "justification": "Verifie dans baremes_relus pour gestion-cassini (text_truncated: false, points 30/30, 20/20, 0/30 et 20/20, pilier hono a 70,0). Le texte extrait ne contient que la mention « TVA incluse au taux de 20 % » sans bareme chiffre ni payeur. Les 50 points de publication et de completude representent bien 8,50 points de note finale (50 x 17 %), sous reserve d’un document lie ou d’une image non restituee et du decalage de date entre le 12 et le 17 novembre."
+   },
+   {
+    "id": "A-4",
+    "position": "confirme",
+    "justification": "Verifie par immovendu.sources (date_creation_societe 1995-05-02, enseigne_depuis 2024, anc 100,0), tests_biais.publisher_specific.anciennete_depuis_enseigne (95,81 rang 1 contre 91,52 rang 3, soit 4,29 points d’ecart), V-10b (1 seule date d’enseigne relevee sur 555) et V-10 (43 groupes partageant un SIREN)."
+   },
+   {
+    "id": "A-5",
+    "position": "confirme",
+    "justification": "Verifie par le controle V-13c (count: 38 sur 555 agences, soit 6,85 %, incluant immovendu, agence-winter-immobilier, laforet-nice-port et votre-agence-immo). Le paquet ne precise ni la nature ni le sens des points modifies."
+   },
+   {
+    "id": "A-6",
+    "position": "confirme",
+    "justification": "Verifie dans resultats_deterministes.statuts (texte_documentation: complete, texte_coherence: aucune_contradiction_repertoriee, texte_historique: ecarts_anterieurs) face aux regles I-4 et I-7 marquees kind: contradiction mais pourvues d’un champ documented_by. Les chiffres de effet_des_regles_vs_texte_initial.ensemble (368 notes, 283 rangs soit 50,99 %, deplacement maximal 37, top 10 inchange, Gestion Cassini 131 vers 130) sont exacts."
+   },
+   {
+    "id": "A-7",
+    "position": "confirme",
+    "justification": "Verifie par I-6 (redistribution des 15 % de regularite vers qualite et volume) et effet_des_regles_vs_texte_initial.I-6 (21 notes et 237 rangs changes soit 42,70 %, deplacement maximal 37, Gestion Cassini 131 en production contre 129 en variante)."
+   },
+   {
+    "id": "A-8",
+    "position": "confirme",
+    "justification": "Verifie par V-9 (526 agences sur 528, soit 99,62 %), methode.nombre_criteres (3+2+4+7+6+1 = 23) et le champ regles_valeurs_absentes (criteres_non_applicables:1) des deux agences de l’editeur."
+   },
+   {
+    "id": "A-9",
+    "position": "confirme",
+    "justification": "Verifie par V-4b (count: 19, counted: 9, 10 agences concurrentes listees, echelle d’Opinion System a verifier a la source). La prudence sur l’absence de preuve d’erreur d’echelle avant verification a la source est justifiee."
+   },
+   {
+    "id": "A-10",
+    "position": "confirme",
+    "justification": "Verifie par V-6 (834 doublons declares, textes absents des exports, Gestion Cassini 0, ImmoVendu 21) et V-7 (186 signalements incluant les deux agences de l’editeur)."
+   },
+   {
+    "id": "A-11",
+    "position": "confirme",
+    "justification": "Verifie dans baremes_relus pour immovendu : mention « ImmoVendu by SAS GESTION CASSINI » contre SARL dans classement.editeur, RCS n°400 877 688 contre SIREN 400877866 et TVA FR 62 400 877 866, et carte professionnelle valable jusqu’au 16/06/2025 pour un releve du 17/11/2026 alors que le pilier conf vaut 100,0."
+   },
+   {
+    "id": "A-12",
+    "position": "confirme",
+    "justification": "Verifie dans tests_biais.groups : grand_volume_avis (note moyenne 72,47, avis 81,7) contre petit_volume_avis (48,08 et 50,4), soit 24,39 points d’ecart total et (81,7 - 50,4) x 43 % = 13,46 points sur le pilier Avis, tous les autres piliers etant aussi superieurs dans le groupe a grand volume."
+   },
+   {
+    "id": "A-13",
+    "position": "confirme",
+    "justification": "Verifie sur les 12 scenarios de variation de poids (438 a 513 rangs changes, ImmoVendu toujours rang 1, Gestion Cassini entre 127 et 137) et le scenario sans_anciennete (547 rangs changes, max 50, 7 agences du top 10 conservees, Gestion Cassini 131 vers 152, ImmoVendu 1 vers 2)."
+   },
+   {
+    "id": "A-14",
+    "position": "confirme",
+    "justification": "Verifie par tests_biais.groups.voisines_editeur.n (0) malgre sa definition dans groups_definition, ainsi que editeur (n=2, 85,16) contre toutes (n=555, 61,12), soit 24,04 points d’ecart."
+   },
+   {
+    "id": "A-15",
+    "position": "confirme",
+    "justification": "Verifie par V-10d (15 agences sur 555 soit 2,70 %, valeur neutre 50), methode.poids.anc (5 %, soit 2,50 points de note finale) et les effectifs de societe_moins_10_ans (166) et societe_10_ans_et_plus (374), la somme faisant 555. Les deux agences de l’editeur ont bien une date connue."
+   },
+   {
+    "id": "A-16",
+    "position": "confirme",
+    "justification": "Verifie par I-1 (poids fixe 0,5 sans profil ni date), I-2 (moyenne simple des moyennes d’agences arrondie au millieme), recalcul.m_ref (4,453) et la presence simultanee de kind: non_documente et d’un champ documented_by dans I-1 et I-2."
+   },
+   {
+    "id": "A-17",
+    "position": "confirme",
+    "justification": "Verifie par I-7 (362 notes, 79 rangs, max 4, top 10 a 9/10), I-11 (0 note, 4 rangs, max 1) et I-12 (0,1 point d’anciennete soit 0,005 point de note). Les rangs de Gestion Cassini (131) et ImmoVendu (1) restent inchanges dans les variantes I-7 et I-11."
+   },
+   {
+    "id": "A-18",
+    "position": "confirme",
+    "justification": "Verifie dans registre_entreprises.rows (statut conforme, date_publiee = date_registre = 1995-05-02 pour les deux agences, SIREN 400877866, counts.conforme: 2) et V-10c (count: 0). La distinction entre date de creation de la societe et lancement de l’enseigne (2024) est exacte."
+   },
+   {
+    "id": "A-19",
+    "position": "confirme",
+    "justification": "Verifie dans baremes_relus pour immovendu : taux TTC explicites (6 % et 10 %, minimums 6 500 euros et 3 000 euros TTC, TVA 20 %), mention explicite du payeur (« VENDEUR ou ACQUEREUR en fonction du mandat de vente ») et couverture des categories de vente affichees. Les limites liees a la troncature du texte et a l’ecart de date (12/11 contre 17/11) sont correctement signalees."
+   },
+   {
+    "id": "A-20",
+    "position": "confirme",
+    "justification": "Calculs exacts : pour Gestion Cassini, 76,7x0,43 + 69,6x0,16 + 70x0,17 + 50x0,11 + 100x0,08 + 100x0,05 = 74,517 arrondi a 74,52 ; pour ImmoVendu, 94,6x0,43 + 88,3x0,16 + 100x0,17 + 100x0,11 + 100x0,08 + 100x0,05 = 95,806 arrondi a 95,81. Conforme a recalcul (555 notes conformes) et au test conf_plus20 (73,99 pour Gestion Cassini)."
+   },
+   {
+    "id": "A-21",
+    "position": "confirme",
+    "justification": "Verifie par V-12 (534 plateformes sans anomalie au seuil de 10 % ou 2 avis) et V-12a (11 plateformes, dont 10 a plus ou moins 1 avis et orpi-agerim-properties-nice a 115 releves contre 126 declares, soit 8,73 % d’ecart)."
+   },
+   {
+    "id": "A-22",
+    "position": "confirme",
+    "justification": "Verifie par V-13a, V-13b et V-13d (count: 0 et publisher_counts: 0 pour gestion-cassini et immovendu dans les trois controles), avec une mention appropriee des limites liees a l’absence des donnees du releve anterieur."
+   }
+  ],
+  "commentaire": "Tous les 22 constats de l’autre auditeur sont confirmes : chaque chiffre, calcul et reference de champ concorde avec le paquet fourni, et les limites methodologiques (donnees primaires non verifiees, troncatures, decalages de dates et absence d’attribution causale non prouvee) sont rigoureusement distinguees des faits verifies. Aucune instruction suspecte n’a ete relevee dans les donnees analysees."
+ }
+}
