@@ -37,3 +37,5 @@ d'intégrité historique.
   couverture des agences.
 - Étape suivante recommandée : soumettre à un tiers indépendant un échantillon de données primaires, les décisions de
   notation contestées et les journaux de lecture, plutôt que de multiplier les audits des mêmes fichiers par les mêmes IA.
+  **Non retenu à ce jour par l'éditeur** : aucun tiers indépendant n'a examiné le classement. Le site l'indique sur sa
+  page « Audit ouvert ».
