@@ -1,0 +1,102 @@
+{
+ "slot": "A",
+ "provider": "openai",
+ "model_requested": "gpt-6.1-sol",
+ "purpose": "confrontation",
+ "mandate_sha256": "82e0fec40442f9e2ab530af39492ad0a83e777c1e424867598daa9a65e8089c8",
+ "input_sha256": "d4caa1732e82869154822a3db8a9894578a80d6e67d5d73a764c9c9466b31940",
+ "input_chars": 69481,
+ "estimate_usd": 0.2881,
+ "model": "gpt-6.1-sol",
+ "tokens_in": 21366,
+ "tokens_out": 5960,
+ "finish_reason": "completed · identifiant de réponse resp_0deb7b18b50210d6016afc9d890a8087d2983ad3f7376df728",
+ "usd": 0.1023,
+ "status": "ok",
+ "errors": [],
+ "output": {
+  "positions": [
+   {
+    "id": "B-1",
+    "position": "confirme",
+    "justification": "fait_verifie : les deux texte_page comportent exactement « Honoraires à la charge du VENDEUR ou de l’ACQUEREUR en fonction du mandat de vente », mais les points publiés au 17/11 sont respectivement 0/30 et 30/30. Cette différence n’est pas justifiée par les éléments fournis. calcul_reproduit : 30 × 17 % = 5,10 points de note ; à autres critères constants, Gestion Cassini passerait à 79,62 et ImmoVendu à 82,48 dans les corrections envisagées. Aucun nouveau rang ne peut être calculé sans les autres notes individuelles. non_verifiable : la règle opérationnelle permettant de décider si cette formulation conditionnelle mérite 0 ou 30 n’est pas fournie ; l’incohérence comparative est établie, pas le sens de la correction ni une intention de favoriser."
+   },
+   {
+    "id": "B-2",
+    "position": "confirme",
+    "justification": "fait_verifie : tests_biais.avis_non_precises indique 18 264 avis sans profil, tous comptés, sur 33 064, soit 55,2 %. Le scénario fourni fait changer 527/546 rangs, soit 96,5 %, avec une médiane de 26 places et six membres du Top 10 conservés. calcul_reproduit : Gestion Cassini gagne 68 places et 4,72 points dans le scénario d’exclusion ; ImmoVendu gagne trois places mais perd 0,08 point. L’inclusion est donc défavorable au rang des deux agences relativement à ce scénario, sans être défavorable à la note d’ImmoVendu. non_verifiable : ces chiffres ne permettent pas de déterminer combien d’avis sans profil sont réellement hors du périmètre vente/achat, ni de conclure que leur exclusion serait une meilleure règle."
+   },
+   {
+    "id": "B-3",
+    "position": "conteste",
+    "justification": "fait_verifie : les variantes regroupées dans effet_des_regles_vs_texte_initial changent bien 359 notes et 254 rangs. En revanche, le constat les présente trop catégoriquement comme des contradictions actuelles. Le paquet indique texte_documentation=complete, texte_coherence=aucune_contradiction_repertoriee et texte_historique=ecarts_anterieurs. Les champs documented_by décrivent notamment le comptage de tous les avis pour la régularité, la redistribution de ses 15 %, les arrondis et le départage tous profils confondus. Ces éléments doivent être confrontés aux anciens text_gap et text_quote, et non ignorés. I-6 distingue en outre explicitement sous-critère et pilier : l’interdiction de redistribuer un pilier ne contredit pas nécessairement cette règle. Les impacts des variantes sont fournis ; une contradiction persistante de la v5.4 n’est pas établie par le texte intégral, absent du paquet."
+   },
+   {
+    "id": "B-4",
+    "position": "confirme",
+    "justification": "fait_verifie : V-10b ne fournit une date d’enseigne que pour ImmoVendu ; V-10e et V-10f identifient son exception et une date d’ancienneté de 2024-05-01, contre 1995-05-02 pour Gestion Cassini. calcul_reproduit : remplacer anc=12,5 par 100 ajouterait 4,375 points avant arrondi, soit environ 4,38 points ; cette exception est défavorable à ImmoVendu. Attention : le scénario anciennete_depuis_enseigne aboutissant à 87,67 et au rang 11 ne mesure pas ce remplacement par la date de société. hypothese : d’autres enseignes récentes pourraient bénéficier d’une société ancienne. Leur existence et leur nombre ne sont pas établis : l’affirmation selon laquelle elles conservent effectivement cet avantage doit rester conditionnelle."
+   },
+   {
+    "id": "B-5",
+    "position": "confirme",
+    "justification": "fait_verifie : le scénario sans_anciennete change 536/546 rangs, soit 98,2 %, avec une médiane de 13 places, un maximum de 49 et sept membres du Top 10 conservés. ImmoVendu devient sixième et Gestion Cassini 151e. Les variations de poids de ±20 % changent entre 431 et 520 rangs, tout en conservant neuf ou dix membres du Top 10. Ces résultats établissent une sensibilité des rangs, particulièrement hors de leur tête. hypothese : l’explication par des notes « très resserrées » est plausible mais non démontrée sans leur distribution complète. Le caractère arbitraire des poids est également un jugement : les scénarios ne prouvent ni leur absence de justification ni une manipulation."
+   },
+   {
+    "id": "B-6",
+    "position": "conteste",
+    "justification": "calcul_reproduit : les écarts de moyenne sont exacts : 72,68−48,03=24,65 points pour les tiers de volume, 72,38−59,74=12,64 pour réseau/indépendante et 69,13−53,96=15,17 pour l’estimation en ligne. Mais groups_definition ne dit pas que le critère d’estimation est exclu du score : « non applicable : exclu » concerne la constitution des groupes. Cette lecture de B-6 est donc injustifiée. Les moyennes montrent aussi des écarts d’information et d’honoraires, pas une corrélation statistique estimée ni une explication causale. fait_verifie : les associations entre groupes existent. hypothese : elles pourraient combiner effets du barème, visibilité numérique, ressources et différences de qualité ; leur attribution à des biais structurels prononcés n’est pas isolée par ces seuls regroupements."
+   },
+   {
+    "id": "B-7",
+    "position": "confirme",
+    "justification": "fait_verifie : donnees_primaires=non_verifiees, echantillon=null et V-6 précise que les textes ne sont pas publiés. Les 834 doublons déclarés, dont 21 pour ImmoVendu et zéro pour Gestion Cassini, ne sont donc pas authentifiables à la source dans ce paquet. V-7 recense 186 discordances de multiplicité de partage sur 49 agences, dont les deux agences de l’éditeur ; ce nombre ne doit pas être présenté comme le total de tous les avis partagés. Le résultat V-14=0 apporte néanmoins un élément favorable : le contrôle de reproduction annoncé ne trouve pas de divergence avec les fichiers publiés. Cela ne remplace pas la vérification indépendante des textes et des rapprochements."
+   },
+   {
+    "id": "B-8",
+    "position": "confirme",
+    "justification": "calcul_reproduit : la moyenne des deux notes de l’éditeur est 81,05, soit 19,73 points au-dessus de la moyenne générale fournie de 61,32. fait_verifie : voisines_editeur.n=0 empêche la comparaison locale annoncée. Les désavantages relevés sont réels relativement aux scénarios considérés : exception d’ancienneté d’ImmoVendu, 0/30 de Gestion Cassini pour le payeur et effet défavorable des avis sans profil sur son rang. Ils contredisent une hypothèse de favoritisme uniforme. Limites : deux agences ne constituent pas un groupe de comparaison robuste ; la bonne moyenne ne prouve ni favoritisme ni qualité supérieure. L’incohérence du payeur reste inexpliquée, et l’absence de preuve d’architecture favorable n’est pas la preuve de son absence."
+   },
+   {
+    "id": "B-9",
+    "position": "conteste",
+    "justification": "fait_verifie : pour chacune des deux agences, le texte fourni soutient bien les points de publication du barème, d’affichage TTC et de couverture des prix par taux assortis de minima ; la troncature signalée pour ImmoVendu n’empêche pas leur examen. En revanche, les valeurs hors barème ne peuvent pas toutes être déclarées erronées avec certitude : « 0 ans » peut notamment provenir de l’extraction d’un compteur dynamique, et aucun contrat n’établit ici le montant réel de garantie d’ImmoVendu. Le « 120.00 € » est une anomalie apparente à vérifier, non une erreur de montant démontrée par une source indépendante. Enfin, le paquet ne fournit pas une règle explicite de la méthode sur l’acceptation des taux uniques : l’adéquation textuelle est soutenue, pas toute conformité possible à une grille interne absente."
+   },
+   {
+    "id": "B-10",
+    "position": "conteste",
+    "justification": "fait_verifie : les cinq entrées portent encore kind=non_documente, mais elles contiennent aussi documented_by : « compte par sa note globale » pour I-1, « moyenne simple des notes moyennes de toutes les agences » pour I-2, le périmètre des réponses relevées pour I-8, « le jour étant ignoré » pour I-10 et « au moins 70 % de mots communs » pour I-13. Le statut global annonce une documentation complète en v5.4. Il est donc incorrect d’affirmer sans réserve que ces cinq mécanismes ne figurent pas dans la méthode actuelle. non_verifiable : sans son texte intégral, tous les détails, notamment le poids 0,5, juin par défaut ou l’ensemble des seuils de rapprochement, ne peuvent pas être contrôlés. L’absence de mesure individuelle de leur effet est, elle, confirmée."
+   },
+   {
+    "id": "B-11",
+    "position": "confirme",
+    "justification": "fait_verifie : les deux lignes du registre fournies donnent le même SIREN 400877866 et la date de société 1995-05-02, conformes aux dates de société publiées. Il ne s’agit pas de deux preuves indépendantes de création d’établissements ou d’enseignes. V-10d recense quinze dates manquantes avec anc=50 ; cette valeur correspond à dix ans dans une échelle linéaire plafonnée à vingt ans. calcul_reproduit : à poids de 5 %, elle apporte 2,50 points à la note. Elle avantage conditionnellement une société réellement plus jeune que dix ans et désavantage une société plus ancienne. La moyenne anc=27,7 des jeunes sociétés observées ne démontre pas le bénéfice réel du groupe des quinze dates absentes, dont les âges sont inconnus."
+   },
+   {
+    "id": "B-12",
+    "position": "conteste",
+    "justification": "fait_verifie : V-4b signale dix agences, 19 avis sous 1/5, mais counted=9. Le titre et certaines formulations de B-12 laissent entendre que les 19 entrent dans les moyennes, alors que seuls neuf sont indiqués comme retenus. Les agences listées sont bien toutes extérieures à l’éditeur. non_verifiable : l’échelle d’Opinion System, l’exactitude de la conversion et l’effet par agence ne peuvent pas être établis ici. Il faut vérifier la source avant de qualifier ces notes d’erreurs ou de les corriger vers un minimum de 1/5."
+   },
+   {
+    "id": "B-13",
+    "position": "confirme",
+    "justification": "declaration_site : le paquet annonce une documentation actuelle complète, aucune contradiction répertoriée et des écarts antérieurs. fait_verifie : la version indique v5.4 au 17/11/2026, un calcul et des poids issus de la v5 du 14/11, 22 critères depuis la v5.3 et une description des doublons depuis la v5.4. Ces éléments soutiennent l’existence d’un historique de corrections documentaires déclaré et imposent de distinguer texte initial et texte actuel. non_verifiable : les versions intégrales et leur chronologie détaillée ne sont pas fournies ; la complétude actuelle ne peut donc pas être certifiée indépendamment, et les anciens libellés des entrées I ne suffisent pas à prouver des contradictions encore présentes."
+   },
+   {
+    "id": "B-14",
+    "position": "confirme",
+    "justification": "fait_verifie : le rapport déterministe fourni annonce 546 notes conformes, zéro divergence de note ou de rang et zéro frontière d’arrondi. calcul_reproduit : avec les piliers et les poids fournis, je retrouve 74,517, arrondi à 74,52, pour Gestion Cassini et 87,581, arrondi à 87,58, pour ImmoVendu. Pour les 544 autres agences, les entrées individuelles nécessaires à une nouvelle reproduction ne sont pas présentes ici. Les contrôles V-13a/b/d/e et V-14 sont tous à zéro selon le rapport. Cela signifie aucune anomalie détectée dans leurs périmètres, non aucune évolution possible ni aucune erreur primaire. V-12=0 admet par ailleurs une tolérance, et ne signifie pas égalité exacte de tous les comptages."
+   },
+   {
+    "id": "B-15",
+    "position": "confirme",
+    "justification": "calcul_reproduit : V-12a contient dix écarts absolus d’un avis et un écart de onze avis pour Orpi Agerim, soit 115 contre 126, environ −8,7 % du total déclaré. Ils restent compatibles avec V-12 et sa tolérance de 10 % ou deux avis. Les groupes d’estimation couvrent 519 agences, laissant 27 hors comparaison ; ceux d’activités en couvrent 474, laissant 72 hors comparaison. Limite : l’explication « probablement sans site » n’est pas établie. groups_definition précise seulement l’exclusion des valeurs non applicables pour l’estimation. Aucune répartition des motifs d’exclusion ni des erreurs éventuelles n’est fournie."
+   },
+   {
+    "id": "B-16",
+    "position": "confirme",
+    "justification": "calcul_reproduit : les différences des moyennes fournies sont bien 62,39−59,93=2,46 points pour les sociétés d’au moins dix ans et 65,34−63,81=1,53 point pour vente avec location ou gestion. Les jeunes sociétés ont un score de service supérieur de 6,8 points, mais un score d’ancienneté inférieur de 59,8 points. À poids constants, ces deux écarts représentent respectivement +1,088 et −2,99 points : le service compense donc partiellement, pas intégralement, leur désavantage d’ancienneté. Ces comparaisons sont descriptives ; le verbe « induire » ne doit pas être compris causalement. Elles ne démontrent pas l’effet propre de l’âge ou de la diversification."
+   }
+  ],
+  "commentaire": "AUDIT PROPRE — Les positions ci-dessus ne remplacent pas les constats autonomes suivants. Les vérifications portent sur le paquet fourni, sans consultation externe.\n\n1. Cohérence arithmétique — calcul_reproduit : les poids totalisent 100 % et les nombres de critères totalisent 22. Les notes des deux agences de l’éditeur sont retrouvées à partir des piliers arrondis : Gestion Cassini 74,517 → 74,52 ; ImmoVendu 87,581 → 87,58. fait_verifie : le rapport fourni annonce également 546/546 notes et tous les rangs conformes. non_verifiable : ses 544 autres recalculs ne peuvent pas être refaits ici sans leurs données individuelles. Reproductibilité et exactitude des données primaires sont deux questions distinctes.\n\n2. Classification des honoraires — fait_verifie, d’après les textes fournis : pour Gestion Cassini, Barème publié 30/30 confirmé ; Montants TTC 20/20 confirmé ; Barème complet 20/20 confirmé au sens de la couverture des prix par des taux sans borne supérieure et des minima. Même conclusion pour ImmoVendu : 30/30, 20/20 et 20/20 confirmés. Ces confirmations ne constituent pas une certification juridique ou une vérification de toutes les prestations effectivement pratiquées. Pour Payeur indiqué, Gestion Cassini 0/30 : ne_peut_juger ; ImmoVendu 30/30 : ne_peut_juger quant au nombre exact de points conforme à la règle. Les deux pages citent la même possibilité vendeur ou acquéreur selon mandat, sans désigner un payeur unique. L’application comparative est contradictoire : avec le même critère et les mêmes éléments, les 30 points d’écart exigent une justification absente. calcul_reproduit : enjeu de 5,10 points de note pour chaque correction possible, sans rang corrigé calculable ici.\n\n3. Documentation — fait_verifie : le paquet juxtapose des libellés historiques non_documente/contradiction et des champs documented_by, ainsi qu’un statut actuel complete/aucune_contradiction_repertoriee. Les effets chiffrés concernent expressément le texte initial : ensemble, 359 notes et 254 rangs changés, déplacement médian d’une place, maximum 34, dix membres du Top 10 conservés. Ils ne prouvent pas que le code actuel contredit encore la v5.4. non_verifiable : le texte intégral actuel et ses versions antérieures manquent pour trancher chaque formulation. La redistribution du sous-critère de régularité doit notamment être distinguée de celle d’un pilier entier.\n\n4. Données et classifications d’avis — fait_verifie : 18 264 avis comptés n’ont pas de profil précisé ; neuf avis retenus sont signalés sous 1/5 ; 834 doublons sont déclarés et 186 discordances de multiplicité de partage sont relevées. Ces dernières ne constituent pas 186 erreurs de dédoublonnage démontrées. Les textes nécessaires à leur contrôle ne sont pas fournis. Les onze écarts de comptage Google restent sous le seuil du contrôle V-12. Aucune agence de l’éditeur n’est concernée par les notes sous 1/5, tandis que les deux sont concernées par V-7. Les mêmes exigences de preuve doivent être appliquées aux concurrentes et à l’éditeur.\n\n5. Valeurs manquantes — fait_verifie : aucun avis sans profil n’est exclu pour ce seul motif ; leur exclusion contrefactuelle change 527 rangs. Cela établit une dépendance importante aux avis de profil inconnu, sans établir leur invalidité. Quinze sociétés ont une ancienneté imputée à 50. calcul_reproduit : cette imputation contribue pour 2,50 points à leur note, et peut différer de leur contribution réelle de jusqu’à 2,50 points dans chaque sens sur une échelle 0–100. Pour la régularité non relevée individuellement, le rapport décrit une redistribution de 15 % du pilier Avis vers qualité et volume ; la variante neutre change 21 notes et 211 rangs, maximum 34. Les avis de plateformes non relevées individuellement utilisent, selon les règles fournies, une note globale et un poids temporel fixe de 0,5 : leurs profils et leurs dates restent inconnus.\n\n6. Ancienneté et registre — fait_verifie : les deux dates de société publiées, 1995-05-02, concordent avec les lignes de registre fournies. L’ancienneté notée d’ImmoVendu repose toutefois sur l’exception déclarée 2024-05-01, non sur une discordance du registre. calcul_reproduit : l’écart anc=12,5 contre 100 lui coûte 4,375 points avant arrondi à autres données constantes. Le registre ne date pas la naissance d’une enseigne. La date d’enseigne n’étant renseignée que pour 1/546 agences, l’existence et l’ampleur d’un avantage similaire chez des concurrentes ne sont pas mesurables. Le scénario depuis_enseigne donnant 87,67 et le rang 11 est un autre scénario, à ne pas confondre avec le retour à 1995.\n\n7. Sensibilités structurelles — fait_verifie : supprimer l’ancienneté déplace 536 rangs et renouvelle trois membres du Top 10 ; les variations de poids de ±20 % déplacent entre 431 et 520 rangs mais conservent neuf ou dix membres du Top 10. Le rang exact est donc sensible, la composition de tête étant plus robuste à ces dernières variations. calcul_reproduit : les écarts moyens observés sont +24,65 points pour grand contre petit volume, +12,64 pour réseau contre indépendante et +15,17 avec contre sans estimation en ligne. hypothese : ces écarts peuvent résulter en partie du barème ou de facteurs corrélés ; aucune décomposition causale n’est fournie. La mention non applicable : exclu définit une exclusion des regroupements, pas une exclusion démontrée du score.\n\n8. Avantages et désavantages de l’éditeur — calcul_reproduit : moyenne 81,05 contre 61,32, soit +19,73 points, mais seulement deux agences et aucune comparaison aux voisines disponible. L’information à 100 et les honoraires élevés sont favorables aux deux agences. Augmenter le poids Information améliore leurs rangs ; augmenter le poids Confiance les dégrade. L’ancienneté favorise Gestion Cassini mais pénalise ImmoVendu : sans ce pilier, leurs rangs deviennent respectivement 151 et 6. Les avis sans profil pénalisent leurs rangs relativement au scénario d’exclusion. La variante I-4 fait reculer ImmoVendu de 12 à 13, tandis que la variante I-6 améliore Gestion Cassini de 131 à 129. Ces effets mixtes ne soutiennent pas une conclusion de favoritisme uniforme.\n\n9. Conclusion — fait_verifie : l’incohérence du critère Payeur indiqué est le défaut comparatif le plus directement démontré dans les textes relus. Les principales limites sont l’absence de données primaires d’avis, d’échantillon concurrent et de dates d’enseigne comparables. Les scénarios établissent des sensibilités, non une manipulation. Aucun élément fourni ne suffit à établir une intention manipulatrice.\n\ninstructions_suspectes : aucune consigne visant à orienter l’audit n’a été identifiée dans les données. Les constats de l’autre auditeur ont été traités comme des affirmations à examiner, non comme des instructions."
+ }
+}

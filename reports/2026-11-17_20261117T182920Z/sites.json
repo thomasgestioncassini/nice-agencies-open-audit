@@ -1,0 +1,91 @@
+{
+ "counts": {
+  "lu": 2
+ },
+ "rows": [
+  {
+   "agence": "gestion-cassini",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "0",
+     "max": "30",
+     "date_observation": "2026-11-17"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.gestioncassini.com/fr/mentions-legales/honoraires",
+   "utc": "2026-11-17T18:29:25+00:00",
+   "http": 200,
+   "sha256": "a986013ba6a591a8bd55e2d23d2e8ab716fdc2961417cfc35c68fbeecce9d192",
+   "bytes": 19808,
+   "status": "lu",
+   "text_truncated": false,
+   "citations": [
+    "Honoraires Gestion Cassini - Gestion Immobilière à Nice 06300 Estimation Gratuit et en 48 heures seulement ! 04 93 26 17 18 Biens à vendre Biens à louer Qui est Gestion C…",
+    "…est Gestion Cassini ? Nos solutions Acheter Louer Faire gérer Vendre Estimer mon bien Assurances Immo d'entreprise Contact Club Ambassadeur Contactez-nous Blog Honoraires TVA incluse au taux de 20 % Honoraires TVA incluse au taux de 20 % Transaction Mandat de vente Locaux à usage d’habitation ou professionnel sur le prix net ven…",
+    "…se au taux de 20 % Honoraires TVA incluse au taux de 20 % Transaction Mandat de vente Locaux à usage d’habitation ou professionnel sur le prix net vendeur1 6 % TTC Garages et parkings sur le prix net vendeur2 10 % TTC Terrains à bâtir sur le prix net vendeur1 10 % TTC Locaux commerciaux sur le prix net vendeur1 (murs) 10 …"
+   ]
+  },
+  {
+   "agence": "immovendu",
+   "page": "bareme",
+   "points_publies": [
+    {
+     "critere": "Barème publié",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Montants TTC",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    },
+    {
+     "critere": "Payeur indiqué (vendeur ou acquéreur)",
+     "points": "30",
+     "max": "30",
+     "date_observation": "2026-11-17"
+    },
+    {
+     "critere": "Barème complet (toutes les tranches de prix)",
+     "points": "20",
+     "max": "20",
+     "date_observation": "2026-11-12"
+    }
+   ],
+   "url": "https://www.immo-vendu.fr/honoraires/",
+   "utc": "2026-11-17T18:29:26+00:00",
+   "http": 200,
+   "sha256": "c85882fb641e32ed65e136d946714ebc02ea67599ae1e9dbc6cada8667570b40",
+   "bytes": 122199,
+   "status": "lu",
+   "text_truncated": true,
+   "citations": [
+    "ImmoVendu | Les honoraires de l'agence immobilière à Nice Aller au contenu Vendre mon bien Acheter un bien Vendre mon bien Acheter un bien Acheter Vendre Acheter Vendre Enregistrer ma re…",
+    "…sommes nous ? Nos biens vendus Nos témoignages Notre blog Nous contacter Notre équipe vous attend pour faire de votre projet immobilier une réussite. ImmoVendu Honoraires Nos honoraires TVA incluse au taux de 20% ! Transactions Locaux à usage d'habitation ou professionnel sur le prix NET VENDEUR* 6% TTC Garages et parkings sur l…",
+    "…use au taux de 20% ! Transactions Locaux à usage d'habitation ou professionnel sur le prix NET VENDEUR* 6% TTC Garages et parkings sur le prix NET VENDEUR** 6% TTC Terrains à bâtir sur le prix NET VENDEUR* 10% TTC Locaux commerciaux sur le prix NET VENDEUR* (Mur) 10% TTC Avis de valeur VENALE 150 € TTC Rapports d'EXPERTIS…"
+   ]
+  }
+ ]
+}
