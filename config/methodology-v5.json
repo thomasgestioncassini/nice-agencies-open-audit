@@ -1,5 +1,5 @@
 {
-  "version": "v5.3 du 17/11/2026 (poids et calcul de la v5 du 14/11/2026 ; 22 critères depuis le retrait du critère « annonce < 30 jours »)",
+  "version": "v5.4 du 17/11/2026 (poids et calcul de la v5 du 14/11/2026 ; 22 critères depuis la v5.3 ; texte des doublons décrit en v5.4)",
   "source": "https://meilleure-agence-nice.fr/methode/details/",
   "note": "Valeurs recopiées du texte public de la méthode. Ce fichier appartient à l'auditeur : il n'est jamais lu depuis le site audité. Toute modification est un commit public.",
   "weights": {
