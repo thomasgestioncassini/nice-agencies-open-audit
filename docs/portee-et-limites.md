@@ -24,6 +24,12 @@ l'éditeur du classement, qui exploite deux agences classées (GOVERNANCE.md).
 Les arbitrages des constats contestés (docs/arbitrages-phase-c.md) sont rendus par l'éditeur. Ils ne valent pas
 validation indépendante, même lorsqu'ils sont défavorables à ses agences.
 
+## Lecture des sites par une IA
+
+Les points relevés sur les sites des agences (honoraires, mentions légales, information) sont lus par une IA du site
+audité. Deux lectures de la même page peuvent différer (docs/v13c-2026-11-17.md). L'auditeur ne refait pas ces lectures
+pour toutes les agences.
+
 ## Lacunes documentaires connues
 
 - Les journaux GitHub des exécutions 44109196708 et 44109218926 ne sont pas disponibles (erreur BlobNotFound) : ce

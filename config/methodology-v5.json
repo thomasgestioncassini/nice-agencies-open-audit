@@ -1,5 +1,5 @@
 {
-  "version": "v5.4 du 17/11/2026 (poids et calcul de la v5 du 14/11/2026 ; 22 critères depuis la v5.3 ; texte des doublons décrit en v5.4)",
+  "version": "v5.6 du 17/11/2026 (poids et calcul de la v5 du 14/11/2026 ; 22 critères depuis la v5.3 ; v5.5 : exception d’ancienneté d’ImmoVendu ; v5.6 : gel de l’éditeur)",
   "source": "https://meilleure-agence-nice.fr/methode/details/",
   "note": "Valeurs recopiées du texte public de la méthode. Ce fichier appartient à l'auditeur : il n'est jamais lu depuis le site audité. Toute modification est un commit public.",
   "weights": {

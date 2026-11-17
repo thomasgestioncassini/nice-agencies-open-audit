@@ -124,3 +124,41 @@ absence ; barème transmis par l'agence noté avec sa source au journal.
 
 `docs/portee-et-limites.md` : ce que chaque statut établit et n'établit pas ; aucun rapport n'est une certification.
 Les limites inscrites dans chaque rapport ont été mises à jour en conséquence.
+
+## Réponse aux quatre exigences de la deuxième revue ChatGPT (17/11, soir)
+
+### 1. Avantage de calendrier de l'éditeur
+
+Solution retenue par l'éditeur : gel (méthode v5.6, en ligne). Pour ses deux agences, l'état retenu est celui de la
+première lecture du 17/11, faite sur les pages d'avant ses corrections ; ses corrections ne compteront qu'à la lecture
+trimestrielle suivante. Effet : ImmoVendu 3ᵉ → 12ᵉ (87,58) ; Gestion Cassini 94ᵉ → 131ᵉ (74,52). Les états avant et
+après correction sont conservés (`mentions-final-direct-…` et `mentions-final-v3-…`). L'éditeur n'a pas retenu la
+notification des agences en défaut : elles ne sont pas prévenues ; leurs corrections éventuelles compteront, comme
+celles de l'éditeur, à la lecture trimestrielle. **Limite** : la première lecture pouvait venir du cache (2 jours au
+plus) ; elle sert ici d'image « avant correction », elle n'est pas une lecture à heure commune certifiée.
+
+### 2. Les 16 écarts V-13c
+
+`docs/v13c-2026-11-17.md` : agence, critère, valeurs, les deux lectures, cause, suite. 4 écarts étaient injustifiés
+(première lecture perdue quand la lecture en direct n'avait rien lu) : corrigés en v5.6 pour L'Immobilière du Port,
+Majestic Immobilier, Sixième Avenue Nice Port et Agence Philips Immobilier. V-13c reconnaît désormais deux lectures le
+même jour (colonne `id_lecture`) et détaille chaque cas.
+
+### 3. Procédure de relecture exceptionnelle
+
+Écrite dans la méthode (section « Relectures », v5.6) : motifs limités (règle nouvelle, erreur de l'outil) ; toutes les
+agences ; lecture en direct ; motif, date et résultat au journal ; gel de l'éditeur.
+
+### 4. Validation technique et constats renvoyés à un contrôle humain
+
+- Tests : l'exécution des 54 tests avec les deux variables obligatoires figure dans les journaux GitHub joints
+  (workflow `phase-b-recalcul`, étape des tests).
+- Constats de l'audit `2026-11-17_20261117T203716Z` renvoyés à un contrôle humain :
+
+| Constat | Traitement |
+| --- | --- |
+| B-5 · Écarts entre le code et le texte (359 notes, 261 rangs) | Pas de changement. Ces chiffres mesurent l'effet des règles par rapport au texte initial ; le texte actuel les décrit. Écarts passés publiés. L'IA A conteste |
+| B-6 · Biais selon le volume d'avis, l'estimation en ligne, le réseau | Ouvert, sans décision. Écarts descriptifs publiés, non ajustés |
+| B-11 · « Barème complet » 20/20 pour l'éditeur sans tranches de prix | Maintenu, non tranché par un tiers. Un taux unique avec minimum s'applique à tous les prix ; la même lecture vaut pour toute agence à taux unique. Reste ouvert à un avis indépendant |
+| B-14 · Registre et écart 1995 / 2024 | Traité par la v5.5 : ancienneté d'ImmoVendu depuis le dépôt de la marque |
+| B-16 · Bilan des avantages et désavantages des agences de l'éditeur | Synthèse, sans décision à prendre. Depuis la v5.6, les deux agences de l'éditeur sont 12ᵉ et 131ᵉ |
