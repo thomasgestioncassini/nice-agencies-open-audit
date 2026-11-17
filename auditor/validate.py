@@ -171,6 +171,20 @@ def validate(data_dir: Path, cfg: dict, publisher: list[str], prev_dir: Path | N
                            list(brand), len(brand), brands=brand))
         manual = [s for s, r in src.items() if r.get('source_anciennete') == 'rachat_prouve_saisie_manuelle']
         out.append(finding('V-10c', 'info', 'ancienneté saisie à la main (rachat déclaré prouvé)', manual, len(manual)))
+        exc = [s for s, r in src.items() if (r.get('source_anciennete') or '').startswith('exception_editeur')]
+        out.append(finding('V-10e', 'info', 'ancienneté fixée par une exception déclarée par l’éditeur (publiée dans la '
+                           'méthode ; à vérifier : elle doit être défavorable à l’agence concernée)', exc, len(exc),
+                           sources={s: src[s]['source_anciennete'] for s in exc}))
+        dates = {a['agence']: a.get('date_anciennete') or '' for a in ag}
+        split = {k: {s: dates.get(s) for s in v} for k, v in shared.items() if len({dates.get(s) for s in v}) > 1}
+        unexplained = {k: v for k, v in split.items()
+                       if any(src[s].get('source_anciennete') == 'registre_des_entreprises' for s in v)
+                       and not any(src[s].get('source_anciennete') != 'registre_des_entreprises' for s in v)}
+        out.append(finding('V-10f', 'majeur' if unexplained else 'info',
+                           'sociétés partagées dont les agences ont des dates d’ancienneté différentes '
+                           '(expliquées par une saisie manuelle ou une exception déclarée, sauf mention contraire)',
+                           [s for v in split.values() for s in v], len(split), groups=split,
+                           sans_explication=list(unexplained)))
         none_ = [s for s, r in src.items() if r.get('source_anciennete') == 'non_relevee']
         if none_:
             out.append(finding('V-10d', 'info', 'date de création de la société non relevée (valeur neutre 50)', none_, len(none_)))
