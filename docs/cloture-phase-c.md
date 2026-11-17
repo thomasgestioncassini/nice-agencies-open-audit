@@ -16,7 +16,7 @@ notes, ni l'absence de biais, ni l'indépendance des arbitrages.
 
 | Condition | État |
 | --- | --- |
-| 1. Encadrer V-13c : un changement d'`id_lecture` ne prouve pas une nouvelle lecture | Limite inscrite ci-dessous, dans portee-et-limites.md et dans le message du contrôle. Le renforcement technique (correspondance vérifiée entre l'identifiant et un journal horodaté) **reste à faire** ; il est proposé pour la phase D |
+| 1. Encadrer V-13c : un changement d'`id_lecture` ne prouve pas une nouvelle lecture | Limite inscrite ci-dessous, dans portee-et-limites.md et dans le message du contrôle. Renforcement fait le 17/11 au soir (site v5.7, contrôles V-15) : chaque identifiant de lecture est rapproché d'un journal des lectures et d'un registre des relectures exceptionnelles. **Limites** : le journal est produit par le site audité ; les 2 117 lectures du 17/11 y figurent sans heure ni empreinte (inscrites après coup) ; l'horodatage ne vaudra que pour les lectures futures |
 | 2. Maintenir ouverts les sept constats renvoyés à un contrôle humain (B-1, B-3, B-4, B-6, B-7, B-8, B-13 du rapport final) | Ouverts. Ils ne sont ni résolus ni réfutés, et les deux IA ne sont pas d'accord entre elles sur plusieurs d'entre eux |
 | 3. Limiter formellement la portée de la clôture | Mentions ci-dessus |
 | 4. Conserver le gel des corrections de l'éditeur jusqu'au prochain relevé trimestriel commun | En vigueur (méthode v5.6 du site). Toute levée anticipée au bénéfice d'une agence de l'éditeur exigerait une justification publiée et un contrôle indépendant |
