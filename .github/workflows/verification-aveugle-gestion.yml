@@ -1,0 +1,36 @@
+name: verification-aveugle-gestion
+
+# Vérification à l'aveugle, par l'IA B (Gemini), des avis arbitrés à la main et des avis publiés chez les deux
+# enseignes de l'éditeur (comparateur gestion locative en préparation). Déclenchement manuel uniquement.
+# Coût attendu : quelques centimes, sous le seuil d'arrêt mensuel du registre budget/.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: audit-ia
+  cancel-in-progress: false
+
+jobs:
+  verification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Lecture à l'aveugle par Gemini
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python scripts/verification_aveugle_gestion.py
+      - name: Publication dans la branche (aucune relecture)
+        run: |
+          git config user.name "nice-agencies-open-audit[bot]"
+          git config user.email "audit-bot@users.noreply.github.com"
+          git add verifications budget
+          git diff --cached --quiet && { echo "rien de nouveau"; exit 0; }
+          git commit -m "Vérification à l'aveugle gestion locative (exécution ${GITHUB_RUN_ID})"
+          for i in 1 2 3; do git pull --rebase --quiet origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && break; sleep 5; done
