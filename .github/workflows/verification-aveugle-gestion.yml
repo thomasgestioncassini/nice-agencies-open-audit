@@ -1,9 +1,13 @@
 name: verification-aveugle-gestion
 
 # Vérification à l'aveugle, par l'IA B (Gemini), des avis arbitrés à la main et des avis publiés chez les deux
-# enseignes de l'éditeur (comparateur gestion locative en préparation). Déclenchement manuel uniquement.
+# enseignes de l'éditeur (comparateur gestion locative en préparation). Déclenchée par un envoi sur sa branche dédiée
+# (entrée ou script modifiés) ou manuellement ; jamais depuis main.
 # Coût attendu : quelques centimes, sous le seuil d'arrêt mensuel du registre budget/.
 on:
+  push:
+    branches: [verification-aveugle-gestion]
+    paths: ['verifications/gestion-locative-G1.2/entree.json', 'scripts/verification_aveugle_gestion.py', '.github/workflows/verification-aveugle-gestion.yml']
   workflow_dispatch:
 
 permissions:
