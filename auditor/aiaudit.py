@@ -49,7 +49,33 @@ def build_package(ctx: dict, max_site_text: int = 6000) -> dict:
                            **({'texte_page': r['text'][:max_site_text]} if r.get('text') else {})}
                           for r in ctx['sites']['rows']],
         'echantillon': ctx['sampling'],
+        **({'comparateur_gestion': gestion_section(ctx)} if ctx.get('gestion') else {}),
     }
+
+
+def gestion_section(ctx: dict) -> dict:
+    """Comparateur gestion locative (méthode G1.2) : résultats publiés et recalcul déterministe, pour la mission 8 du
+    mandat. Agences évaluées en entier, agences peu évaluées les mieux placées, et l'agence de l'éditeur."""
+    from .gestion import _csv
+    d = Path(ctx['data_dir'])
+    ag = _csv(d / 'gestion-agences.csv')
+    params = json.loads((d / 'gestion-parametres.json').read_text(encoding='utf-8'))
+    g = ctx['gestion']
+    keep = lambda a: {k: a[k] for k in ('nom', 'editeur', 'groupe_publie', 'rang_publie', 'rang_indicatif_publie', 'note_publiee',
+                                        'avis', 'service', 'transparence', 'mentions_legales', 'information', 'anciennete',
+                                        'avis_comptes_publies', 'semestres_actifs_publies')}
+    ev = sorted((a for a in ag if a['groupe_publie'] == 'évaluée'), key=lambda a: int(a['rang_publie']))
+    pe = sorted((a for a in ag if a['groupe_publie'] == 'peu évaluée'), key=lambda a: int(a['rang_indicatif_publie']))
+    return {'site': 'https://meilleure-agence-nice.fr/gestion-locative-nice/',
+            'methode': {'version': params.get('version_methode'), 'poids': params.get('poids'),
+                        'texte_public': 'https://meilleure-agence-nice.fr/methode/gestion-locative/',
+                        'seuils_groupe_evaluee': {'avis': params.get('evaluee_avis_min'), 'semestres': params.get('evaluee_semestres_min')}},
+            'recalcul_deterministe': {k: g.get(k) for k in ('status', 'examined', 'divergent', 'm_ref', 'm_ref_publie', 'groups')},
+            'agences_evaluees': [keep(a) for a in ev],
+            'agences_peu_evaluees_premieres': [keep(a) for a in pe[:20]],
+            'agences_editeur': [keep(a) for a in ag if a['editeur'] == 'oui'],
+            'limites': 'Qualification des avis (bailleur ou non), dédoublonnage et lecture des sites repris tels que le site les '
+                       'publie ; textes des avis non publiés.'}
 
 
 def _md_agent(name: str, res: dict) -> str:

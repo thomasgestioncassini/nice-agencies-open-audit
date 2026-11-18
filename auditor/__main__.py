@@ -267,7 +267,7 @@ def cmd_run(args) -> int:
             from . import aiaudit
             from .budget import Ledger
             models = json.loads((ROOT / 'config' / 'ai-models.json').read_text(encoding='utf-8'))
-            mandate = (ROOT / 'config' / 'mandate-v1.md').read_text(encoding='utf-8')
+            mandate = (ROOT / 'config' / 'mandate-v2.md').read_text(encoding='utf-8')
             crit = {}
             for r in read_csv(data / 'criteres-sites.csv'):
                 crit.setdefault(r['agence'], []).append({**r, 'date_observation': r.get('date_observation', '')})
@@ -276,6 +276,7 @@ def cmd_run(args) -> int:
                    'statuses': st, 'findings': val['findings'], 'interpretations': interp,
                    'calc_summary': {k: v for k, v in cmp_.items() if k in ('examined', 'notes', 'ranks_divergent', 'm_ref')},
                    'text_effects': (textc or {}).get('effects'), 'data_dir': data,
+                   'gestion': gest if gest.get('status') in ('conforme', 'divergences') else None,
                    'networks': json.loads((ROOT / 'config' / 'networks.json').read_text(encoding='utf-8'))['patterns']}
             ai = aiaudit.run(ctx, out, models, mandate, Ledger(ROOT, models), rid)
             prim = ai['primary']
@@ -352,7 +353,7 @@ def cmd_canary(args) -> int:
     from .budget import Ledger
     from .canary import run_canary
     models = json.loads((ROOT / 'config' / 'ai-models.json').read_text(encoding='utf-8'))
-    mandate = (ROOT / 'config' / 'mandate-v1.md').read_text(encoding='utf-8')
+    mandate = (ROOT / 'config' / 'mandate-v2.md').read_text(encoding='utf-8')
     out = ROOT / 'reports' / ('canari_' + dt.datetime.now(dt.timezone.utc).strftime('%Y%m%dT%H%M%SZ'))
     rep = run_canary(models, mandate, Ledger(ROOT, models), out)
     for s, r in rep['resultats'].items():

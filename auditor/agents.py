@@ -1,7 +1,7 @@
 """Deux auditeurs IA de fournisseurs différents (A : OpenAI, B : Google), sans échange avant leurs conclusions.
 
 Protections contre les injections :
-- le mandat (config/mandate-v1.md) est la seule instruction ; il vient du dépôt de l'auditeur, jamais des données ;
+- le mandat (config/mandate-v2.md ; v1 jusqu'au 18/11/2026) est la seule instruction ; il vient du dépôt de l'auditeur, jamais des données ;
 - les données sont transmises en JSON, entre balises <DONNEES_NON_FIABLES>, dans le message utilisateur ;
 - les textes qui ressemblent à des consignes sont repérés AVANT l'envoi (scan_injections) et publiés ;
 - la sortie doit respecter un schéma JSON ; elle est publiée telle quelle, jamais réécrite ;

@@ -25,6 +25,6 @@ formules publiées ; elle ne prouve pas que ces données sont exactes.
 
 ## Limites
 
-- L'audit mensuel par deux IA (`audit-ia.yml`) porte sur le classement vente seulement.
+- L'audit mensuel par deux IA (`audit-ia.yml`) porte aussi sur le comparateur depuis le 18/11/2026 (accord de l'éditeur) : mandat v2 (`config/mandate-v2.md`, mission 8), section « comparateur_gestion » du paquet (résultats publiés, recalcul déterministe, agences évaluées, premières agences peu évaluées, agence de l'éditeur). Surcoût estimé : environ 15 000 caractères de plus par appel.
 - La méthode G1.2 a été relue par ChatGPT (dossiers v2 à v11, verdict favorable du 18/11/2026) ; aucune vérification
   humaine indépendante n'a été faite (décision de l'éditeur). Le dispositif reste administré par l'éditeur.
