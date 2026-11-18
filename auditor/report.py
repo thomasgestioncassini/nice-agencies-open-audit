@@ -13,6 +13,7 @@ TITLES = {
     'biais': 'Analyse des biais',
     'dedoublonnage': 'Dédoublonnage des avis — refait indépendamment sur les données anonymisées',
     'audit_ia': 'Audit contradictoire par deux IA',
+    'calculs_gestion': 'Comparateur gestion locative (G1.2) — reproduction des notes, groupes et ordre publiés',
 }
 LABELS = {
     'conforme': 'CONFORME',
@@ -67,6 +68,18 @@ def markdown(rep: dict) -> str:
           'exactes à leur source : si des données étaient falsifiées de façon cohérente avant leur export, le recalcul '
           'resterait conforme. Seuls les contrôles à la source (phase C) et la comparaison entre relevés (V-13) peuvent '
           'le révéler.']
+    g = rep.get('gestion')
+    if g and g.get('status') in ('conforme', 'divergences'):
+        L += ['', '## Comparateur gestion locative (méthode G1.2)', '',
+              f"- Agences examinées : {g['examined']} ({', '.join(f'{k} : {v}' for k, v in g['groups'].items())})",
+              f"- Agences dont une valeur publiée diffère du recalcul : {len(g['divergent'])}",
+              f"- Moyenne de référence recalculée : {g['m_ref']} (publiée : {g['m_ref_publie']})", '',
+              'Recalcul fait par auditor/gestion.py à partir du texte public de la méthode G1.2 et des fichiers publiés '
+              '(/methode/gestion-locative/reproduction/). La qualification des avis (bailleur ou non, niveau de preuve), '
+              'le dédoublonnage et la lecture des sites sont repris tels quels : ils ne sont pas refaits. Détail : '
+              'gestion-calculations.csv.']
+    elif g:
+        L += ['', '## Comparateur gestion locative (méthode G1.2)', '', f"- Non recalculé : {g.get('reason') or g.get('error')}"]
     c = rep.get('calculations')
     if c:
         L += ['', '## Exactitude des calculs', '',

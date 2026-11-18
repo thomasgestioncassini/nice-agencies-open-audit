@@ -1,0 +1,24 @@
+{
+  "version": "G1.2 du 18/11/2026 (comparateur gestion locative)",
+  "source": "https://meilleure-agence-nice.fr/methode/gestion-locative/ (rubrique « Formules »)",
+  "note": "Valeurs recopiées du texte public de la méthode G1.2. Ce fichier appartient à l'auditeur : il n'est jamais lu depuis le site audité. Toute modification est un commit public.",
+  "weights": {"avis": 43, "serv": 16, "hono": 17, "conf": 11, "info": 8, "anc": 5},
+  "reviews": {
+    "quality_share": 0.70, "volume_share": 0.15, "regularity_share": 0.15,
+    "smoothing_fictitious_reviews": 15,
+    "half_life_months": 60,
+    "month_days": 30.44,
+    "undated_review_weight": 0.5,
+    "volume_cap": 200,
+    "semesters": 6,
+    "semester_months": 6,
+    "regularity_min_denominator": 2,
+    "no_review_value": 50
+  },
+  "service": {"response_share": 0.40, "problems_share": 0.60, "no_negative_value": 75, "min_texts": 10,
+              "problems_zero_at_share": 0.25, "no_review_value": 50},
+  "groups": {"evaluee_min_reviews": 15, "evaluee_min_semesters": 3},
+  "neutral_value": 50,
+  "seniority_full_years": 20,
+  "distinction_threshold": 0.5
+}

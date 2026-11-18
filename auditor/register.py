@@ -27,6 +27,9 @@ def entry(d: Path, attested: dict) -> dict:
         e.update(releve=(r.get('snapshot') or '').split('/')[-1], genere_utc=r.get('generated_utc'),
                  methode=(r.get('method_version') or '').split(' (')[0], calculs=st.get('calculs_reproduction'),
                  dedoublonnage=st.get('dedoublonnage'), audit_ia=st.get('audit_ia'), erreur=bool(r.get('error')))
+        if st.get('calculs_gestion'):
+            e['calculs_gestion'] = st['calculs_gestion']
+            e['methode_gestion'] = ((r.get('gestion') or {}).get('method_version') or '').split(' (')[0] or None
         if (d / 'agent-a.json').exists() or (d / 'agent-b.json').exists() or st.get('audit_ia') not in (None, 'non_execute'):
             e['type'] = 'audit des deux IA'
     return e
@@ -43,11 +46,12 @@ def build(root: Path) -> list[dict]:
          'certification du classement (docs/portee-et-limites.md).', '',
          f'{len(rows)} rapports, dont {sum(r["type"] == "audit des deux IA" for r in rows)} audits des deux IA et '
          f'{sum(bool(r.get("signature")) for r in rows)} avec attestation Sigstore.', '',
-         '| Rapport | Type | Relevé | Méthode | Calculs | Doublons | Audit IA | Attestation |', '|---|---|---|---|---|---|---|---|']
+         '| Rapport | Type | Relevé | Méthode | Calculs | Doublons | Gestion locative | Audit IA | Attestation |',
+         '|---|---|---|---|---|---|---|---|---|']
     f = lambda v: LABEL.get(v, v or '—')
     for r in reversed(rows):
         L.append(f"| [{r['rapport']}](reports/{r['rapport']}/) | {r['type']} | {r.get('releve') or '—'} | {r.get('methode') or '—'} | "
-                 f"{f(r.get('calculs'))} | {f(r.get('dedoublonnage'))} | {f(r.get('audit_ia'))} | "
+                 f"{f(r.get('calculs'))} | {f(r.get('dedoublonnage'))} | {f(r.get('calculs_gestion'))} | {f(r.get('audit_ia'))} | "
                  f"{'exécution ' + str(r['signature']) if r.get('signature') else '—'} |")
     (root / 'REGISTRE.md').write_text('\n'.join(L) + '\n', encoding='utf-8')
     return rows

@@ -249,6 +249,16 @@ def cmd_run(args) -> int:
                                     'message': 'agences dont le dédoublonnage des avis, refait par l’auditeur, diffère des '
                                                'fichiers publiés', 'agencies': bad[:50], 'count': len(bad),
                                     'publisher_counts': {p: int(p in bad) for p in publisher}})
+        # comparateur gestion locative (G1.2) : recalcul indépendant, statut distinct de celui du classement vente
+        from . import gestion as G
+        gcfg = json.loads((ROOT / 'config' / 'methodology-gestion-g12.json').read_text(encoding='utf-8'))
+        try:
+            gest = G.check(data, gcfg)
+        except Exception as e:                # noqa: BLE001 — publié comme échec
+            gest = {'status': 'echec', 'error': f'{type(e).__name__}: {e}'}
+        gest['method_version'] = gcfg['version']
+        if gest['status'] != 'non_execute':
+            st['calculs_gestion'] = gest['status']
         rid = f"{snap_manifest['date_releve']}_{generated.strftime('%Y%m%dT%H%M%SZ')}"
         out = ROOT / 'reports' / rid if not args.out else Path(args.out)
         out.mkdir(parents=True, exist_ok=True)
@@ -287,19 +297,22 @@ def cmd_run(args) -> int:
         'config_sha256': {p.name: F.sha256(p) for p in sorted((ROOT / 'config').glob('*.json'))},
         'previous_snapshot': rel(prev) if prev else None,
         'ai_audit': ai, 'limits': LIMITS, 'dedup': dedup,
+        'gestion': {k: v for k, v in gest.items() if k != 'calculations_csv'},
     }
     dump(out / 'report.json', rep)
     (out / 'report.md').write_text(markdown(rep), encoding='utf-8')
     dump(out / 'anomalies.json', cmp_['anomalies'] if cmp_ else [])
     if cmp_:
         (out / 'calculations.csv').write_text(cmp_['calculations_csv'], encoding='utf-8')
+    if gest.get('calculations_csv'):
+        (out / 'gestion-calculations.csv').write_text(gest['calculations_csv'], encoding='utf-8')
     files = {p.name: F.sha256(p) for p in sorted(out.iterdir()) if p.name != 'manifest.json'}
     dump(out / 'manifest.json', {'report_id': rid, 'outputs_sha256': files, 'snapshot': rep['snapshot'],
                                  'snapshot_manifest_sha256': F.sha256(snap / 'manifest.json'),
                                  'inputs_sha256': {n: v['sha256'] for n, v in snap_manifest['inputs'].items()},
                                  'code_version': rep['code_version'], 'python': rep['python'], 'command': rep['command']})
     print(f"{out} · " + ' · '.join(f'{k} : {v}' for k, v in st.items()))
-    return 0 if st['calculs_reproduction'] == 'conforme' else 2
+    return 0 if st['calculs_reproduction'] == 'conforme' and st.get('calculs_gestion') in (None, 'conforme') else 2
 
 
 def cmd_verify(args) -> int:

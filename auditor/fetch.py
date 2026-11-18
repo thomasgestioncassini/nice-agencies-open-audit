@@ -27,8 +27,15 @@ FILES = {
     'classement-notes.txt': '/classement-notes.txt',
     'methode-details.html': '/methode/details/',
     'calcul.zip': '/methode/code/meilleure-agence-nice-calcul.zip',   # données anonymisées (dédoublonnage, V-14)
+    # comparateur gestion locative (méthode G1.2, publié le 18/11/2026) : recalculé par auditor/gestion.py
+    'gestion-parametres.json': '/methode/gestion-locative/reproduction/parametres.json',
+    'gestion-agences.csv': '/methode/gestion-locative/reproduction/agences.csv',
+    'gestion-avis.csv': '/methode/gestion-locative/reproduction/avis.csv',
+    'gestion-criteres.csv': '/methode/gestion-locative/reproduction/criteres.csv',
+    'gestion-methode.html': '/methode/gestion-locative/',
 }
-OPTIONAL = {'sources-agences.csv', 'calcul.zip', 'lectures.csv', 'relectures-exceptionnelles.csv'}          # export ajouté le 15/11/2026 : absent des relevés antérieurs
+OPTIONAL = {'sources-agences.csv', 'calcul.zip', 'lectures.csv', 'relectures-exceptionnelles.csv',
+            'gestion-parametres.json', 'gestion-agences.csv', 'gestion-avis.csv', 'gestion-criteres.csv', 'gestion-methode.html'}          # export ajouté le 15/11/2026 : absent des relevés antérieurs
 MAX_BYTES = 50 * 1024 * 1024                # limite de taille par fichier
 TIMEOUT = 60
 UA = 'nice-agencies-open-audit (+https://github.com/thomasgestioncassini/nice-agencies-open-audit)'
