@@ -1,0 +1,835 @@
+{
+ "rapport": "verification-aveugle-gestion-20261118T114359Z",
+ "ia": "gemini-4-hydrogen",
+ "utc": "2026-11-18T11:47:04+00:00",
+ "entree": "entree.json",
+ "avis_envoyes": 82,
+ "avis_lus": 82,
+ "avis_non_lus": [],
+ "appels": [
+  {
+   "slot": "B",
+   "provider": "google",
+   "model_requested": "gemini-4-hydrogen",
+   "purpose": "verification_aveugle",
+   "mandate_sha256": "6a2847c5e65ebd36ba97ef46f0705a5f7ecfd973a6407a5963e92b95849d7939",
+   "input_sha256": "58c76fb930094807ff15d1d112d0578439f16dbb2833384a5edabc137c7fecf3",
+   "input_chars": 10534,
+   "estimate_usd": 0.4554,
+   "model": "gemini-4-hydrogen",
+   "tokens_in": 3098,
+   "tokens_out": 7549,
+   "finish_reason": "STOP · identifiant de réponse f4_9auSxJvrRjrEP0a2Z6Qo",
+   "usd": 0.0613,
+   "status": "ok",
+   "errors": [],
+   "avis_envoyes": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21
+   ],
+   "avis_lus": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21
+   ]
+  },
+  {
+   "slot": "B",
+   "provider": "google",
+   "model_requested": "gemini-4-hydrogen",
+   "purpose": "verification_aveugle",
+   "mandate_sha256": "6a2847c5e65ebd36ba97ef46f0705a5f7ecfd973a6407a5963e92b95849d7939",
+   "input_sha256": "705f5d14b5dcb9b3e7ce18bba8dde3e8a858a7794bc947fdfee5fc65c80a2649",
+   "input_chars": 10362,
+   "estimate_usd": 0.4553,
+   "model": "gemini-4-hydrogen",
+   "tokens_in": 3064,
+   "tokens_out": 7958,
+   "finish_reason": "STOP · identifiant de réponse oo_9apChMdfH-sAP6bPT8QE",
+   "usd": 0.0643,
+   "status": "ok",
+   "errors": [],
+   "avis_envoyes": [
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42
+   ],
+   "avis_lus": [
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42
+   ]
+  },
+  {
+   "slot": "B",
+   "provider": "google",
+   "model_requested": "gemini-4-hydrogen",
+   "purpose": "verification_aveugle",
+   "mandate_sha256": "6a2847c5e65ebd36ba97ef46f0705a5f7ecfd973a6407a5963e92b95849d7939",
+   "input_sha256": "893d0ef1a66ef233035d151431e5c93d72cd26b0b1562daf688a06c7920a64d8",
+   "input_chars": 9986,
+   "estimate_usd": 0.4551,
+   "model": "gemini-4-hydrogen",
+   "tokens_in": 3052,
+   "tokens_out": 14201,
+   "finish_reason": "STOP · identifiant de réponse yY_9arHbDOeJqtsP_rmZ-Ak",
+   "usd": 0.1111,
+   "status": "ok",
+   "errors": [],
+   "avis_envoyes": [
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63
+   ],
+   "avis_lus": [
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63
+   ]
+  },
+  {
+   "slot": "B",
+   "provider": "google",
+   "model_requested": "gemini-4-hydrogen",
+   "purpose": "verification_aveugle",
+   "mandate_sha256": "6a2847c5e65ebd36ba97ef46f0705a5f7ecfd973a6407a5963e92b95849d7939",
+   "input_sha256": "f06f756d7edad3e84ff4a8cb7314113564a20d794bbbb4cb4943721f5a1df440",
+   "input_chars": 8846,
+   "estimate_usd": 0.4546,
+   "model": "gemini-4-hydrogen",
+   "tokens_in": 2735,
+   "tokens_out": 12172,
+   "finish_reason": "STOP · identifiant de réponse ApD9atjhOLz5-8YP4rqm0Q4",
+   "usd": 0.0954,
+   "status": "ok",
+   "errors": [],
+   "avis_envoyes": [
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82
+   ],
+   "avis_lus": [
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82
+   ]
+  }
+ ],
+ "lectures": [
+  {
+   "n": 1,
+   "preuve": "probable",
+   "experience": "debut_gestion",
+   "prestation": "gestion_locative",
+   "motif": "Le texte évoque « la gestion locative » qui « tranquillise le propriétaire » et mentionne « une prise de fonction impeccable » sans que l'auteur dise explicitement posséder le bien."
+  },
+  {
+   "n": 2,
+   "preuve": "explicite",
+   "experience": "mise_en_location",
+   "prestation": "location",
+   "motif": "L'auteur indique « il m'a trouvé des locataires dans un temps record », ce qui correspond à une mise en location par un propriétaire."
+  },
+  {
+   "n": 3,
+   "preuve": "explicite",
+   "experience": "indetermine",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur remercie l'agence « concernant la gestion de mon bien », sans préciser la durée ni les étapes vécues."
+  },
+  {
+   "n": 4,
+   "preuve": "probable",
+   "experience": "gestion_durable",
+   "prestation": "gestion_locative",
+   "motif": "Les mentions « Ne tient pas compte des mandats », « location sans assurance » et « 4 mois d'impayés » suggèrent fortement un bailleur confronté à un suivi de gestion défaillant."
+  },
+  {
+   "n": 5,
+   "preuve": "explicite",
+   "experience": "gestion_durable",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur déclare avoir « réalisé un très bon investissement » qui « s'est avéré extrêmement fructueux » et salue « sa gestion du bien »."
+  },
+  {
+   "n": 6,
+   "preuve": "non_bailleur",
+   "experience": "mise_en_location",
+   "prestation": "location",
+   "motif": "L'auteur écrit agir « En partenariat pour la mise en location d'un bien » dans le respect « des souhaits de son client bailleur », indiquant un partenaire professionnel."
+  },
+  {
+   "n": 7,
+   "preuve": "indetermine",
+   "experience": "indetermine",
+   "prestation": "indeterminee",
+   "motif": "L'auteur écrit « J'ai un bien à Nice que je lui ai confié et je repasserai par lui lors de mon prochain achat », ce qui ne permet pas de distinguer une vente d'une gestion locative."
+  },
+  {
+   "n": 8,
+   "preuve": "non_bailleur",
+   "experience": "mise_en_location",
+   "prestation": "location",
+   "motif": "La mention « L'annonce du bien mis à la location correspondait parfaitement à la réalité » montre un candidat locataire lors des premières démarches."
+  },
+  {
+   "n": 9,
+   "preuve": "non_bailleur",
+   "experience": "mise_en_location",
+   "prestation": "location",
+   "motif": "L'auteur souhaite « avoir l'acceptation du dossier » pour « réussir à louer un appartement », ce qui décrit un locataire en recherche."
+  },
+  {
+   "n": 10,
+   "preuve": "explicite",
+   "experience": "mise_en_location",
+   "prestation": "location",
+   "motif": "L'auteur se dit satisfait de l'accompagnement « pour la mise en location de notre bien »."
+  },
+  {
+   "n": 11,
+   "preuve": "explicite",
+   "experience": "mise_en_location",
+   "prestation": "location",
+   "motif": "L'auteur indique avoir été accompagnée par la « responsable des locations dans ma recherche de locataire »."
+  },
+  {
+   "n": 12,
+   "preuve": "explicite",
+   "experience": "indetermine",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur mentionne « l'estimation locative de notre appartement » et recommande l'interlocutrice « pour la gestion locative de votre bien », sans décrire de gestion déjà vécue."
+  },
+  {
+   "n": 13,
+   "preuve": "explicite",
+   "experience": "gestion_durable",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur évoque la « gestion de la location de cet appartement » de ses parents depuis longtemps, traversant « deux successions » sans problème « depuis le début »."
+  },
+  {
+   "n": 14,
+   "preuve": "non_bailleur",
+   "experience": "gestion_durable",
+   "prestation": "syndic",
+   "motif": "L'auteur se présente comme « propriétaires depuis près de 30 années » de biens « dans différentes copropriétés gérées par M. Bertrand SINGER », relevant d'une relation de copropriétaire avec un syndic."
+  },
+  {
+   "n": 15,
+   "preuve": "probable",
+   "experience": "indetermine",
+   "prestation": "location",
+   "motif": "L'auteur indique être « Déjà client pour la gestion locative » mais évalue surtout « la recherche d'une location pour mon fils », sans détailler la gestion de son propre bien."
+  },
+  {
+   "n": 16,
+   "preuve": "explicite",
+   "experience": "debut_gestion",
+   "prestation": "gestion_locative",
+   "motif": "Après un achat, l'auteur annonce « je rempile en les désignant comme gérant pour la mise en location du bien acheté », ce qui marque une prise en gestion annoncée sans recul."
+  },
+  {
+   "n": 17,
+   "preuve": "explicite",
+   "experience": "gestion_durable",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur écrit « We have been host and client of CityA agency for 10 years » et qualifie Cécile de « reliable manager »."
+  },
+  {
+   "n": 18,
+   "preuve": "non_bailleur",
+   "experience": "indetermine",
+   "prestation": "location",
+   "motif": "L'auteur indique « j'ai appelé pour une annonce de locations », ce qui correspond à un candidat locataire n'ayant pas obtenu de rappel."
+  },
+  {
+   "n": 19,
+   "preuve": "non_bailleur",
+   "experience": "gestion_durable",
+   "prestation": "gestion_locative",
+   "motif": "Les phrases « Nous avons loué notre appartement pendant deux ans », « suivi de notre location pendant ces deux années » et « au moment de notre départ » montrent des locataires."
+  },
+  {
+   "n": 20,
+   "preuve": "explicite",
+   "experience": "indetermine",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur écrit « Ils gèrent mon bien avec sérieux et efficacité », sans précision de durée ni d'événements permettant de qualifier l'ancienneté de la gestion."
+  },
+  {
+   "n": 21,
+   "preuve": "explicite",
+   "experience": "gestion_durable",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur remercie la gestionnaire qui a trouvé « des solutions à tous les problèmes que j'ai pu rencontrer avec mon appartement » et indique l'avoir « pour gérer son appartement »."
+  },
+  {
+   "n": 22,
+   "preuve": "probable",
+   "experience": "gestion_durable",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur se présente « En tant que propriétaire » travaillant avec « BarberaGestion » où « Tout se passe parfaitement bien depuis le début » et « ils s'occupent de tout », ce qui suggère la gestion d'un bien dans la durée sans le formuler explicitement."
+  },
+  {
+   "n": 23,
+   "preuve": "explicite",
+   "experience": "indetermine",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur déclare explicitement « leur avoir confié mon bien en gestion », sans préciser depuis combien de temps ni décrire d'actions de gestion ou de mise en location."
+  },
+  {
+   "n": 24,
+   "preuve": "explicite",
+   "experience": "debut_gestion",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur indique être « devenu propriétaire grâce à eux » et ajoute qu'ils « gèrent désormais mon bien », ce qui témoigne d'une prise en gestion récente."
+  },
+  {
+   "n": 25,
+   "preuve": "explicite",
+   "experience": "gestion_durable",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur écrit que « Cette agence gère mon appartement depuis maintenant 4 ans », prouvant sa qualité de bailleur et une gestion vécue dans la durée."
+  },
+  {
+   "n": 26,
+   "preuve": "explicite",
+   "experience": "gestion_durable",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur affirme que « Mon appartement est très mal géré par cette agence » et qu'il doit « sans cesse intervenir », ce qui relève d'une gestion vécue dans la durée."
+  },
+  {
+   "n": 27,
+   "preuve": "explicite",
+   "experience": "gestion_durable",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur précise que « Notre appartement est en gestion depuis 8 ans », établissant explicitement la qualité de bailleur et une gestion durable."
+  },
+  {
+   "n": 28,
+   "preuve": "probable",
+   "experience": "gestion_durable",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur mentionne « J'ai laissé la gestion à cette agence » et salue sa « disponibilité au moindre soucis », ce qui suggère une gestion locative vécue sans mentionner explicitement son bien."
+  },
+  {
+   "n": 29,
+   "preuve": "indetermine",
+   "experience": "indetermine",
+   "prestation": "indeterminee",
+   "motif": "L'évocation de « problèmes techniques » et de « société de ménage pour les parties communes quand j ai besoin » ne permet pas de distinguer un bailleur d'un locataire ou d'un copropriétaire."
+  },
+  {
+   "n": 30,
+   "preuve": "explicite",
+   "experience": "mise_en_location",
+   "prestation": "location",
+   "motif": "L'auteur remercie l'agence de lui avoir proposé « l'appart idéal » et de « l avoir ensuite mis rapidement en location », décrivant la mise en location de son bien."
+  },
+  {
+   "n": 31,
+   "preuve": "non_bailleur",
+   "experience": "indetermine",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur reproche à l'agence des erreurs envers la CAF et écrit « Vous réalisez des erreurs dont vous tenez ensuite les locataires pour responsables... pour bien nous mettre la pression », montrant qu'il est locataire."
+  },
+  {
+   "n": 32,
+   "preuve": "indetermine",
+   "experience": "indetermine",
+   "prestation": "indeterminee",
+   "motif": "La mention « propriétaire chez eux depuis longtemps » auprès d'un « cabinet » ne précise pas s'il s'agit de gestion locative ou de syndic de copropriété."
+  },
+  {
+   "n": 33,
+   "preuve": "explicite",
+   "experience": "gestion_durable",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur évoque « Le bureau de gérance qui s'occupait de mon appartement » et indique qu'il a « toujours fait le maximum pour m'aider dans toutes les démarches », ce qui traduit une gestion dans la durée."
+  },
+  {
+   "n": 34,
+   "preuve": "indetermine",
+   "experience": "indetermine",
+   "prestation": "gestion_locative",
+   "motif": "Les critiques sur « aucun suivi pour les locations », un « appartement dans un etat pitoyable » et des « travaux » jamais faits peuvent provenir autant d'un locataire que d'un propriétaire."
+  },
+  {
+   "n": 35,
+   "preuve": "indetermine",
+   "experience": "gestion_durable",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur décrit la gestion complète avec « recherche de locataire » et « bilan de fin d'annee », mais précise qu'il s'agit de « l'appartent mis En location de mes parents » et non du sien."
+  },
+  {
+   "n": 36,
+   "preuve": "non_bailleur",
+   "experience": "indetermine",
+   "prestation": "location",
+   "motif": "L'intitulé « Installation dans un Confortable T2 » associé à « la location de notre appartement » et au fait d'avoir été « guidés dans toutes les démarches » indique un locataire qui s'installe."
+  },
+  {
+   "n": 37,
+   "preuve": "explicite",
+   "experience": "mise_en_location",
+   "prestation": "location",
+   "motif": "Le texte cite un « Appartement loué rapidement », les « Formalités d'entrée, bail et état des lieux » et un « Profil candidat locataire validé sous garantie des loyers », prouvant un bailleur en phase de mise en location."
+  },
+  {
+   "n": 38,
+   "preuve": "explicite",
+   "experience": "mise_en_location",
+   "prestation": "location",
+   "motif": "L'auteur indique « Appartement loué rapidement à un candidat solvable » et « j'ai été informée au fil des étapes », ce qui décrit explicitement la mise en location par un bailleur."
+  },
+  {
+   "n": 39,
+   "preuve": "probable",
+   "experience": "gestion_durable",
+   "prestation": "gestion_locative",
+   "motif": "La formule « En gestion dans cette agence depuis quelques années » suggère une gestion locative durable sans citer explicitement un bien appartenant à l'auteur."
+  },
+  {
+   "n": 40,
+   "preuve": "indetermine",
+   "experience": "indetermine",
+   "prestation": "gestion_locative",
+   "motif": "L'avis loue la réactivité de l'agence « à résoudre les problèmes de ses locataires », sans indiquer si l'auteur est bailleur, locataire ou tiers."
+  },
+  {
+   "n": 41,
+   "preuve": "non_bailleur",
+   "experience": "indetermine",
+   "prestation": "syndic",
+   "motif": "L'auteur écrit « Super Syndic », « je suis propriétaire » et mentionne « le conseil syndical », montrant qu'il s'exprime en tant que copropriétaire sur une prestation de syndic."
+  },
+  {
+   "n": 42,
+   "preuve": "indetermine",
+   "experience": "indetermine",
+   "prestation": "gestion_locative",
+   "motif": "L'expression « Au moindre problème dans l'appartement loué » pour déployer des professionnels ne permet pas de savoir si l'auteur est le propriétaire bailleur ou le locataire."
+  },
+  {
+   "n": 43,
+   "preuve": "non_bailleur",
+   "experience": "indetermine",
+   "prestation": "vente",
+   "motif": "L'auteur indique pouvoir leur « confier nos projets de vente et nos clefs », ce qui renvoie à un vendeur et non à un bailleur."
+  },
+  {
+   "n": 44,
+   "preuve": "explicite",
+   "experience": "gestion_durable",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur mentionne une « Expérience qui dure depuis 4 ans », le fait d'avoir « plusieurs gestionnaires de biens » et la « gestion des aléas dégâts des eaux, vacances locatives »."
+  },
+  {
+   "n": 45,
+   "preuve": "probable",
+   "experience": "indetermine",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur cite sa satisfaction avec « Paquerette du service de Gestion locative » et « Jerome du service Transaction » en évoquant le fait de « confiez vos biens en gestion ou en vente »."
+  },
+  {
+   "n": 46,
+   "preuve": "probable",
+   "experience": "indetermine",
+   "prestation": "indeterminee",
+   "motif": "L'auteur déclare avoir consulté l'agence pour « affiner mon projet locatif après l’achat de mon premier appartement », sans indiquer s'il a confié le bien ni pour quelle prestation exacte."
+  },
+  {
+   "n": 47,
+   "preuve": "probable",
+   "experience": "indetermine",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur évoque le fait de « gérer une propriété de l'étranger » grâce à « cette société », suggérant une gestion pour compte de propriétaire sans préciser la durée."
+  },
+  {
+   "n": 48,
+   "preuve": "explicite",
+   "experience": "indetermine",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur félicite l'agence pour la « Très bonne gestion de mes biens », sans mentionner d'élément sur la durée ou l'étape de gestion."
+  },
+  {
+   "n": 49,
+   "preuve": "indetermine",
+   "experience": "indetermine",
+   "prestation": "indeterminee",
+   "motif": "L'auteur relate un « Entretien pour un garage », une « remise des clés à l agence » et « 1semaine clés en mains », ce qui ne permet pas de distinguer un bailleur d'un locataire ou d'un acheteur."
+  },
+  {
+   "n": 50,
+   "preuve": "explicite",
+   "experience": "debut_gestion",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur décrit la « Remise des clés à Foncia le 11 Janvier » à une « chargée de développement en gestion locative » qui a tout anticipé « dès le premier jour » jusqu'à l'emménagement du locataire le 27 janvier."
+  },
+  {
+   "n": 51,
+   "preuve": "indetermine",
+   "experience": "indetermine",
+   "prestation": "indeterminee",
+   "motif": "L'auteur écrit douter qu'ils puissent « manage my buildings », sans permettre de distinguer une gestion locative pour un bailleur d'un syndic pour un copropriétaire."
+  },
+  {
+   "n": 52,
+   "preuve": "indetermine",
+   "experience": "indetermine",
+   "prestation": "indeterminee",
+   "motif": "L'auteur remercie « Mme Cinquanta qui suis notre appartement depuis de nombreuses années », sans préciser s'il est propriétaire bailleur ou locataire."
+  },
+  {
+   "n": 53,
+   "preuve": "non_bailleur",
+   "experience": "indetermine",
+   "prestation": "location",
+   "motif": "L'auteur explique que « Ma fille est à Nice et loue rue d’Angleterre », ce qui montre qu'il est le parent d'une locataire et non un bailleur."
+  },
+  {
+   "n": 54,
+   "preuve": "non_bailleur",
+   "experience": "indetermine",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur indique que l'interlocutrice « gère très bien les biens de mes parents », montrant que les propriétaires sont ses parents et non lui-même."
+  },
+  {
+   "n": 55,
+   "preuve": "explicite",
+   "experience": "mise_en_location",
+   "prestation": "location",
+   "motif": "L'auteur critique l'expérience « pour la mise en location de deux studios étudiants » avec « mon dossier » et conclut ne pas recommander « le service location »."
+  },
+  {
+   "n": 56,
+   "preuve": "probable",
+   "experience": "gestion_durable",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur indique faire confiance à « l’agence gestion Cassini depuis plusieurs années » et recommande d'y « confier vos biens », suggérant une gestion durable sans nommer explicitement son propre bien."
+  },
+  {
+   "n": 57,
+   "preuve": "probable",
+   "experience": "indetermine",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur salue « un suivi sérieux de la gestion du bien immobilier confié », suggérant une gestion locative sans mentionner explicitement ni la location ni la durée."
+  },
+  {
+   "n": 58,
+   "preuve": "explicite",
+   "experience": "gestion_durable",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur explique que l'agence les a aidés à trouver des achats pour « nos investissements » puis « suivi en service comme gestion », ajoutant être « libérés des embêtements de gestion »."
+  },
+  {
+   "n": 59,
+   "preuve": "indetermine",
+   "experience": "indetermine",
+   "prestation": "indeterminee",
+   "motif": "L'auteur évoque un « dégât des eaux », « une gestionnaire » et conclut par « Confier votre appartement ou louer dans cette agence », sans indiquer s'il était lui-même bailleur, locataire ou copropriétaire."
+  },
+  {
+   "n": 60,
+   "preuve": "explicite",
+   "experience": "indetermine",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur désigne son interlocutrice comme « Responsabile della gestione del mio alloggio », confirmant la gestion de son logement sans préciser de durée."
+  },
+  {
+   "n": 61,
+   "preuve": "non_bailleur",
+   "experience": "indetermine",
+   "prestation": "syndic",
+   "motif": "L'auteur critique le renouvellement de « il nuovo incaricato di turno a controllare il nostro palazzo » et la gestion des « interventi da risolvere » en mentionnant les « proprietari degli immobili », ce qui relève d'un copropriétaire face à un syndic."
+  },
+  {
+   "n": 62,
+   "preuve": "explicite",
+   "experience": "mise_en_location",
+   "prestation": "location",
+   "motif": "L'auteur loue la « Très bonne prise en charge de notre bien à louer » et le « Très bon suivi », ce qui renvoie à la mise en location de son bien."
+  },
+  {
+   "n": 63,
+   "preuve": "explicite",
+   "experience": "indetermine",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur se dit satisfaite de « la gestion de mon logement » et de l'« implication au quotidien » de sa gestionnaire, sans préciser la durée de la gestion."
+  },
+  {
+   "n": 64,
+   "preuve": "non_bailleur",
+   "experience": "indetermine",
+   "prestation": "syndic",
+   "motif": "L'auteur évoque des « charges trimestrielles », des « travaux » et des « mise en demeure rar » envoyées par « notre gestionnaire », ce qui relève d'une relation de copropriétaire avec un syndic."
+  },
+  {
+   "n": 65,
+   "preuve": "indetermine",
+   "experience": "indetermine",
+   "prestation": "indeterminee",
+   "motif": "Le texte mentionne « des dégâts des eaux dû à une entreprise qu’elle nous a envoyer » sans préciser si l'auteur est bailleur, locataire ou copropriétaire."
+  },
+  {
+   "n": 66,
+   "preuve": "explicite",
+   "experience": "mise_en_location",
+   "prestation": "location",
+   "motif": "L'auteur indique que l'agence est venue « visiter le bien et définir le prix du loyer » puis a « trouvé très rapidement le locataire »."
+  },
+  {
+   "n": 67,
+   "preuve": "indetermine",
+   "experience": "indetermine",
+   "prestation": "indeterminee",
+   "motif": "La formule « hyper réactive aux demandes des locataires » ne permet pas de savoir si l'auteur est un locataire ou un propriétaire bailleur."
+  },
+  {
+   "n": 68,
+   "preuve": "probable",
+   "experience": "indetermine",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur salue un « excellent service gestion locative pour les locaux commerciaux » et une « réponse... réactive et efficace », sans citer explicitement son bien ni la durée."
+  },
+  {
+   "n": 69,
+   "preuve": "explicite",
+   "experience": "mise_en_location",
+   "prestation": "location",
+   "motif": "L'auteur précise avoir été accompagné « de l’achat de l’appartement jusqu’à sa mise en location »."
+  },
+  {
+   "n": 70,
+   "preuve": "explicite",
+   "experience": "indetermine",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur écrit « qui gère mon bien », prouvant qu'il est bailleur en gestion locative, sans mentionner la durée ni d'actes de gestion précis."
+  },
+  {
+   "n": 71,
+   "preuve": "explicite",
+   "experience": "gestion_durable",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur fait un « Retour d’expérience sur la gestion locative puis sur la vente » en remerciant l'équipe pour « leur suivi sans faille »."
+  },
+  {
+   "n": 72,
+   "preuve": "non_bailleur",
+   "experience": "indetermine",
+   "prestation": "vente",
+   "motif": "L'auteur écrit « Mon bail de local commercial a été vendu », ce qui correspond à une cession de droit au bail par un vendeur et non à une gestion par un bailleur."
+  },
+  {
+   "n": 73,
+   "preuve": "explicite",
+   "experience": "gestion_durable",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur mentionne la « gestione del mio immobile » et salue également les « artigiani che collaborano con l'agenzia »."
+  },
+  {
+   "n": 74,
+   "preuve": "explicite",
+   "experience": "gestion_durable",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur indique que « Da molti anni Livio gestisce l'immobile di mio marito » et qu'il a « sempre risolto velocemente tutte le problematiche relative alla gestione »."
+  },
+  {
+   "n": 75,
+   "preuve": "explicite",
+   "experience": "gestion_durable",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur déclare : « Sono molti anni che ci affidiamo all'Agenzia » pour « la gestione dell'immobile »."
+  },
+  {
+   "n": 76,
+   "preuve": "probable",
+   "experience": "indetermine",
+   "prestation": "indeterminee",
+   "motif": "L'auteur évoque une expérience « durante 11 anni come proprietario / investitore », ce qui suggère un bailleur sans mentionner explicitement la location ou la gestion."
+  },
+  {
+   "n": 77,
+   "preuve": "indetermine",
+   "experience": "indetermine",
+   "prestation": "location",
+   "motif": "L'expression « pour la 3ème année consécutive pour un logement en location » et « réactive à nos demandes » ne permet pas de distinguer un locataire d'un propriétaire bailleur."
+  },
+  {
+   "n": 78,
+   "preuve": "explicite",
+   "experience": "gestion_durable",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur évoque « La recherche de locataires », « la gestion très bien » et la prise en charge « des petits travaux nécessaires et urgents dans un appartement »."
+  },
+  {
+   "n": 79,
+   "preuve": "explicite",
+   "experience": "gestion_durable",
+   "prestation": "gestion_locative",
+   "motif": "L'auteur mentionne « 25 anni di collaborazione », « La gestione degli affitti per studenti » et « la scelta degli inquilini »."
+  },
+  {
+   "n": 80,
+   "preuve": "explicite",
+   "experience": "gestion_durable",
+   "prestation": "gestion_locative",
+   "motif": "Malgré l'intitulé « VENTE STUDIO », le texte précise que l'agence a agi « comme agent gestionnaire de la location de ma propriété depuis 20 ans » ainsi que pour la vente."
+  },
+  {
+   "n": 81,
+   "preuve": "indetermine",
+   "experience": "indetermine",
+   "prestation": "vente",
+   "motif": "Le texte évoque seulement le fait que quelqu'un « s'occupe de votre bien » sans prouver le statut de l'auteur, tandis que l'intitulé « VENTE 2 Pièces » indique une vente non contredite par le texte."
+  },
+  {
+   "n": 82,
+   "preuve": "explicite",
+   "experience": "debut_gestion",
+   "prestation": "gestion_locative",
+   "motif": "Malgré l'intitulé « Achat 2 pièces », le texte précise avoir fait appel à l'agence « pour la mise en location et la gestion de ce même bien 4 ans après », sans recul décrit sur la gestion."
+  }
+ ]
+}

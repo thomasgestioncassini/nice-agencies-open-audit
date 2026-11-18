@@ -240,6 +240,38 @@
      "tokens_in": 1736,
      "tokens_out": 4080,
      "usd": 0.0332
+    },
+    {
+     "utc": "2026-11-18T11:44:34+00:00",
+     "report": "verification-aveugle-gestion-20261118T114359Z",
+     "purpose": "verification_aveugle",
+     "tokens_in": 3098,
+     "tokens_out": 7549,
+     "usd": 0.0613
+    },
+    {
+     "utc": "2026-11-18T11:45:13+00:00",
+     "report": "verification-aveugle-gestion-20261118T114359Z",
+     "purpose": "verification_aveugle",
+     "tokens_in": 3064,
+     "tokens_out": 7958,
+     "usd": 0.0643
+    },
+    {
+     "utc": "2026-11-18T11:46:10+00:00",
+     "report": "verification-aveugle-gestion-20261118T114359Z",
+     "purpose": "verification_aveugle",
+     "tokens_in": 3052,
+     "tokens_out": 14201,
+     "usd": 0.1111
+    },
+    {
+     "utc": "2026-11-18T11:47:04+00:00",
+     "report": "verification-aveugle-gestion-20261118T114359Z",
+     "purpose": "verification_aveugle",
+     "tokens_in": 2735,
+     "tokens_out": 12172,
+     "usd": 0.0954
     }
    ]
   }
