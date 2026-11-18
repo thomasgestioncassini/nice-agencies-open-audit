@@ -47,7 +47,7 @@ Détails : [docs/reproduction.md](docs/reproduction.md). Règles que le texte de
 ## Contenu
 
 - `auditor/` : téléchargement et archivage, contrôles de cohérence, recalcul, comparaison, échantillonnage, rapport.
-- `config/` : méthode v5 recopiée du texte public, règles de l'auditeur (tolérances, échantillonnage), règles établies par lecture du code.
+- `config/` : méthodes v5 et v6 recopiées du texte public (la v6, du 18/11/2026, s’applique aux relevés qui l’annoncent), règles de l'auditeur (tolérances, échantillonnage), règles établies par lecture du code.
 - `snapshots/<date>/` : relevés archivés (gzip) avec empreintes SHA-256, URL et heure UTC de téléchargement.
 - `reports/<id>/` : rapports (`report.json`, `report.md`, `calculations.csv`, `anomalies.json`, `manifest.json`).
 - `tests/` : tests automatisés.

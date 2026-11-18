@@ -164,15 +164,27 @@ def previous_snapshot(snap: Path):
     return prev[-1] if prev else None
 
 
+def method_for(data_dir: Path) -> dict:
+    """Méthode de l'auditeur applicable à un relevé : v6 si le relevé l'annonce (version_methode de parametres.json),
+    v5 sinon (relevés antérieurs au 18/11/2026). Les deux fichiers de méthode appartiennent à l'auditeur."""
+    try:
+        v = json.loads((Path(data_dir) / 'parametres.json').read_text(encoding='utf-8')).get('version_methode', '')
+    except (OSError, ValueError):
+        v = ''
+    name = 'methodology-v6.json' if str(v).startswith('v6') else 'methodology-v5.json'
+    return json.loads((ROOT / 'config' / name).read_text(encoding='utf-8'))
+
+
 def cmd_run(args) -> int:
     snap = Path(args.snapshot).resolve()
-    cfg = json.loads((ROOT / 'config' / 'methodology-v5.json').read_text(encoding='utf-8'))
+    cfg = None   # méthode choisie d'après le relevé (parametres.json), après restauration
     policy = json.loads((ROOT / 'config' / 'audit-policy.json').read_text(encoding='utf-8'))
     interp = json.loads((ROOT / 'config' / 'interpretations.json').read_text(encoding='utf-8'))
     generated = dt.datetime.now(dt.timezone.utc)
     with tempfile.TemporaryDirectory() as tmp:
         data = Path(tmp)
         snap_manifest = F.restore(snap, data)
+        cfg = method_for(data)
         publisher = policy['sampling']['publisher_agencies']
         prev = previous_snapshot(snap)
         prev_dir = None

@@ -1,4 +1,4 @@
-"""Moteur de recalcul indépendant du classement meilleure-agence-nice.fr (méthode v5 du 14/11/2026).
+"""Moteur de recalcul indépendant du classement meilleure-agence-nice.fr (méthodes v5 du 14/11/2026 et v6 du 18/11/2026).
 
 Écrit à partir du TEXTE PUBLIC de la méthode (https://meilleure-agence-nice.fr/methode/details/) et du dictionnaire des
 fichiers de reproduction. Il n'importe ni ne copie le code de production. Chaque fois que le texte ne suffisait pas à
@@ -25,7 +25,8 @@ def read_csv(path: Path) -> list[dict]:
 
 
 class Method:
-    """Règles de la méthode v5, lues dans config/methodology-v5.json (jamais dans les données auditées)."""
+    """Règles de la méthode, lues dans config/methodology-v5.json ou config/methodology-v6.json (jamais dans les données
+    auditées). La v6 se reconnaît à la clé service.no_negative_rule (trois statuts Google)."""
 
     def __init__(self, cfg: dict):
         self.cfg = cfg
@@ -43,7 +44,12 @@ class Method:
         self.neutral = cfg['missing']['neutral_value']
         self.anc_full_years = cfg['seniority']['full_score_years']
         self.undated_weight = r['undated_review_weight']
-        self.no_negative = s['no_negative_review_score']
+        cw = cfg.get('criteria_weights')   # v6 : poids des critères dans la note (I-13 : moyenne pondérée par ces poids)
+        self.cw_avis = (cw['avis']['quality'], cw['avis']['volume'], cw['avis']['regularity']) if cw else None
+        self.cw_serv = (cw['serv']['response'], cw['serv']['problems']) if cw else None
+        self.no_negative = s.get('no_negative_review_score')          # v5 : 75 ; absent en v6
+        self.v6_google_status = 'no_negative_rule' in s                  # v6 : statut du relevé Google
+        self.unread_response = (s.get('no_negative_rule') or {}).get('google_not_collected')
 
 
 # Variantes « texte » : chaque identifiant remplace la règle de production par la lecture la plus littérale du texte
@@ -132,15 +138,16 @@ def pillar_reviews(items: list[dict], aggs: list[dict], m: Method, ref: dt.date,
         regularity = 0.0 if not aggs else None
     if regularity is None and 'I-6' in _VARIANT:   # variante texte : pas de redistribution, valeur neutre (section 10)
         regularity = m.neutral
+    wq, wv, wr = m.cw_avis or (m.q_share, m.v_share, m.r_share)
     if regularity is None:   # I-6 : régularité non vérifiable, son poids est réparti sur qualité et volume
-        score = (m.q_share * quality + m.v_share * volume) / (m.q_share + m.v_share)
-    else:
-        score = m.q_share * quality + m.v_share * volume + m.r_share * regularity
+        score = (wq * quality + wv * volume) / (wq + wv)
+    else:                    # I-13 : moyenne des critères pondérée par leurs poids dans la note (v6 : 30,1 / 7,6 / 5,9)
+        score = (wq * quality + wv * volume + wr * regularity) / (wq + wv + wr)
     return r1(score), {'quality': quality, 'volume': volume, 'regularity': regularity, 'n': n, 'aggregate_reviews': agg_used,
                        'mean_smoothed': mean, 'months_active': len(months), 'reviews_12m': len(rec)}
 
 
-def pillar_service(items: list[dict], m: Method) -> tuple[float, dict]:
+def pillar_service(items: list[dict], m: Method, google_status: str | None = None) -> tuple[float, dict]:
     tx = [x for x in items if x['compte_vente_achat'] == '1']
     # Réponses : avis Google de vente/achat à 3 étoiles ou moins dont la présence d'une réponse a été relevée (I-8)
     # Une note vide n'est jamais remplacée : l'avis est exclu ici et signalé comme donnée invalide (contrôle V-4)
@@ -148,8 +155,12 @@ def pillar_service(items: list[dict], m: Method) -> tuple[float, dict]:
            and x['reponse_agence'] in ('0', '1')]
     if neg:
         resp = r1(100.0 * (sum(1 for x in neg if x['reponse_agence'] == '1') + 2) / (len(neg) + 4))
-    else:
+    elif not m.v6_google_status:
         resp = m.no_negative
+    elif google_status == 'releve':   # v6 : relevé Google complet sans avis négatif -> critère retiré, poids aux problèmes
+        resp = None
+    else:                             # v6 : avis Google non relevés un par un -> donnée non relevée, neutre
+        resp = m.unread_response
     # Problèmes : avis uniques avec texte lu (colonne retenu_service, I-9)
     texts = [x for x in items if x['retenu_service'] == '1' and x['probleme'] in ('ok', 'probleme')]
     if len(texts) < m.min_texts:
@@ -157,15 +168,18 @@ def pillar_service(items: list[dict], m: Method) -> tuple[float, dict]:
     else:
         share = sum(1 for x in texts if x['probleme'] == 'probleme') / len(texts)
         prob = r1(max(0.0, 100.0 * (1 - share / m.prob_zero_at)))
-    return r1(m.resp_share * resp + m.prob_share * prob), {'response': resp, 'problems': prob, 'negatives': len(neg),
-                                                           'texts': len(texts)}
+    wr_, wp_ = m.cw_serv or (m.resp_share, m.prob_share)
+    score = prob if resp is None else (wr_ * resp + wp_ * prob) / (wr_ + wp_)
+    return r1(score), {'response': resp, 'problems': prob, 'negatives': len(neg), 'texts': len(texts),
+                       'google_status': google_status}
 
 
 def pillar_points(rows: list[dict]) -> float | None:
-    """Points obtenus / points applicables × 100. Un critère sans maximum est « non applicable » (section 10)."""
+    """Points obtenus / points applicables × 100. Un critère sans maximum est « non applicable » (section 10) ; un critère
+    de maximum 0 est affiché pour information et n'est pas noté (v6 : confidentialité, HTTPS, estimation en ligne)."""
     pts = mx = 0.0
     for r in rows:
-        if r['max'] in ('', None):
+        if r['max'] in ('', None) or float(r['max']) == 0:
             continue
         pts += float(r['points'] or 0)
         mx += float(r['max'])
@@ -210,10 +224,12 @@ def _recalculate(data_dir: Path, cfg: dict) -> dict:
     aggs: dict[str, list] = defaultdict(list)
     for a in aggs_all:
         aggs[a['agence']].append(a)
-    order = {}
+    order, gstatus = {}, {}
     src = data_dir / 'sources-agences.csv'
     if src.exists():
-        order = {r['agence']: int(r['id']) for r in read_csv(src)}
+        rows = read_csv(src)
+        order = {r['agence']: int(r['id']) for r in rows}
+        gstatus = {r['agence']: r.get('statut_avis_google') for r in rows}
     by_ag: dict[str, list] = defaultdict(list)
     for x in read_csv(data_dir / 'avis-elementaires.csv'):
         by_ag[x['agence']].append(x)
@@ -225,7 +241,7 @@ def _recalculate(data_dir: Path, cfg: dict) -> dict:
         s = a['agence']
         sc, rules = {}, []
         sc['avis'], d_avis = pillar_reviews(by_ag[s], aggs[s], m, ref, m_ref)
-        sc['serv'], d_serv = pillar_service(by_ag[s], m)
+        sc['serv'], d_serv = pillar_service(by_ag[s], m, gstatus.get(s))
         for p in ('hono', 'conf', 'info'):
             sc[p] = pillar_points(crit[s][p])
         sc['anc'] = pillar_seniority(a['date_anciennete'], m, ref)

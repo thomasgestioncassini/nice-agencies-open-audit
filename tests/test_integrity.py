@@ -9,7 +9,7 @@ from pathlib import Path
 
 from auditor import fetch as F
 from auditor.validate import validate
-from tests.helpers import CFG, POLICY, REFERENCE, ROOT, audit, latest_snapshot, needs_snapshot, restored, rows, write_rows
+from tests.helpers import CFG, POLICY, cfg_for, REFERENCE, ROOT, audit, latest_snapshot, needs_snapshot, restored, rows, write_rows
 
 PUB_COLS = ('avis', 'service', 'honoraires', 'mentions_legales', 'information', 'anciennete')
 
@@ -83,7 +83,9 @@ class Alterations(unittest.TestCase):
         def change(d):
             head, cr = rows(d / 'criteres-sites.csv')
             for r in cr:
-                if r['agence'] == 'gestion-cassini' and r['pilier'] == 'info' and r['max'] and r['points'] == '1':
+                # critère noté (maximum > 0) obtenu en entier ; v6 : les critères de maximum 0 ne sont pas notés
+                if (r['agence'] == 'gestion-cassini' and r['pilier'] == 'info' and r['max'] and float(r['max']) > 0
+                        and r['points'] == r['max']):
                     r['points'] = '0'
                     break
             write_rows(d / 'criteres-sites.csv', head, cr)
@@ -169,7 +171,7 @@ class CoordinatedForgery(unittest.TestCase):
             pj['date_releve'] = '2026-11-22'
             (cur / 'parametres.json').write_text(json.dumps(pj), encoding='utf-8')
             forge_consistently(cur)
-            val = validate(cur, CFG, POLICY['sampling']['publisher_agencies'], prev)
+            val = validate(cur, cfg_for(cur), POLICY['sampling']['publisher_agencies'], prev)
         f = next(x for x in val['findings'] if x['code'] == 'V-13a')
         self.assertEqual(f['severity'], 'majeur')
         self.assertEqual(f['per_agency'].get('immovendu'), 40)
@@ -181,7 +183,7 @@ class CoordinatedForgery(unittest.TestCase):
             head, items = rows(cur / 'avis-elementaires.csv')
             gc = [x for x in items if x['agence'] == 'gestion-cassini'][:10]
             write_rows(cur / 'avis-elementaires.csv', head, [x for x in items if x not in gc])
-            val = validate(cur, CFG, POLICY['sampling']['publisher_agencies'], prev)
+            val = validate(cur, cfg_for(cur), POLICY['sampling']['publisher_agencies'], prev)
         f = next(x for x in val['findings'] if x['code'] == 'V-13b')
         self.assertEqual(f['per_agency'].get('gestion-cassini'), 10)
 
@@ -194,7 +196,7 @@ class CoordinatedForgery(unittest.TestCase):
             x = next(x for x in items if x['agence'] == 'immovendu' and x['probleme'] == 'probleme')
             x['probleme'] = 'ok'                               # un problème signalé effacé pour l'éditeur
             write_rows(cur / 'avis-elementaires.csv', head, items)
-            val = validate(cur, CFG, POLICY['sampling']['publisher_agencies'], prev)
+            val = validate(cur, cfg_for(cur), POLICY['sampling']['publisher_agencies'], prev)
         f = next(x for x in val['findings'] if x['code'] == 'V-13d')
         self.assertEqual(f['per_agency'], {'immovendu': 1})
         self.assertEqual(f['severity'], 'majeur')

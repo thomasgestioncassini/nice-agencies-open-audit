@@ -1,4 +1,6 @@
 """Formules publiées (cas simples construits à la main) et test 1 : reproduction complète d'un relevé archivé."""
+import json
+from pathlib import Path
 import datetime as dt
 import unittest
 
@@ -104,3 +106,34 @@ class Test1Reproduction(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class MethodV6(unittest.TestCase):
+    """Méthode v6 du 18/11/2026 : poids par critère, trois statuts Google pour la réponse aux avis négatifs, critères
+    affichés pour information (maximum 0) hors de la note."""
+    CFG6 = json.loads((Path(__file__).resolve().parent.parent / 'config' / 'methodology-v6.json').read_text(encoding='utf-8'))
+
+    def test_weights(self):
+        w = self.CFG6['weights']
+        self.assertAlmostEqual(sum(w.values()), 100.0, places=6)
+        cw = self.CFG6['criteria_weights']
+        for p in w:
+            self.assertAlmostEqual(sum(cw[p].values()), w[p], places=6)
+
+    def test_google_status(self):
+        m = Method(self.CFG6)
+        texts = [review(probleme='ok')] * 9 + [review(probleme='probleme')]
+        s, d = pillar_service(texts, m, 'releve')          # relevé complet, aucun négatif : critère retiré
+        self.assertIsNone(d['response'])
+        self.assertEqual(s, d['problems'])
+        s, d = pillar_service(texts, m, 'non_releve')      # avis Google non relevés : donnée non relevée, 50
+        self.assertEqual(d['response'], 50)
+        self.assertEqual(s, round((4.8 * 50 + 15.1 * d['problems']) / 19.9, 1))
+        neg = [review(note='2', reponse_agence='1'), review(note='3', reponse_agence='')]   # réponse inconnue : exclu
+        s, d = pillar_service(neg + texts, m, 'releve')
+        self.assertEqual(d['negatives'], 1)
+        self.assertEqual(d['response'], round(100 * 3 / 5, 1))
+
+    def test_unscored_criteria(self):
+        rows = [{'points': '9', 'max': '9'}, {'points': '0', 'max': '19'}, {'points': '1', 'max': '0'}]
+        self.assertEqual(pillar_points(rows), round(100 * 9 / 28, 1))

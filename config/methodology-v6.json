@@ -1,0 +1,135 @@
+{
+  "version": "v6 du 18/11/2026 (19 critères, poids par critère ; trois statuts Google pour la réponse aux avis négatifs ; niveau des honoraires, confidentialité, HTTPS et estimation en ligne non notés)",
+  "source": "https://meilleure-agence-nice.fr/methode/details/",
+  "note": "Valeurs recopiées du texte public de la méthode v6 (sections 3 à 9 de /methode/details/, relevé du 17/11/2026 archivé le 18/11/2026). Ce fichier appartient à l'auditeur : il n'est jamais lu depuis le site audité. Toute modification est un commit public.",
+  "weights": {
+    "avis": 43.6,
+    "serv": 19.9,
+    "hono": 17.9,
+    "conf": 10.1,
+    "info": 4.7,
+    "anc": 3.8
+  },
+  "criteria_count": {
+    "avis": 3,
+    "serv": 2,
+    "hono": 4,
+    "conf": 6,
+    "info": 3,
+    "anc": 1
+  },
+  "reviews": {
+    "quality_share": 0.690367,
+    "volume_share": 0.174312,
+    "regularity_share": 0.135321,
+    "smoothing_fictitious_reviews": 15,
+    "half_life_months": 36,
+    "volume_cap": 200,
+    "excluded_profiles": [
+      "locataire",
+      "bailleur",
+      "syndic"
+    ],
+    "undated_review_weight": 0.5
+  },
+  "service": {
+    "response_share": 0.241206,
+    "problems_share": 0.758794,
+    "problems_score_zero_at_share": 0.25,
+    "min_texts": 10,
+    "no_negative_rule": {
+      "google_complete": "critère retiré, poids reporté sur les problèmes de service",
+      "google_not_collected": 50,
+      "status_column": "statut_avis_google (sources-agences.csv) : releve | non_releve"
+    },
+    "unknown_response": "avis négatif dont la présence d'une réponse n'a pas pu être relevée : exclu du calcul"
+  },
+  "fees_points": {
+    "Barème publié": 67,
+    "Payeur indiqué": 48,
+    "Montants TTC": 30,
+    "Barème complet": 34,
+    "illisible": 20
+  },
+  "legal_points": {
+    "Carte professionnelle": 27,
+    "RC professionnelle": 19,
+    "Garant financier": 19,
+    "Médiateur": 14,
+    "RCS/SIREN": 11,
+    "Détention de fonds": 11,
+    "Confidentialité": 0
+  },
+  "seniority": {
+    "full_score_years": 20
+  },
+  "missing": {
+    "neutral_value": 50
+  },
+  "levels": [
+    [
+      85,
+      "Excellente"
+    ],
+    [
+      75,
+      "Très bonne"
+    ],
+    [
+      60,
+      "Bonne"
+    ],
+    [
+      45,
+      "Correcte"
+    ],
+    [
+      0,
+      "À améliorer"
+    ]
+  ],
+  "criteria_weights": {
+    "avis": {
+      "quality": 30.1,
+      "volume": 7.6,
+      "regularity": 5.9
+    },
+    "serv": {
+      "response": 4.8,
+      "problems": 15.1
+    },
+    "hono": {
+      "Barème publié": 6.7,
+      "Payeur indiqué": 4.8,
+      "Montants TTC": 3.0,
+      "Barème complet": 3.4
+    },
+    "conf": {
+      "Carte professionnelle": 2.7,
+      "RC professionnelle": 1.9,
+      "Garant financier": 1.9,
+      "Médiateur": 1.4,
+      "RCS/SIREN": 1.1,
+      "Détention de fonds": 1.1,
+      "Confidentialité": 0
+    },
+    "info": {
+      "Site adapté au téléphone": 0.9,
+      "Page équipe": 1.9,
+      "Coordonnées complètes": 1.9,
+      "HTTPS": 0,
+      "Estimation en ligne": 0
+    },
+    "anc": {
+      "Ancienneté": 3.8
+    }
+  },
+  "info_points": {
+    "Site adapté au téléphone": 9,
+    "Page équipe": 19,
+    "Coordonnées complètes": 19,
+    "HTTPS": 0,
+    "Estimation en ligne": 0
+  },
+  "not_scored_note": "Un critère de points maximum 0 est affiché pour information et n'entre pas dans la note (sections 6 et 7 du texte v6)."
+}

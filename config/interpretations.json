@@ -133,5 +133,14 @@
   "source": "avis.py : same_review(), unique_reviews(), text_key() ; build.py : SHARED",
   "kind": "non_documente",
   "documented_by": "au moins 70 % de mots communs"
+ },
+ {
+  "id": "I-14",
+  "title": "Méthode v6 : pilier calculé comme moyenne de ses critères pondérée par leurs poids dans la note",
+  "rule": "Pilier Avis = (30,1 × qualité + 7,6 × volume + 5,9 × régularité) ÷ 43,6 ; pilier Service = (4,8 × réponses + 15,1 × problèmes) ÷ 19,9, ou les seuls problèmes quand le critère « réponse » est retiré ; arrondi au dixième. Calculer avec des parts arrondies (0,690…) au lieu des poids change le dixième d'une agence sur 545 au relevé du 17/11/2026 (frontière d'arrondi).",
+  "text_gap": "Le texte donne le poids de chaque critère dans la note (tableaux des sections 3 et 4), sans écrire la formule du pilier.",
+  "source": "avis.py : score() ; service.py (méthode v6)",
+  "kind": "precision",
+  "documented_by": "Poids dans la note"
  }
 ]

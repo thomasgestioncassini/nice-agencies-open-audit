@@ -139,8 +139,12 @@ def validate(data_dir: Path, cfg: dict, publisher: list[str], prev_dir: Path | N
                            [x['agence'] for x in bad_share], len(bad_share)))
 
     # V-8 points des critères : 0 ≤ points ≤ max, maxima conformes au barème publié
-    allowed = {'hono': {20, 30, 100}, 'conf': {5, 10, 15, 20, 25, 100}, 'info': {1}}
-    bad_pts = [r for r in crit if r['max'] and (not (0 <= float(r['points'] or 0) <= float(r['max']))
+    # maxima admis : barème de la méthode de l'auditeur (v5 ou v6) ; 100 = valeur fixe (barème illisible, pas de site) ;
+    # 1 = critère d'information de la v5 ou « aucun site propre » ; 0 = critère affiché pour information, non noté (v6)
+    allowed = {'hono': {int(v) for v in cfg['fees_points'].values()} | {100},
+               'conf': {int(v) for v in cfg['legal_points'].values()} | {100},
+               'info': {int(v) for v in cfg.get('info_points', {}).values()} | {1}}
+    bad_pts = [r for r in crit if r['max'] and float(r['max']) != 0 and (not (0 <= float(r['points'] or 0) <= float(r['max']))
                                                   or int(float(r['max'])) not in allowed.get(r['pilier'], set()))]
     if bad_pts:
         out.append(finding('V-8', 'majeur', 'points de critère hors barème', [r['agence'] for r in bad_pts], len(bad_pts)))
@@ -289,13 +293,22 @@ def history(prev_dir: Path, data_dir: Path, publisher: list[str]) -> list[dict]:
                        sum(changed_cls.values()), per_agency=dict(changed_cls), fields=dict(kinds),
                        publisher_counts={p: changed_cls.get(p, 0) for p in publisher}))
     pc = {(r['agence'], r['critere']): r for r in read_csv(prev_dir / 'criteres-sites.csv')}
+
+    def _part(r):
+        """Part du maximum obtenue : un changement de barème de la méthode (v6 : 25 -> 27 points pour la carte
+        professionnelle) n'est pas une nouvelle lecture du site et ne doit pas être signalé comme tel."""
+        try:
+            mx = float(r['max'])
+        except (TypeError, ValueError):
+            return r['points']
+        return round(float(r['points'] or 0) / mx, 6) if mx else 'non_note'
     # une nouvelle lecture se reconnaît à une nouvelle date ou, pour deux lectures le même jour, à un nouvel identifiant
     # de relecture (colonne id_lecture, publiée par le site depuis sa v5.6)
     cases = [{'agence': r['agence'], 'critere': r['critere'], 'avant': o['points'], 'apres': r['points'],
               'date_observation': r.get('date_observation'), 'id_lecture': r.get('id_lecture') or ''}
              for r in read_csv(data_dir / 'criteres-sites.csv')
              for o in [pc.get((r['agence'], r['critere']))]
-             if o and o['points'] != r['points'] and r.get('date_observation')
+             if o and _part(o) != _part(r) and 'non_note' not in (_part(o), _part(r)) and r.get('date_observation')
              and r.get('date_observation') == o.get('date_observation')
              and (r.get('id_lecture') or '') == (o.get('id_lecture') or '')]
     if cases:

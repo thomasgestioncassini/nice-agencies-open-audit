@@ -99,3 +99,11 @@ L'auditeur ne tranche pas et ne modifie aucune règle du classement.
 - Texte : le retrait des doublons et le partage des avis entre agences sont annoncés (section 3), sans dire comment un doublon est reconnu.
 - Contrôle : V-14 refait ce dédoublonnage avec l'implémentation de l'auditeur (auditor/dedupcheck.py), sur le paquet de données anonymisées publié par le site (texte et auteur remplacés par des empreintes salées), et compare les nombres agence par agence aux fichiers de reproduction.
 - Source : avis.py : same_review(), unique_reviews(), text_key() ; build.py : SHARED
+
+## I-14 · Méthode v6 : pilier = moyenne de ses critères pondérée par leurs poids — précision d'implémentation
+
+- Règle appliquée par le site : pilier Avis = (30,1 × qualité + 7,6 × volume + 5,9 × régularité) ÷ 43,6 ; pilier Service = (4,8 × réponses + 15,1 × problèmes) ÷ 19,9, ou les seuls problèmes quand le critère « réponse aux avis négatifs » est retiré (relevé Google complet sans avis négatif) ; avis Google non relevés un par un : réponse = 50. Arrondi au dixième.
+- Texte : le texte v6 donne le poids de chaque critère dans la note (sections 3 et 4), sans écrire la formule du pilier.
+- Effet de l'ordre des opérations : calculer avec des parts arrondies au lieu des poids change le dixième d'une agence sur 545 au relevé du 17/11/2026 (frontière d'arrondi).
+- Critères de maximum 0 (confidentialité, HTTPS, estimation en ligne) : affichés pour information, hors de la note ; ils ne sont pas contrôlés par V-8 ni V-13c.
+- Source : avis.py : score() ; service.py (méthode v6)

@@ -40,8 +40,14 @@ def restored(snap=None):
     return tmp, Path(tmp.name)
 
 
+def cfg_for(data_dir):
+    """Méthode de l'auditeur applicable au relevé (v5 avant le 18/11/2026, v6 ensuite)."""
+    from auditor.__main__ import method_for
+    return method_for(data_dir)
+
+
 def audit(data_dir, variants=()):
-    res = recalculate(data_dir, CFG, variants)
+    res = recalculate(data_dir, cfg_for(data_dir), variants)
     return res, compare(data_dir, res, POLICY)
 
 
