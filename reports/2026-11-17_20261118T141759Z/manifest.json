@@ -1,0 +1,33 @@
+{
+ "report_id": "2026-11-17_20261118T141759Z",
+ "outputs_sha256": {
+  "anomalies.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+  "calculations.csv": "fc5a21705fd9072d2c7fac45effc296b5e85ad7a440ca50621b3da5a33a76c05",
+  "gestion-calculations.csv": "d85d5a42eb8e2b628e7a93d2456f2db8e6a402d8cb41a96cd2bc7443b69b17aa",
+  "report.json": "ae3941bf785a76e056f854dd17744bebf2c231653468bea99474c91fd7f85f43",
+  "report.md": "3c2819a355beb9aee7475527da5eea849f32bf3cb4053fae7778a3df278eb521"
+ },
+ "snapshot": "snapshots/2026-11-17_141746",
+ "snapshot_manifest_sha256": "e97a9a56c1412eaf21e61a0cd3ed24f5a18c4ac73d3e3a1aae975cbfb6d7c91c",
+ "inputs_sha256": {
+  "agences.csv": "09ce2cf1170c475b76ffd1ed6d46ea5b7c24427630e813d3396cf775e57194e3",
+  "agregats-plateformes.csv": "f5630ef1134fd8e7cf34fa719e8cd96faa5ccb76fd011ea9d04bbe989f970ef2",
+  "avis-elementaires.csv": "5e9d7b6a1850c58e4182ebd989c7dba55194f6f3fa9cdad52d5aad64e6dc33a8",
+  "calcul.zip": "b53ee2660e6602481ecb971c2402c05b91487c339e5887b5dc495af1005257b1",
+  "classement-notes.txt": "fac0e14d840a75ec856c8f4c804742daabaecdd0c07fe62fe0f79e17d5d63b71",
+  "criteres-sites.csv": "60f4be1238ea41f7d6674fa0d8b0d070648be9a76800e961b0e3905b12b49f90",
+  "gestion-agences.csv": "893137ae2c8463234470cfcc54bdf7852a835b962031844e493509b4a3345369",
+  "gestion-avis.csv": "8c3ae120f48595a36800264b4355387c6f11fa09050371313c38e4ca53514ce0",
+  "gestion-criteres.csv": "9c994006991567f56e177a411bef34f8d7087088c23c279ce29d65d118255a0a",
+  "gestion-methode.html": "488aaebef10973ffb145210416f5162abf4c4aa20a3d114c9eebb25ba11506d9",
+  "gestion-parametres.json": "f47b03c046d5ded33f44e9027addc8bfd171f2db9dccad4089e80fa0faaa74ad",
+  "lectures.csv": "950865b7a3f1cb8fc8c19ee3b67517f4554b0c29c27597f83bd8ee7673eaba42",
+  "methode-details.html": "6c1ccd143743777691c6720a0fea42be3e392c6e414a021ee27f9a57695af337",
+  "parametres.json": "583e19a23e104ec11553926a84fd511e964b06f805104e59c827f9fedbf41d42",
+  "relectures-exceptionnelles.csv": "b5806af6283784ed012e4bd3a8f24dc08810088ec0698568e99db24ca94e51c8",
+  "sources-agences.csv": "68382aab81b3835160a6fc407db81d15ce4f263a9c32dba3135bf5b0f5ae2e1c"
+ },
+ "code_version": "07e9400141df1c7efd997ae86c65f3f4715fba47",
+ "python": "3.12.16",
+ "command": "python -m auditor run snapshots/2026-11-17_141746"
+}

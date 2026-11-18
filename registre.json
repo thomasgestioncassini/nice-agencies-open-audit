@@ -1865,5 +1865,20 @@
   "dedoublonnage": "conforme",
   "audit_ia": null,
   "erreur": false
+ },
+ {
+  "rapport": "2026-11-17_20261118T141759Z",
+  "type": "recalcul",
+  "manifeste_sha256": "b1556eebeccd5aecafb435010d10daa2be328b156fe74a2b8541fc90e8b7881f",
+  "signature": "44322652922",
+  "releve": "2026-11-17_141746",
+  "genere_utc": "2026-11-18T14:17:59+00:00",
+  "methode": "v6 du 18/11/2026",
+  "calculs": "conforme",
+  "dedoublonnage": "conforme",
+  "audit_ia": null,
+  "erreur": false,
+  "calculs_gestion": "conforme",
+  "methode_gestion": "G1.2 du 18/11/2026"
  }
 ]
